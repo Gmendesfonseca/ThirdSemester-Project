@@ -1,5 +1,5 @@
 To run the application, you should have this following dependencies: 
-TypeScript
+  TypeScript
 * npm install --save typescript
-Electron
+  Electron
 * npm install --save-dev @types/electron electron
