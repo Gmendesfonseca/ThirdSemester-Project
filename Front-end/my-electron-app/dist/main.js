@@ -23,23 +23,22 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const electron_1 = require("electron");
-const os_1 = require("os");
-const path = __importStar(require("path")); // Import the 'path' module
-electron_1.ipcMain.handle('get-threads', () => {
-    const threads = (0, os_1.cpus)().length;
-    return threads;
-});
+var electron_1 = require("electron");
+var path = __importStar(require("path"));
+var url = __importStar(require("url"));
 function createWindow() {
-    const win = new electron_1.BrowserWindow({
+    var win = new electron_1.BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join('dist', 'src', 'preload.js'), // path to your preload script
-        }
+            nodeIntegration: true,
+            contextIsolation: false,
+        },
     });
-    win.loadFile('index.html'); // path to your HTML file
+    win.loadURL(url.format({
+        pathname: path.join(__dirname, "/../public/index.html"),
+        protocol: 'file:',
+        slashes: true,
+    }));
 }
-electron_1.app.whenReady().then(() => {
-    createWindow();
-});
+electron_1.app.whenReady().then(createWindow);
