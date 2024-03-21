@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import * as path from 'path';
+import path from 'path';
 import * as url from 'url';
 
 function createWindow() {
@@ -9,16 +9,32 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      preload: path.join(__dirname, 'preloader.ts'),
     },
   });
 
-  win.loadURL(
+  win.loadURL('http://localhost:3000');
+}
+
+/*  win.loadURL(
     url.format({
-      pathname: path.join(__dirname, `/../public/index.js`),
+      pathname: path.join(__dirname, `/../public/index.html`),
       protocol: 'file:',
       slashes: true,
     }),
   );
-}
+}*/
 
-app.whenReady().then(createWindow);
+app.whenReady().then(createWindow),
+
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
