@@ -1,11 +1,14 @@
-import './assets/main.css'
-
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom'
 import App from './App'
+import { ThemeProvider } from '@emotion/react'
+import { theme } from './theme'
+import React from 'react'
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById('root') as HTMLElement
 )

@@ -1,35 +1,43 @@
-import Versions from './components/Versions'
-import electronLogo from './assets/electron.svg'
+import { Sidebar } from './components/Sidebar';
+import { Feed } from './components/Feed';
+import { Rightbar } from './components/Rightbar';
+import {
+  Box,
+  createTheme,
+  PaletteMode,
+  Stack,
+  ThemeProvider,
+  useMediaQuery,
+} from '@mui/material';
+import { Navbar } from './components/Navbar';
+import { Add } from './components/Add';
+import React, { useState } from 'react';
 
-function App(): JSX.Element {
-  const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+function App() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [mode, setMode] = useState<PaletteMode>(
+    prefersDarkMode ? 'dark' : 'light',
+  );
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
 
   return (
-    <>
-      <img alt="logo" className="logo" src={electronLogo} />
-      <div className="creator">Powered by electron-vite</div>
-      <div className="text">
-        Build an Electron app with <span className="react">React</span>
-        &nbsp;and <span className="ts">TypeScript</span>
-      </div>
-      <p className="tip">
-        Please try pressing <code>F12</code> to open the devTool
-      </p>
-      <div className="actions">
-        <div className="action">
-          <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">
-            Documentation
-          </a>
-        </div>
-        <div className="action">
-          <a target="_blank" rel="noreferrer" onClick={ipcHandle}>
-            Send IPC
-          </a>
-        </div>
-      </div>
-      <Versions></Versions>
-    </>
-  )
+    <ThemeProvider theme={darkTheme}>
+      <Box bgcolor={'background.default'} color={'text.primary'}>
+        <Navbar />
+        <Stack direction="row" spacing={2} justifyContent="space-between">
+          <Sidebar mode={mode} setMode={setMode} />
+          <Feed />
+          <Rightbar />
+        </Stack>
+        <Add />
+      </Box>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
