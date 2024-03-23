@@ -36,6 +36,7 @@ npm install
 "scripts": {
 "format": "prettier --write .",
 "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+"test": "react-scripts test",
 "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
 "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
 "typecheck": "npm run typecheck:node && npm run typecheck:web",
@@ -48,9 +49,18 @@ npm install
 "build:mac": "electron-vite build && electron-builder --mac",
 "build:linux": "electron-vite build && electron-builder --linux"
 },
+"eslintConfig": {
+"extends": [
+"react-app",
+"react-app/jest"
+]
+},
 "dependencies": {
 "@electron-toolkit/preload": "^3.0.0",
 "@electron-toolkit/utils": "^3.0.0",
+"@emotion/react": "^11.11.4",
+"@emotion/styled": "^11.11.0",
+"@mui/icons-material": "^5.15.14",
 "@mui/material": "^5.15.14"
 },
 "devDependencies": {
@@ -66,7 +76,7 @@ npm install
 "@vitejs/plugin-react": "^4.2.1",
 "electron": "^28.2.0",
 "electron-builder": "^24.9.1",
-"electron-vite": "^2.0.0",
+"electron-vite": "^2.1.0",
 "eslint": "^8.56.0",
 "eslint-plugin-react": "^7.33.2",
 "prettier": "^3.2.4",
