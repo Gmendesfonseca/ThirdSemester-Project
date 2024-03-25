@@ -107,3 +107,7 @@ npm install --save web-vitals@2.1.4
 "react-scripts": "^4.0.3",
 "web-vitals": "^2.1.4"
 },
+
+##### FAKER JS
+
+https://www.npmjs.com/package/@faker-js/faker
