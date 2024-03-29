@@ -12,21 +12,16 @@ import {
   ListItemIcon,
   Menu,
   IconButton,
-  Tooltip,
-} from '@mui/material';
-import MailIcon from '@mui/icons-material/Mail';
-import React from 'react';
-import {
-  Logout,
-  Notifications,
-  PersonAdd,
-  Settings,
-} from '@mui/icons-material';
+  Tooltip
+} from '@mui/material'
+import MailIcon from '@mui/icons-material/Mail'
+import React from 'react'
+import { Logout, Notifications, PersonAdd, Settings } from '@mui/icons-material'
 
 const StyledToolbar = styled(Toolbar)({
   display: 'flex',
-  justifyContent: 'space-between',
-});
+  justifyContent: 'space-between'
+})
 
 const Search = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -34,40 +29,44 @@ const Search = styled('div')(({ theme }) => ({
   backgroundColor: 'white',
   borderRadius: theme.shape.borderRadius,
   width: '40%',
-  padding: '0 10px',
-}));
+  padding: '0 10px'
+}))
 
 const Icons = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: '20px',
   [theme.breakpoints.down('sm')]: {
-    display: 'none',
-  },
-}));
+    display: 'none'
+  }
+}))
 
 const UserBox = styled(Box)(({ theme }) => ({
   display: 'none',
   alignItems: 'center',
   gap: '10px',
   [theme.breakpoints.down('sm')]: {
-    display: 'flex',
-  },
-}));
+    display: 'flex'
+  }
+}))
 
 export const Navbar = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
   return (
     <AppBar position="sticky">
       <StyledToolbar>
-        <Typography variant="h6" sx={{ xs: 'none', sm: 'block' }}>
+        <Typography
+          variant="h6"
+          display={{ xs: 'none', sm: 'block' }}
+          sx={{ xs: 'none', sm: 'block' }}
+        >
           InnerLink
         </Typography>
         <Search>
@@ -133,7 +132,7 @@ export const Navbar = () => {
               width: 32,
               height: 32,
               ml: -0.5,
-              mr: 1,
+              mr: 1
             },
             '&::before': {
               content: '""',
@@ -145,9 +144,9 @@ export const Navbar = () => {
               height: 10,
               bgcolor: 'background.paper',
               transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
+              zIndex: 0
+            }
+          }
         }}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
@@ -179,5 +178,5 @@ export const Navbar = () => {
         </MenuItem>
       </Menu>
     </AppBar>
-  );
-};
+  )
+}
