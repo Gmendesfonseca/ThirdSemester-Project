@@ -1,29 +1,20 @@
-import { Sidebar } from './components/Sidebar';
-import { Feed } from './components/Feed';
-import { Rightbar } from './components/Rightbar';
-import {
-  Box,
-  createTheme,
-  PaletteMode,
-  Stack,
-  ThemeProvider,
-  useMediaQuery,
-} from '@mui/material';
-import { Navbar } from './components/Navbar';
-import { Add } from './components/Add';
-import React, { useState } from 'react';
+import { Sidebar } from './components/Sidebar/Sidebar'
+import { Feed } from './components/Feed/Feed'
+import { Rightbar } from './components/Rightbar/Rightbar'
+import { Box, createTheme, PaletteMode, Stack, ThemeProvider, useMediaQuery } from '@mui/material'
+import { Navbar } from './components/NavBar/Navbar'
+import { Add } from './components/Add/Add'
+import React, { useState } from 'react'
 
 function App() {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [mode, setMode] = useState<PaletteMode>(
-    prefersDarkMode ? 'dark' : 'light',
-  );
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)')
+  const [mode, setMode] = useState<PaletteMode>(prefersDarkMode ? 'dark' : 'light')
 
   const darkTheme = createTheme({
     palette: {
-      mode: mode,
-    },
-  });
+      mode: mode
+    }
+  })
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -37,7 +28,7 @@ function App() {
         <Add />
       </Box>
     </ThemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App
