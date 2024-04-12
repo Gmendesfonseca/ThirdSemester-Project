@@ -6,6 +6,8 @@ import { Navbar } from './components/NavBar/Navbar'
 import { Add } from './components/Add/Add'
 import React, { useState } from 'react'
 
+type View = 'login' | 'home' | 'profile' | 'register' | 'settings' | 'chat' | 'bookmarks';
+
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)')
   const [mode, setMode] = useState<PaletteMode>(prefersDarkMode ? 'dark' : 'light')
