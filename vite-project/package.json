@@ -21,7 +21,7 @@
   "devDependencies": {
     "@cypress/electron-plugin": "^1.1.0",
     "@types/node": "^18.19.31",
-    "@types/react": "^18.2.64",
+    "@types/react": "^18.2.78",
     "@types/react-dom": "^18.2.21",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
