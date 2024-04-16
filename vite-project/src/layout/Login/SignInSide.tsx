@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import { useNavigate } from 'react-router-dom';
-import {
-  createTheme,
-  PaletteMode,
-  ThemeProvider,
-  useMediaQuery,
-} from '@mui/material';
+import React, { useState } from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
+import { createTheme, ThemeProvider } from "@mui/material";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
+
+function Alert(props: AlertProps) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function Copyright(props: any) {
   return (
@@ -27,24 +28,43 @@ function Copyright(props: any) {
       align="center"
       {...props}
     >
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="#">
         InnerLink
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
 
-export default function SignInSide() {
+export default function SignInSideRegex() {
   const navigate = useNavigate();
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
-  const [mode] = useState<PaletteMode>(prefersDarkMode ? 'light' : 'dark');
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = (event: React.SyntheticEvent, reason?: string) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    if (!emailRegex.test(event.target.value) && event.target.value != null) {
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+    }
+  };
 
   const darkTheme = createTheme({
     palette: {
-      mode: 'dark',
+      mode: "dark",
     },
   });
 
@@ -52,15 +72,18 @@ export default function SignInSide() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: data.get("email"),
+      password: data.get("password"),
     });
-    navigate('/home');
+    if (!emailError) {
+      navigate("/home");
+    } else {
+      setOpen(true);
+    }
   };
-
   return (
     <ThemeProvider theme={darkTheme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -69,14 +92,14 @@ export default function SignInSide() {
           md={7}
           sx={{
             backgroundImage:
-              'url(https://source.unsplash.com/random?wallpapers)',
-            backgroundRepeat: 'no-repeat',
+              "url(https://source.unsplash.com/random?wallpapers)",
+            backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
-              t.palette.mode === 'light'
+              t.palette.mode === "light"
                 ? t.palette.grey[50]
                 : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -84,13 +107,13 @@ export default function SignInSide() {
             sx={{
               my: 8,
               mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              alignContent: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              alignContent: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -102,7 +125,22 @@ export default function SignInSide() {
               onSubmit={handleSubmit}
               sx={{ mt: 1 }}
             >
+              <Snackbar
+                open={open}
+                autoHideDuration={5000}
+                onClose={(event, reason) => handleClose(event, reason)}
+              >
+                <Alert
+                  onClose={handleClose}
+                  severity="error"
+                  sx={{ width: "100%" }}
+                >
+                  Email ou senha incorreto!
+                </Alert>
+              </Snackbar>
               <TextField
+                error={emailError}
+                helperText={emailError ? "Email inválido" : ""}
                 margin="normal"
                 required
                 fullWidth
@@ -111,6 +149,8 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                value={email}
+                onChange={handleEmailChange}
               />
               <TextField
                 margin="normal"
