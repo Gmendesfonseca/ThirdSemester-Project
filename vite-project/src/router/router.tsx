@@ -1,10 +1,10 @@
 import { Navigate, RouteObject } from 'react-router-dom';
-import { Home } from '../layout/Home/HomeView';
-import { Chat } from '../layout/Chat/ChatView';
-import SignInSide from '../layout/Login/SignInSide';
-import { Profile } from '../layout/Profile/ProfileView';
-import { Register } from '../layout/Register/RegisterView';
-import { Settings } from '../layout/Settings/SettingsView';
+import { Home } from '../pages/Home/HomeView';
+import { Chat } from '../pages/Chat/ChatView';
+import SignInSide from '../pages/Login/SignInSide';
+import { Profile } from '../pages/Profile/ProfileView';
+import { Register } from '../pages/Register/RegisterView';
+import { Settings } from '../pages/Settings/SettingsView';
 
 export type RouteType = {
   path: string;
