@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createRoutes, routesResolver } from './router/router';
+import ToastUI from './components/Toast/ToastUI';
 
 function App() {
   const accountPermissions = ['COMPANY']; // replace with actual permissions
@@ -8,13 +9,16 @@ function App() {
   const resolvedRoutes = routesResolver(routes, accountPermissions);
 
   return (
-    <Router>
-      <Routes>
-        {resolvedRoutes.map((route, index) => (
-          <Route key={index} path={route.path} element={route.element} />
-        ))}
-      </Routes>
-    </Router>
+    <>
+      <ToastUI />
+      <Router>
+        <Routes>
+          {resolvedRoutes.map((route, index) => (
+            <Route key={index} path={route.path} element={route.element} />
+          ))}
+        </Routes>
+      </Router>
+    </>
   );
 }
 

@@ -12,7 +12,7 @@ export type RouteType = {
   options?: Omit<RouteObject, 'path' | 'element' | 'children'>;
   permissions?: string[];
   children?: RouteType[];
-};
+} & Partial<RouteObject>;
 
 export function routesResolver(
   routes: RouteType[],
@@ -35,7 +35,7 @@ export function routesResolver(
               ? routesResolver(children, accountPermissions)
               : undefined,
             ...options,
-          },
+          } as RouteObject,
         ];
       }
     }
@@ -49,7 +49,7 @@ export function routesResolver(
           ? routesResolver(children, accountPermissions)
           : undefined,
         ...options,
-      } as any,
+      } as RouteObject,
     ];
   }, []);
 }

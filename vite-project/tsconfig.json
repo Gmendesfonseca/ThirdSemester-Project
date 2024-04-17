@@ -16,10 +16,12 @@
 
     /* Linting */
     "strict": true,
+    "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  "compileOnSave": true,
   "include": ["src", "electron"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
