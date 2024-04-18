@@ -62,7 +62,7 @@ export default function SignInSide() {
       email: data.get('email'),
       password: data.get('password'),
     });
-    if (!emailError && email !== '' && password !== '') {
+    if (!emailError && email !== '' && password.length >= 8) {
       navigate('/home');
     } else {
       addToast('Email inválido', { appearance: 'error' });
