@@ -1,6 +1,6 @@
-import React from 'react'
-import { Box } from '@mui/system'
-import { Post } from '../PostFeed/Post'
+import React from 'react';
+import { Box } from '@mui/system';
+import { Post } from '../PostFeed/Post';
 
 export const Feed = () => {
   return (
@@ -16,5 +16,5 @@ export const Feed = () => {
       <Post />
       <Post />
     </Box>
-  )
-}
+  );
+};

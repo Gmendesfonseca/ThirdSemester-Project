@@ -16,7 +16,7 @@ import {
   Groups,
   Home,
   Person,
-  Settings,
+  //Settings,
   Storefront,
 } from '@mui/icons-material';
 

@@ -1,8 +1,8 @@
-import { Sidebar } from '../../components/Sidebar/Sidebar';
-import { Feed } from '../../components/Feed/Feed';
-import { Rightbar } from '../../components/Rightbar/Rightbar';
-import { Navbar } from '../../components/NavBar/Navbar';
-import { Add } from '../../components/Add/Add';
+import { Sidebar } from '../../components/HomeComponents/Sidebar/Sidebar';
+import { Feed } from '../../components/HomeComponents/Feed/Feed';
+import { Rightbar } from '../../components/HomeComponents/Rightbar/Rightbar';
+import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
+import { Add } from '../../components/HomeComponents/Add/Add';
 import {
   Box,
   createTheme,
