@@ -77,6 +77,10 @@ export function createRoutes() {
       element: <Register />,
     },
     {
+      path: '/forgot-password',
+      element: <Register />,
+    },
+    {
       path: '/settings',
       element: <Settings />,
     },

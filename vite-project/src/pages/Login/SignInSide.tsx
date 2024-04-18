@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+//import { useForm } from 'react-hook-form';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,33 +15,13 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { addToast } from '../../components/Toast/toast';
-
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {'Copyright © '}
-      <Link color="inherit" href="#">
-        InnerLink
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import { Copyright } from '../../components/Copyright/Copyright';
 
 export default function SignInSide() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password] = useState('');
   const [emailError, setEmailError] = useState(false);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     if (!emailRegex.test(event.target.value) && event.target.value != null) {
       setEmailError(true);
@@ -58,14 +39,13 @@ export default function SignInSide() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get('email') as string;
+    const password = data.get('password') as string;
+
     if (!emailError && email !== '' && password.length >= 8) {
       navigate('/home');
     } else {
-      addToast('Email inválido', { appearance: 'error' });
+      addToast('Email ou senha incorretos', { appearance: 'error' });
     }
   };
   return (
@@ -123,8 +103,6 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
-                value={email}
-                //onSubmit={handleSubmit}
                 onChange={handleEmailChange}
               />
               <TextField
@@ -141,24 +119,17 @@ export default function SignInSide() {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                onClick={() => {
-                  handleSubmit;
-                }}
-              >
+              <Button type="submit" fullWidth variant="contained">
                 Sign In
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
+                  <Link href="/forgot-password" variant="body2">
+                    Esqueceu a senha?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/register" variant="body2">
                     {"Don't have an account?"}
                   </Link>
                 </Grid>

@@ -5,6 +5,7 @@ npm install @emotion/styled
 npm install @mui/material
 npm install @mui/icons-material
 npm install react-router-dom --save
+npm i @types/react@latest --save-dev
 npm install
 
 # Step 2: Set up TypeScript: Create tsconfig.json
