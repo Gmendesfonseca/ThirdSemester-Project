@@ -18,6 +18,7 @@
         private long _postagens; // Checar Tipo - Refere-se a qtde de posts?
         private string _nivelHierarquico; //Futuramente mudar para tipo Enum
                                           //private string _registro; // Verificar Futuramente
+        public List<Usuario> listaUsuarios { get; set; }
         #endregion
 
         #region "Propriedades"
@@ -108,40 +109,41 @@
 
         #region "Métodos"
 
-        public void CadastrarUsuario(string email, string senha )
-{
-    foreach (var usuario in listaUsuarios)
-    {
-        if (usuario.Email == email)
+        public void CadastrarUsuario(string email, string senha)
         {
-            Console.WriteLine("Este email já esta cadastrado");
-            return;
+            foreach (var usuario in listaUsuarios)
+            {
+                if (usuario.Email == email)
+                {
+                    Console.WriteLine("Este email já esta cadastrado");
+                    return;
+                }
+            }
+
+            Usuario novoUsuario = new Usuario
+            {
+                Email = email,
+                Senha = senha,
+            };
+
+            listaUsuarios.Add(novoUsuario);
+            Console.WriteLine("Cadastro feito com sucesso");
+
         }
-    }
-
-    Usuario novoUsuario = new Usuario
-    {
-        Email = email,
-        Senha = senha,
-    };
-    listaUsuarios.Add( novoUsuario );
-    Console.WriteLine("Cadastro feito com sucesso");
-
-}
         public bool VerificarLogin(string email, string senha)
-{
-    foreach (var usuario in listaUsuarios)
-    {
-        if (usuario.Email == email && usuario.Senha == senha)
         {
-            Console.WriteLine("Login feito com sucesso.");
-            return true;
+            foreach (var usuario in listaUsuarios)
+            {
+                if (usuario.Email == email && usuario.Senha == senha)
+                {
+                    Console.WriteLine("Login feito com sucesso.");
+                    return true;
+                }
+            }
+
+            Console.WriteLine("Email ou senha incorretos.");
+            return false;
         }
-    }
-    
-    Console.WriteLine("Email ou senha incorretos.");
-    return false;
-}
 
         public void RealizarLogin()
         {
@@ -186,7 +188,7 @@
         #endregion
 
         #region "Implementação métodos da Interface"
-        
+
         #endregion
     }
 }

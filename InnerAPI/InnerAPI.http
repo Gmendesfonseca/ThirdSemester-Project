@@ -1,6 +1,40 @@
 @InnerAPI_HostAddress = http://localhost:5052
 
-GET {{InnerAPI_HostAddress}}//
+GET {{InnerAPI_HostAddress}}/usuarios
 Accept: application/json
 
 ###
+GET {{InnerAPI_HostAddress}}/usuarios/0
+
+###
+POST {{InnerAPI_HostAddress}}/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Gabriel",
+  "email": "gabriel.fonseca@fatec.sp.gov.br",
+  "senha": "56789012"
+}
+
+###
+POST {{InnerAPI_HostAddress}}/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Joao",
+  "email": "joao.mendes@fatec.sp.gov.br",
+  "senha": "34568989"
+}
+
+###
+PUT {{InnerAPI_HostAddress}}/usuarios/0
+Content-Type: application/json
+
+{
+  "nome": "Felipe",
+  "email": "felipe.monteiro@fatec.sp.gov.br",
+  "senha": "12345678"
+}
+
+###
+DELETE {{InnerAPI_HostAddress}}/usuarios/4
