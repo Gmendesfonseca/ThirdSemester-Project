@@ -32,6 +32,17 @@ export function Form() {
     }
   };
 
+const disableBtn = () => {(
+  <> <Button type="submit" fullWidth variant="contained" disabled>
+Entrar
+</Button>
+</>
+)}
+
+const enableBtn =      <Button type="submit" fullWidth variant="contained">
+Entrar
+</Button>
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -113,9 +124,7 @@ export function Form() {
         control={<Checkbox value="remember" color="primary" />}
         label="Lembrar-me"
       />
-      <Button type="submit" fullWidth variant="contained">
-        Entrar
-      </Button>
+      <disableBtn/>
       <Grid container>
         <Grid item xs>
           <Link href="/forgot-password" variant="body2">
