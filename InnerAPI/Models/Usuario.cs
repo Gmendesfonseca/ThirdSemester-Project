@@ -107,10 +107,41 @@
         #endregion
 
         #region "Métodos"
-        public void VerificarLogin()
+
+        public void CadastrarUsuario(string email, string senha )
+{
+    foreach (var usuario in listaUsuarios)
+    {
+        if (usuario.Email == email)
         {
-            
-        } // Trocar para bool
+            Console.WriteLine("Este email já esta cadastrado");
+            return;
+        }
+    }
+
+    Usuario novoUsuario = new Usuario
+    {
+        Email = email,
+        Senha = senha,
+    };
+    listaUsuarios.Add( novoUsuario );
+    Console.WriteLine("Cadastro feito com sucesso");
+
+}
+        public bool VerificarLogin(string email, string senha)
+{
+    foreach (var usuario in listaUsuarios)
+    {
+        if (usuario.Email == email && usuario.Senha == senha)
+        {
+            Console.WriteLine("Login feito com sucesso.");
+            return true;
+        }
+    }
+    
+    Console.WriteLine("Email ou senha incorretos.");
+    return false;
+}
 
         public void RealizarLogin()
         {
