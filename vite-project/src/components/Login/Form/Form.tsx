@@ -1,14 +1,14 @@
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import { addToast } from "../../Toast/toast";
-import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import { Copyright } from "../Copyright/Copyright";
-import Grid from "@mui/material/Grid";
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import { addToast } from '../../Toast/toast';
+import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Copyright } from '../Copyright/Copyright';
+import Grid from '@mui/material/Grid';
 
 export function Form() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export function Form() {
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-    if (!emailRegex.test(event.target.value) && event.target.value != "") {
+    if (!emailRegex.test(event.target.value) && event.target.value != '') {
       setEmailError(true);
     } else {
       setEmailError(false);
@@ -25,7 +25,7 @@ export function Form() {
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value.length < 8 && event.target.value != "") {
+    if (event.target.value.length < 8 && event.target.value != '') {
       setPasswordError(true);
     } else {
       setPasswordError(false);
@@ -35,30 +35,44 @@ export function Form() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const email = data.get("email") as string;
-    const password = data.get("password") as string;
+    const email = data.get('email') as string;
+    const password = data.get('password') as string;
     //const remember = data.get('remember') as boolean;
 
-    if (
-      !emailError &&
-      !passwordError &&
-      email !== "" &&
-      password !== ""
-      //&& password.length >= 8
-    ) {
-      navigate("/home");
-    } else {
-      if (emailError || passwordError) {
-        addToast("Email ou senha incorretos", { appearance: "error" });
-      }
-      if (email === "" || password === "") {
-        addToast("Preencha todos os campos", { appearance: "error" });
-      }
-      //if (password.length < 8) {
-      //  addToast('Senha muito curta', { appearance: 'error' });
-      //}
+    if (!emailError && !passwordError && email !== '' && password !== '') {
+      login(email, password);
+    } else if (email === '' || password === '') {
+      addToast('Preencha todos os campos', { appearance: 'error' });
     }
   };
+
+  const login = async (username, password) => {
+    const response = await fetch('https://localhost:7258/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Login failed');
+    }
+
+    const data = await response.json();
+
+    // Aqui você pode fazer a validação dos dados retornados pelo back-end
+    if (data.success) {
+      navigate('/home');
+    } else {
+      addToast('Email ou senha incorretos', { appearance: 'error' });
+    }
+  };
+
+  // Use a função de login
+  login('username', 'password').catch((error) => {
+    console.error('Login failed:', error);
+  });
 
   return (
     <Box
@@ -71,7 +85,7 @@ export function Form() {
     >
       <TextField
         error={emailError}
-        helperText={emailError ? "Email inválido" : ""}
+        helperText={emailError ? 'Email inválido' : ''}
         margin="normal"
         required
         fullWidth
@@ -84,7 +98,7 @@ export function Form() {
       />
       <TextField
         error={passwordError}
-        helperText={passwordError ? "Senha inválida" : ""}
+        helperText={passwordError ? 'Senha inválida' : ''}
         margin="normal"
         required
         fullWidth
@@ -110,7 +124,7 @@ export function Form() {
         </Grid>
         <Grid item>
           <Link href="/register" variant="body2">
-            {"Precisa de ajuda?"}
+            {'Precisa de ajuda?'}
           </Link>
         </Grid>
       </Grid>
