@@ -1,6 +1,6 @@
 # Step 1: Install the necessary dependencies
 
-cd electron-app
+cd vite-project
 npm install @emotion/styled
 npm install @mui/material
 npm install @mui/icons-material
