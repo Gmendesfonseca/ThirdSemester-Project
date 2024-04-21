@@ -27,7 +27,7 @@
 
         #region "Metodos"
 
-        //Revisar Metoodos - Repetição com as outras classes
+        //Revisar Metodos - Repetição com as outras classes
         //Solução - Implementar o polimorfismo para evitar repetição
         public void CriarCategoria()
         {

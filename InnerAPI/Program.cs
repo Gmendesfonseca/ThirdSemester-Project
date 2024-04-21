@@ -2,6 +2,22 @@ using InnerAPI.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:3000") // Replace with your client's origin
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:5173") // Replace with your client's origin
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -11,7 +27,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseCors();
+
 app.MapUsuariosEndpoints();
+app.MapLoginEndpoint();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
