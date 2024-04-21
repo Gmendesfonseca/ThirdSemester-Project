@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\InnerAPI",
-    "\\InnerAPI\\Dtos\\Usuarios"
+    "\\InnerAPI\\Endpoints"
   ],
-  "SelectedNode": "\\InnerAPI\\InnerAPI.sln",
+  "SelectedNode": "\\InnerAPI\\Endpoints\\UsuarioEndpoint.cs",
   "PreviewInSolutionExplorer": false
 }

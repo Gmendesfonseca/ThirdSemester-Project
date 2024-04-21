@@ -16,11 +16,22 @@ public static class LoginEndpoint
     // POST /login
     group.MapPost("", (LoginDto loginDto) =>
     {
-        bool loginSuccessful = VerificarLogin(loginDto.Email, loginDto.Password);
+        var user = usuarios.FirstOrDefault(u => u.Email == loginDto.Email && u.Senha == loginDto.Password);
 
-        if (loginSuccessful)
+        if (user != null)
         {
-            return Results.Ok(new { success = true, message = "Login successful" });
+            return Results.Ok(new
+            {
+                success = true,
+                message = "Login successful",
+                 user = new
+                 {
+                        id = user.Id, // replace with actual user id
+                        name = user.Nome, // replace with actual user name
+                        email = loginDto.Email
+                 }
+                
+            });
         }
         else
         {
