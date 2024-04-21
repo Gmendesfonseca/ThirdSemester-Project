@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { Copyright } from '../Copyright/Copyright';
 import Grid from '@mui/material/Grid';
+import { login, LoginResponse } from '../../../services/login/index';
 
 export function Form() {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ export function Form() {
     //const remember = data.get('remember') as boolean;
 
     if (!emailError && !passwordError && email !== '' && password !== '') {
-      login(email, password);
+      handleLogin(email, password);
     } else if (email === '' || password === '') {
       addToast('Preencha todos os campos', { appearance: 'error' });
     }
@@ -62,27 +63,17 @@ export function Form() {
     return true;
   };
 
-  const login = async (email, password) => {
-    const response = await fetch('http://localhost:5052/login', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
+  const handleLogin = async (email: string, password: string) => {
+    try {
+      const data: LoginResponse = await login({ email, password });
 
-    const data = await response.json();
-
-    if (response.ok) {
       if (data.success) {
         navigate('/home');
       } else {
         addToast('Email ou senha incorretos', { appearance: 'error' });
-        console.log(data);
       }
-    } else {
-      throw new Error(data.message || 'Failed to login');
+    } catch (error) {
+      console.error('Login failed:', error);
     }
   };
 
