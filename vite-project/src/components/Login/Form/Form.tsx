@@ -14,6 +14,10 @@ export function Form() {
   const navigate = useNavigate();
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -21,6 +25,7 @@ export function Form() {
       setEmailError(true);
     } else {
       setEmailError(false);
+      setFormData((prevState) => ({ ...prevState, email: event.target.value }));
     }
   };
 
@@ -29,19 +34,12 @@ export function Form() {
       setPasswordError(true);
     } else {
       setPasswordError(false);
+      setFormData((prevState) => ({
+        ...prevState,
+        password: event.target.value,
+      }));
     }
   };
-
-const disableBtn = () => {(
-  <> <Button type="submit" fullWidth variant="contained" disabled>
-Entrar
-</Button>
-</>
-)}
-
-const enableBtn =      <Button type="submit" fullWidth variant="contained">
-Entrar
-</Button>
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -57,33 +55,36 @@ Entrar
     }
   };
 
-  const login = async (username, password) => {
-    const response = await fetch('https://localhost:7258/login', {
+  const isFormFilled = () => {
+    for (const key in formData) {
+      if (!formData[key]) return false;
+    }
+    return true;
+  };
+
+  const login = async (email, password) => {
+    const response = await fetch('http://localhost:5052/login', {
       method: 'POST',
       headers: {
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
     });
-
-    if (!response.ok) {
-      throw new Error('Login failed');
-    }
 
     const data = await response.json();
 
-    // Aqui você pode fazer a validação dos dados retornados pelo back-end
-    if (data.success) {
-      navigate('/home');
+    if (response.ok) {
+      if (data.success) {
+        navigate('/home');
+      } else {
+        addToast('Email ou senha incorretos', { appearance: 'error' });
+        console.log(data);
+      }
     } else {
-      addToast('Email ou senha incorretos', { appearance: 'error' });
+      throw new Error(data.message || 'Failed to login');
     }
   };
-
-  // Use a função de login
-  login('username', 'password').catch((error) => {
-    console.error('Login failed:', error);
-  });
 
   return (
     <Box
@@ -124,7 +125,14 @@ Entrar
         control={<Checkbox value="remember" color="primary" />}
         label="Lembrar-me"
       />
-      <disableBtn/>
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        disabled={!isFormFilled()}
+      >
+        Entrar
+      </Button>
       <Grid container>
         <Grid item xs>
           <Link href="/forgot-password" variant="body2">
