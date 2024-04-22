@@ -1,44 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InnerAPI\\InnerAPI.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Properties\\launchSettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InnerAPI\\Properties\\launchSettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InnerAPI\\InnerAPI.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InnerAPI\\InnerAPI.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InnerAPI\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\UsuarioEndpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InnerAPI\\Endpoints\\UsuarioEndpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InnerAPI\\Models\\Usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Usuarios\\UsuarioDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InnerAPI\\Dtos\\Usuarios\\UsuarioDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InnerAPI\\Models\\Aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -46,123 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "InnerAPI\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Properties\\launchSettings.json",
-              "RelativeToolTip": "InnerAPI\\Properties\\launchSettings.json",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA8AAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-04-21T17:38:32.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InnerAPI.csproj",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.csproj",
-              "RelativeDocumentMoniker": "InnerAPI\\InnerAPI.csproj",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.csproj",
-              "RelativeToolTip": "InnerAPI\\InnerAPI.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-04-21T17:26:13.713Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InnerAPI.csproj.user",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.csproj.user",
-              "RelativeDocumentMoniker": "InnerAPI\\InnerAPI.csproj.user",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.csproj.user",
-              "RelativeToolTip": "InnerAPI\\InnerAPI.csproj.user",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003464|",
-              "WhenOpened": "2024-04-21T17:26:19.613Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "InnerAPI.http",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.http",
-              "RelativeDocumentMoniker": "InnerAPI\\InnerAPI.http",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.http",
-              "RelativeToolTip": "InnerAPI\\InnerAPI.http",
-              "ViewState": "AQIAABQAAAAAAAAAAAAgwB0AAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2024-04-21T17:26:21.583Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Aluno.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Aluno.cs",
-              "RelativeDocumentMoniker": "InnerAPI\\Models\\Aluno.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Aluno.cs",
-              "RelativeToolTip": "InnerAPI\\Models\\Aluno.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T17:15:06.428Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UsuarioEndpoint.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\UsuarioEndpoint.cs",
-              "RelativeDocumentMoniker": "InnerAPI\\Endpoints\\UsuarioEndpoint.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\UsuarioEndpoint.cs",
-              "RelativeToolTip": "InnerAPI\\Endpoints\\UsuarioEndpoint.cs",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T17:15:31.876Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "InnerAPI\\Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Usuario.cs",
-              "RelativeToolTip": "InnerAPI\\Models\\Usuario.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAQAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T17:20:52.89Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Program.cs",
-              "RelativeDocumentMoniker": "InnerAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Program.cs",
-              "RelativeToolTip": "InnerAPI\\Program.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T16:56:31.004Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UsuarioDto.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Usuarios\\UsuarioDto.cs",
-              "RelativeDocumentMoniker": "InnerAPI\\Dtos\\Usuarios\\UsuarioDto.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Usuarios\\UsuarioDto.cs",
-              "RelativeToolTip": "InnerAPI\\Dtos\\Usuarios\\UsuarioDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T17:14:57.386Z"
             }
           ]
         }

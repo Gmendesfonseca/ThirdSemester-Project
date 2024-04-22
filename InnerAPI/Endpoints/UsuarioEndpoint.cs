@@ -69,5 +69,38 @@ namespace InnerAPI.Endpoints
 
             return group;
         }
+
+        public static RouteGroupBuilder MapLoginEndpoint(this WebApplication app)
+        {
+            var group = app.MapGroup("login").WithParameterValidation();
+
+            // POST /login
+            group.MapPost("", (LoginUsuarioDto loginDto) =>
+            {
+                var user = usuarios.FirstOrDefault(u => u.Email == loginDto.Email && u.Senha == loginDto.Password);
+
+                if (user != null)
+                {
+                    return Results.Ok(new
+                    {
+                        success = true,
+                        message = "Login successful",
+                        user = new
+                        {
+                            id = user.Id, // replace with actual user id
+                            name = user.Nome, // replace with actual user name
+                            email = loginDto.Email
+                        }
+
+                    });
+                }
+                else
+                {
+                    return Results.BadRequest(new { success = false, message = "Email or password is incorrect" });
+                }
+            });
+
+            return group;
+        }
     }
 }
