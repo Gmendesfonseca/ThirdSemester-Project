@@ -5,7 +5,7 @@ import SignInSide from '../pages/Login/SignInSide';
 import { Profile } from '../pages/Profile/ProfileView';
 import { Register } from '../pages/Register/RegisterView';
 import { Settings } from '../pages/Settings/SettingsView';
-//import SignUp from '../components/signUp';
+import SignUp from '../pages/Login/SignUp';
 
 export type RouteType = {
   path: string;
@@ -75,7 +75,7 @@ export function createRoutes() {
     },
     {
       path: '/register',
-      //element: <SignUp />,
+      element: <SignUp />,
     },
     {
       path: '/forgot-password',
