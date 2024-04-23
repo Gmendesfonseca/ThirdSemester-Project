@@ -31,6 +31,7 @@ app.UseCors();
 
 app.MapUsuariosEndpoints();
 app.MapLoginEndpoint();
+app.MapRegisterEndpoint();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

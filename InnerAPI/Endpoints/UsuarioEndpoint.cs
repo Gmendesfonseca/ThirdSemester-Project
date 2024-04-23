@@ -1,4 +1,7 @@
-﻿using InnerAPI.Dtos.Usuarios;
+﻿using InnerAPI.Dtos.Instituicao;
+using InnerAPI.Dtos.Login;
+using InnerAPI.Dtos.Usuarios;
+using InnerAPI.Models;
 
 namespace InnerAPI.Endpoints
 {
@@ -12,6 +15,8 @@ namespace InnerAPI.Endpoints
             new(1, "Pedro", "pedro.domingos@fatec.sp.gov.br", "90123456"),
             new(2, "Bruno", "bruno.beserra@fatec.sp.gov.br", "678901234")
             ];
+
+        private static readonly List<InstituicaoDto> instituicao = [];
 
         public static RouteGroupBuilder MapUsuariosEndpoints(this WebApplication app)
         {
@@ -38,7 +43,7 @@ namespace InnerAPI.Endpoints
 
                 usuarios.Add(usuario);
 
-                return Results.CreatedAtRoute(GetNomeUsuarioEndpoint, new { id = usuario.Id}, usuario);
+                return Results.CreatedAtRoute(GetNomeUsuarioEndpoint, new { id = usuario.Id }, usuario);
             });
 
             // PUT /usuarios
@@ -75,7 +80,7 @@ namespace InnerAPI.Endpoints
             var group = app.MapGroup("login").WithParameterValidation();
 
             // POST /login
-            group.MapPost("", (LoginUsuarioDto loginDto) =>
+            group.MapPost("", (LoginDto loginDto) =>
             {
                 var user = usuarios.FirstOrDefault(u => u.Email == loginDto.Email && u.Senha == loginDto.Password);
 
@@ -89,7 +94,7 @@ namespace InnerAPI.Endpoints
                         {
                             id = user.Id, // replace with actual user id
                             name = user.Nome, // replace with actual user name
-                            email = loginDto.Email
+                            email = user.Email
                         }
 
                     });
@@ -99,6 +104,40 @@ namespace InnerAPI.Endpoints
                     return Results.BadRequest(new { success = false, message = "Email or password is incorrect" });
                 }
             });
+
+            return group;
+        }
+
+        public static RouteGroupBuilder MapRegisterEndpoint(this WebApplication app) { 
+
+            var group = app.MapGroup("register").WithParameterValidation();
+        
+            group.MapPost("", (RegisterInstituicaoDto registerDto) =>
+            {
+                var register = instituicao.Exists(r => r.Name == registerDto.Name || r.Email == registerDto.Email || r.Cnpj == registerDto.Cnpj || r.Domain == registerDto.Domain);
+
+                if (!register)
+                {
+                    InstituicaoDto instituicaoDto = new InstituicaoDto(
+                        registerDto.Name,
+                        registerDto.Email,
+                        registerDto.Password,
+                        registerDto.Domain,
+                        registerDto.Cnpj);
+
+                    instituicao.Add(instituicaoDto);
+                    return Results.Ok(new
+                    {
+                        success = true,
+                        message = "Register successful",
+                    });
+                }
+                else
+                {
+                    return Results.BadRequest(new { success = false, message = "Name, Email, CNPJ or Domain already used" });
+                }
+            });
+
 
             return group;
         }

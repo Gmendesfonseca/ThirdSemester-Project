@@ -9,6 +9,10 @@
         private string _curso; //Criar lista de cursos
         private string _alunos; //Trocar para Objeto [Aluno] + lista
         private string _grupos; //Checar futuramente {Trocar para objeto [Grupo]}
+        public string _email;
+        public string _password;
+        public string _domain;
+        public string _cnpj;
         #endregion
 
         #region "Propriedades"
