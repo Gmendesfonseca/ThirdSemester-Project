@@ -1,10 +1,9 @@
-import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-//import FormControlLabel from '@mui/material/FormControlLabel';
-//import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -14,15 +13,73 @@ import Container from '@mui/material/Container';
 import { Copyright } from '../../components/Login/Copyright/Copyright';
 import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme } from '../../Theme';
+import { addToast } from '../../components/Toast/toast';
+import { login, LoginResponse } from '../../services/login/index';
 
 export default function SignUp() {
+  const navigate = useNavigate();
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    if (!emailRegex.test(event.target.value) && event.target.value != '') {
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+      setFormData((prevState) => ({ ...prevState, email: event.target.value }));
+    }
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.length < 8 && event.target.value != '') {
+      setPasswordError(true);
+    } else {
+      setPasswordError(false);
+      setFormData((prevState) => ({
+        ...prevState,
+        password: event.target.value,
+      }));
+    }
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get('email') as string;
+    const password = data.get('password') as string;
+    //const remember = data.get('remember') as boolean;
+
+    if (!emailError && !passwordError && email !== '' && password !== '') {
+      handleLogin(email, password);
+    } else if (email === '' || password === '') {
+      addToast('Preencha todos os campos', { appearance: 'error' });
+    }
+  };
+
+  const isFormFilled = () => {
+    for (const key in formData) {
+      if (!formData[key]) return false;
+    }
+    return true;
+  };
+
+  const handleLogin = async (email: string, password: string) => {
+    try {
+      const data: LoginResponse = await login({ email, password });
+
+      if (data.success) {
+        navigate('/home');
+      } else {
+        addToast('Email ou senha incorretos', { appearance: 'error' });
+      }
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
   };
 
   return (
@@ -73,16 +130,21 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  error={emailError}
+                  helperText={emailError ? 'Email inválido' : ''}
                   required
                   fullWidth
                   id="email"
                   label="Endereço de Email"
                   name="email"
                   autoComplete="email"
+                  onChange={handleEmailChange}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  error={passwordError}
+                  helperText={passwordError ? 'Senha muito curta' : ''}
                   required
                   fullWidth
                   name="password"
@@ -90,6 +152,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={handlePasswordChange}
                 />
               </Grid>
               {/* <Grid item xs={12}>
@@ -106,13 +169,14 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={!isFormFilled()}
             >
               Sign Up
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">
-                  Already have an account? Sign in
+                  Já tem uma conta? Sign in
                 </Link>
               </Grid>
             </Grid>
