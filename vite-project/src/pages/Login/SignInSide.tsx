@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { ThemeProvider } from '@mui/material';
 import { Form } from '../../components/Login/Form/Form';
 import logo from '../../assets/IL.png';
-import { darkTheme } from '../../theme';
+import { darkTheme } from '../../Theme';
 
 export default function SignInSide() {
   return (
