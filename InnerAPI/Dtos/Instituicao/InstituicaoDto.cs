@@ -3,6 +3,7 @@
 namespace InnerAPI.Dtos.Instituicao
 {
     public record class InstituicaoDto(
+         uint Id,
          string Name,
          string Email,
          string Password,
