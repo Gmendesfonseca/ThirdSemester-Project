@@ -1,7 +1,13 @@
-export type RegisterParams = {
+export type RegisterInstitutionParams = {
   name: string;
   cnpj: string;
   domain: string;
+  email: string;
+  password: string;
+};
+export type RegisterStudentParams = {
+  name: string;
+  cpf: string;
   email: string;
   password: string;
 };

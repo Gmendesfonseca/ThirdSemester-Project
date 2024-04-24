@@ -114,6 +114,7 @@ export default function FormInstitution() {
       });
 
       if (data.success) {
+        addToast('Cadastro realizado com sucesso', { appearance: 'success' });
         navigate('/login');
       } else {
         addToast('Email ou senha incorretos', { appearance: 'error' });
