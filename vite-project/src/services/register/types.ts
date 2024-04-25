@@ -1,9 +1,9 @@
 export type RegisterInstitutionParams = {
   name: string;
-  cnpj: string;
-  domain: string;
   email: string;
   password: string;
+  domain: string;
+  cnpj: string;
 };
 export type RegisterStudentParams = {
   name: string;

@@ -84,7 +84,7 @@ export default function FormInstitution() {
       cnpj !== '' &&
       name !== ''
     ) {
-      handleRegister(name, cnpj, domain, email, password);
+      handleRegister(name, email, password, domain, cnpj);
     } else if (email === '' || password === '') {
       addToast('Preencha todos os campos', { appearance: 'error' });
     }
@@ -99,18 +99,18 @@ export default function FormInstitution() {
 
   const handleRegister = async (
     name: string,
-    cnpj: string,
-    domain: string,
     email: string,
     password: string,
+    domain: string,
+    cnpj: string,
   ) => {
     try {
       const data: RegisterResponse = await register({
         name,
-        cnpj,
-        domain,
         email,
         password,
+        domain,
+        cnpj,
       });
 
       if (data.success) {

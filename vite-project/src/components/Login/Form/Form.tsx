@@ -132,7 +132,7 @@ export function Form() {
         </Grid>
         <Grid item>
           <Link href="/register" variant="body2">
-            {'Precisa de ajuda?'}
+            {'É uma nova instituição? Cadastre-se aqui'}
           </Link>
         </Grid>
       </Grid>
