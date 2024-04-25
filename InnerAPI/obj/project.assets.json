@@ -491,19 +491,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fonse\\.nuget\\packages\\": {}
+    "C:\\Users\\InCicle sistemas 7\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.csproj",
+      "projectUniqueName": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.csproj",
       "projectName": "InnerAPI",
-      "projectPath": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.csproj",
-      "packagesPath": "C:\\Users\\fonse\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\obj\\",
+      "projectPath": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\InnerAPI.csproj",
+      "packagesPath": "C:\\Users\\InCicle sistemas 7\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\fonse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\InCicle sistemas 7\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

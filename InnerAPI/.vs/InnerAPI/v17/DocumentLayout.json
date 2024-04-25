@@ -1,33 +1,53 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\",
+  "WorkspaceRootPath": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\fonse\\source\\thirdsemester-project\\innerapi\\endpoints\\studentendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:endpoints\\studentendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\fonse\\source\\thirdsemester-project\\innerapi\\endpoints\\teacherendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:endpoints\\teacherendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\models\\notificacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:models\\notificacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\fonse\\source\\thirdsemester-project\\innerapi\\endpoints\\usuarioendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\dtos\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:dtos\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\endpoints\\usuarioendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:endpoints\\usuarioendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\fonse\\source\\thirdsemester-project\\innerapi\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\fonse\\source\\thirdsemester-project\\innerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\endpoints\\followerendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:endpoints\\followerendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\endpoints\\teacherendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:endpoints\\teacherendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\endpoints\\studentendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:endpoints\\studentendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\fonse\\source\\thirdsemester-project\\innerapi\\dtos\\login\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\dtos\\login\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:dtos\\login\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\fonse\\source\\thirdsemester-project\\innerapi\\dtos\\usuarios\\criarusuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\incicle sistemas 7\\source\\thirdsemester-project\\innerapi\\dtos\\usuarios\\criarusuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:dtos\\usuarios\\criarusuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -38,19 +58,81 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAADwvzkAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-25T16:06:57.77Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "Models\\Notification.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Notification.cs",
+              "RelativeToolTip": "Models\\Notification.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-25T16:11:31.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Notificacao.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Notificacao.cs",
+              "RelativeDocumentMoniker": "Models\\Notificacao.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Notificacao.cs",
+              "RelativeToolTip": "Models\\Notificacao.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-25T16:09:19.402Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Data.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Data.cs",
+              "RelativeDocumentMoniker": "Dtos\\Data.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Data.cs",
+              "RelativeToolTip": "Dtos\\Data.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-25T15:58:00.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FollowerEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\FollowerEndpoint.cs",
+              "RelativeDocumentMoniker": "Endpoints\\FollowerEndpoint.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\FollowerEndpoint.cs",
+              "RelativeToolTip": "Endpoints\\FollowerEndpoint.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-25T15:57:24.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Models\\Usuario.cs",
               "RelativeToolTip": "Models\\Usuario.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAALwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -59,24 +141,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "UsuarioEndpoint.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\UsuarioEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\UsuarioEndpoint.cs",
               "RelativeDocumentMoniker": "Endpoints\\UsuarioEndpoint.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\UsuarioEndpoint.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\UsuarioEndpoint.cs",
               "RelativeToolTip": "Endpoints\\UsuarioEndpoint.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-21T21:00:31.348Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "TeacherEndpoint.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\TeacherEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\TeacherEndpoint.cs",
               "RelativeDocumentMoniker": "Endpoints\\TeacherEndpoint.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\TeacherEndpoint.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\TeacherEndpoint.cs",
               "RelativeToolTip": "Endpoints\\TeacherEndpoint.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -85,37 +167,36 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "StudentEndpoint.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\StudentEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\StudentEndpoint.cs",
               "RelativeDocumentMoniker": "Endpoints\\StudentEndpoint.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\StudentEndpoint.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Endpoints\\StudentEndpoint.cs",
               "RelativeToolTip": "Endpoints\\StudentEndpoint.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-25T03:12:59.835Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T14:53:43.318Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T14:53:43.318Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "LoginDto.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Login\\LoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Login\\LoginDto.cs",
               "RelativeDocumentMoniker": "Dtos\\Login\\LoginDto.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Login\\LoginDto.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Login\\LoginDto.cs",
               "RelativeToolTip": "Dtos\\Login\\LoginDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -123,11 +204,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "CriarUsuarioDto.cs",
-              "DocumentMoniker": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Usuarios\\CriarUsuarioDto.cs",
+              "DocumentMoniker": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Usuarios\\CriarUsuarioDto.cs",
               "RelativeDocumentMoniker": "Dtos\\Usuarios\\CriarUsuarioDto.cs",
-              "ToolTip": "C:\\Users\\fonse\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Usuarios\\CriarUsuarioDto.cs",
+              "ToolTip": "C:\\Users\\InCicle sistemas 7\\source\\ThirdSemester-Project\\InnerAPI\\Dtos\\Usuarios\\CriarUsuarioDto.cs",
               "RelativeToolTip": "Dtos\\Usuarios\\CriarUsuarioDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAQAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
