@@ -2,7 +2,7 @@
 
 namespace InnerAPI.Dtos.Aluno
 {
-    public record class AlunoDto
+    public record class StudentDto
     (
         uint Id,
         string Name,

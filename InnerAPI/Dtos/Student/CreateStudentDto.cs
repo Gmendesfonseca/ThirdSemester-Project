@@ -2,7 +2,7 @@
 
 namespace InnerAPI.Dtos.Aluno
 {
-    public record class RegisterAlunoDto
+    public record class CreateStudentDto
     (
         [Required][StringLength(100)] string Name,
         [Required][StringLength(60)] string Email,

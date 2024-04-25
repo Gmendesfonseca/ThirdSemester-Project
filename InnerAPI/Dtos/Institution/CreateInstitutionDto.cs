@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace InnerAPI.Dtos.Instituicao
+namespace InnerAPI.Dtos.Institution
 {
-    public record class RegisterInstituicaoDto
+    public record class CreateInstitutionDto
     (
         [Required][StringLength(100)] string Name,
         [Required][StringLength(60)]string Email,

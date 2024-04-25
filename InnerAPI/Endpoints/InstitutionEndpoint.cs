@@ -1,35 +1,31 @@
-﻿using InnerAPI.Dtos.Aluno;
-using InnerAPI.Dtos.Institution;
-using InnerAPI.Dtos.Login;
+﻿using InnerAPI.Dtos.Institution;
 using InnerAPI.Dtos.Usuarios;
 using InnerAPI.Models;
 
 namespace InnerAPI.Endpoints
 {
-    public static class UsuarioEndpoint
+    
+    public static class InstitutionEndpoint
     {
-        const string GetNomeUsuarioEndpoint = "GetUsuario";
-
+        const string GetNameInstitutionEndpoint = "GetInstitution";
         private static readonly List<InstitutionDto> instituicoes = [];
-
-        private static readonly List<StudentDto> alunos = [];
-
-        public static RouteGroupBuilder MapUsuariosEndpoints(this WebApplication app)
+        public static RouteGroupBuilder MapInstitutionEndpoint(this WebApplication app)
         {
-            var group = app.MapGroup("usuarios").WithParameterValidation();
 
-            // GET /usuarios
-            group.MapGet("/", () => usuarios);
+            var group = app.MapGroup("institution").WithParameterValidation();
 
-            // GET /usuarios/{id}
+            //GET /institution
+            group.MapGet("/", () => instituicoes);
+
+            // GET /institution/{id}
             group.MapGet("/{id}", (uint id) =>
             {
-                UsuarioDto? usuario = usuarios.Find(usuario => usuario.Id == id);
-                return usuario is null ? Results.NotFound() : Results.Ok(usuario);
-            }).WithName(GetNomeUsuarioEndpoint);
+                InstitutionDto? instituicao = instituicoes.Find(instituicao => instituicao.Id == id);
+                return instituicao is null ? Results.NotFound() : Results.Ok(instituicao);
+            }).WithName(GetNameInstitutionEndpoint);
 
-            // POST /usuarios
-            group.MapPost("/", (CriarUsuarioDto novoUsuario) =>
+            // POST /institution
+            group.MapPost("/", (CreateInstitutionDto novoUsuario) =>
             {
                 UsuarioDto usuario = new(
                     (uint)usuarios.Count + 1,
@@ -42,7 +38,7 @@ namespace InnerAPI.Endpoints
                 return Results.CreatedAtRoute(GetNomeUsuarioEndpoint, new { id = usuario.Id }, usuario);
             });
 
-            // PUT /usuarios
+            // PUT /institution
             group.MapPut("/{id}", (uint id, AtualizarUsuarioDto atualizarUsuario) =>
             {
                 var index = usuarios.FindIndex(usuario => usuario.Id == id);
@@ -70,6 +66,5 @@ namespace InnerAPI.Endpoints
 
             return group;
         }
-
     }
 }
