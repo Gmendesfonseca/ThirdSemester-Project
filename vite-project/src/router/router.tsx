@@ -1,11 +1,12 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import { Home } from '../pages/Home/HomeView';
 import { Chat } from '../pages/Chat/ChatView';
-import SignInSide from '../pages/Login/SignInSide';
+import SignInSide from '../pages/Login/SignInView';
 import { Profile } from '../pages/Profile/ProfileView';
-import { Register } from '../pages/Register/RegisterView';
+//import { Register } from '../pages/Register/RegisterView';
 import { Settings } from '../pages/Settings/SettingsView';
-import SignUp from '../pages/Login/SignUp';
+import SignUp from '../pages/Register/SignUp';
+import { ChangePassword } from '../pages/Login/ChangePassword/ChangePassword';
 
 export type RouteType = {
   path: string;
@@ -78,8 +79,12 @@ export function createRoutes() {
       element: <SignUp />,
     },
     {
+      path: '/register-student',
+      //element: <SignUpStudent />,
+    },
+    {
       path: '/forgot-password',
-      element: <Register />,
+      element: <ChangePassword />,
     },
     {
       path: '/settings',
