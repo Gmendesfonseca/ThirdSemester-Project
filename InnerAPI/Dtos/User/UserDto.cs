@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace InnerAPI.Dtos.Usuarios
+namespace InnerAPI.Dtos.User
 {
     public record class UserDto(
-        uint Id,
+        int Id,
         string Nome,
         string Email,
         string Password

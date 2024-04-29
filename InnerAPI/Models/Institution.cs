@@ -1,6 +1,6 @@
 ﻿namespace InnerAPI.Models
 {
-    public class Institution
+    public class Institution : User
     {
         #region "Declaração de variáveis"
         private uint _idInstituicao;
@@ -11,6 +11,7 @@
         private string _grupos; //Checar futuramente {Trocar para objeto [Grupo]}
         public string _email;
         public string _password;
+        private DateOnly _dataCriacao;
         public string _domain;
         public string _cnpj;
         private int idUser;
@@ -18,7 +19,7 @@
 
         #region "Propriedades"
 
-        public Institution(uint idInstituicao, string nomeInstituicao, string email, string password, string cnpj, string domain, int idUser)
+        public Institution(uint idInstituicao, string nomeInstituicao, string email, string password, string cnpj, string domain, int idUser) 
         {
             this._idInstituicao = idInstituicao;
             this._nameInstitution = nomeInstituicao;
@@ -78,6 +79,12 @@
         {
             get { return _grupos; } 
             set { _grupos = value; }
+        }
+
+        public DateOnly DataCriacao
+        {
+            get { return _dataCriacao; }
+            set { _dataCriacao = value; }
         }
         #endregion
 

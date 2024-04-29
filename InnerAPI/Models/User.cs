@@ -10,29 +10,15 @@ namespace InnerAPI.Models
         private int id;
         public string name;
         private string email;
-        private string cpf;
         private string password;
-        public DateOnly BirthDate;
         private uint _cep;
-        private string _instituicao; // Futuramente alterar para tipo Objeto [Instituicao]
-        private DateOnly _dataCriacao;
-        private uint _pontuacao;
-        private List<PostDto> _postagens; // Checar Tipo - Refere-se a qtde de posts?
+        private Stack<PostDto> _postagens; 
         private string _nivelHierarquico;
-        private List<NotificationDto> notifications;
-        public bool Status;
-#endregion
+        private Stack<NotificationDto> notifications;
+        public bool status;
+        #endregion
 
         #region "Propriedades"
-        public User(int id, string name, string email, string password)
-        {
-            this.id = id;
-            this.name = name;
-            this.email = email;
-            this.password = password;
-
-            notifications = new();
-        }
 
         public int Id
         {
@@ -52,29 +38,16 @@ namespace InnerAPI.Models
             set { password = value; }
         }
 
-
-        public string Cpf
-        {
-            get { return cpf; }
-            set { cpf = value; }
-        }
-
         public string Email
         {
             get { return email; }
             set { email = value; }
         }
 
-        public DateOnly DataNascimento
-        {
-            get { return BirthDate; }
-            set { BirthDate = value; }
-        }
-
         public bool Online
         {
-            get { return Status; }
-            set { Status = value; }
+            get { return status; }
+            set { status = value; }
         }
 
         public uint Cep
@@ -83,25 +56,7 @@ namespace InnerAPI.Models
             set { _cep = value; }
         }
 
-        public string Instituicao
-        {
-            get { return _instituicao; }
-            set { _instituicao = value; }
-        }
-
-        public DateOnly DataCriacao
-        {
-            get { return _dataCriacao; }
-            set { _dataCriacao = value; }
-        }
-
-        public uint Pontuacao
-        {
-            get { return _pontuacao; }
-            set { _pontuacao = value; }
-        }
-
-        public List<PostDto> Postagens
+        public Stack<PostDto> Postagens
         {
             get { return _postagens; }
             set { _postagens = value; }
@@ -161,26 +116,6 @@ namespace InnerAPI.Models
         #endregion
 
         #region "Implementação métodos da Interface"
-        public JObject serialize()
-        {
-            JObject json = new JObject();
-
-            json["id"] = id;
-            json["nome"] = name;
-            json["email"] = email;
-            json["password"] = password;
-            json["birthDate"] = BirthDate.ToString("dd/MM/yyyy");
-
-            //JArray notificationList = new();
-            //foreach (Notification notification in notifications)
-            //    notificationList.Add(notification.serialize());
-
-            //json["notifications"] = notificationList;
-
-            json["status"] = Status;
-
-            return json;
-        }
         #endregion
     }
 }

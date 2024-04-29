@@ -1,6 +1,6 @@
 ﻿using InnerAPI.Utils;
 using InnerAPI.Models;
-using InnerAPI.Dtos.Usuarios;
+using InnerAPI.Dtos.User;
 using Microsoft.AspNetCore.Mvc;
 using InnerAPI.Dtos.Login;
 using InnerAPI.Dtos.Institution;
@@ -12,7 +12,7 @@ namespace InnerAPI.Controllers
     {
         private readonly SharedService _sharedService;
         private int currentUser = -1;
-        List<User> users = new();
+        List<UserDto> users = new();
         List<Institution> institutions = new();
         List<Student> students;
         public void login(int userId)
@@ -38,12 +38,12 @@ namespace InnerAPI.Controllers
             return new HttpGetAttribute();
         }
 
-        public List<User> getUsers()
+        public List<UserDto> getUsers()
         {
             return users;
         }
 
-        public User register(RegisterUserDto register)
+        public UserDto register(RegisterUserDto register)
         {
             int id = users.Count + 1;
             string name = register.Nome ;
@@ -60,7 +60,7 @@ namespace InnerAPI.Controllers
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            User newUser = new User(id, name, email, password);
+            UserDto newUser = new UserDto(id, name, email, password);
             
 
             users.Add(newUser);
@@ -112,7 +112,7 @@ namespace InnerAPI.Controllers
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            User newUser = new User(idUser, name, email, password);
+            UserDto newUser = new UserDto(idUser, name, email, password);
             Institution newInstitution = new Institution(id, name, email, password, cnpj, domain, idUser);
 
             users.Add(newUser);
@@ -121,7 +121,7 @@ namespace InnerAPI.Controllers
 
             return newInstitution;
         }
-        public User login(LoginDto login)
+        public UserDto login(LoginDto login)
         {
             string email = login.Email;
             string password = login.Password;
@@ -129,12 +129,12 @@ namespace InnerAPI.Controllers
             if (!Email.IsValid(email))
                 throw new ArgumentException("Email inválido.");
 
-            User user = users.Find(u => u.Email == email);
+            UserDto user = users.Find(u => u.Email == email);
 
             if (user == null)
                 throw new ArgumentException("Usuário não encontrado.");
 
-            if (!user.checkPassword(password))
+            if (user.Password != password)
                 throw new ArgumentException("Senha incorreta.");
 
             currentUser = user.Id;

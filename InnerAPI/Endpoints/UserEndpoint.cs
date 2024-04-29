@@ -1,6 +1,6 @@
 ﻿using InnerAPI.Controllers;
 using InnerAPI.Dtos.Login;
-using InnerAPI.Dtos.Usuarios;
+using InnerAPI.Dtos.User;
 using InnerAPI.Models;
 
 namespace InnerAPI.Endpoints
@@ -12,7 +12,7 @@ namespace InnerAPI.Endpoints
         public static RouteGroupBuilder MapUsuariosEndpoints(this WebApplication app, SharedService sharedService)
         {
             UserController userController = new(sharedService);
-            List<User> usuarios = userController.getUsers();
+            List<UserDto> usuarios = userController.getUsers();
             var group = app.MapGroup("usuarios").WithParameterValidation();
 
             // GET /usuarios
@@ -21,14 +21,14 @@ namespace InnerAPI.Endpoints
             // GET /usuarios/{id}
             group.MapGet("/{id}", (uint id) =>
             {
-                User? usuario = usuarios.Find(usuario => usuario.Id == id);
+                UserDto? usuario = usuarios.Find(usuario => usuario.Id == id);
                 return usuario is null ? Results.NotFound() : Results.Ok(usuario);
             }).WithName(GetNomeUsuarioEndpoint);
 
             // POST /usuarios
             group.MapPost("/", (RegisterUserDto novoUsuario) =>
             {
-                User usuario = userController.register(novoUsuario);
+                UserDto usuario = userController.register(novoUsuario);
                 return Results.CreatedAtRoute(GetNomeUsuarioEndpoint, usuario);
             });
 
@@ -42,7 +42,7 @@ namespace InnerAPI.Endpoints
                     return Results.NotFound();
                 }
 
-                usuarios[index] = new User(
+                usuarios[index] = new UserDto(
                     (int)id,
                     atualizarUsuario.Nome,
                     atualizarUsuario.Email,

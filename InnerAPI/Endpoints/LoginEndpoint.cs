@@ -25,7 +25,7 @@ namespace InnerAPI.Endpoints
                         user = new
                         {
                             id = user.Id, // replace with actual user id
-                            name = user.Name, // replace with actual user name
+                            name = user.Nome, // replace with actual user name
                             email = user.Email
                         }
 
@@ -51,7 +51,7 @@ namespace InnerAPI.Endpoints
                         user = new
                         {
                             id = user.Id, // replace with actual user id
-                            name = user.Name, // replace with actual user name
+                            name = user.Nome, // replace with actual user name
                             email = user.Email
                         }
 

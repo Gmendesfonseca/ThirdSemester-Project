@@ -1,6 +1,6 @@
 ﻿using InnerAPI.Controllers;
 using InnerAPI.Dtos.Institution;
-using InnerAPI.Dtos.Usuarios;
+using InnerAPI.Dtos.User;
 using InnerAPI.Models;
 
 namespace InnerAPI.Endpoints

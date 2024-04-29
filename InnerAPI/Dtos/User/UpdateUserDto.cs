@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace InnerAPI.Dtos.Usuarios
+namespace InnerAPI.Dtos.User
 {
     public record class UpdateUserDto(
         [Required][StringLength(100)] string Nome,
