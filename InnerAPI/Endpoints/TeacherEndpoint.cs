@@ -10,7 +10,7 @@ namespace InnerAPI.Endpoints
             var group = app.MapGroup("teacher").WithParameterValidation();
 
             //GET /teacher/
-            group.MapGet("/", () => teacher);
+            //group.MapGet("/", () => teacher);
 
             return group;
         }

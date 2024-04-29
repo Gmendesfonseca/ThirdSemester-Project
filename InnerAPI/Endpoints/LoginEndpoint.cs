@@ -1,17 +1,20 @@
-﻿using InnerAPI.Dtos.Login;
+﻿using InnerAPI.Controllers;
+using InnerAPI.Dtos.Login;
 
 namespace InnerAPI.Endpoints
 {
     public static class LoginEndpoint
     {
-        public static RouteGroupBuilder MapLoginEndpoint(this WebApplication app)
+        public static RouteGroupBuilder MapLoginEndpoint(this WebApplication app, SharedService sharedService)
         {
             var group = app.MapGroup("login").WithParameterValidation();
+            UserController userController = new(sharedService);
+            InstitutionController institutionController = new(sharedService);
 
             // POST /login
             group.MapPost("/student", (LoginDto loginDto) =>
             {
-                var user = usuarios.FirstOrDefault(u => u.Email == loginDto.Email && u.Senha == loginDto.Password);
+                var user = userController.getUsers().FirstOrDefault(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
 
                 if (user != null)
                 {
@@ -22,7 +25,7 @@ namespace InnerAPI.Endpoints
                         user = new
                         {
                             id = user.Id, // replace with actual user id
-                            name = user.Nome, // replace with actual user name
+                            name = user.Name, // replace with actual user name
                             email = user.Email
                         }
 
@@ -37,7 +40,7 @@ namespace InnerAPI.Endpoints
             // POST /login
             group.MapPost("/institution", (LoginDto loginDto) =>
             {
-                var user = instituicoes.FirstOrDefault(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
+                var user = userController.getUsers().FirstOrDefault(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
 
                 if (user != null)
                 {

@@ -103,3 +103,14 @@ C:\Users\InCicle sistemas 7\source\ThirdSemester-Project\InnerAPI\obj\Debug\net8
 C:\Users\InCicle sistemas 7\source\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.csproj.Up2Date
 C:\Users\InCicle sistemas 7\source\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.genruntimeconfig.cache
 C:\Users\InCicle sistemas 7\source\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\ref\InnerAPI.dll
+C:\Users\fonse\source\ThirdSemester-Project-backend\InnerAPI\obj\Debug\net8.0\InnerAPI.csproj.AssemblyReference.cache
+C:\Users\fonse\source\ThirdSemester-Project-backend\InnerAPI\obj\Debug\net8.0\InnerAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fonse\source\ThirdSemester-Project-backend\InnerAPI\obj\Debug\net8.0\InnerAPI.AssemblyInfoInputs.cache
+C:\Users\fonse\source\ThirdSemester-Project-backend\InnerAPI\obj\Debug\net8.0\InnerAPI.AssemblyInfo.cs
+C:\Users\fonse\source\ThirdSemester-Project-backend\InnerAPI\obj\Debug\net8.0\InnerAPI.csproj.CoreCompileInputs.cache
+C:\Users\fonse\source\ThirdSemester-Project-backend\InnerAPI\obj\Debug\net8.0\InnerAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\fonse\source\ThirdSemester-Project-backend\InnerAPI\obj\Debug\net8.0\InnerAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\fonse\source\ThirdSemester-Project-backend\InnerAPI\obj\Debug\net8.0\InnerAPI.dll
+C:\Users\fonse\source\ThirdSemester-Project-backend\InnerAPI\obj\Debug\net8.0\refint\InnerAPI.dll
+C:\Users\fonse\source\ThirdSemester-Project-backend\InnerAPI\obj\Debug\net8.0\InnerAPI.pdb
+C:\Users\fonse\source\ThirdSemester-Project\InnerAPI\bin\Debug\net8.0\Newtonsoft.Json.dll

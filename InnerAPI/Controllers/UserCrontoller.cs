@@ -1,53 +1,153 @@
-﻿using API_C_Sharp.Model.User;
-using API_C_Sharp.Model;
+﻿using InnerAPI.Utils;
 using InnerAPI.Models;
+using InnerAPI.Dtos.Usuarios;
+using Microsoft.AspNetCore.Mvc;
+using InnerAPI.Dtos.Login;
+using InnerAPI.Dtos.Institution;
+using InnerAPI.Dtos.Aluno;
 
 namespace InnerAPI.Controllers
 {
-    public class UserController
+    public class UserController : ControllerBase
     {
-
-        public static Response register(Request request, Data data)
+        private readonly SharedService _sharedService;
+        private int currentUser = -1;
+        List<User> users = new();
+        List<Institution> institutions = new();
+        List<Student> students;
+        public void login(int userId)
         {
-            string name = (string)request.body.GetValue("name");
-            string email = (string)request.body.GetValue("email");
-            string password = (string)request.body.GetValue("password");
-
-            if (!Email.IsValid(email))
-                return ResponseUtils.Unauthorized("Email inválido.");
-
-            int userId = data.addUser(name, email, password);
-
-            if (userId == -1)
-                return ResponseUtils.Conflict("Este email já está sendo usado por outro usuário.");
-
-            data.login(userId);
-
-            return ResponseUtils.JsonSuccessResponse(JObject.Parse("{id:" + userId + "}"));
+            currentUser = userId;
         }
 
-        public static Response login(Request request, Data data)
+        public void logout()
         {
-            string email = (string)request.body.GetValue("email");
-            string password = (string)request.body.GetValue("password");
+            currentUser = -1;
+        }
+
+        public UserController(SharedService sharedService)
+        {
+            _sharedService = sharedService;
+            users = _sharedService.GetUsers();
+            institutions = _sharedService.GetInstitution();
+            students = _sharedService.GetStudent();
+        }
+
+        public HttpGetAttribute GetUsers()
+        {
+            return new HttpGetAttribute();
+        }
+
+        public List<User> getUsers()
+        {
+            return users;
+        }
+
+        public User register(RegisterUserDto register)
+        {
+            int id = users.Count + 1;
+            string name = register.Nome ;
+            string email = register.Email;
+            string password = register.Senha;
+
 
             if (!Email.IsValid(email))
-                return ResponseUtils.Unauthorized("Email inválido.");
+                throw new ArgumentException("Email inválido.");
 
-            User user = data.getUserByLogin(email);
+            var existingUser = institutions.Exists(r => r.NomeInstituicao == register.Nome || r._email == register.Email);
+            if (existingUser)
+            {
+                throw new ArgumentException("Este email já está sendo usado por outro usuário.");
+            }
+
+            User newUser = new User(id, name, email, password);
+            
+
+            users.Add(newUser);
+            currentUser = id;
+
+            return newUser;
+        }
+
+        /*public Student register(RegisterStudentDto register)
+        {
+            int id = users.Count + 1;
+            string name = register.Name;
+            string email = register.Password;
+            string password = register.Domain;
+            string cnpj = register.Cnpj;
+
+            instituicao.getUsers().Exists(r => r.Name == registerDto.Name || r.Email == registerDto.Email || r.Cnpj == registerDto.Cnpj || r.Domain == registerDto.Domain);
+            if (!Email.IsValid(email))
+                throw new ArgumentException("Email inválido.");
+
+            var existingUser = users.FirstOrDefault(u => u.Email == email);
+            if (existingUser != null)
+                throw new ArgumentException("Este email já está sendo usado por outro usuário.");
+
+            User newUser = new User(id, name, email, password);
+            Institution newInstitution = new Institution(id, name, email, password, cnpj);
+
+            users.Add(newUser);
+            currentUser = id;
+
+            return newUser;
+        }*/
+        public Institution register(RegisterInstitutionDto register)
+        {
+            uint id = (uint)institutions.Count + 1;
+            string name = register.Name;
+            string email = register.Email;
+            string password = register.Password;
+            string domain = register.Domain;
+            string cnpj = register.Cnpj;
+            int idUser = users.Count + 1;
+
+            if (!Email.IsValid(email))
+                throw new ArgumentException("Email inválido.");
+
+            var existingUser = institutions.Exists(r => r.NomeInstituicao == register.Name || r._email == register.Email || r._cnpj == register.Cnpj || r._domain == register.Domain);
+            if (existingUser)
+            {
+                throw new ArgumentException("Este email já está sendo usado por outro usuário.");
+            }
+
+            User newUser = new User(idUser, name, email, password);
+            Institution newInstitution = new Institution(id, name, email, password, cnpj, domain, idUser);
+
+            users.Add(newUser);
+            institutions.Add(newInstitution);
+            currentUser = idUser;
+
+            return newInstitution;
+        }
+        public User login(LoginDto login)
+        {
+            string email = login.Email;
+            string password = login.Password;
+
+            if (!Email.IsValid(email))
+                throw new ArgumentException("Email inválido.");
+
+            User user = users.Find(u => u.Email == email);
 
             if (user == null)
-                return ResponseUtils.Unauthorized("Usuário não encontrado.");
+                throw new ArgumentException("Usuário não encontrado.");
 
             if (!user.checkPassword(password))
-                return ResponseUtils.Unauthorized("Usuário não encontrado.");
+                throw new ArgumentException("Senha incorreta.");
 
-            data.login(user.Id);
+            currentUser = user.Id;
 
-            return ResponseUtils.JsonSuccessResponse(JObject.Parse("{id:" + user.Id + "}"));
+            return user;
         }
 
-        public static Response list(Request request, Data data)
+        public void delete(int id)
+        { users.RemoveAll(usuario => usuario.Id == id); }
+        
+
+/*
+        public User list(Request request, UserData data)
         {
             Console.WriteLine(data.getUsers());
 
@@ -56,23 +156,23 @@ namespace InnerAPI.Controllers
                 usersList.Add(user.serialize());
 
             if (usersList.Count == 0)
-                return ResponseUtils.JsonSuccessResponse(JObject.Parse("[]"));
+                return ResponseUtils.SuccessResponse(JObject.Parse("[]"));
 
 
-            return ResponseUtils.JsonSuccessResponse(usersList);
+            return ResponseUtils.SuccessResponse(usersList);
         }
 
-        public static Response getUserById(Request request, Data data)
+        public User getUserById(Request request, UserData data)
         {
             User user = data.getUserById((int)request.routeParans.GetValue("id"));
 
             if (user == null)
                 return ResponseUtils.NotFound("Usuario não existe.");
 
-            return ResponseUtils.JsonSuccessResponse(user.serialize());
+            return ResponseUtils.SuccessResponse(user.serialize());
         }
 
-        public static Response getUserFriendship(Request request, Data data)
+        public User getUserFriendship(Request request, UserData data)
         {
             User user = data.getUserById((int)request.routeParans.GetValue("id"));
 
@@ -82,19 +182,34 @@ namespace InnerAPI.Controllers
             return new Response("teste");
         }
 
-        public static Response getUserNotification(Request request, Data data)
+        public User getUserByLogin(string email)
+        {
+            return users.Find(user => user.checkEmail(email));
+        }
+
+        public User getUserById(int id)
+        {
+            return users.Find(user => user.Id == id);
+        }
+
+        public List<User> getUsers()
+        {
+            return users;
+        }
+
+        public static Response getUserNotification(Request request, UserData data)
         {
             User user = data.getUserById((int)request.routeParans.GetValue("id"));
 
             if (user == null)
-                return ResponseUtils.NotFound("Usuario não existe.");
+               return ResponseUtils.NotFound("Usuario não existe.");
 
-            List<string> notificationsList = new();
-            foreach (Notification notification in user.Notifications)
+           List<string> notificationsList = new();
+           foreach (Notification notification in user.Notifications)
                 notificationsList.Add(notification.serialize().ToString());
 
-            return ResponseUtils.JsonSuccessResponse(JObject.Parse(notificationsList.ToString()));
+            return ResponseUtils.SuccessResponse(JObject.Parse(notificationsList.ToString()));
         }
-
+*/
     }
 }

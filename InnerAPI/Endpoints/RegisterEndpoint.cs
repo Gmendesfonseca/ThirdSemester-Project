@@ -1,30 +1,26 @@
-﻿using InnerAPI.Dtos.Aluno;
+﻿using InnerAPI.Controllers;
+using InnerAPI.Dtos.Aluno;
 using InnerAPI.Dtos.Institution;
+using InnerAPI.Models;
 
 namespace InnerAPI.Endpoints
 {
     public static class RegisterEndpoint
     {
-        public static RouteGroupBuilder MapRegisterEndpoint(this WebApplication app)
+        public static RouteGroupBuilder MapRegisterEndpoint(this WebApplication app, SharedService sharedService)
         {
-
+            InstitutionController institutionController = new(sharedService);
+            UserController userController = new(sharedService);
             var group = app.MapGroup("register").WithParameterValidation();
 
-            group.MapPost("/institution", (CreateInstitutionDto registerDto) =>
+
+            group.MapPost("/institution", (RegisterInstitutionDto newInstitution) =>
             {
-                var register = instituicao.Exists(r => r.Name == registerDto.Name || r.Email == registerDto.Email || r.Cnpj == registerDto.Cnpj || r.Domain == registerDto.Domain);
+                var exists = institutionController.GetInstitution().Exists(r => r.NomeInstituicao == newInstitution.Name || r._email == newInstitution.Email || r._cnpj == newInstitution.Cnpj || r._domain == newInstitution.Domain);
 
-                if (!register)
+                if (!exists)
                 {
-                    InstitutionDto instituicaoDto = new InstituicaoDto(
-                        (uint)usuarios.Count + 1,
-                        registerDto.Name,
-                        registerDto.Email,
-                        registerDto.Password,
-                        registerDto.Domain,
-                        registerDto.Cnpj);
-
-                    instituicao.Add(instituicaoDto);
+                    userController.register(newInstitution);
                     return Results.Ok(new
                     {
                         success = true,
@@ -36,21 +32,22 @@ namespace InnerAPI.Endpoints
                     return Results.BadRequest(new { success = false, message = "Name, Email, CNPJ or Domain already used" });
                 }
             });
-
-            group.MapPost("/student", (CreateStudentDto registerDto) =>
+            /*
+            group.MapPost("/student", (RegisterStudentDto registerDto) =>
             {
-                var register = alunos.Exists(r => r.Name == registerDto.Name || r.Email == registerDto.Email || r.Cpf == registerDto.Cpf);
+                var register = alunos.getUsers().Exists(r => r.Name == registerDto.Name || r.Email == registerDto.Email || r.Cpf == registerDto.Cpf);
 
                 if (!register)
                 {
-                    StudentDto alunoDto = new AlunoDto(
-                        (uint)usuarios.Count + 1,
+                    StudentDto alunoDto = new StudentDto(
+                        (uint)data.getUsers().Count + 1,
                         registerDto.Name,
                         registerDto.Email,
                         registerDto.Password,
                         registerDto.Cpf);
 
-                    alunos.Add(alunoDto);
+                    int id = data.getUsers().Count + 1;
+                    alunos.addUser(id,registerDto.Name,registerDto.Email,registerDto.Password);
                     return Results.Ok(new
                     {
                         success = true,
@@ -61,7 +58,7 @@ namespace InnerAPI.Endpoints
                 {
                     return Results.BadRequest(new { success = false, message = "Name, Email, CNPJ or Domain already used" });
                 }
-            });
+            });*/
 
 
             return group;

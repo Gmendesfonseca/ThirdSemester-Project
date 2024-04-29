@@ -1,6 +1,9 @@
+using InnerAPI.Controllers;
 using InnerAPI.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<SharedService>();
 
 builder.Services.AddCors(options =>
 {
@@ -29,9 +32,12 @@ var app = builder.Build();
 
 app.UseCors();
 
-app.MapUsuariosEndpoints();
-app.MapLoginEndpoint();
-app.MapRegisterEndpoint();
+var sharedService = app.Services.GetRequiredService<SharedService>();
+
+
+app.MapUsuariosEndpoints(sharedService);
+app.MapLoginEndpoint(sharedService);
+app.MapRegisterEndpoint(sharedService);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
