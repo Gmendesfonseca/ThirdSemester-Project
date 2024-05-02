@@ -2,12 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { addToast } from '../../components/Toast/toast';
 import { InputAdornment } from '@mui/material';
 import { register, RegisterResponse } from '../../services/register';
+import Anchor from '../Anchor/Anchor';
 
 export default function FormInstitution() {
   const navigate = useNavigate();
@@ -216,9 +216,7 @@ export default function FormInstitution() {
       </Button>
       <Grid container justifyContent="flex-end">
         <Grid item>
-          <Link href="/login" variant="body2">
-            Já tem uma conta? Sign in
-          </Link>
+          <Anchor to="/login">Já tem uma conta? Sign in</Anchor>
         </Grid>
       </Grid>
     </Box>

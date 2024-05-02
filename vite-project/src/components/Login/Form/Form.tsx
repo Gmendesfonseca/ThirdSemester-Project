@@ -1,7 +1,6 @@
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { addToast } from '../../Toast/toast';
@@ -10,6 +9,7 @@ import React, { useState } from 'react';
 import { Copyright } from '../Copyright/Copyright';
 import Grid from '@mui/material/Grid';
 import { login, LoginResponse } from '../../../services/login/index';
+import Anchor from '../../Anchor/Anchor';
 
 export function Form() {
   const navigate = useNavigate();
@@ -126,14 +126,12 @@ export function Form() {
       </Button>
       <Grid container>
         <Grid item xs>
-          <Link href="/forgot-password" variant="body2">
-            Esqueceu a senha?
-          </Link>
+          <Anchor to="/forgot-password">Esqueceu a senha?</Anchor>
         </Grid>
         <Grid item>
-          <Link href="/register" variant="body2">
-            {'É uma nova instituição? Cadastre-se aqui'}
-          </Link>
+          <Anchor to="/register">
+            É uma nova instituição? Cadastre-se aqui
+          </Anchor>
         </Grid>
       </Grid>
       <Copyright sx={{ mt: 5 }} />
