@@ -12,9 +12,10 @@ namespace InnerAPI.Controllers
     {
         private readonly SharedService _sharedService;
         private int currentUser = -1;
-        List<UserDto> users = new();
-        List<Institution> institutions = new();
+        List<UserDto> users;
+        List<Institution> institutions;
         List<Student> students;
+
         public void login(int userId)
         {
             currentUser = userId;
@@ -93,6 +94,7 @@ namespace InnerAPI.Controllers
 
             return newUser;
         }*/
+
         public Institution register(RegisterInstitutionDto register)
         {
             uint id = (uint)institutions.Count + 1;
@@ -121,6 +123,7 @@ namespace InnerAPI.Controllers
 
             return newInstitution;
         }
+
         public UserDto login(LoginDto login)
         {
             string email = login.Email;
