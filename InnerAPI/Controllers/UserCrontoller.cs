@@ -34,11 +34,6 @@ namespace InnerAPI.Controllers
             students = _sharedService.GetStudent();
         }
 
-        public HttpGetAttribute GetUsers()
-        {
-            return new HttpGetAttribute();
-        }
-
         public List<UserDto> getUsers()
         {
             return users;
@@ -50,6 +45,7 @@ namespace InnerAPI.Controllers
             string name = register.Nome ;
             string email = register.Email;
             string password = register.Senha;
+            int type = register.Tipo;
 
 
             if (!Email.IsValid(email))
@@ -61,7 +57,7 @@ namespace InnerAPI.Controllers
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            UserDto newUser = new UserDto(id, name, email, password);
+            UserDto newUser = new UserDto(id, name, email, type, password);
             
 
             users.Add(newUser);
@@ -70,30 +66,29 @@ namespace InnerAPI.Controllers
             return newUser;
         }
 
-        /*public Student register(RegisterStudentDto register)
+        public Student register(RegisterStudentDto register)
         {
-            int id = users.Count + 1;
+            uint id = (uint)students.Count + 1;
             string name = register.Name;
-            string email = register.Password;
-            string password = register.Domain;
-            string cnpj = register.Cnpj;
+            string cpf = register.Cpf;
+            int type = 3;
+            int idUser = users.Count + 1;
 
-            instituicao.getUsers().Exists(r => r.Name == registerDto.Name || r.Email == registerDto.Email || r.Cnpj == registerDto.Cnpj || r.Domain == registerDto.Domain);
-            if (!Email.IsValid(email))
-                throw new ArgumentException("Email inválido.");
-
-            var existingUser = users.FirstOrDefault(u => u.Email == email);
-            if (existingUser != null)
+            var existingUser = students.Exists(r => r.Name == register.Name || r.Email == register.Email || r.CPF == register.Cpf);
+            if (existingUser)
+            {
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
+            }
 
-            User newUser = new User(id, name, email, password);
-            Institution newInstitution = new Institution(id, name, email, password, cnpj);
+            UserDto newUser = new UserDto(idUser, name, email, type, password);
+            Student newStudent = new Student(id, name, email, password, cpf, idUser);
 
             users.Add(newUser);
-            currentUser = id;
+            students.Add(newStudent);
+            currentUser = idUser;
 
-            return newUser;
-        }*/
+            return newStudent;
+        }
 
         public Institution register(RegisterInstitutionDto register)
         {
@@ -114,7 +109,7 @@ namespace InnerAPI.Controllers
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            UserDto newUser = new UserDto(idUser, name, email, password);
+            UserDto newUser = new UserDto(idUser, name, email, Type, password);
             Institution newInstitution = new Institution(id, name, email, password, cnpj, domain, idUser);
 
             users.Add(newUser);

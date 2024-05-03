@@ -13,7 +13,6 @@ namespace InnerAPI.Models
         private string password;
         private uint _cep;
         private Stack<PostDto> _postagens; 
-        private string _nivelHierarquico;
         private Stack<NotificationDto> notifications;
         public bool status;
         #endregion

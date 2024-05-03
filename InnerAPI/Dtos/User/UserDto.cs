@@ -6,6 +6,7 @@ namespace InnerAPI.Dtos.User
         int Id,
         string Nome,
         string Email,
+        int Type,
         string Password
         );
 }

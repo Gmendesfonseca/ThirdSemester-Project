@@ -10,26 +10,46 @@ namespace InnerAPI.Endpoints
             var group = app.MapGroup("login").WithParameterValidation();
             UserController userController = new(sharedService);
             InstitutionController institutionController = new(sharedService);
+            StudentController studentController = new(sharedService);
 
             // POST /login
-            group.MapPost("/student", (LoginDto loginDto) =>
+            group.MapPost("/", (LoginDto loginDto) =>
             {
                 var user = userController.getUsers().FirstOrDefault(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
 
                 if (user != null)
                 {
-                    return Results.Ok(new
+                    if(user.Type == 1)
                     {
-                        success = true,
-                        message = "Login successful",
-                        user = new
+                        var institution = institutionController.GetInstitution().FirstOrDefault(i => i.Email == user.Email);
+                        return Results.Ok(new
                         {
-                            id = user.Id, // replace with actual user id
-                            name = user.Nome, // replace with actual user name
-                            email = user.Email
-                        }
+                            success = true,
+                            message = "Login successful",
+                            user = new
+                            {
+                                id = user.Id, // replace with actual user id
+                                name = user.Nome, // replace with actual user name
+                                email = user.Email
+                            }
 
-                    });
+                        });
+                    } else if(user.Type == 2    )
+                    {
+                        var student = studentController.GetStudents().FirstOrDefault(s => s.Email == user.Email);
+                        return Results.Ok(new
+                        {
+                            success = true,
+                            message = "Login successful",
+                            user = new
+                            {
+                                id = user.Id, // replace with actual user id
+                                name = user.Nome, // replace with actual user name
+                                email = user.Email
+                            }
+
+                        });
+                    }
                 }
                 else
                 {
@@ -38,7 +58,7 @@ namespace InnerAPI.Endpoints
             });
 
             // POST /login
-            group.MapPost("/institution", (LoginDto loginDto) =>
+            group.MapPost("/", (LoginDto loginDto) =>
             {
                 var user = userController.getUsers().FirstOrDefault(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
 

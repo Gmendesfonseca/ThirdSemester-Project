@@ -4,31 +4,29 @@
     {
         #region "Declaração de variáveis"
 
-        private uint _idAluno;
+        private uint _idStudent;
         private string cpf;
         public DateOnly BirthDate;
         private string _instituicao;
         private uint _pontuacao;
-        private string _registroAluno; //Revisar futuramente
         private string _periodo;
         private string _turno;
+        private int idUser;
 
         #endregion
 
         #region "Propriedades"
-        public Student(int id, string name, string email, string password) 
+        public Student(uint id, string name, string cpf, int idUser) 
         {
+            this._idStudent = id;
+            this.Name = name;
+            this.cpf = cpf;
+            this.idUser = idUser;
         }
         public uint IdAluno
         { 
-            get { return _idAluno; }
-            set { _idAluno = value; }
-        }
-
-        public string RegistroAluno
-        {
-            get { return _registroAluno;}
-            set { _registroAluno = value;}
+            get { return _idStudent; }
+            set { _idStudent = value; }
         }
 
         public string Periodo

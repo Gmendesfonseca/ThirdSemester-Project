@@ -8,5 +8,6 @@ namespace InnerAPI.Dtos.Institution
         [Required][StringLength(60)]string Email,
         [Required][MinLength(8)][MaxLength(20)] string Password,
         [Required][MinLength(8)][MaxLength(20)]string Domain,
-        [Required][MinLength(14)][MaxLength(20)] string Cnpj);
+        [Required][MinLength(14)][MaxLength(20)] string Cnpj,
+        [Required][MaxLength(1)] int Tipo);
 }

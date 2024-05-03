@@ -2,7 +2,7 @@
 
 namespace InnerAPI.Endpoints
 {
-    public static class TeacherEndpoint
+    public static class ProfessorEndpoint
     {
 
         public static RouteGroupBuilder MapTeacherEndpoint(this WebApplication app)
