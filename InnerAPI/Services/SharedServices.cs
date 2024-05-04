@@ -5,7 +5,7 @@ using InnerAPI.Dtos.Post;
 using InnerAPI.Dtos.User;
 using InnerAPI.Models;
 
-namespace InnerAPI.Controllers
+namespace InnerAPI.Services
 {
     public class SharedService
     {
@@ -32,7 +32,7 @@ namespace InnerAPI.Controllers
         {
             return professors;
         }
-        
+
         public void AddStudent(Student student)
         {
             students.Add(student);

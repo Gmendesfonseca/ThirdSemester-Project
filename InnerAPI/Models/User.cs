@@ -1,12 +1,12 @@
 ﻿using InnerAPI.Dtos.Post;
 using InnerAPI.Dtos.Notification;
 using InnerAPI.Dtos.Groups;
-using InnerAPI.Controllers;
 using InnerAPI.Dtos.Aluno;
 using InnerAPI.Dtos.Institution;
 using InnerAPI.Dtos.Login;
 using InnerAPI.Dtos.User;
 using InnerAPI.Utils;
+using InnerAPI.Services;
 
 namespace InnerAPI.Models
 {
@@ -27,6 +27,14 @@ namespace InnerAPI.Models
         #endregion
 
         #region "Construtores"
+        public User()
+        {
+            List<GroupsDto> _grupos = new List<GroupsDto>();
+            Stack<PostDto> _postagens = new Stack<PostDto>();
+            Stack<NotificationDto> _notifications = new Stack<NotificationDto>();
+            institutions = new List<Institution>();
+        }
+
         public User(SharedService sharedService)
         {
             newSharedService = sharedService;
@@ -250,6 +258,14 @@ namespace InnerAPI.Models
 
         public void deleteIntitution(int id)
         { institutions.RemoveAll(usuario => usuario.Id == id); }
+
+        public void deleteStudent(int id)
+        { institutions.SelectMany(i => i.Students).ToList().RemoveAll(usuario => usuario.Id == id); }
+
+        public void deleteProfessor(int id)
+        { institutions.SelectMany(i => i.Professors).ToList().RemoveAll(usuario => usuario.Id == id); }
+
+        public 
 
         /*
                 public User list(Request request, UserData data)

@@ -2,6 +2,7 @@
 using InnerAPI.Dtos.Aluno;
 using InnerAPI.Dtos.Institution;
 using InnerAPI.Models;
+using InnerAPI.Services;
 
 namespace InnerAPI.Endpoints
 {

@@ -1,4 +1,5 @@
-﻿using InnerAPI.Dtos.Courses;
+﻿using InnerAPI.Controllers;
+using InnerAPI.Dtos.Courses;
 
 namespace InnerAPI.Models
 {
@@ -15,7 +16,6 @@ namespace InnerAPI.Models
         #endregion
 
         #region "Construtores"
-
         public Institution() : base()
         {
             List<CourseDto> courses = new List<CourseDto>();
@@ -82,6 +82,11 @@ namespace InnerAPI.Models
             courses.Add(course);
         }
 
+        public void removeCourse(CourseDto course)
+        {
+            courses.Remove(course);
+        }
+
         public List<Student> Students
         {
             get { return students; }
@@ -92,9 +97,24 @@ namespace InnerAPI.Models
             students.Add(student);
         }
 
+        public void removeStudent(Student student)
+        {
+            students.Remove(student);
+        }
+
         public List<Professor> Professors
         {
             get { return professors; }
+        }
+
+        public void addProfessor(Professor professor)
+        {
+            professors.Add(professor);
+        }
+
+        public void removeProfessor(Professor professor)
+        {
+            professors.Remove(professor);
         }
         #endregion
 

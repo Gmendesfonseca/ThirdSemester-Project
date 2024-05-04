@@ -1,5 +1,6 @@
 using InnerAPI.Controllers;
 using InnerAPI.Endpoints;
+using InnerAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,9 +1,10 @@
 ﻿using InnerAPI.Dtos.Login;
 using InnerAPI.Models;
+using InnerAPI.Services;
 
 namespace InnerAPI.Controllers
 {
-    public class LoginController
+    public static class LoginController
     {
         public static RouteGroupBuilder MapLoginEndpoint(this WebApplication app, SharedService sharedService)
         {
