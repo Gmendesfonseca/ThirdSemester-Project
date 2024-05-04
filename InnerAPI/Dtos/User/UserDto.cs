@@ -3,10 +3,9 @@
 namespace InnerAPI.Dtos.User
 {
     public record class UserDto(
-        int Id,
-        string Nome,
-        string Email,
-        int Type,
-        string Password
+        [Required] int Id,
+        [Required] string Nome,
+        [Required] string Email,
+        [Required] string Password
         );
 }

@@ -7,6 +7,11 @@ namespace InnerAPI.Controllers
 {
     public class InstitutionController : ControllerBase
     {
+        // GET /institution
+        // GET /institution/{id}
+        // POST /institution
+        // PUT /institution
+        //DELETE /institution
         List<Institution> institutions;
         private readonly SharedService _sharedService;
 

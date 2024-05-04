@@ -1,28 +1,35 @@
 ﻿namespace InnerAPI.Models
 {
-    public class Student : User
+    public class Student : Member
     {
         #region "Declaração de variáveis"
-
-        private uint _idStudent;
-        private string cpf;
-        public DateOnly BirthDate;
-        private string _instituicao;
-        private uint _pontuacao;
+        private string _curso;
         private string _periodo;
-        private string _turno;
-        private int idUser;
+        private uint _pontuacao;
+        #endregion
 
+        #region "Construtores"
+        public Student() : base()
+        {
+        }
+
+        public Student(uint id, string name, string email, string password, string matricula, string cpf, DateOnly birthDate, string instituicao, string curso, string periodo, uint pontuacao) 
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Email = email;
+            this.Password = password;
+            this.Matricula = matricula;
+            this.Cpf = cpf;
+            this.DataNascimento = birthDate;
+            this.Instituicao = instituicao;
+            this._curso = curso;
+            this._periodo = periodo;
+            this.Pontuacao = pontuacao;
+        }
         #endregion
 
         #region "Propriedades"
-        public Student(uint id, string name, string cpf, int idUser) 
-        {
-            this._idStudent = id;
-            this.Name = name;
-            this.cpf = cpf;
-            this.idUser = idUser;
-        }
         public uint IdAluno
         { 
             get { return _idStudent; }

@@ -1,86 +1,100 @@
-﻿namespace InnerAPI.Models
+﻿using InnerAPI.Dtos.Courses;
+
+namespace InnerAPI.Models
 {
-    public class Institution 
+    public class Institution : User
     {
         #region "Declaração de variáveis"
-        private uint _idInstituicao;
-        private string _nameInstitution;
         private string _localidadeInstituicao;
-        private string _cursos; //Criar lista de cursos
-        private string _alunos; //Trocar para Objeto [Aluno] + lista
-        private string _grupos; //Checar futuramente {Trocar para objeto [Grupo]}
         private DateOnly _dataCriacao;
         public string _domain;
         public string _cnpj;
-        private int idUser;
+        private List<CourseDto> courses; 
+        private readonly List<Student> students; 
+        private readonly List<Professor> professors;
+        #endregion
+
+        #region "Construtores"
+
+        public Institution() : base()
+        {
+            List<CourseDto> courses = new List<CourseDto>();
+            List<Student> students = new List<Student>();
+            List<Professor> professors = new List<Professor>();
+        }
+        public Institution(uint id, string name, string email, string password, string cnpj, string domain) 
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Email = email;
+            this.Password = password;
+            this.CNPJ = cnpj;
+            this.Domain = domain;
+        }
+        public Institution(string name, string email, string password, string localidadeInstituicao, DateOnly dataCriacao)
+        {
+            this.Name = name; // Herdado de User
+            this.Email = email; // Herdado de User
+            this.Password = password; // Herdado de User
+            this._localidadeInstituicao = localidadeInstituicao;
+            this._dataCriacao = dataCriacao;
+            // Inicialização das listas para evitar NullReferenceException
+            this.courses = new List<CourseDto>();
+            this.students = new List<Student>();
+            this.professors = new List<Professor>();
+        }
         #endregion
 
         #region "Propriedades"
-
-        public Institution(uint idInstituicao, string nomeInstituicao, string cnpj, string domain, int idUser) 
-        {
-            this._idInstituicao = idInstituicao;
-            this._nameInstitution = nomeInstituicao;
-            this._cnpj = cnpj;
-            this._domain = domain;
-            this.idUser = idUser;
-        }
-
-        public Institution(int Id,
-         string Name,
-         string Email,
-         string Password,
-         string Domain,
-         string Cnpj
-    )
-        {
-            this.idUser= Id;
-            this._nameInstitution = Name;
-            this._email = Email;
-            this._password = Password;
-            this._domain = Domain;
-            this._cnpj = Cnpj;
-        }
-        public uint IdInstituicao
-        {
-            get { return _idInstituicao; }
-            set { _idInstituicao = value; }
-        }
-
-        public string NomeInstituicao
-        {
-            get { return _nameInstitution; }
-            set { _nameInstitution = value; }
-        }
-
         public string Localidade
         {
             get { return _localidadeInstituicao; }
             set { _localidadeInstituicao = value; }
         }
 
-        public string Curso
-        {
-            get { return _curso; }
-            set { _curso = value; }
-        }
-
-        public string Alunos
-        {
-            get { return _alunos; }
-            set { _alunos = value; }
-        }
-
-        public string Grupos
-        {
-            get { return _grupos; } 
-            set { _grupos = value; }
-        }
-
         public DateOnly DataCriacao
         {
             get { return _dataCriacao; }
             set { _dataCriacao = value; }
+        }
+
+        public string Domain
+        {
+            get { return _domain; }
+            set { _domain = value; }
+        }
+
+        public string CNPJ
+        {
+            get { return _cnpj; }
+            set { _cnpj = value; }
+        }
+        #endregion
+
+        #region "Métodos Listas"
+        public List<CourseDto> Courses
+        {
+            get { return courses; }
+        }
+
+        public void addCourse(CourseDto course)
+        {
+            courses.Add(course);
+        }
+
+        public List<Student> Students
+        {
+            get { return students; }
+        }
+
+        public void addStudent(Student student)
+        {
+            students.Add(student);
+        }
+
+        public List<Professor> Professors
+        {
+            get { return professors; }
         }
         #endregion
 
@@ -98,7 +112,7 @@
         public void SuspenderAcesso()
         {
 
-        } // Revisar Função
+        } 
 
         public void CadastrarAluno()
         {

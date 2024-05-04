@@ -3,6 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InnerAPI.Controllers
 {
+    // GET /student
+    // GET /student/{id}
+    // POST /student
+    // PUT /student
+    //DELETE /student
     public class StudentController : ControllerBase
     {
         List<Student> students;

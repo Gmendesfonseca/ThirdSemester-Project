@@ -1,34 +1,43 @@
 ﻿namespace InnerAPI.Models
 {
-    public class Professor : User
+    public class Professor : Member
     {
         #region "Declaração de variáveis"
-
-        private uint _idDocente;
-        private string _registroDocente; //Revisar futuramente
         private string _areaLecionada;
-        private int idUser;
+        private string _formação;
+        #endregion
 
+        #region "Construtores"
+        public Professor() : base()
+        {
+        }
+
+        public Professor(uint id, string name, string email, string password, string matricula, string cpf, DateOnly birthDate, string instituicao, string areaLecionada, string formacao)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Email = email;
+            this.Password = password;
+            this.Matricula = matricula;
+            this.Cpf = cpf;
+            this.BirthDate = birthDate;
+            this.Instituicao = instituicao;
+            this._areaLecionada = areaLecionada;
+            this._formação = formacao;
+        }
         #endregion
 
         #region "Propriedades"
-
-        public uint IdDocente
-        {
-            get { return _idDocente; }
-            set { _idDocente = value; }
-        }
-
-        public string RegistroDocente
-        { 
-            get { return _registroDocente;} 
-            set { _registroDocente = value; } 
-        }
-
         public string AreaLecionada
         {
             get { return _areaLecionada;}
             set { _areaLecionada = value;}
+        }
+
+        public string Formacao
+        {
+            get { return _formação;}
+            set { _formação = value;}
         }
 
         #endregion

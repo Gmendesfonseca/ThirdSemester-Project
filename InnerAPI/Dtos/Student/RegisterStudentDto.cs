@@ -5,8 +5,13 @@ namespace InnerAPI.Dtos.Aluno
     public record class RegisterStudentDto
     (
         [Required][StringLength(100)] string Name,
-        [Required][StringLength(60)] string Email,
-        [Required][MinLength(8)][MaxLength(20)] string Password,
-        [Required][MinLength(14)][MaxLength(20)] string Cpf,
-        [Required][MaxLength(1)] int Tipo);
+        [Required][StringLength(100)][EmailAddress] string Email,
+        [Required][StringLength(100)] string Password,
+        [Required][StringLength(20)] string Matricula,
+        [Required][StringLength(11)] string Cpf,
+        [Required] DateOnly BirthDate,
+        [Required][StringLength(100)] string Instituicao,
+        [Required][StringLength(100)] string Curso,
+        [Required][StringLength(50)] string Periodo,
+        [Required] uint pontuacao);
 }
