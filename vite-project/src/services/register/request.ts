@@ -3,30 +3,36 @@ import {
   RegisterInstitutionParams,
   RegisterResponse,
   RegisterStudentParams,
+  RegisterProfessorParams,
 } from './types';
-
-export function register(
-  params: RegisterInstitutionParams,
-): Promise<RegisterResponse> {
-  return api
-    .post<RegisterResponse>('/register/institution', params)
-    .then((response) => {
-      if (response.status !== 200) {
-        throw new Error('Login failed');
-      }
-      return response.data;
-    });
-}
 
 export function registerStudent(
   params: RegisterStudentParams,
 ): Promise<RegisterResponse> {
-  return api
-    .post<RegisterResponse>('/register/student', params)
-    .then((response) => {
-      if (response.status !== 200) {
-        throw new Error('Login failed');
-      }
-      return response.data;
-    });
+  return api.post<RegisterResponse>('/student', params).then((response) => {
+    if (response.status !== 200) {
+      throw new Error('Login failed');
+    }
+    return response.data;
+  });
+}
+export function registerProfessor(
+  params: RegisterProfessorParams,
+): Promise<RegisterResponse> {
+  return api.post<RegisterResponse>('/professor', params).then((response) => {
+    if (response.status !== 200) {
+      throw new Error('Login failed');
+    }
+    return response.data;
+  });
+}
+export function registerInstitution(
+  params: RegisterInstitutionParams,
+): Promise<RegisterResponse> {
+  return api.post<RegisterResponse>('/institution', params).then((response) => {
+    if (response.status !== 200) {
+      throw new Error('Login failed');
+    }
+    return response.data;
+  });
 }

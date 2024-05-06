@@ -5,11 +5,31 @@ export type RegisterInstitutionParams = {
   domain: string;
   cnpj: string;
 };
-export type RegisterStudentParams = {
+
+export type RegisterProfessorParams = {
   name: string;
-  cpf: string;
   email: string;
   password: string;
+  matriculation: string;
+  cpf: string;
+  birthdate?: Date;
+  institution: string;
+  area: string;
+  formation: string;
+};
+
+export type RegisterStudentParams = {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  cpf: string;
+  curso: string;
+  periodo: string;
+  pontuacao: number;
+  matricula: string;
+  birthDate?: Date;
+  instituicao: string;
 };
 
 export type RegisterResponse = {

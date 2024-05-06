@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
+import { Grid } from '@mui/material';
 
 export function Chat() {
-  return <Box>Contact Page</Box>;
+  return <Grid>Contact Page</Grid>;
 }

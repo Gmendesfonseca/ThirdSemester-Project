@@ -126,7 +126,7 @@ export function Form() {
       </Button>
       <Grid container>
         <Grid item xs>
-          <Anchor to="/forgot-password">Esqueceu a senha?</Anchor>
+          <Anchor to="/home">Esqueceu a senha?</Anchor>
         </Grid>
         <Grid item>
           <Anchor to="/register">
