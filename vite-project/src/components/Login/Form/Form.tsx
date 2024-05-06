@@ -6,19 +6,32 @@ import Box from '@mui/material/Box';
 import { addToast } from '../../Toast/toast';
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
+import { SelectChangeEvent } from '@mui/material';
 import { Copyright } from '../Copyright/Copyright';
 import Grid from '@mui/material/Grid';
-import { loginInstitution, LoginResponse } from '../../../services/login/index';
+import {
+  loginInstitution,
+  loginProfessor,
+  LoginResponse,
+  loginStudent,
+} from '../../../services/login/index';
 import Anchor from '../../Anchor/Anchor';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 export function Form() {
   const navigate = useNavigate();
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [type, setType] = React.useState(1);
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+
+  const handleTypeChange = (event: SelectChangeEvent<number>) => {
+    setType(Number(event.target.value));
+  };
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -50,7 +63,7 @@ export function Form() {
     //const remember = data.get('remember') as boolean;
 
     if (!emailError && !passwordError && email !== '' && password !== '') {
-      handleLogin(email, password);
+      handleLogin(type, email, password);
     } else if (email === '' || password === '') {
       addToast('Preencha todos os campos', { appearance: 'error' });
     }
@@ -63,10 +76,16 @@ export function Form() {
     return true;
   };
 
-  const handleLogin = async (email: string, password: string) => {
+  const handleLogin = async (type: number, email: string, password: string) => {
     try {
-      const data: LoginResponse = await loginInstitution({ email, password });
-
+      let data: LoginResponse;
+      if (type === 1) {
+        data = await loginInstitution({ email, password });
+      } else if (type === 2) {
+        data = await loginProfessor({ email, password });
+      } else {
+        data = await loginStudent({ email, password });
+      }
       if (data.success) {
         navigate('/home');
       } else {
@@ -86,6 +105,20 @@ export function Form() {
         mt: 1,
       }}
     >
+      <FormControl fullWidth>
+        <InputLabel id="type-login-label">Fazer login como</InputLabel>
+        <Select
+          labelId="type-login-label"
+          id="type-login-selector"
+          value={type}
+          label="Fazer login como"
+          onChange={handleTypeChange}
+        >
+          <MenuItem value={1}>Instituição</MenuItem>
+          <MenuItem value={2}>Professor</MenuItem>
+          <MenuItem value={3}>Aluno</MenuItem>
+        </Select>
+      </FormControl>
       <TextField
         error={emailError}
         helperText={emailError ? 'Email inválido' : ''}
@@ -129,9 +162,11 @@ export function Form() {
           <Anchor to="/home">Esqueceu a senha?</Anchor>
         </Grid>
         <Grid item>
-          <Anchor to="/register">
-            É uma nova instituição? Cadastre-se aqui
-          </Anchor>
+          {type === 1 && (
+            <Anchor to="/register">
+              É uma nova instituição? Cadastre-se aqui
+            </Anchor>
+          )}
         </Grid>
       </Grid>
       <Copyright sx={{ mt: 5 }} />
