@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { Copyright } from '../Copyright/Copyright';
 import Grid from '@mui/material/Grid';
-import { login, LoginResponse } from '../../../services/login/index';
+import { loginInstitution, LoginResponse } from '../../../services/login/index';
 import Anchor from '../../Anchor/Anchor';
 
 export function Form() {
@@ -65,7 +65,7 @@ export function Form() {
 
   const handleLogin = async (email: string, password: string) => {
     try {
-      const data: LoginResponse = await login({ email, password });
+      const data: LoginResponse = await loginInstitution({ email, password });
 
       if (data.success) {
         navigate('/home');

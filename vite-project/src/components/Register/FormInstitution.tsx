@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { addToast } from '../../components/Toast/toast';
 import { InputAdornment } from '@mui/material';
-import { register, RegisterResponse } from '../../services/register';
+import { registerInstitution, RegisterResponse } from '../../services/register';
 import Anchor from '../Anchor/Anchor';
 
 export default function FormInstitution() {
@@ -105,7 +105,7 @@ export default function FormInstitution() {
     cnpj: string,
   ) => {
     try {
-      const data: RegisterResponse = await register({
+      const data: RegisterResponse = await registerInstitution({
         name,
         email,
         password,
