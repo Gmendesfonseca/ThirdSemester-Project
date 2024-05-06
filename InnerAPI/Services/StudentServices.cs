@@ -5,9 +5,17 @@ using InnerAPI.Utils;
 
 namespace InnerAPI.Services
 {
-    public class StudentServices
+    public class StudentServices : UserServices, ICRUD
     {
-        public Student register(RegisterStudentDto register)
+        List<Institution> institutions;
+        List<Student> students;
+
+        public StudentServices(SharedService _sharedService) { 
+            institutions = _sharedService.Institutions;
+            students = _sharedService.Students;
+        }
+
+        public Student Register(RegisterStudentDto register)
         {
             var domain = register.Email.Split('@')[1]; // Pega o domínio do email
             // Encontra a instituição correta pelo ID
@@ -26,21 +34,20 @@ namespace InnerAPI.Services
 
             // Cria e adiciona o novo estudante à instituição correta
             uint id = (uint)institution.Students.Count + 1;
-            Student newStudent = new Student(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.Curso, register.Periodo, register.pontuacao);
+            Student newStudent = new Student(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.Curso, register.Periodo, register.Pontuacao);
             institution.Students.Add(newStudent);
-
-            // Atualiza o currentUser, se necessário
-            currentUser = (int)id;
 
             return newStudent;
         }
 
-        public Student login(LoginDto user)
+        public Student Login(LoginDto user)
         {
             string email = user.Email;
             string password = user.Password;
+            string domain = email.Split('@')[1];
 
-            Student student = institutions.SelectMany(i => i.Students).FirstOrDefault(s => s.Email == user.Email);
+            var institution = institutions.FirstOrDefault(i => i.Domain == domain);
+            Student student = institution.Students.FirstOrDefault(s => s.Email == email && s.Password == password);
 
             Email Email = new Email();
             if (!Email.IsValid(email))
@@ -52,13 +59,45 @@ namespace InnerAPI.Services
             if (student.Password != password)
                 throw new ArgumentException("Senha incorreta.");
 
-            currentUser = (int)student.Id;
+            return student;
+        }
+
+        public Student Update(int id, Student register)
+        {
+            Student student = institutions.SelectMany(i => i.Students).FirstOrDefault(s => s.Id == id);
+            if (student == null)
+            {
+                throw new ArgumentException("Usuário não encontrado.");
+            }
+
+            student.Name = register.Name;
+            student.Email = register.Email;
+            student.Password = register.Password;
+            student.Matricula = register.Matricula;
+            student.CPF = register.CPF;
+            student.BirthDate = register.BirthDate;
+            student.Institution = register.Institution;
+            student.Curso = register.Curso;
+            student.Periodo = register.Periodo;
+            student.Pontuacao = register.Pontuacao;
 
             return student;
         }
 
-        public void delete(int id)
-        { institutions.SelectMany(i => i.Students).ToList().RemoveAll(usuario => usuario.Id == id); }
+        public bool Delete(int id)
+        {
+            institutions.SelectMany(i => i.Students).ToList().RemoveAll(usuario => usuario.Id == id);
+            return true;
+        }
 
+        public List<Student> GetStudents()
+        {
+            return students;
+        }
+
+        public void Seguir()
+        {
+
+        }
     }
 }

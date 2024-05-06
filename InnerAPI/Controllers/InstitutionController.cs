@@ -1,4 +1,5 @@
-﻿using InnerAPI.Dtos.Institution;
+﻿using InnerAPI.Dtos;
+using InnerAPI.Dtos.Institution;
 using InnerAPI.Models;
 using InnerAPI.Services;
 using InnerAPI.Utils;
@@ -6,86 +7,92 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InnerAPI.Controllers
 {
-    public class InstitutionController : ControllerBase
+    public static class InstitutionController
     {
-        // GET /institution
-        // GET /institution/{id}
-        // POST /institution
-        // PUT /institution
-        //DELETE /institution
-
-
         const string GetNameInstitutionEndpoint = "GetInstitution";
         public static RouteGroupBuilder MapInstitutionEndpoint(this WebApplication app, SharedService sharedService)
         {
             var group = app.MapGroup("institution").WithParameterValidation();
-
-            Institution institution = new();
-            //GET /institution
-            //group.MapGet("/", () => instituicoes);
+            List<Institution> institutions = sharedService.Institutions;
+            InstitutionServices institutionServices = new InstitutionServices(sharedService);
 
             //GET /institution/{id}
             group.MapGet("/{id}", (uint id) =>
             {
-                Institution? instituicao = instituicoes.Find(instituicao => instituicao.IdInstituicao == id);
-                return instituicao is null ? Results.NotFound() : Results.Ok(instituicao);
+                Institution? institution = institutions.Find(institution => institution.Id == id);
+                return institution is null ? Results.NotFound() : Results.Ok(institution);
             }).WithName(GetNameInstitutionEndpoint);
 
-            // POST /institution
-            group.MapPost("/", (RegisterInstitutionDto novoUsuario) =>
+            //GET /institution/{id}/students
+            group.MapGet("/{id}/students", (uint id) =>
             {
-
-                userController.register(novoUsuario);
-                Institution institution = instituicoes.Find(instituicoes => instituicoes._email == novoUsuario.Email);
-
-                return Results.CreatedAtRoute(GetNameInstitutionEndpoint, new { id = institution.IdInstituicao }, institution);
+                Institution? institution = institutions.Find(institution => institution.Id == id);
+                if (institution == null)
+                {
+                    return Results.BadRequest(new { success = false, message = "Institution not found" });
+                }
+                return Results.Ok(institution.Students);
             });
 
-            // PUT /institution
+            //GET /institution/{id}/professors
+            group.MapGet("/{id}/professors", (uint id) =>
+            {
+                Institution? institution = institutions.Find(institution => institution.Id == id);
+                if (institution == null)
+                {
+                    return Results.BadRequest(new { success = false, message = "Institution not found" });
+                }
+                return Results.Ok(institution.Professors);
+            });
+
+            // POST /institution
+            group.MapPost("", (RegisterInstitutionDto newInstitution) =>
+            {
+                var exists = institutions.Exists(r => r.Name == newInstitution.Name || r.Email == newInstitution.Email || r.CNPJ == newInstitution.Cnpj || r.Domain == newInstitution.Domain);
+                if (!exists)
+                {
+                    var createdInstitution = institutionServices.Register(newInstitution);
+                    return Results.CreatedAtRoute(GetNameInstitutionEndpoint, new { id = createdInstitution.Id }, createdInstitution);
+                }
+                else
+                {
+                    return Results.BadRequest(new { success = false, message = "Name, Email, CNPJ, or Domain already used" });
+                }
+            });
+
+            // PUT /institution/{id}
             group.MapPut("/{id}", (uint id, UpdateInstitutionDto updateInstitution) =>
             {
-                var index = instituicoes.FindIndex(institution => institution.IdInstituicao == id);
+                var index = institutions.FindIndex(institution => institution.Id == id);
 
                 if (index == -1)
                 {
                     return Results.NotFound();
                 }
 
-                instituicoes[index] = new Institution(
-                    (int)id,
-                    updateInstitution.Nome,
+                institutions[index] = new Institution(
+                    id,
+                    updateInstitution.Name,
                     updateInstitution.Email,
-                    updateInstitution.Senha,
+                    updateInstitution.Password,
                     updateInstitution.Domain,
                     updateInstitution.Cnpj);
 
                 return Results.NoContent();
             });
 
-            // DELETE /usuarios
+            // DELETE /institution/{id}
             group.MapDelete("/{id}", (int id) =>
             {
-                userController.delete(id);
-                institutionController.delete(id);
+                bool deleted = institutionServices.Delete(id); // Corrigido para usar um método que retorna um booleano
+                if (!deleted)
+                {
+                    return Results.NotFound();
+                }
                 return Results.NoContent();
             });
 
             return group;
-        }
-
-        public List<Institution> GetInstitution()
-        {
-            return this.institutions;
-        }
-
-        public void delete(int id)
-        {
-            var index = institutions.FindIndex(institution => institution.Id == id);
-            if (index == -1)
-            {
-                throw new ArgumentException("Institution not found");
-            }
-            institutions.RemoveAt(index);
         }
     }
 }

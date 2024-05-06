@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace InnerAPI.Dtos.User
+namespace InnerAPI.Dtos.Student
 {
-    public record class UpdateUserDto(
+    public class UpdateStudentDto
+    (
         [Required][StringLength(100)] string Nome,
         [Required][StringLength(60)] string Email,
-        [Required][MinLength(8)][MaxLength(20)] string Senha);
+        [Required][MinLength(8)][MaxLength(20)] string Senha
+    );
 }

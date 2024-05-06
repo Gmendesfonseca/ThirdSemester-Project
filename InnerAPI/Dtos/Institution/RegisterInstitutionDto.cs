@@ -1,13 +1,31 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using InnerAPI.Dtos.Courses;
+using InnerAPI.Dtos.Groups;
+using InnerAPI.Dtos.Notification;
+using InnerAPI.Dtos.Post;
+using InnerAPI.Dtos.Student;
+using InnerAPI.Dtos.Professor;
+using System.ComponentModel.DataAnnotations;
 
 namespace InnerAPI.Dtos.Institution
 {
     public record class RegisterInstitutionDto
     (
+        [Required] uint Id,
         [Required][StringLength(100)] string Name,
-        [Required][StringLength(60)]string Email,
+        [Required][StringLength(60)][EmailAddress] string Email,
         [Required][MinLength(8)][MaxLength(20)] string Password,
-        [Required][MinLength(8)][MaxLength(20)]string Domain,
-        [Required][MinLength(14)][MaxLength(20)] string Cnpj,
-        [Required][MaxLength(1)] int Tipo);
+        [Required][StringLength(50)] string Domain,
+        [Required][StringLength(14)] string Cnpj,
+        [StringLength(100)] string? LocalidadeInstituicao = null,
+        DateOnly? DataCriacao = null,
+        List<CourseDto>? Courses = null,
+        List<StudentDto>? Students = null,
+        List<ProfessorDto>? Professors = null
+    )
+    {
+        public bool Status { get; init; }
+        public Stack<NotificationDto> Notifications { get; init; } = new Stack<NotificationDto>();
+        public Stack<PostDto> Postagens { get; init; } = new Stack<PostDto>();
+        public List<GroupsDto> Grupos { get; init; } = new List<GroupsDto>();
+    }
 }

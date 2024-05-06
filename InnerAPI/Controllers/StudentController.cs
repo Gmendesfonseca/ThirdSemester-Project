@@ -1,28 +1,54 @@
 ﻿using InnerAPI.Models;
 using InnerAPI.Services;
+using InnerAPI.Dtos.Login;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InnerAPI.Controllers
 {
-    // GET /student
-    // GET /student/{id}
-    // POST /student
-    // PUT /student
-    //DELETE /student
-    public class StudentController : ControllerBase
+    public static class StudentController
     {
-        List<Student> students;
-        private readonly SharedService _sharedService;
-
-        public StudentController(SharedService sharedService)
+        public static RouteGroupBuilder MapStudentEndpoint(this WebApplication app, SharedService sharedServices)
         {
-            _sharedService = sharedService;
-            students = _sharedService.GetStudent();
-        }
+            StudentServices studentServices = new StudentServices(sharedServices);
+            var group = app.MapGroup("student").WithParameterValidation();
 
-        public List<Student> GetStudents()
-        {
-            return this.students;
+            // GET /student/{id}
+            group.MapGet("{id}", (int id) =>
+            {
+                return Results.Ok(studentServices.GetStudents().FirstOrDefault(s => s.Id == id));
+            });
+
+            // POST /student
+            group.MapPost("", (LoginDto login) =>
+            {
+                Student student = studentServices.Login(login);
+
+                return Results.Created($"/student/{student.Id}", student);
+            });
+
+            // PUT /student/{id}
+            group.MapPut("{id}", (int id, Student updatedStudent) =>
+            {
+                var result = studentServices.Update(id, updatedStudent);
+                if (result == null)
+                {
+                    return Results.NotFound();
+                }
+                return Results.Ok(result);
+            });
+
+            // DELETE /student/{id}
+            group.MapDelete("{id}", (int id) =>
+            {
+                bool deleted = studentServices.Delete(id);
+                if (!deleted)
+                {
+                    return Results.NotFound();
+                }
+                return Results.NoContent();
+            });
+
+            return group;
         }
     }
 }

@@ -1,6 +1,11 @@
 ﻿namespace InnerAPI.Dtos.Courses
 {
-    public class CourseDto
-    {
-    }
+    public record class CourseDto
+    (
+        int id,
+        string name,
+        string description,
+        string workload,
+        string period
+    )
 }

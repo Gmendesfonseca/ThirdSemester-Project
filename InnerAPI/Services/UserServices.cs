@@ -4,12 +4,14 @@
     {
         private string _email;
         private string _password;
+
         public bool checkNotification(int item)
         { return true; }
+
         public bool checkEmail(string email) { return email == this._email; }
+
         public bool checkPassword(string password) { return password == this._password; }
 
-        #region "Métodos"
         public void CurtirPostagem()
         {
 
@@ -44,6 +46,5 @@
         {
 
         }
-        #endregion
     }
 }

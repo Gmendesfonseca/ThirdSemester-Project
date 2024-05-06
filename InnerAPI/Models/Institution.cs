@@ -117,32 +117,5 @@ namespace InnerAPI.Models
             professors.Remove(professor);
         }
         #endregion
-
-        #region "Métodos"
-        public void AtribuirHierarquia()
-        {
-
-        }
-
-        public void CederAcesso()
-        {
-
-        }
-
-        public void SuspenderAcesso()
-        {
-
-        } 
-
-        public void CadastrarAluno()
-        {
-
-        }
-
-        public void CriarGrupo()
-        {
-
-        }
-        #endregion
     }
 }

@@ -2,7 +2,6 @@
 using InnerAPI.Dtos.Groups;
 using InnerAPI.Dtos.Notification;
 using InnerAPI.Dtos.Post;
-using InnerAPI.Dtos.User;
 using InnerAPI.Models;
 
 namespace InnerAPI.Services
@@ -11,35 +10,20 @@ namespace InnerAPI.Services
     {
         private List<FollowerDto> friendships = new List<FollowerDto>();
         private Stack<PostDto> posts = new Stack<PostDto>();
-        private static readonly List<Institution> institutions = new List<Institution>();
-        private static readonly List<Student> students = new List<Student>();
-        private static readonly List<Professor> professors = new List<Professor>();
+        private static List<Institution> institutions = new List<Institution>();
+        private static List<Student> students = new List<Student>();
+        private static List<Professor> professors = new List<Professor>();
 
-        public List<Institution> GetInstitution()
-        {
-            return institutions;
-        }
-        public void AddInstitution(Institution institution)
-        {
-            institutions.Add(institution);
-        }
+        public List<Institution> Institutions { get { return institutions; } }
+        public void AddInstitution(Institution institution){ institutions.Add(institution); }
+        
+        public List<Professor> Professors{ get { return professors; } }
+        public void AddProfessor(Professor professor){ professors.Add(professor); }
 
-        public void AddProfessor(Professor professor)
-        {
-            professors.Add(professor);
-        }
-        public List<Professor> GetProfessor()
-        {
-            return professors;
-        }
+        public List<Student> Students{get { return students; } }
+        public void AddStudent(Student student){ students.Add(student); }
 
-        public void AddStudent(Student student)
-        {
-            students.Add(student);
-        }
-        public List<Student> GetStudent()
-        {
-            return students;
-        }
+        public Stack<PostDto> Posts { get { return posts; } }
+        public void AddPost(PostDto post) { posts.Push(post); }
     }
 }

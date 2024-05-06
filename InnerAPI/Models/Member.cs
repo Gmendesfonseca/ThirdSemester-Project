@@ -22,7 +22,7 @@
             set { _matrícula = value; }
         }
 
-        public string Cpf
+        public string CPF
         {
             get { return _cpf; }
             set { _cpf = value; }
@@ -34,14 +34,11 @@
             set { _birthDate = value; }
         }
 
-        public string Instituicao
+        public string Institution
         {
             get { return _instituicao; }
             set { _instituicao = value; }
         }
-        #endregion
-
-        #region "Métodos"
         #endregion
     }
 }

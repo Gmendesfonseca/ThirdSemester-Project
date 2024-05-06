@@ -19,9 +19,9 @@
             this.Email = email;
             this.Password = password;
             this.Matricula = matricula;
-            this.Cpf = cpf;
+            this.CPF = cpf;
             this.BirthDate = birthDate;
-            this.Instituicao = instituicao;
+            this.Institution = instituicao;
             this._areaLecionada = areaLecionada;
             this._formação = formacao;
         }
@@ -38,20 +38,6 @@
         {
             get { return _formação;}
             set { _formação = value;}
-        }
-
-        #endregion
-
-        #region "Métodos"
-
-        public void Editar()
-        {
-
-        }
-
-        public void Remover()
-        {
-
         }
 
         #endregion

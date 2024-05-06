@@ -1,4 +1,6 @@
-﻿namespace InnerAPI.Models
+﻿using InnerAPI.Dtos.Aluno;
+
+namespace InnerAPI.Models
 {
     public class Student : Member
     {
@@ -20,9 +22,9 @@
             this.Email = email;
             this.Password = password;
             this.Matricula = matricula;
-            this.Cpf = cpf;
-            this.DataNascimento = birthDate;
-            this.Instituicao = instituicao;
+            this.CPF = cpf;
+            this.BirthDate = birthDate;
+            this.Institution = instituicao;
             this._curso = curso;
             this._periodo = periodo;
             this.Pontuacao = pontuacao;
@@ -30,10 +32,10 @@
         #endregion
 
         #region "Propriedades"
-        public uint IdAluno
-        { 
-            get { return _idStudent; }
-            set { _idStudent = value; }
+        public string Curso
+        {
+            get { return _curso; }
+            set { _curso = value; }
         }
 
         public string Periodo
@@ -42,47 +44,11 @@
             set { _periodo = value; }
         }
 
-        public string Turno
-        {
-            get { return _turno; }
-            set { _turno = value; }
-        }
-
-        public string CPF
-        {
-            get { return cpf; }
-            set { cpf = value; }
-        }
-        public DateOnly DataNascimento
-        {
-            get { return BirthDate; }
-            set { BirthDate = value; }
-        }
-        public string Instituicao
-        {
-            get { return _instituicao; }
-            set { _instituicao = value; }
-        }
         public uint Pontuacao
         {
             get { return _pontuacao; }
             set { _pontuacao = value; }
         }
-
-        #endregion
-
-        #region "Métodos"
-
-        public void Seguir()
-        {
-
-        }
-
-        public void AceitarConvite() 
-        {
-            
-        }//Revisar
-
         #endregion
     }
 }
