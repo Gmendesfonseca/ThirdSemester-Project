@@ -36,6 +36,7 @@ namespace InnerAPI.Services
             uint id = (uint)institution.Students.Count + 1;
             Student newStudent = new Student(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.Curso, register.Periodo, register.Pontuacao);
             institution.Students.Add(newStudent);
+            students.Add(newStudent);
 
             return newStudent;
         }

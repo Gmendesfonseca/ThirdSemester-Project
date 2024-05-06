@@ -36,6 +36,7 @@ namespace InnerAPI.Services
             uint id = (uint)institution.Professors.Count + 1;
             Professor newProfessor = new Professor(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.AreaLecionada, register.Formacao);
             institution.Professors.Add(newProfessor);
+            professors.Add(newProfessor);
 
             return newProfessor;
         }
