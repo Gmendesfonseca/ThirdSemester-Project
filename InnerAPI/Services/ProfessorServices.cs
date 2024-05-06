@@ -17,24 +17,25 @@ namespace InnerAPI.Services
 
         public Professor Register(RegisterProfessorDto register)
         {
-            uint id = (uint)professors.Count + 1;
-            string name = register.Name;
-            string email = register.Email;
-            string password = register.Password;
-            string cpf = register.Cpf;
-            string domain = email.Split('@')[1];
+            var domain = register.Email.Split('@')[1]; // Pega o domínio do email
+                                                       // Encontra a instituição correta pelo domínio
             var institution = institutions.FirstOrDefault(i => i.Domain == domain);
-            int type = 2;
+            if (institution == null)
+            {
+                throw new ArgumentException("Instituição não encontrada.");
+            }
 
-            var existingUser = professors.Exists(r => r.Name == register.Name || r.Email == register.Email || r.CPF == register.Cpf);
-            if (existingUser)
+            // Verifica se o professor já existe
+            var existingProfessor = institution.Professors.Exists(r => r.Matricula == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
+            if (existingProfessor)
             {
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            Professor newProfessor = new Professor();
-
-            professors.Add(newProfessor);
+            // Cria e adiciona o novo professor à instituição correta
+            uint id = (uint)institution.Professors.Count + 1;
+            Professor newProfessor = new Professor(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.AreaLecionada, register.Formacao);
+            institution.Professors.Add(newProfessor);
 
             return newProfessor;
         }
@@ -43,8 +44,15 @@ namespace InnerAPI.Services
         {
             string email = user.Email;
             string password = user.Password;
-            
-            Professor professor = professors.FirstOrDefault(p => p.Email == email && p.Password == password);
+            string domain = email.Split('@')[1];
+
+            var institution = institutions.FirstOrDefault(i => i.Domain == domain);
+            if (institution == null)
+            {
+                throw new ArgumentException("Instituição não encontrada.");
+            }
+
+            Professor professor = institution.Professors.FirstOrDefault(p => p.Email == email && p.Password == password);
 
             Email Email = new Email();
             if (!Email.IsValid(email))
