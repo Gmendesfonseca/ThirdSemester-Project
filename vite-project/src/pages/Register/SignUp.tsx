@@ -1,4 +1,3 @@
-import React from 'react';
 //import { useForm } from 'react-hook-form';
 import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { Container, ThemeProvider } from '@mui/material';
 import { darkTheme } from '../../Theme';
 import { Copyright } from '../../components/Login/Copyright/Copyright';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import logo from "../../assets/IL.png"
 import FormInstitution from '../../components/Register/FormInstitution';
 
 export default function SignInSide() {
@@ -56,7 +55,7 @@ export default function SignInSide() {
         >
           <Box
             sx={{
-              my: { sm: 6, md: 6, lg: 24 },
+              my: { sm: 4, md: 4, xl: 24 },
               mx: 4,
               display: "flex",
               flexDirection: "column",
@@ -73,15 +72,24 @@ export default function SignInSide() {
                   alignItems: "center",
                 }}
               >
-                <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                  <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5" marginBottom={1}>
-                  Sign up
+                <Avatar
+              sx={{
+                mt:'20px',
+                width: "100px",
+                height: "100px",
+                borderRadius: "0px",
+                position: "relative",
+                bottom: "1rem",
+              }}
+            >
+              <img src={logo} alt="Logo" />
+            </Avatar>
+                <Typography component="h1" variant="h5" sx={{mb: {sm:4, lg:0}}}>
+                  Cadastre-se
                 </Typography>
                 <FormInstitution />
               </Box>
-              <Copyright sx={{ mt: 5 }} />
+              <Copyright sx={{ mt: 2   }} />
             </Container>
           </Box>
         </Grid>

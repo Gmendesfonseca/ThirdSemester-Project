@@ -5,7 +5,6 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { addToast } from "../../components/Toast/toast";
-import { InputAdornment } from "@mui/material";
 import { registerInstitution, RegisterResponse } from "../../services/register";
 import Anchor from "../Anchor/Anchor";
 
@@ -130,7 +129,7 @@ export default function FormInstitution() {
       noValidate
       onSubmit={handleSubmit}
       sx={{
-        mt: {sm: 0, md: 0, lg: 6},
+        mt: {sm: 0, md: 0, xl: 6},
         display: "flex",
         flexDirection: "column",
         maxHeight: "100vh",
@@ -148,8 +147,8 @@ export default function FormInstitution() {
             label="Nome da Instituição"
             autoFocus
             sx={(theme) => ({
-              [theme.breakpoints.down("md")]: {
-                "& .MuiInputBase-root": { height: 50 },
+              [theme.breakpoints.down("xl")]: {
+                "& .MuiInputBase-root": { height: 40 },
               },
             })}
           />
@@ -166,8 +165,8 @@ export default function FormInstitution() {
             autoComplete="cnpj"
             onChange={handleCnpjChange}
             sx={(theme) => ({
-              [theme.breakpoints.down("md")]: {
-                "& .MuiInputBase-root": { height: 50 },
+              [theme.breakpoints.down("xl")]: {
+                "& .MuiInputBase-root": { height: 40 },
               },
             })}
           />
@@ -184,8 +183,8 @@ export default function FormInstitution() {
             autoComplete="domain"
             onChange={handleDomainChange}
             sx={(theme) => ({
-              [theme.breakpoints.down("md")]: {
-                "& .MuiInputBase-root": { height: 50 },
+              [theme.breakpoints.down("xl")]: {
+                "& .MuiInputBase-root": { height: 40 },
               },
             })}
           />
@@ -202,8 +201,8 @@ export default function FormInstitution() {
             autoComplete="email"
             onChange={handleEmailChange}
             sx={(theme) => ({
-              [theme.breakpoints.down("md")]: {
-                "& .MuiInputBase-root": { height: 50 },
+              [theme.breakpoints.down("xl")]: {
+                "& .MuiInputBase-root": { height: 40 },
               },
             })}
           />
@@ -221,8 +220,8 @@ export default function FormInstitution() {
             autoComplete="new-password"
             onChange={handlePasswordChange}
             sx={(theme) => ({
-              [theme.breakpoints.down("md")]: {
-                "& .MuiInputBase-root": { height: 50 },
+              [theme.breakpoints.down("xl")]: {
+                "& .MuiInputBase-root": { height: 40 },
               },
             })}
           />

@@ -1,4 +1,3 @@
-import React from "react";
 import Avatar from "@mui/material/Avatar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
@@ -16,7 +15,7 @@ export default function SignInSide() {
       <Grid
         container
         component="main"
-        sx={{ height: "100vh" }}
+        sx={{ height: "100dvh" }}
         overflow={"hidden"}
       >
         <CssBaseline />
@@ -54,8 +53,8 @@ export default function SignInSide() {
         >
           <Box
             sx={{
-              my: 8,
-              mx: { sm: 6, md: 6, lg: 24 },
+              my: { sm: 4, md: 4, xl: 24 },
+              mx: 8,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -67,12 +66,12 @@ export default function SignInSide() {
                 height: "100px",
                 borderRadius: "0px",
                 position: "relative",
-                bottom: "2rem",
+                bottom: "1rem",
               }}
             >
               <img src={logo} alt="Logo" />
             </Avatar>
-            <Typography component="h1" variant="h5" fontFamily={""}>
+            <Typography component="h1" variant="h5" fontFamily={""} mb={4}>
               Bem-vindo ao InnerLink!
             </Typography>
             <Form />
