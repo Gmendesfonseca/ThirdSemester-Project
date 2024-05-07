@@ -2,7 +2,7 @@ import { Navigate, RouteObject } from 'react-router-dom';
 import { Home } from '../pages/Home/HomeView';
 import { Chat } from '../pages/Chat/ChatView';
 import SignInSide from '../pages/Login/SignInView';
-import { Profile } from '../pages/Profile/ProfileView';
+import  Profile  from '../pages/Profile/ProfileView';
 //import { Register } from '../pages/Register/RegisterView';
 import { Settings } from '../pages/Settings/SettingsView';
 import SignUp from '../pages/Register/SignUp';
