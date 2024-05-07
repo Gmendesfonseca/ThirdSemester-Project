@@ -15,23 +15,29 @@ import FormInstitution from '../../components/Register/FormInstitution';
 export default function SignInSide() {
   return (
     <ThemeProvider theme={darkTheme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid
+        container
+        component="main"
+        sx={{ height: "100vh" }}
+        overflow={"hidden"}
+      >
         <CssBaseline />
         <Grid
           item
           xs={false}
           sm={4}
-          md={7}
+          md={5}
+          lg={7}
           sx={{
             backgroundImage:
-              'url(https://source.unsplash.com/random?wallpapers)',
-            backgroundRepeat: 'no-repeat',
+              "url(https://source.unsplash.com/random?wallpapers)",
+            backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
-              t.palette.mode === 'light'
+              t.palette.mode === "light"
                 ? t.palette.grey[50]
                 : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
         <Grid
@@ -41,7 +47,8 @@ export default function SignInSide() {
           item
           xs={12}
           sm={8}
-          md={5}
+          md={7}
+          lg={5}
           sx={{}}
           component={Paper}
           elevation={6}
@@ -49,27 +56,27 @@ export default function SignInSide() {
         >
           <Box
             sx={{
-              my: 8,
+              my: { sm: 6, md: 6, lg: 24 },
               mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
             <Container component="main" maxWidth="xs">
               <CssBaseline />
               <Box
                 sx={{
-                  marginTop: 8,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
+                  marginTop: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
                   <LockOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h5" marginBottom={1}>
                   Sign up
                 </Typography>
                 <FormInstitution />
