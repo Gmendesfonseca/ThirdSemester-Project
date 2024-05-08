@@ -3,12 +3,6 @@ export type LoginParams = {
   password: string;
 };
 
-export type LoginType = {
-  id: string;
-  name: string;
-  email: string;
-};
-
 export type LoginError = {
   message: string;
   success: boolean;
