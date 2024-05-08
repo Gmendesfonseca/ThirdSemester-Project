@@ -1,4 +1,3 @@
-import React from 'react';
 //import { useForm } from 'react-hook-form';
 import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,29 +8,35 @@ import Typography from '@mui/material/Typography';
 import { Container, ThemeProvider } from '@mui/material';
 import { darkTheme } from '../../Theme';
 import { Copyright } from '../../components/Login/Copyright/Copyright';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import logo from "../../assets/IL.png"
 import FormInstitution from '../../components/Register/FormInstitution';
 
 export default function SignInSide() {
   return (
     <ThemeProvider theme={darkTheme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid
+        container
+        component="main"
+        sx={{ height: "100vh" }}
+        overflow={"hidden"}
+      >
         <CssBaseline />
         <Grid
           item
           xs={false}
           sm={4}
-          md={7}
+          md={5}
+          lg={7}
           sx={{
             backgroundImage:
-              'url(https://source.unsplash.com/random?wallpapers)',
-            backgroundRepeat: 'no-repeat',
+              "url(https://source.unsplash.com/random?wallpapers)",
+            backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
-              t.palette.mode === 'light'
+              t.palette.mode === "light"
                 ? t.palette.grey[50]
                 : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
         <Grid
@@ -41,7 +46,8 @@ export default function SignInSide() {
           item
           xs={12}
           sm={8}
-          md={5}
+          md={7}
+          lg={5}
           sx={{}}
           component={Paper}
           elevation={6}
@@ -49,32 +55,41 @@ export default function SignInSide() {
         >
           <Box
             sx={{
-              my: 8,
+              my: { sm: 4, md: 4, xl: 24 },
               mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
             <Container component="main" maxWidth="xs">
               <CssBaseline />
               <Box
                 sx={{
-                  marginTop: 8,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
+                  marginTop: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                  <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                  Sign up
+                <Avatar
+              sx={{
+                mt:'20px',
+                width: "100px",
+                height: "100px",
+                borderRadius: "0px",
+                position: "relative",
+                bottom: "1rem",
+              }}
+            >
+              <img src={logo} alt="Logo" />
+            </Avatar>
+                <Typography component="h1" variant="h5" sx={{mb: {sm:4, lg:0}}}>
+                  Cadastre-se
                 </Typography>
                 <FormInstitution />
               </Box>
-              <Copyright sx={{ mt: 5 }} />
+              <Copyright sx={{ mt: 2   }} />
             </Container>
           </Box>
         </Grid>
