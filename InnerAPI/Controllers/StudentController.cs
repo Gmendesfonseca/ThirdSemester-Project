@@ -20,15 +20,15 @@ namespace InnerAPI.Controllers
             });
 
             // GET /student/{id}/posts
-            group.MapGet("{id}/posts", (int id) =>
-            {
-                Student student = studentServices.GetStudents().FirstOrDefault(s => s.Id == id);
-                if (student == null)
-                {
-                    return Results.NotFound();
-                }
-                return Results.Ok(student.Posts);
-            });
+            //group.MapGet("{id}/posts", (int id) =>
+            //{
+            //    Student student = studentServices.GetStudents().FirstOrDefault(s => s.Id == id);
+            //    if (student == null)
+            //    {
+            //        return Results.NotFound();
+            //    }
+            //    return Results.Ok(student.Posts);
+            //});
 
             // POST /student
             group.MapPost("", (RegisterStudentDto newStudent) =>

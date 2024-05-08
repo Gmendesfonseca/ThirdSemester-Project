@@ -27,7 +27,7 @@ namespace InnerAPI.Controllers
             // PUT /professor
             group.MapPut("", (Professor professor) =>
             {
-                var professorToUpdate = professorServices.GetProfessors().FirstOrDefault(s => s.Id == professor.Id);
+                var professorToUpdate = professorServices.GetProfessors(professor.Email).FirstOrDefault(s => s.Id == professor.Id);
                 professorToUpdate = professor;
                 return Results.Ok(professorToUpdate);
             });

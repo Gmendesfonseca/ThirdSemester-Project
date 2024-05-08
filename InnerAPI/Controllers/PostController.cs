@@ -1,6 +1,6 @@
 ﻿using InnerAPI.Models;
 using InnerAPI.Services;
-using InnerAPI.Dtos.Post
+using InnerAPI.Dtos.Post;
 
 namespace InnerAPI.Controllers
 {
