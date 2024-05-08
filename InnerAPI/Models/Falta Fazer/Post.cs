@@ -1,6 +1,6 @@
 ﻿namespace InnerAPI.Models
 {
-    public class Postagem
+    public class Post
     {
         #region "Declaração de variáveis"
 
@@ -15,37 +15,37 @@
 
         #region "Propriedades"
 
-        public uint IdPostagem
+        public uint Id
         {
             get { return _idPostagem; }
             set { _idPostagem = value;}
         }
 
-        public string TituloPostagem
+        public string Title
         { 
             get { return _tituloPostagem; } 
             set { _tituloPostagem = value; }
         }
 
-        public uint NumeroCurtidas
+        public uint Likes
         {
             get { return _numeroCurtidas;}
             set { _numeroCurtidas = value;}
         }
 
-        public string Comentario
+        public string Coments
         {
             get { return _comentario; }
             set { _comentario = value; }
         }
 
-        public string ConteudoPostagem
+        public string Content
         {
             get { return _conteudoPostagem; }
             set { _conteudoPostagem = value;}
         }
 
-        public DateOnly DataPostagem
+        public DateOnly Date
         {
             get { return _dataPostagem;}
             set { _dataPostagem = value;}

@@ -12,9 +12,9 @@ namespace InnerAPI.Controllers
             var group = app.MapGroup("professor").WithParameterValidation();
 
             // GET /professor/{id}
-            group.MapGet("{id}", (int id) =>
+            group.MapGet("{id}", (int id, string domain) =>
             {
-                return Results.Ok(professorServices.GetProfessors().FirstOrDefault(s => s.Id == id));
+                return Results.Ok(professorServices.GetProfessors(domain).FirstOrDefault(s => s.Id == id));
             });
 
             // POST /professor

@@ -17,15 +17,9 @@ namespace InnerAPI.Dtos.Institution
         [Required][StringLength(50)] string Domain,
         [Required][StringLength(14)] string Cnpj,
         [StringLength(100)] string? LocalidadeInstituicao = null,
-        DateOnly? DataCriacao = null,
-        List<CourseDto>? Courses = null,
-        List<StudentDto>? Students = null,
-        List<ProfessorDto>? Professors = null
-    )
-    {
-        public bool Status { get; init; }
-        public Stack<NotificationDto> Notifications { get; init; } = new Stack<NotificationDto>();
-        public Stack<PostDto> Postagens { get; init; } = new Stack<PostDto>();
-        public List<GroupsDto> Grupos { get; init; } = new List<GroupsDto>();
-    }
+        DateOnly? DataCriacao = null
+        //List<CourseDto>? Courses = null,
+        //List<StudentDto>? Students = null,
+        //List<ProfessorDto>? Professors = null
+    );
 }

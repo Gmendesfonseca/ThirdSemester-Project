@@ -6,7 +6,7 @@ using InnerAPI.Utils;
 
 namespace InnerAPI.Services
 {
-    public class InstitutionServices : UserServices, ICRUD
+    public class InstitutionServices : UserServices
     {
         List<Institution> institutions;
 

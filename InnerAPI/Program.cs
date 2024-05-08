@@ -1,5 +1,6 @@
 using InnerAPI.Controllers;
 using InnerAPI.Services;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,13 +11,13 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins("http://localhost:3000") // Substitua pela origem do seu cliente
+        builder.WithOrigins("http://localhost:3000", "http://localhost:5173") // Adicione aqui as origens do seu cliente
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
     options.AddPolicy("AnotherPolicy", builder =>
     {
-        builder.WithOrigins("http://localhost:5173") // Substitua pela origem do seu cliente
+        builder.WithOrigins("http://localhost:5173") // Adicione aqui as origens do seu cliente
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
@@ -40,6 +41,7 @@ app.MapStudentEndpoint(sharedService);
 app.MapInstitutionEndpoint(sharedService);
 app.MapProfessorEndpoint(sharedService);
 app.MapLoginEndpoint(sharedService);
+app.MapPostEndpoint(sharedService);
 
 // Configura o pipeline de requisições HTTP.
 if (app.Environment.IsDevelopment())
@@ -47,6 +49,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
 
 app.UseHttpsRedirection();
 

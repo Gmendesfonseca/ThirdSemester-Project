@@ -45,6 +45,17 @@ namespace InnerAPI.Controllers
                 return Results.Ok(institution.Professors);
             });
 
+            //GET /institution/{id}/posts
+            group.MapGet("/{id}/posts", (uint id) =>
+            {
+                Institution? institution = institutions.Find(institution => institution.Id == id);
+                if (institution == null)
+                {
+                    return Results.BadRequest(new { success = false, message = "Institution not found" });
+                }
+                return Results.Ok(institution.Posts);
+            });
+
             // POST /institution
             group.MapPost("", (RegisterInstitutionDto newInstitution) =>
             {

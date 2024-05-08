@@ -13,6 +13,7 @@ namespace InnerAPI.Models
         private List<CourseDto> courses; 
         private readonly List<Student> students; 
         private readonly List<Professor> professors;
+        Stack<Post> posts;
         #endregion
 
         #region "Construtores"
@@ -21,6 +22,7 @@ namespace InnerAPI.Models
             List<CourseDto> courses = new List<CourseDto>();
             List<Student> students = new List<Student>();
             List<Professor> professors = new List<Professor>();
+            Stack<Post> posts = new Stack<Post>();
         }
         public Institution(uint id, string name, string email, string password, string cnpj, string domain) 
         {
@@ -30,6 +32,9 @@ namespace InnerAPI.Models
             this.Password = password;
             this.CNPJ = cnpj;
             this.Domain = domain;
+            List<CourseDto> courses = new List<CourseDto>();
+            List<Student> students = new List<Student>();
+            List<Professor> professors = new List<Professor>();
         }
         public Institution(string name, string email, string password, string localidadeInstituicao, DateOnly dataCriacao)
         {
@@ -38,7 +43,6 @@ namespace InnerAPI.Models
             this.Password = password; // Herdado de User
             this._localidadeInstituicao = localidadeInstituicao;
             this._dataCriacao = dataCriacao;
-            // Inicialização das listas para evitar NullReferenceException
             this.courses = new List<CourseDto>();
             this.students = new List<Student>();
             this.professors = new List<Professor>();
@@ -115,6 +119,27 @@ namespace InnerAPI.Models
         public void removeProfessor(Professor professor)
         {
             professors.Remove(professor);
+        }
+
+        public Stack<Post> Posts { 
+            get { 
+                List<Post> listPosts = new List<Post>();
+                for (int i = 0; i < posts.Count; i++)
+                {
+                    listPosts.Add(posts.Pop());
+                }
+                return posts; 
+            }
+        }
+
+        public void addPost(Post post)
+        {
+            posts.Push(post);
+        }
+
+        public void removePost(Post post)
+        {
+            posts.Pop();
         }
         #endregion
     }

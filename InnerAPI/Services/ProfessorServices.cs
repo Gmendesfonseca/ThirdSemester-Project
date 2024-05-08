@@ -5,35 +5,35 @@ using InnerAPI.Utils;
 
 namespace InnerAPI.Services
 {
-    public class ProfessorServices
+    public class ProfessorServices : UserServices
     {
         List<Professor> professors;
         List<Institution> institutions;
         public ProfessorServices(SharedService _sharedService)
         {
-            professors = _sharedService.Professors;
             institutions = _sharedService.Institutions;
         }
 
         public Professor Register(RegisterProfessorDto register)
         {
-            var domain = register.Email.Split('@')[1]; // Pega o domínio do email
-                                                       // Encontra a instituição correta pelo domínio
+            var domain = register.Email.Split('@')[1]; 
+
             var institution = institutions.FirstOrDefault(i => i.Domain == domain);
+            professors = institution.Professors;
             if (institution == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
             }
 
             // Verifica se o professor já existe
-            var existingProfessor = institution.Professors.Exists(r => r.Matricula == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
+            var existingProfessor = professors.Exists(r => r.Matricula == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
             if (existingProfessor)
             {
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
             // Cria e adiciona o novo professor à instituição correta
-            uint id = (uint)institution.Professors.Count + 1;
+            uint id = (uint)professors.Count + 1;
             Professor newProfessor = new Professor(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.AreaLecionada, register.Formacao);
             institution.Professors.Add(newProfessor);
             professors.Add(newProfessor);
@@ -87,8 +87,9 @@ namespace InnerAPI.Services
         public bool Delete(int id)
         { institutions.SelectMany(i => i.Professors).ToList().RemoveAll(usuario => usuario.Id == id); return true; }
 
-        public List<Professor> GetProfessors()
+        public List<Professor> GetProfessors(string domain)
         {
+            professors = institutions.FirstOrDefault(i => i.Domain == domain).Professors;
             return professors;
         }
 

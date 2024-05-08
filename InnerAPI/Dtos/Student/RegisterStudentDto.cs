@@ -18,12 +18,6 @@ namespace InnerAPI.Dtos.Aluno
         [Required][StringLength(20)] string Matricula,
         [Required] DateOnly BirthDate,
         [Required][StringLength(100)] string Instituicao
-    )
-    {
-        public bool Status { get; init; }
-        public Stack<NotificationDto> Notifications { get; init; } = new Stack<NotificationDto>();
-        public Stack<PostDto> Postagens { get; init; } = new Stack<PostDto>();
-        public List<GroupsDto> Grupos { get; init; } = new List<GroupsDto>();
-    }
+    );
 }
 
