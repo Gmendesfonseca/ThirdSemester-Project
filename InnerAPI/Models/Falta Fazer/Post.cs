@@ -10,7 +10,18 @@
         private string _comentario; //Criar uma lista
         private string _conteudoPostagem; //Será informado o endereço do arquivo a ser postado - Criar Lista
         private DateOnly _dataPostagem;
+        private uint _institutionId;
 
+        #endregion
+
+        #region "Construtores"
+        public Post(uint idPostagem, string tituloPostagem, string conteudoPostagem, uint institutionId)
+        {
+            _idPostagem = idPostagem;
+            _tituloPostagem = tituloPostagem;
+            _conteudoPostagem = conteudoPostagem;
+            _institutionId = institutionId;
+        }
         #endregion
 
         #region "Propriedades"
@@ -51,6 +62,11 @@
             set { _dataPostagem = value;}
         }
 
+        public uint InstitutionId 
+        {
+            get { return _institutionId; }
+            set { _institutionId = value; }
+        }
         #endregion
 
         #region "Metodos"

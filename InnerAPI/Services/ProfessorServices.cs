@@ -87,8 +87,9 @@ namespace InnerAPI.Services
         public bool Delete(int id)
         { institutions.SelectMany(i => i.Professors).ToList().RemoveAll(usuario => usuario.Id == id); return true; }
 
-        public List<Professor> GetProfessors(string domain)
+        public List<Professor> GetProfessors(string demail)
         {
+            var domain = demail.Split('@')[1];
             professors = institutions.FirstOrDefault(i => i.Domain == domain).Professors;
             return professors;
         }
