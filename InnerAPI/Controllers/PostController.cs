@@ -10,6 +10,12 @@ namespace InnerAPI.Controllers
             PostServices postServices = new PostServices(sharedServices);
             var group = app.MapGroup("post").WithParameterValidation();
 
+            //GET /post
+            group.MapGet("", (uint id) =>
+            {
+                return Results.Ok(sharedServices.Institutions.Count > id ? sharedServices.Institutions[(int)id].Posts : null);
+            });
+
             // GET /post/{id}
             group.MapGet("{id}", (int id) =>
             {
