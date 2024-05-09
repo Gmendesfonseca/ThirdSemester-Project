@@ -39,3 +39,13 @@ export function deletePost(id: number): Promise<void> {
     }
   });
 }
+
+// GET ALL
+export function getAllPosts(): Promise<PostType[]> {
+  return api.get<PostType[]>('/post').then((response) => {
+    if (response.status !== 200) {
+      throw new Error('Error getting posts');
+    }
+    return response.data;
+  });
+}
