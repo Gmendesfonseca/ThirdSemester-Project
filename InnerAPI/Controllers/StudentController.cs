@@ -14,21 +14,10 @@ namespace InnerAPI.Controllers
             var group = app.MapGroup("student").WithParameterValidation();
 
             // GET /student/{id}
-            group.MapGet("{id}", (int id, string domain) =>
+            group.MapGet("/{id}", (int id) =>
             {
-                return Results.Ok(studentServices.GetStudents(domain).FirstOrDefault(s => s.Id == id));
+                return Results.Ok(studentServices.GetStudents().FirstOrDefault(s => s.Id == id));
             });
-
-            // GET /student/{id}/posts
-            //group.MapGet("{id}/posts", (int id) =>
-            //{
-            //    Student student = studentServices.GetStudents().FirstOrDefault(s => s.Id == id);
-            //    if (student == null)
-            //    {
-            //        return Results.NotFound();
-            //    }
-            //    return Results.Ok(student.Posts);
-            //});
 
             // POST /student
             group.MapPost("", (RegisterStudentDto newStudent) =>
@@ -39,7 +28,7 @@ namespace InnerAPI.Controllers
             });
 
             // PUT /student/{id}
-            group.MapPut("{id}", (int id, Student updatedStudent) =>
+            group.MapPut("/{id}", (int id, Student updatedStudent) =>
             {
                 var result = studentServices.Update(id, updatedStudent);
                 if (result == null)
@@ -50,7 +39,7 @@ namespace InnerAPI.Controllers
             });
 
             // DELETE /student/{id}
-            group.MapDelete("{id}", (int id) =>
+            group.MapDelete("/{id}", (int id) =>
             {
                 bool deleted = studentServices.Delete(id);
                 if (!deleted)

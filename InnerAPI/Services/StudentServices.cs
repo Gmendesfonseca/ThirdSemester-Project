@@ -16,9 +16,7 @@ namespace InnerAPI.Services
 
         public Student Register(RegisterStudentDto register)
         {
-            var domain = register.Email.Split('@')[1]; // Pega o domínio do email
-            // Encontra a instituição correta pelo ID
-            var institution = institutions.FirstOrDefault(i => i.Domain == domain);
+            var institution = GetInstitution(register.Email);
             students = institution.Students;
             if (institution == null)
             {
@@ -45,9 +43,8 @@ namespace InnerAPI.Services
         {
             string email = user.Email;
             string password = user.Password;
-            string domain = email.Split('@')[1];
 
-            var institution = institutions.FirstOrDefault(i => i.Domain == domain);
+            var institution = GetInstitution(email);
             students = institution.Students;
             if (institution == null)
                 throw new ArgumentException("Institution not found.");
@@ -89,10 +86,16 @@ namespace InnerAPI.Services
             return true;
         }
 
-        public List<Student> GetStudents(string domain)
+        public List<Student> GetStudents()
         {
-            students = institutions.FirstOrDefault(i => i.Domain == domain).Students;
+            students = institutions.SelectMany(i => i.Students).ToList();
             return students;
+        }
+            
+        public Institution GetInstitution(string email)
+        {
+            var domain = email.Split('@')[1];
+            return institutions.FirstOrDefault(i => i.Domain == domain);
         }
 
         public void Seguir()

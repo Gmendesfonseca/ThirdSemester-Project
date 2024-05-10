@@ -11,11 +11,18 @@ namespace InnerAPI.Controllers
             ProfessorServices professorServices = new ProfessorServices(sharedService);
             var group = app.MapGroup("professor").WithParameterValidation();
 
+
             // GET /professor/{id}
             group.MapGet("{id}", (int id, string domain) =>
             {
-                return Results.Ok(professorServices.GetProfessors(domain).FirstOrDefault(s => s.Id == id));
+                var professor = professorServices.GetProfessors().FirstOrDefault(s => s.Id == id);
+                if (professor == null)
+                {
+                    return Results.NotFound($"Professor com ID {id} não encontrado.");
+                }
+                return Results.Ok(professor);
             });
+
 
             // POST /professor
             group.MapPost("", (RegisterProfessorDto professor) =>
