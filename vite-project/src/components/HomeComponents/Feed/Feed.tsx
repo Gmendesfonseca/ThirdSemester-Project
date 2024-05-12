@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
-import { Post } from '../PostFeed/Post';
+import { Post } from '../Post/Post';
 import { PostType, getAllPosts } from '../../../services/posts';
 
 export const Feed = () => {

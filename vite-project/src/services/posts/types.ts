@@ -1,10 +1,15 @@
 export type PostType = {
-  id: number;
-  title: string;
-  likes: number;
-  comments: string;
-  content: string;
-  dataPostagem: Date;
   creatorId: number;
-  institutionId: number;
+  title: string;
+  subheader: string;
+  likes: number;
+  comments: CommentType[];
+  dataPostagem: string;
+  description: string;
+  image: string;
+};
+
+export type CommentType = {
+  creatorId: number;
+  text: string;
 };
