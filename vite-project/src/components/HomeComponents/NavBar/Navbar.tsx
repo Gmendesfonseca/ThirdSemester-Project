@@ -71,6 +71,11 @@ export const Navbar = () => {
     //localStorage.removeItem('token');
     navigate('/login');
   };
+
+  const handleProfile = () => {
+    navigate('/profile');
+  };
+
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -162,7 +167,7 @@ export const Navbar = () => {
         {/* <MenuItem onClick={handleClose}>
           <Avatar /> Profile
         </MenuItem> */}
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleProfile}>
           <Avatar /> My account
         </MenuItem>
         <Divider />
