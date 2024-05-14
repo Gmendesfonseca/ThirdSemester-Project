@@ -48,7 +48,7 @@ export const Post = ({ data }: PostProps) => {
         <CardMedia
           component="img"
           height="20%"
-          image={data.image} // Assuming your PostType has an 'image' property
+          image={data.image} // Assuming your Pod stType has an 'image' property
           alt={data.title}
         />
         <CardContent>
@@ -69,8 +69,8 @@ export const Post = ({ data }: PostProps) => {
           <Button onClick={() => handleComment('New comment')}>
             Add Comment
           </Button>
-          {comments.map((comment, index) => (
-            <Typography key={index} variant="body2" color="text.secondary">
+          {comments.map((comment) => (
+            <Typography key={comment.id} variant="body2" color="text.secondary">
               {comment.text}
             </Typography>
           ))}

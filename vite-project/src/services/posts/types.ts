@@ -4,12 +4,12 @@ export type PostType = {
   subheader: string;
   likes: number;
   comments: CommentType[];
-  dataPostagem: string;
   description: string;
   image: string;
 };
 
 export type CommentType = {
-  creatorId: number;
+  id: string;
   text: string;
+  creatorId: number;
 };
