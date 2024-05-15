@@ -1,9 +1,9 @@
-import ReactDOM from "react-dom";
-import App from "./App";
-import { ThemeProvider } from "@emotion/react";
-import { theme } from "./Theme"; // Fix the file name in the import statement
+import ReactDOM from 'react-dom';
+import App from './App';
+import { ThemeProvider } from '@emotion/react';
+import { theme } from './theme'; // Fix the file name in the import statement
 
-import React from "react";
+import React from 'react';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,6 +11,5 @@ ReactDOM.render(
       <App />
     </ThemeProvider>
   </React.StrictMode>,
-  document.getElementById("root") as HTMLElement
+  document.getElementById('root') as HTMLElement,
 );
-

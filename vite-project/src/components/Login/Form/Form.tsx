@@ -114,9 +114,15 @@ export function Form() {
           label="Fazer login como"
           onChange={handleTypeChange}
         >
-          <MenuItem value={1}>Instituição</MenuItem>
-          <MenuItem value={2}>Professor</MenuItem>
-          <MenuItem value={3}>Aluno</MenuItem>
+          <MenuItem id="institution" value={1}>
+            Instituição
+          </MenuItem>
+          <MenuItem id="professor" value={2}>
+            Professor
+          </MenuItem>
+          <MenuItem id="student" value={3}>
+            Aluno
+          </MenuItem>
         </Select>
       </FormControl>
       <TextField
@@ -146,10 +152,12 @@ export function Form() {
         onChange={handlePasswordChange}
       />
       <FormControlLabel
+        id="remember-me"
         control={<Checkbox value="remember" color="primary" />}
         label="Lembrar-me"
       />
       <Button
+        id="login-submit"
         type="submit"
         fullWidth
         variant="contained"
@@ -159,11 +167,13 @@ export function Form() {
       </Button>
       <Grid container>
         <Grid item xs>
-          <Anchor to="/home">Esqueceu a senha?</Anchor>
+          <Anchor id="forgot-password" to="/home">
+            Esqueceu a senha?
+          </Anchor>
         </Grid>
         <Grid item>
           {type === 1 && (
-            <Anchor to="/register">
+            <Anchor id="register-institution" to="/register">
               É uma nova instituição? Cadastre-se aqui
             </Anchor>
           )}
