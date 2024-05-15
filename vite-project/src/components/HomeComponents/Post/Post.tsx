@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box } from '@mui/system';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -16,7 +16,7 @@ interface PostProps {
   data: PostType;
 }
 
-export const Post = ({ data }: PostProps) => {
+export const Post = ({ data }: PostProps, onImageUpload) => {
   const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState<CommentType[]>([]);
 
@@ -69,6 +69,10 @@ export const Post = ({ data }: PostProps) => {
           <Button onClick={() => handleComment('New comment')}>
             Add Comment
           </Button>
+          <Button variant="contained" component="label">
+        Upload Image
+        <input type="file" hidden accept="image/*" onChange={onImageUpload} />
+      </Button>
           {comments.map((comment) => (
             <Typography key={comment.id} variant="body2" color="text.secondary">
               {comment.text}
