@@ -2,11 +2,13 @@ import { Navigate, RouteObject } from 'react-router-dom';
 import { Home } from '../pages/Home/HomeView';
 import { Chat } from '../pages/Chat/ChatView';
 import SignInSide from '../pages/Login/SignInView';
-import  Profile  from '../pages/Profile/ProfileView';
-//import { Register } from '../pages/Register/RegisterView';
+import Profile from '../pages/Profile/ProfileView';
 import { Settings } from '../pages/Settings/SettingsView';
-import SignUp from '../pages/Register/SignUp';
+import { RegisterInstitution } from '../pages/Register/RegisterInstitution';
+import { RegisterStudent } from '../components/Register/FormStudent';
+import { RegisterProfessor } from '../components/Register/FormProfessor';
 import { ChangePassword } from '../pages/Login/ChangePassword/ChangePassword';
+import { RegisterMenu } from '../pages/Register/RegisterMenu';
 
 export type RouteType = {
   path: string;
@@ -76,11 +78,19 @@ export function createRoutes() {
     },
     {
       path: '/register',
-      element: <SignUp />,
+      element: <RegisterMenu />,
     },
     {
-      path: '/register-student',
-      //element: <SignUpStudent />,
+      path: '/register/institution',
+      element: <RegisterInstitution />,
+    },
+    {
+      path: '/register/student',
+      element: <RegisterStudent />,
+    },
+    {
+      path: '/register/professor',
+      element: <RegisterProfessor />,
     },
     {
       path: '/forgot-password',

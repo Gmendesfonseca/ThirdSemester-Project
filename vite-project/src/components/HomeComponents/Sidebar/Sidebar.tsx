@@ -10,13 +10,13 @@ import {
 } from '@mui/material';
 import React, { Dispatch, SetStateAction } from 'react';
 import {
-  AccountBox,
-  Article,
+  //AccountBox,
+  //Article,
   DarkMode,
   Groups,
   Home,
   Person,
-  //Settings,
+  Settings,
   Storefront,
 } from '@mui/icons-material';
 
@@ -42,14 +42,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ mode, setMode }) => {
                 <ListItemText primary="Homepage" />
               </ListItemButton>
             </ListItem>
-            <ListItem disablePadding>
+            {/* <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <Article />
                 </ListItemIcon>
                 <ListItemText primary="Pages" />
               </ListItemButton>
-            </ListItem>
+            </ListItem> */}
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -69,27 +69,35 @@ export const Sidebar: React.FC<SidebarProps> = ({ mode, setMode }) => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
+                  <Storefront />
+                </ListItemIcon>
+                <ListItemText primary="Cadastro" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
                   <Person />
                 </ListItemIcon>
                 <ListItemText primary="Friends" />
               </ListItemButton>
             </ListItem>
-            {/* <ListItem disablePadding>
+            <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <Settings />
                 </ListItemIcon>
                 <ListItemText primary="Settings" />
               </ListItemButton>
-            </ListItem> */}
-            <ListItem disablePadding>
+            </ListItem>
+            {/* <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <AccountBox />
                 </ListItemIcon>
-                <ListItemText primary="Profile" />
+                <ListItemText id="Profile" primary="Profile" />
               </ListItemButton>
-            </ListItem>
+            </ListItem> */}
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>

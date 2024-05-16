@@ -11,7 +11,7 @@ import { Copyright } from '../../components/Login/Copyright/Copyright';
 import logo from '../../assets/IL.png';
 import FormInstitution from '../../components/Register/FormInstitution';
 
-export default function SignInSide() {
+export function RegisterInstitution() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Grid
