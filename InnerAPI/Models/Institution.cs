@@ -6,13 +6,13 @@ namespace InnerAPI.Models
     public class Institution : User
     {
         #region "Declaração de variáveis"
-        private string _localidadeInstituicao;
-        private DateOnly _dataCriacao;
-        public string _domain;
-        public string _cnpj;
+        private string _localidadeInstituicao; 
+        private DateOnly _dataCriacao; 
+        public string _domain; 
+        public string _cnpj; 
         private List<CourseDto> courses; 
         private readonly List<Student> students; 
-        private readonly List<Professor> professors;
+        private readonly List<Professor> professors; 
         Stack<Post> posts;
         #endregion
 

@@ -4,8 +4,8 @@ namespace InnerAPI.Dtos.Login
 {
     public record class LoginDto 
     (
-        string Email,
-        string Password
+        [Required]string Email,
+        [Required]string Password
     );
         
 

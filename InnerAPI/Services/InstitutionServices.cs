@@ -77,7 +77,7 @@ namespace InnerAPI.Services
 
             return institution;
         }
-
+        //get só pra retornar lista
         public List<Student> GetStudents(int id)
         {
             var institution = institutions.FirstOrDefault(i => i.Id == id);
