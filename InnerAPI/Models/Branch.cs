@@ -3,7 +3,7 @@ using InnerAPI.Dtos.Courses;
 
 namespace InnerAPI.Models
 {
-    //Unidade, Filial
+    //Unidade, Filial, Teste
     public class Branch : Institution
     {
         #region "Declaração de variáveis"

@@ -1,5 +1,6 @@
 ﻿namespace InnerAPI.Models
 {
+    //Teste
     public class Institution : User
     {
         private string _localidadeInstituicao;
