@@ -10,7 +10,7 @@ namespace InnerAPI.Services
 {
     public class SharedService
     {
-        private static List<Institution> institutions = new List<Institution>();
+        private static List<Branch> institutions = new List<Branch>();
 
         public SharedService()
         {
@@ -22,11 +22,11 @@ namespace InnerAPI.Services
             string domain = "exemplo.com";
 
 
-            institutions.Add(new Institution(id, name, email, password, cnpj, domain));
+            institutions.Add(new Branch(id, name, email, password, cnpj, domain));
         }
 
-        public List<Institution> Institutions { get { return institutions; } }
-        public void AddInstitution(Institution institution){ institutions.Add(institution); }
+        public List<Branch> Institutions { get { return institutions; } }
+        public void AddInstitution(Branch institution){ institutions.Add(institution); }
         
     }
 }

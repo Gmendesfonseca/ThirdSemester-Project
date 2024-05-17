@@ -8,14 +8,14 @@ namespace InnerAPI.Services
 {
     public class InstitutionServices : UserServices
     {
-        List<Institution> institutions;
+        List<Branch> institutions;
 
         public InstitutionServices(SharedService _sharedService)
         {
             institutions = _sharedService.Institutions;
         }
 
-        public Institution Register(RegisterInstitutionDto register)
+        public Branch Register(RegisterInstitutionDto register)
         {
             uint id = (uint)institutions.Count + 1;
             string name = register.Name;
@@ -35,19 +35,19 @@ namespace InnerAPI.Services
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            Institution newInstitution = new Institution(id, name, email, password, cnpj, domain);
+            Branch newInstitution = new Branch(id, name, email, password, cnpj, domain);
 
             institutions.Add(newInstitution);
 
             return newInstitution;
         }
 
-        public Institution Login(LoginDto user)
+        public Branch Login(LoginDto user)
         {
             string email = user.Email;
             string password = user.Password;
 
-            Institution institution = institutions.FirstOrDefault(i => i.Email == user.Email);
+            Branch institution = institutions.FirstOrDefault(i => i.Email == user.Email);
 
             Email Email = new Email();
             if (!Email.IsValid(email))
@@ -62,9 +62,9 @@ namespace InnerAPI.Services
             return institution;
         }
 
-        public Institution Update(int id, RegisterInstitutionDto register)
+        public Branch Update(int id, RegisterInstitutionDto register)
         {
-            Institution institution = institutions.FirstOrDefault(i => i.Id == id);
+            Branch institution = institutions.FirstOrDefault(i => i.Id == id);
 
             if (institution == null)
                 throw new ArgumentException("Usuário não encontrado.");

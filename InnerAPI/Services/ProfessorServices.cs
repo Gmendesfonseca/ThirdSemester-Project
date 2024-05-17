@@ -8,7 +8,7 @@ namespace InnerAPI.Services
     public class ProfessorServices : UserServices
     {
         List<Professor> professors;
-        List<Institution> institutions;
+        List<Branch> institutions;
         public ProfessorServices(SharedService _sharedService)
         {
             institutions = _sharedService.Institutions;
@@ -87,7 +87,7 @@ namespace InnerAPI.Services
             return institutions.SelectMany(i => i.Professors).ToList();
         }
 
-        public Institution GetInstitution(string email)
+        public Branch GetInstitution(string email)
         {
             var domain = email.Split('@')[1];
             return institutions.FirstOrDefault(i => i.Domain == domain);

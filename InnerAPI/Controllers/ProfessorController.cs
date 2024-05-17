@@ -23,7 +23,6 @@ namespace InnerAPI.Controllers
                 return Results.Ok(professor);
             });
 
-
             // POST /professor
             group.MapPost("", (RegisterProfessorDto professor) =>
             {
