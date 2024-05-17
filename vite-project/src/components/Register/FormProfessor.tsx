@@ -4,6 +4,7 @@ import { blue } from '@mui/material/colors';
 
 export function RegisterProfessor() {
   const navigate = useNavigate();
+
   return (
     <Button
       onClick={() => navigate('/register')}

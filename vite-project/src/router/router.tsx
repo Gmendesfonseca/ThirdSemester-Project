@@ -9,6 +9,7 @@ import { RegisterStudent } from '../components/Register/FormStudent';
 import { RegisterProfessor } from '../components/Register/FormProfessor';
 import { ChangePassword } from '../pages/Login/ChangePassword/ChangePassword';
 import { RegisterMenu } from '../pages/Register/RegisterMenu';
+import { RegisterBranch } from '../components/Register/FormBranch';
 
 export type RouteType = {
   path: string;
@@ -85,6 +86,10 @@ export function createRoutes() {
       element: <RegisterInstitution />,
     },
     {
+      path: '/register/branch',
+      element: <RegisterBranch />,
+    },
+    {
       path: '/register/student',
       element: <RegisterStudent />,
     },
@@ -102,6 +107,18 @@ export function createRoutes() {
     },
     {
       path: '/chat',
+      element: <Chat />,
+    },
+    {
+      path: '/friends',
+      element: <Chat />,
+    },
+    {
+      path: '/groups',
+      element: <Chat />,
+    },
+    {
+      path: '/marketplace',
       element: <Chat />,
     },
   ];

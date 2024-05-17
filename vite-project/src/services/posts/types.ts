@@ -13,3 +13,5 @@ export type CommentType = {
   text: string;
   creatorId: number;
 };
+
+
