@@ -6,10 +6,10 @@ namespace InnerAPI.Services
     public class PostServices
     {
         Stack<Post> posts;
-        List<Institution> institutions;
+        List<Branch> institutions;
         public PostServices(SharedService sharedService)
         {
-            List<Institution> institutions = sharedService.Institutions;
+            List<Branch> institutions = sharedService.Institutions;
         }
 
         public Stack<Post> GetPosts(int id)

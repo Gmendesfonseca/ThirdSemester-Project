@@ -12,20 +12,20 @@ namespace InnerAPI.Controllers
         public static RouteGroupBuilder MapInstitutionEndpoint(this WebApplication app, SharedService sharedService)
         {
             var group = app.MapGroup("institution").WithParameterValidation();
-            List<Institution> institutions = sharedService.Institutions;
+            List<Branch> institutions = sharedService.Institutions;
             InstitutionServices institutionServices = new InstitutionServices(sharedService);
 
             //GET /institution/{id}
             group.MapGet("/{id}", (uint id) =>
             {
-                Institution? institution = institutions.Find(institution => institution.Id == id);
+                Branch? institution = institutions.Find(institution => institution.Id == id);
                 return institution is null ? Results.NotFound() : Results.Ok(institution);
             }).WithName(GetNameInstitutionEndpoint);
 
             //GET /institution/{id}/students
             group.MapGet("/{id}/students", (uint id) =>
             {
-                Institution? institution = institutions.Find(institution => institution.Id == id);
+                Branch? institution = institutions.Find(institution => institution.Id == id);
                 if (institution == null)
                 {
                     return Results.BadRequest(new { success = false, message = "Institution not found" });
@@ -36,14 +36,13 @@ namespace InnerAPI.Controllers
             //GET /institution/{id}/professors
             group.MapGet("/{id}/professors", (uint id) =>
             {
-                Institution? institution = institutions.Find(institution => institution.Id == id);
+                Branch? institution = institutions.Find(institution => institution.Id == id);
                 if (institution == null)
                 {
                     return Results.BadRequest(new { success = false, message = "Institution not found" });
                 }
                 return Results.Ok(institution.Professors);
             });
-
 
             // POST /institution
             group.MapPost("", (RegisterInstitutionDto newInstitution) =>
@@ -70,7 +69,7 @@ namespace InnerAPI.Controllers
                     return Results.NotFound();
                 }
 
-                institutions[index] = new Institution(
+                institutions[index] = new Branch(
                     id,
                     updateInstitution.Name,
                     updateInstitution.Email,

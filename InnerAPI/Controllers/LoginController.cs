@@ -9,7 +9,8 @@ namespace InnerAPI.Controllers
         public static RouteGroupBuilder MapLoginEndpoint(this WebApplication app, SharedService sharedService)
         {
             var group = app.MapGroup("login").WithParameterValidation();
-            
+
+            //POST /login/institution
             group.MapPost("/institution", (LoginDto login) =>
             {
                 InstitutionServices user = new(sharedService);
@@ -30,6 +31,7 @@ namespace InnerAPI.Controllers
                 });
             });
 
+            //POST /login/student
             group.MapPost("/student", (LoginDto login) =>
             {
                 StudentServices user = new(sharedService);
@@ -48,8 +50,7 @@ namespace InnerAPI.Controllers
                     }
 
                 });
-            }); 
-
+   
             group.MapPost("/professor", (LoginDto login) =>
             {
                 ProfessorServices user = new(sharedService);
