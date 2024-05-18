@@ -36,6 +36,8 @@ function createWindow() {
     },
   });
   win.once('ready-to-show', () => {
+    //FULL SCREEN
+    win.maximize();
     win.show();
   });
   // Test active push message to Renderer-process.
