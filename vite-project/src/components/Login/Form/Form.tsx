@@ -173,7 +173,7 @@ export function Form() {
         </Grid>
         <Grid item>
           {type === 1 && (
-            <Anchor id="register-institution" to="/register/institution">
+            <Anchor id="register-institution" to="/headoffice/register">
               É uma nova instituição? Cadastre-se aqui
             </Anchor>
           )}

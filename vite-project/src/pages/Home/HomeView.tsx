@@ -1,4 +1,4 @@
-import { SidebarMenu } from '../../components/HomeComponents/Sidebar/SidebarMenu';
+import { SidebarMenu } from '../../components/HomeComponents/Sidebar/SidebarHome';
 import { Feed } from '../../components/HomeComponents/Feed/Feed';
 import { Rightbar } from '../../components/HomeComponents/Rightbar/Rightbar';
 import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';

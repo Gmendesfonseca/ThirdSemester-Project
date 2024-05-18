@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
-import { SidebarRegister } from '../../components/Register/SidebarRegister';
+import { SidebarMenu } from '../../components/HomeComponents/Sidebar/SidebarHome';
 
 export function RegisterMenu() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
@@ -28,7 +28,7 @@ export function RegisterMenu() {
       <Box bgcolor={'background.default'} color={'text.primary'}>
         <Navbar />
         <Stack direction="row" spacing={2} justifyContent="space-between">
-          <SidebarRegister mode={mode} setMode={setMode} />
+          <SidebarMenu mode={mode} setMode={setMode} />
         </Stack>
       </Box>
     </ThemeProvider>

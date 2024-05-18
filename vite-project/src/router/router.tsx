@@ -5,11 +5,11 @@ import SignInSide from '../pages/Login/SignInView';
 import Profile from '../pages/Profile/ProfileView';
 import { Settings } from '../pages/Settings/SettingsView';
 import { RegisterInstitution } from '../pages/Register/RegisterInstitution';
-import { RegisterStudent } from '../components/Register/FormStudent';
-import { RegisterProfessor } from '../components/Register/FormProfessor';
+import { RegisterStudent } from '../components/Register/AddMembers/FormStudent';
+import { RegisterProfessor } from '../components/Register/AddMembers/FormProfessor';
 import { ChangePassword } from '../pages/Login/ChangePassword/ChangePassword';
 import { RegisterMenu } from '../pages/Register/RegisterMenu';
-import { RegisterBranch } from '../components/Register/FormBranch';
+import { RegisterBranch } from '../components/Register/AddMembers/FormBranch';
 
 export type RouteType = {
   path: string;
@@ -82,19 +82,31 @@ export function createRoutes() {
       element: <RegisterMenu />,
     },
     {
-      path: '/register/institution',
+      path: '/headoffice/register',
       element: <RegisterInstitution />,
     },
     {
-      path: '/register/branch',
+      path: '/branch/list',
+      element: <RegisterInstitution />,
+    },
+    {
+      path: '/branch/register',
       element: <RegisterBranch />,
     },
     {
-      path: '/register/student',
+      path: '/student/list',
       element: <RegisterStudent />,
     },
     {
-      path: '/register/professor',
+      path: '/student/register',
+      element: <RegisterStudent />,
+    },
+    {
+      path: '/professor/list',
+      element: <RegisterProfessor />,
+    },
+    {
+      path: '/professor/register',
       element: <RegisterProfessor />,
     },
     {

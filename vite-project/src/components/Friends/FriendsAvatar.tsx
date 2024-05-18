@@ -1,10 +1,7 @@
-import {
-  OfflineAvatar,
-  OnlineAvatar,
-} from '../HomeComponents/Online/StyledBadge';
+import { OfflineAvatar, OnlineAvatar } from '../HomeComponents/Online/Avatar';
 import { AvatarType } from '../../services/avatar/type';
 
-interface FriendsProps {
+interfac../HomeComponents/Avat/StyledBadge
   data: AvatarType;
 }
 

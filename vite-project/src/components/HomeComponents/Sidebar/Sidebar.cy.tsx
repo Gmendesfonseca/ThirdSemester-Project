@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidebar } from './SidebarMenu';
+import { Sidebar } from './SidebarHome';
 
 describe('<Sidebar />', () => {
   it('renders', () => {

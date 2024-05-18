@@ -14,7 +14,7 @@ import {
   // ListItemText,
   Typography,
 } from '@mui/material';
-import { OnlineAvatar } from '../../HomeComponents/Online/StyledBadge';
+import { OnlineAvatar } from '../Avatar/Avatar';
 import { RecentChat } from '../RecentChat/RecentChat';
 import {} from '../../../services/chats/request';
 import {
