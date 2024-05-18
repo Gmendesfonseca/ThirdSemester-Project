@@ -14,7 +14,7 @@ import {
   PersonOutlineOutlined,
   SchoolOutlined,
 } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Sidebar } from '../../Sidebar/Sidebar';
 
 interface SidebarProps {
@@ -27,10 +27,11 @@ export const SidebarRegister: React.FC<SidebarProps> = ({ mode, setMode }) => {
     setMode(mode === 'light' ? 'dark' : 'light');
   };
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <Sidebar>
-      <ListItem disablePadding>
+      <ListItem disablePadding={location.pathname !== '/home'}>
         <ListItemButton onClick={() => navigate('/home')}>
           <ListItemIcon>
             <Home />
@@ -38,24 +39,24 @@ export const SidebarRegister: React.FC<SidebarProps> = ({ mode, setMode }) => {
           <ListItemText primary="Homepage" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate('/register/branch')}>
+      <ListItem disablePadding={location.pathname !== '/branch/list'}>
+        <ListItemButton onClick={() => navigate('/branch/list')}>
           <ListItemIcon>
             <AddHomeOutlined />
           </ListItemIcon>
           <ListItemText primary="Unidades" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate('/register/professor')}>
+      <ListItem disablePadding={location.pathname !== '/professor/list'}>
+        <ListItemButton onClick={() => navigate('/professor/list')}>
           <ListItemIcon>
             <PersonOutlineOutlined />
           </ListItemIcon>
           <ListItemText primary="Professor" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate('/register/student')}>
+      <ListItem disablePadding={location.pathname !== '/student/list'}>
+        <ListItemButton onClick={() => navigate('/student/list')}>
           <ListItemIcon>
             <SchoolOutlined />
           </ListItemIcon>

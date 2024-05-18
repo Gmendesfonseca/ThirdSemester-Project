@@ -10,6 +10,9 @@ import { RegisterProfessor } from '../components/Register/AddMembers/FormProfess
 import { ChangePassword } from '../pages/Login/ChangePassword/ChangePassword';
 import { RegisterMenu } from '../pages/Register/RegisterMenu';
 import { RegisterBranch } from '../components/Register/AddMembers/FormBranch';
+import ListBranch from '../components/MembersList/ListBrach';
+import ListStudent from '../components/MembersList/ListStudent';
+import ListProfessor from '../components/MembersList/ListProfessor';
 
 export type RouteType = {
   path: string;
@@ -87,7 +90,7 @@ export function createRoutes() {
     },
     {
       path: '/branch/list',
-      element: <RegisterInstitution />,
+      element: <ListBranch />,
     },
     {
       path: '/branch/register',
@@ -95,7 +98,7 @@ export function createRoutes() {
     },
     {
       path: '/student/list',
-      element: <RegisterStudent />,
+      element: <ListStudent />,
     },
     {
       path: '/student/register',
@@ -103,7 +106,7 @@ export function createRoutes() {
     },
     {
       path: '/professor/list',
-      element: <RegisterProfessor />,
+      element: <ListProfessor />,
     },
     {
       path: '/professor/register',
