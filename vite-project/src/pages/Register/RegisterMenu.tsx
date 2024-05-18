@@ -35,6 +35,7 @@ export function RegisterMenu() {
         <Stack direction="row" spacing={2} justifyContent="space-between">
           <SidebarRegister mode={mode} setMode={setMode} />
           <Box flex={6}>
+            {currentPath === '/register' && <ListBranch />}
             {currentPath === '/branch/list' && <ListBranch />}
             {currentPath === '/professor/list' && <ListProfessor />}
             {currentPath === '/student/list' && <ListStudent />}

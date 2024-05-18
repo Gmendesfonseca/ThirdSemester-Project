@@ -265,7 +265,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
           id="tableTitle"
           component="div"
         >
-          Professor
+          Professores
         </Typography>
       )}
       {numSelected > 0 ? (
@@ -285,7 +285,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
               style={{ width: '200px' }}
               sx={{ pr: -3, pl: -3 }}
             >
-              Nova Professor
+              Novo Professor
             </Typography>
           </Button>
           <Button style={{ color: 'black' }}>

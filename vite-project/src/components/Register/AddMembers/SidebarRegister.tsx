@@ -16,6 +16,7 @@ import {
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Sidebar } from '../../Sidebar/Sidebar';
+import { blue } from '@mui/material/colors';
 
 interface SidebarProps {
   mode: PaletteMode;
@@ -40,7 +41,13 @@ export const SidebarRegister: React.FC<SidebarProps> = ({ mode, setMode }) => {
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding={location.pathname !== '/branch/list'}>
-        <ListItemButton onClick={() => navigate('/branch/list')}>
+        <ListItemButton
+          onClick={() => navigate('/branch/list')}
+          style={{
+            backgroundColor:
+              location.pathname === '/branch/list' ? blue[50] : 'default',
+          }}
+        >
           <ListItemIcon>
             <AddHomeOutlined />
           </ListItemIcon>
@@ -48,7 +55,13 @@ export const SidebarRegister: React.FC<SidebarProps> = ({ mode, setMode }) => {
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding={location.pathname !== '/professor/list'}>
-        <ListItemButton onClick={() => navigate('/professor/list')}>
+        <ListItemButton
+          onClick={() => navigate('/professor/list')}
+          style={{
+            backgroundColor:
+              location.pathname === '/professor/list' ? blue[50] : 'default',
+          }}
+        >
           <ListItemIcon>
             <PersonOutlineOutlined />
           </ListItemIcon>
@@ -56,7 +69,13 @@ export const SidebarRegister: React.FC<SidebarProps> = ({ mode, setMode }) => {
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding={location.pathname !== '/student/list'}>
-        <ListItemButton onClick={() => navigate('/student/list')}>
+        <ListItemButton
+          onClick={() => navigate('/student/list')}
+          style={{
+            backgroundColor:
+              location.pathname === '/student/list' ? blue[50] : 'default',
+          }}
+        >
           <ListItemIcon>
             <SchoolOutlined />
           </ListItemIcon>
