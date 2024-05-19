@@ -7,7 +7,7 @@ export function RegisterProfessor() {
 
   return (
     <Button
-      onClick={() => navigate('/register')}
+      onClick={() => navigate('/professor/list')}
       style={{ color: blue[500] }}
       onMouseOver={(event) => {
         event.currentTarget.style.color = blue[900];

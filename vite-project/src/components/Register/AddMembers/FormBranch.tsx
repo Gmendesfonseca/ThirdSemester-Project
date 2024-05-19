@@ -7,7 +7,7 @@ export function RegisterBranch() {
 
   return (
     <Button
-      onClick={() => navigate('/register')}
+      onClick={() => navigate('/branch/list')}
       style={{ color: blue[500] }}
       onMouseOver={(event) => {
         event.currentTarget.style.color = blue[900];

@@ -51,7 +51,7 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ mode, setMode }) => {
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate('/register')}>
+        <ListItemButton onClick={() => navigate('/branch/list')}>
           <ListItemIcon>
             <PostAdd />
           </ListItemIcon>
