@@ -12,6 +12,8 @@ import { RegisterBranch } from '../components/Register/AddMembers/FormBranch';
 import ListBranch from '../components/Register/Lists/ListBrach';
 import ListStudent from '../components/Register/Lists/ListStudent';
 import ListProfessor from '../components/Register/Lists/ListProfessor';
+import { Friends } from '../pages/Friends/Friends';
+import { Groups } from '../pages/Groups/Groups';
 
 export type RouteType = {
   path: string;
@@ -121,11 +123,11 @@ export function createRoutes() {
     },
     {
       path: '/friends',
-      element: <Chat />,
+      element: <Friends />,
     },
     {
       path: '/groups',
-      element: <Chat />,
+      element: <Groups />,
     },
     {
       path: '/marketplace',
