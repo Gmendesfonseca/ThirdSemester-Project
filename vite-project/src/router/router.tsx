@@ -8,11 +8,10 @@ import { RegisterInstitution } from '../pages/Register/RegisterInstitution';
 import { RegisterStudent } from '../components/Register/AddMembers/FormStudent';
 import { RegisterProfessor } from '../components/Register/AddMembers/FormProfessor';
 import { ChangePassword } from '../pages/Login/ChangePassword/ChangePassword';
-import { RegisterMenu } from '../pages/Register/RegisterMenu';
 import { RegisterBranch } from '../components/Register/AddMembers/FormBranch';
-import ListBranch from '../components/MembersList/ListBrach';
-import ListStudent from '../components/MembersList/ListStudent';
-import ListProfessor from '../components/MembersList/ListProfessor';
+import ListBranch from '../components/Register/Lists/ListBrach';
+import ListStudent from '../components/Register/Lists/ListStudent';
+import ListProfessor from '../components/Register/Lists/ListProfessor';
 
 export type RouteType = {
   path: string;
@@ -79,10 +78,6 @@ export function createRoutes() {
     {
       path: '/profile',
       element: <Profile />,
-    },
-    {
-      path: '/register',
-      element: <RegisterMenu />,
     },
     {
       path: '/headoffice/register',

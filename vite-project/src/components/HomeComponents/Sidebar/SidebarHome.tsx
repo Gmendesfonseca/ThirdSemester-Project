@@ -8,18 +8,23 @@ import {
 } from '@mui/material';
 import React, { Dispatch, SetStateAction } from 'react';
 import {
+  AddHomeOutlined,
   //AccountBox,
   //Article,
   DarkMode,
   Groups,
+  Home,
   //Home,
   Person,
-  PostAdd,
-  Settings,
+  PersonOutlineOutlined,
+  //PostAdd,
+  SchoolOutlined,
+  //Settings,
   Storefront,
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { Sidebar } from '../../Sidebar/Sidebar';
+import { blue } from '@mui/material/colors';
 
 interface SidebarProps {
   mode: PaletteMode;
@@ -34,32 +39,82 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ mode, setMode }) => {
 
   return (
     <Sidebar>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate('/groups')}>
+      <ListItem disablePadding={location.pathname !== '/home'}>
+        <ListItemButton
+          onClick={() => navigate('/home')}
+          style={{
+            backgroundColor:
+              location.pathname === '/home' ? blue[50] : 'default',
+          }}
+        >
           <ListItemIcon>
-            <Groups />
+            <Home />
           </ListItemIcon>
-          <ListItemText primary="Groups" />
+          <ListItemText primary="Homepage" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate('/marketplace')}>
-          <ListItemIcon>
-            <Storefront />
-          </ListItemIcon>
-          <ListItemText primary="Marketplace" />
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate('/branch/list')}>
+      {/* <ListItem disablePadding>
+        <ListItemButton onClick={() => navigate('/branch/list')}
+        style={{
+          backgroundColor:
+            location.pathname === '/branch/list' ? blue[50] : 'default',
+        }}>
           <ListItemIcon>
             <PostAdd />
           </ListItemIcon>
           <ListItemText primary="Cadastro" />
         </ListItemButton>
+      </ListItem> */}
+      <ListItem disablePadding={location.pathname !== '/branch/list'}>
+        <ListItemButton
+          onClick={() => navigate('/branch/list')}
+          style={{
+            backgroundColor:
+              location.pathname === '/branch/list' ? blue[50] : 'default',
+          }}
+        >
+          <ListItemIcon>
+            <AddHomeOutlined />
+          </ListItemIcon>
+          <ListItemText primary="Unidades" />
+        </ListItemButton>
+      </ListItem>
+      <ListItem disablePadding={location.pathname !== '/professor/list'}>
+        <ListItemButton
+          onClick={() => navigate('/professor/list')}
+          style={{
+            backgroundColor:
+              location.pathname === '/professor/list' ? blue[50] : 'default',
+          }}
+        >
+          <ListItemIcon>
+            <PersonOutlineOutlined />
+          </ListItemIcon>
+          <ListItemText primary="Professor" />
+        </ListItemButton>
+      </ListItem>
+      <ListItem disablePadding={location.pathname !== '/student/list'}>
+        <ListItemButton
+          onClick={() => navigate('/student/list')}
+          style={{
+            backgroundColor:
+              location.pathname === '/student/list' ? blue[50] : 'default',
+          }}
+        >
+          <ListItemIcon>
+            <SchoolOutlined />
+          </ListItemIcon>
+          <ListItemText primary="Aluno" />
+        </ListItemButton>
       </ListItem>
       <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate('/friends')}>
+        <ListItemButton
+          onClick={() => navigate('/friends')}
+          style={{
+            backgroundColor:
+              location.pathname === '/friends' ? blue[50] : 'default',
+          }}
+        >
           <ListItemIcon>
             <Person />
           </ListItemIcon>
@@ -67,13 +122,47 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ mode, setMode }) => {
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate('/settings')}>
+        <ListItemButton
+          onClick={() => navigate('/groups')}
+          style={{
+            backgroundColor:
+              location.pathname === '/groups' ? blue[50] : 'default',
+          }}
+        >
+          <ListItemIcon>
+            <Groups />
+          </ListItemIcon>
+          <ListItemText primary="Groups" />
+        </ListItemButton>
+      </ListItem>
+      <ListItem disablePadding>
+        <ListItemButton
+          onClick={() => navigate('/marketplace')}
+          style={{
+            backgroundColor:
+              location.pathname === '/marketplace' ? blue[50] : 'default',
+          }}
+        >
+          <ListItemIcon>
+            <Storefront />
+          </ListItemIcon>
+          <ListItemText primary="Marketplace" />
+        </ListItemButton>
+      </ListItem>
+      {/* <ListItem disablePadding>
+        <ListItemButton
+          onClick={() => navigate('/settings')}
+          style={{
+            backgroundColor:
+              location.pathname === '/settings' ? blue[50] : 'default',
+          }}
+        >
           <ListItemIcon>
             <Settings />
           </ListItemIcon>
           <ListItemText primary="Settings" />
         </ListItemButton>
-      </ListItem>
+      </ListItem> */}
       <ListItem disablePadding>
         <ListItemButton>
           <ListItemIcon>
