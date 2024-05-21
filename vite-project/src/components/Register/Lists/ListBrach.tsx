@@ -31,15 +31,7 @@ import { Navbar } from '../../HomeComponents/NavBar/Navbar';
 import { SidebarMenu } from '../../HomeComponents/Sidebar/SidebarHome';
 import { AddCircleOutline, Tune } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-
-interface Data {
-  id: number;
-  calories: number;
-  carbs: number;
-  fat: number;
-  name: string;
-  protein: number;
-}
+import { BranchData } from '../../../interfaces/BranchData';
 
 function createData(
   id: number,
@@ -48,7 +40,7 @@ function createData(
   fat: number,
   carbs: number,
   protein: number,
-): Data {
+): BranchData {
   return {
     id,
     name,
@@ -120,7 +112,7 @@ function stableSort<T>(
 
 interface HeadCell {
   disablePadding: boolean;
-  id: keyof Data;
+  id: keyof BranchData;
   label: string;
   numeric: boolean;
 }
@@ -162,7 +154,7 @@ interface EnhancedTableProps {
   numSelected: number;
   onRequestSort: (
     event: React.MouseEvent<unknown>,
-    property: keyof Data,
+    property: keyof BranchData,
   ) => void;
   onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
   order: Order;
@@ -180,7 +172,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
     onRequestSort,
   } = props;
   const createSortHandler =
-    (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
+    (property: keyof BranchData) => (event: React.MouseEvent<unknown>) => {
       onRequestSort(event, property);
     };
 
@@ -308,7 +300,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
 
 export default function ListBranch() {
   const [order, setOrder] = React.useState<Order>('asc');
-  const [orderBy, setOrderBy] = React.useState<keyof Data>('calories');
+  const [orderBy, setOrderBy] = React.useState<keyof BranchData>('calories');
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -316,7 +308,7 @@ export default function ListBranch() {
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
-    property: keyof Data,
+    property: keyof BranchData,
   ) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');

@@ -19,7 +19,7 @@ import React from 'react';
 import {
   Logout,
   Notifications,
-  PersonAdd,
+  // PersonAdd,
   Settings,
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
@@ -74,6 +74,10 @@ export const Navbar = () => {
 
   const handleProfile = () => {
     navigate('/profile');
+  };
+
+  const handleSettings = () => {
+    navigate('/settings');
   };
 
   return (
@@ -171,13 +175,13 @@ export const Navbar = () => {
           <Avatar /> My account
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        {/* <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
+        </MenuItem> */}
+        <MenuItem onClick={handleSettings}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
