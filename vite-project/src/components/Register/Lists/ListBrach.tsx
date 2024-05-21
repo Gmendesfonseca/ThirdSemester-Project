@@ -27,8 +27,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { visuallyHidden } from '@mui/utils';
-import { Navbar } from '../HomeComponents/NavBar/Navbar';
-import { SidebarRegister } from '../Register/AddMembers/SidebarRegister';
+import { Navbar } from '../../HomeComponents/NavBar/Navbar';
+import { SidebarMenu } from '../../HomeComponents/Sidebar/SidebarHome';
 import { AddCircleOutline, Tune } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
@@ -233,8 +233,9 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
   const navigate = useNavigate();
 
   const handleClicked = () => {
-    navigate('/student/register');
+    navigate('/branch/register');
   };
+
   return (
     <Toolbar
       sx={{
@@ -265,7 +266,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
           id="tableTitle"
           component="div"
         >
-          Alunos
+          Unidades
         </Typography>
       )}
       {numSelected > 0 ? (
@@ -285,7 +286,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
               style={{ width: '200px' }}
               sx={{ pr: -3, pl: -3 }}
             >
-              Novo Aluno
+              Nova Unidade
             </Typography>
           </Button>
           <Button style={{ color: 'black' }}>
@@ -304,7 +305,8 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
     </Toolbar>
   );
 }
-export default function ListStudent() {
+
+export default function ListBranch() {
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] = React.useState<keyof Data>('calories');
   const [selected, setSelected] = React.useState<readonly number[]>([]);
@@ -396,7 +398,7 @@ export default function ListStudent() {
       <Box bgcolor={'background.default'} color={'text.primary'}>
         <Navbar />
         <Stack direction="row" spacing={2} justifyContent="space-between">
-          <SidebarRegister mode={mode} setMode={setMode} />
+          <SidebarMenu mode={mode} setMode={setMode} />
           <Box flex={6}>
             <Paper sx={{ mb: 2 }}>
               <EnhancedTableToolbar numSelected={selected.length} />

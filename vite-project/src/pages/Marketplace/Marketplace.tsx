@@ -13,7 +13,7 @@ import {
 import { SidebarMenu } from '../../components/HomeComponents/Sidebar/SidebarHome';
 import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
 
-export function Chat() {
+export function Marketplace() {
   const navigate = useNavigate();
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
   const [mode, setMode] = useState<PaletteMode>(

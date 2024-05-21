@@ -27,8 +27,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { visuallyHidden } from '@mui/utils';
-import { Navbar } from '../HomeComponents/NavBar/Navbar';
-import { SidebarRegister } from '../Register/AddMembers/SidebarRegister';
+import { Navbar } from '../../HomeComponents/NavBar/Navbar';
+import { SidebarMenu } from '../../HomeComponents/Sidebar/SidebarHome';
 import { AddCircleOutline, Tune } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
@@ -396,7 +396,7 @@ export default function ListProfessor() {
       <Box bgcolor={'background.default'} color={'text.primary'}>
         <Navbar />
         <Stack direction="row" spacing={2} justifyContent="space-between">
-          <SidebarRegister mode={mode} setMode={setMode} />
+          <SidebarMenu mode={mode} setMode={setMode} />
           <Box flex={6}>
             <Paper sx={{ mb: 2 }}>
               <EnhancedTableToolbar numSelected={selected.length} />
