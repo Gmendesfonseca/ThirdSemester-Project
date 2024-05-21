@@ -107,7 +107,7 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ mode, setMode }) => {
           <ListItemText primary="Aluno" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding>
+      <ListItem disablePadding={location.pathname !== '/friends'}>
         <ListItemButton
           onClick={() => navigate('/friends')}
           style={{
@@ -121,7 +121,7 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ mode, setMode }) => {
           <ListItemText primary="Friends" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding>
+      <ListItem disablePadding={location.pathname !== '/groups'}>
         <ListItemButton
           onClick={() => navigate('/groups')}
           style={{
@@ -135,7 +135,7 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ mode, setMode }) => {
           <ListItemText primary="Groups" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding>
+      <ListItem disablePadding={location.pathname !== '/marketplace'}>
         <ListItemButton
           onClick={() => navigate('/marketplace')}
           style={{
