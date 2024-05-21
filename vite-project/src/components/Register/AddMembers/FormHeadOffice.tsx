@@ -11,10 +11,12 @@ import { StepIconProps } from '@mui/material/StepIcon';
 import { useState } from 'react';
 import { Stack, Stepper, Step, StepLabel, Button, Box } from '@mui/material';
 import { Grid, TextField } from '@mui/material';
-import { addToast } from '../Toast/toast';
-import { registerInstitution, RegisterResponse } from '../../services/register';
+import { addToast } from '../../Toast/toast';
+import {
+  registerInstitution,
+  RegisterResponse,
+} from '../../../services/register';
 import { useNavigate } from 'react-router-dom';
-import Anchor from '../Anchor/Anchor';
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
