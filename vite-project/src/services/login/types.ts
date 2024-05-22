@@ -17,7 +17,7 @@ export type LoginSuccess = {
 
 export type StudentType = {
   id: number;
-  nome: string;
+  name: string;
   email: string;
   password: string;
   cpf: string;
@@ -26,11 +26,11 @@ export type StudentType = {
   pontuacao: number;
   matricula: string;
   birthDate: Date;
-  instituicao: string;
+  institution: string;
 };
 
 export type ProfessorType = {
-  id: string;
+  id: number;
   name: string;
   email: string;
   type: string;
@@ -49,6 +49,35 @@ export type InstitutionType = {
   courses?: CourseDto[];
   students?: StudentType[];
   professors?: ProfessorType[];
+};
+
+export type StudentListType = {
+  id: number;
+  name: string;
+  email: string;
+  cpf: string;
+  curso: string;
+  periodo: string;
+  matricula: string;
+  institution: string;
+};
+
+export type ProfessorListType = {
+  id: number;
+  name: string;
+  email: string;
+  type: string;
+  registration: string;
+};
+
+export type InstitutionListType = {
+  id: number;
+  name: string;
+  email: string;
+  domain: string;
+  cnpj: string;
+  localidadeInstituicao?: string;
+  dataCriacao?: Date;
 };
 
 export type CourseDto = {

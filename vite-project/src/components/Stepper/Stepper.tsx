@@ -3,7 +3,7 @@ import { Stepper, Step, StepLabel } from '@mui/material';
 import { ColorlibConnector } from './ColorlibConnector';
 import { ColorlibStepIcon } from './ColorlibStepIcon';
 
-export function InStepper(steps) {
+export function InStepper({ steps }) {
   const [activeStep] = useState(0);
 
   return (
