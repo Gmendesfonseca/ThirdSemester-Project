@@ -4,23 +4,23 @@
     {
         #region "Declaração de variáveis"
         
-        private uint _idDestaque;
-        private string _nomeDestaque; //Revisar variável
+        private uint _idHighlights;
+        private string _nameHighlights; //Revisar variável
 
         #endregion
 
         #region "Propriedades"
 
-        public uint IdDestaque
+        public uint IdHighlights
         {
-            get { return _idDestaque; }
-            set { _idDestaque = value; }
+            get { return _idHighlights; }
+            set { _idHighlights = value; }
         }
 
-        public string NomeDestaque
+        public string NameHighlights
         {
-            get { return _nomeDestaque; } 
-            set { _nomeDestaque = value; } 
+            get { return _nameHighlights; } 
+            set { _nameHighlights = value; } 
         }
 
         #endregion

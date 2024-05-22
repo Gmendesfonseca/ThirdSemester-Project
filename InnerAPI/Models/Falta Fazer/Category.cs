@@ -4,23 +4,23 @@
     {
         #region "Declaração de variáveis"
         
-        private uint _idCategoria;
-        private string _nomeCategoria;
+        private uint _idCategory;
+        private string _nameCategory;
 
         #endregion
 
         #region "Propriedades"
 
-        public uint IdCategoria
+        public uint IdCategory
         { 
-            get { return _idCategoria; }
-            set { _idCategoria = value; }
+            get { return _idCategory; }
+            set { _idCategory = value; }
         }
 
-        public string NomeCategoria
+        public string NameCategory
         { 
-            get { return _nomeCategoria; } 
-            set { _nomeCategoria = value; }
+            get { return _nameCategory; } 
+            set { _nameCategory = value; }
         }
 
         #endregion

@@ -4,23 +4,23 @@
     {
         #region "Declaração de variáveis"
         
-        private uint _idFiltro;
-        private string _nomeFiltro;
+        private uint _idFilter;
+        private string _nameFilter;
 
         #endregion
 
         #region "Propriedades"
 
-        public uint IdFiltro
+        public uint IdFilter
         {
-            get { return _idFiltro; }
-            set { _idFiltro = value; }
+            get { return _idFilter; }
+            set { _idFilter = value; }
         }
 
-        public string NomeFiltro
+        public string NameFilter
         { 
-            get { return _nomeFiltro; } 
-            set { _nomeFiltro = value; }
+            get { return _nameFilter; } 
+            set { _nameFilter = value; }
         }
 
         #endregion

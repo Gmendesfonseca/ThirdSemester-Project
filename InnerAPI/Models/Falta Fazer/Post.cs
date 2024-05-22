@@ -1,72 +1,56 @@
 ﻿namespace InnerAPI.Models
 {
-    public class Post
+    public class Postagem
     {
         #region "Declaração de variáveis"
 
-        private uint _idPostagem;
-        private string _tituloPostagem;
-        private uint _numeroCurtidas; //Talvez mudar tipo para ushort
-        private string _comentario; //Criar uma lista
-        private string _conteudoPostagem; //Será informado o endereço do arquivo a ser postado - Criar Lista
-        private DateOnly _dataPostagem;
-        private uint _institutionId;
+        private uint _idPost;
+        private string _titlePost;
+        private uint _numLikes; //Talvez mudar tipo para ushort
+        private string _comment; //Criar uma lista
+        private string _contentPost; //Será informado o endereço do arquivo a ser postado - Criar Lista
+        private DateOnly _datePost;
 
-        #endregion
-
-        #region "Construtores"
-        public Post(uint idPostagem, string tituloPostagem, string conteudoPostagem, uint institutionId)
-        {
-            _idPostagem = idPostagem;
-            _tituloPostagem = tituloPostagem;
-            _conteudoPostagem = conteudoPostagem;
-            _institutionId = institutionId;
-        }
         #endregion
 
         #region "Propriedades"
 
-        public uint Id
+        public uint IdPost
         {
-            get { return _idPostagem; }
-            set { _idPostagem = value;}
+            get { return _idPost; }
+            set { _idPost = value;}
         }
 
-        public string Title
+        public string TitlePost
         { 
-            get { return _tituloPostagem; } 
-            set { _tituloPostagem = value; }
+            get { return _titlePost; } 
+            set { _titlePost = value; }
         }
 
-        public uint Likes
+        public uint NumLikes
         {
-            get { return _numeroCurtidas;}
-            set { _numeroCurtidas = value;}
+            get { return _numLikes;}
+            set { _numLikes = value;}
         }
 
-        public string Coments
+        public string Comment
         {
-            get { return _comentario; }
-            set { _comentario = value; }
+            get { return _comment; }
+            set { _comment = value; }
         }
 
-        public string Content
+        public string ContentPost
         {
-            get { return _conteudoPostagem; }
-            set { _conteudoPostagem = value;}
+            get { return _contentPost; }
+            set { _contentPost = value;}
         }
 
-        public DateOnly Date
+        public DateOnly DatePost
         {
-            get { return _dataPostagem;}
-            set { _dataPostagem = value;}
+            get { return _datePost;}
+            set { _datePost = value;}
         }
 
-        public uint InstitutionId 
-        {
-            get { return _institutionId; }
-            set { _institutionId = value; }
-        }
         #endregion
 
         #region "Metodos"

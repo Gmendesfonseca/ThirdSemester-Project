@@ -5,9 +5,9 @@
         #region "Declaração de variáveis"
         
         private uint _idChat;
-        private uint _idUsuario1;
-        private uint _idUsuario2;
-        private DateOnly _dataCriacao;
+        private uint _idUser1;
+        private uint _idUser2;
+        private DateOnly _dateCreation;
 
         #endregion
 
@@ -19,22 +19,22 @@
             set { _idChat = value; }
         }
 
-        public uint IdUsuario1
+        public uint IdUser1
         {
-            get { return _idUsuario1; }
-            set { _idUsuario1 = value;}
+            get { return _idUser1; }
+            set { _idUser1 = value;}
         }
 
-        public uint IdUsuario2
+        public uint IdUser2
         {
-            get { return _idUsuario2; }
-            set { _idUsuario2 = value;}
+            get { return _idUser2; }
+            set { _idUser2 = value;}
         }
 
-        public DateOnly DataCriacao
+        public DateOnly DateCreation
         {
-            get { return _dataCriacao; }
-            set { _dataCriacao = value;}
+            get { return _dateCreation; }
+            set { _dateCreation = value;}
         }
 
         #endregion

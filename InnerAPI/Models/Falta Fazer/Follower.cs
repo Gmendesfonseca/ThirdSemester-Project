@@ -4,22 +4,22 @@
     {
         #region "Declaração de variáveis"
         
-        private uint _idSeguidor; //Criar Lista de seguidores
-        private string _nomeSeguidor;
+        private uint _idFollower; //Criar Lista de seguidores
+        private string _nameFollower;
 
         #endregion
 
         #region "Propriedades"
-        public uint IdSeguidor
+        public uint IdFollower
         { 
-            get { return _idSeguidor; }
-            set { _idSeguidor = value;}
+            get { return _idFollower; }
+            set { _idFollower = value;}
         }
 
-        public string NomeSeguidor
+        public string NameFollower
         {
-            get { return _nomeSeguidor; }
-            set { _nomeSeguidor = value;}
+            get { return _nameFollower; }
+            set { _nameFollower = value;}
         }
 
         #endregion
