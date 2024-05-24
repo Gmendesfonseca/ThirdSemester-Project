@@ -1,13 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
 import { Post } from '../Post/Post';
-import { PostType, getAllPosts } from '../../../services/posts';
+import {
+  CommentType,
+  PostType,
+  //getAllPosts
+} from '../../../services/posts';
+import faker from 'faker';
 
 export const Feed = () => {
   const [posts, setPosts] = useState<PostType[]>([]);
 
   useEffect(() => {
-    getAllPosts().then(setPosts);
+    const fakePosts = Array.from({ length: 10 }).map(() => ({
+      creatorId: faker.datatype.number(),
+      title: faker.lorem.sentence(),
+      subheader: faker.lorem.sentence(),
+      likes: faker.datatype.number(),
+      comments: Array.from({ length: 5 }).map(() => ({
+        id: faker.datatype.uuid(),
+        text: faker.lorem.sentence(),
+        // Add more fields as needed for CommentType
+      })) as CommentType[],
+      description: faker.lorem.paragraph(),
+      image: faker.image.imageUrl(),
+      // Add more fields as needed
+    }));
+
+    setPosts(fakePosts);
   }, []);
 
   return (

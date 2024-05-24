@@ -50,7 +50,7 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ mode, setMode }) => {
           <ListItemIcon>
             <Home />
           </ListItemIcon>
-          <ListItemText primary="Homepage" />
+          <ListItemText primary="Home" />
         </ListItemButton>
       </ListItem>
       {/* <ListItem disablePadding>

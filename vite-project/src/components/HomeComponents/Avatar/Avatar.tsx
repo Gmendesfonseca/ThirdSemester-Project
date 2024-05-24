@@ -1,9 +1,13 @@
-import { Avatar, Badge } from '@mui/material';
+import { Avatar, Badge, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { AvatarType } from '../../../services/avatar/type';
+import { FriendsType } from '../../../services/friends';
 
 interface AvatarProps {
   data: AvatarType;
+}
+interface FriendsProps {
+  data: FriendsType;
 }
 
 export const OnlineBadge = styled(Badge)(({ theme }) => ({
@@ -64,24 +68,36 @@ export const OfflineBadge = styled(Badge)(({ theme }) => ({
 
 export const OnlineAvatar = ({ data }: AvatarProps) => {
   return (
-    <OnlineBadge
-      overlap="circular"
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-      variant="dot"
-    >
-      <Avatar alt={data.name} src={data.src} />
-    </OnlineBadge>
+    <Box>
+      <OnlineBadge
+        overlap="circular"
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        variant="dot"
+      >
+        <Avatar alt={data.name} src={data.src} />
+      </OnlineBadge>
+    </Box>
   );
 };
 
 export const OfflineAvatar = ({ data }: AvatarProps) => {
   return (
-    <OfflineBadge
-      overlap="circular"
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-      variant="dot"
-    >
-      <Avatar alt={data.name} src={data.src} />
-    </OfflineBadge>
+    <Box>
+      <OfflineBadge
+        overlap="circular"
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        variant="dot"
+      >
+        <Avatar alt={data.name} src={data.src} />
+      </OfflineBadge>
+    </Box>
+  );
+};
+
+export const AvatarComponent = ({ data }: FriendsProps) => {
+  return data.online ? (
+    <OnlineAvatar data={data} />
+  ) : (
+    <OfflineAvatar data={data} />
   );
 };
