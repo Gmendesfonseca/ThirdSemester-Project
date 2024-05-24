@@ -9,8 +9,8 @@ import {
   TextField,
   Tooltip,
   Typography,
-} from '@mui/material';
-import React, { useState } from 'react';
+} from "@mui/material";
+import React, { ChangeEvent, useState } from "react";
 import {
   Add as AddIcon,
   DateRange,
@@ -18,20 +18,20 @@ import {
   Image,
   PersonAdd,
   VideoCameraBack,
-} from '@mui/icons-material';
-import { Box } from '@mui/system';
+} from "@mui/icons-material";
+import { Box } from "@mui/system";
 
 const StyledModal = styled(Modal)({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 });
 
 const UserBox = styled(Box)({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '10px',
-  marginBottom: '20px',
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  marginBottom: "20px",
 });
 export const Add = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -42,13 +42,21 @@ export const Add = () => {
   const handleClose = (): void => {
     setOpen(false);
   };
+  function onImageUpload(event: ChangeEvent<HTMLInputElement>): void {
+    const file = event.target.files?.[0];
+    if (file) {
+      // Perform any necessary operations with the uploaded file
+      console.log("File uploaded:", file);
+    }
+  }
+
   return (
     <>
       <Tooltip
         onClick={handleClickOpen}
         title="Add Post"
         sx={{
-          position: 'fixed',
+          position: "fixed",
           bottom: 20,
           left: 30,
         }}
@@ -66,8 +74,8 @@ export const Add = () => {
         <Box
           width={400}
           height={280}
-          bgcolor={'background.default'}
-          color={'text.primary'}
+          bgcolor={"background.default"}
+          color={"text.primary"}
           p={3}
           borderRadius={5}
         >
@@ -82,7 +90,7 @@ export const Add = () => {
             <Typography fontWeight={500}>John Doe</Typography>
           </UserBox>
           <TextField
-            sx={{ width: '100%' }}
+            sx={{ width: "100%" }}
             id="standard-multiline-static"
             multiline
             rows={3}
@@ -90,10 +98,43 @@ export const Add = () => {
             variant="standard"
           />
           <Stack direction="row" gap={1} mt={2} mb={3}>
-            <EmojiEmotions color="primary" />
-            <Image color="secondary" />
-            <VideoCameraBack color="success" />
-            <PersonAdd color="error" />
+            <Button component="label">
+              <EmojiEmotions color="primary" />
+              <input
+                type="file"
+                hidden
+                accept="image/*"
+                onChange={onImageUpload}
+              />
+            </Button>
+
+            <Button component="label">
+              <Image color="secondary" />
+              <input
+                type="file"
+                hidden
+                accept="image/*"
+                onChange={onImageUpload}
+              />
+            </Button>
+            <Button component="label">
+              <VideoCameraBack color="success" />
+              <input
+                type="file"
+                hidden
+                accept="image/*"
+                onChange={onImageUpload}
+              />
+            </Button>
+            <Button component="label">
+              <PersonAdd color="error" />
+              <input
+                type="file"
+                hidden
+                accept="image/*"
+                onChange={onImageUpload}
+              />
+            </Button>
           </Stack>
           <ButtonGroup
             fullWidth
@@ -101,7 +142,7 @@ export const Add = () => {
             aria-label="outlined primary button group"
           >
             <Button>Post</Button>
-            <Button sx={{ width: '100px' }}>
+            <Button sx={{ width: "100px" }}>
               <DateRange />
             </Button>
           </ButtonGroup>
