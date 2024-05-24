@@ -47,7 +47,7 @@ export default function ListProfessor() {
   });
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    // <ThemeProvider theme={darkTheme}>
       <Box bgcolor={'background.default'} color={'text.primary'}>
         <Navbar />
         <Stack direction="row" spacing={2} justifyContent="space-between">
@@ -60,6 +60,6 @@ export default function ListProfessor() {
           />
         </Stack>
       </Box>
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 }

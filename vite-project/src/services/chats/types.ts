@@ -17,6 +17,5 @@ export type ChatType = {
 export type RecentChatType = {
   id: string;
   name: string;
-  to: string;
   message: string;
 };

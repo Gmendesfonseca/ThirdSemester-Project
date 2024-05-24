@@ -1,0 +1,15 @@
+/* Consider this div as the wrapper (like a card, for example) */
+.parent {
+  width: 100%;
+  max-width: 300px;
+  overflow: hidden; /* You may need to use this in the case of "width: 100%;" not work for some reason. */
+}
+
+/* SINGLE LINE RESPONSIVE ELLIPSIS */
+.title {
+  /* This is the text */
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

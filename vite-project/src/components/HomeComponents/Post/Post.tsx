@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { Box } from '@mui/system';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import { Favorite, FavoriteBorder, MoreVert } from '@mui/icons-material';
-import { PostType, CommentType } from '../../../services/posts';
-import { Button, Checkbox } from '@mui/material';
+import { useState } from "react";
+import { Box } from "@mui/system";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import { red } from "@mui/material/colors";
+import { Favorite, FavoriteBorder, MoreVert } from "@mui/icons-material";
+import { PostType, CommentType } from "../../../services/posts";
+import { Button, Checkbox } from "@mui/material";
 
 interface PostProps {
   data: PostType;
@@ -29,12 +29,12 @@ export const Post = ({ data }: PostProps, onImageUpload) => {
   };
 
   return (
-    <Box flex={4} p={2}>
-      <Card sx={{ margin: 5 }}>
+    <Box flex={4} pt={7} mx={8}>
+      <Card>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              {data.creatorId}
+              {/* {data.creatorId} */}
             </Avatar>
           }
           action={
@@ -47,7 +47,8 @@ export const Post = ({ data }: PostProps, onImageUpload) => {
         />
         <CardMedia
           component="img"
-          height="20%"
+          height="480"
+          width="640"
           image={data.image} // Assuming your Pod stType has an 'image' property
           alt={data.title}
         />
@@ -60,19 +61,16 @@ export const Post = ({ data }: PostProps, onImageUpload) => {
           <IconButton aria-label="add to favorites" onClick={handleLike}>
             <Checkbox
               icon={<FavoriteBorder />}
-              checkedIcon={<Favorite sx={{ color: 'red' }} />}
+              checkedIcon={<Favorite sx={{ color: "red" }} />}
             />
           </IconButton>
           <Typography variant="body2" color="text.secondary">
             {likes} Likes
           </Typography>
-          <Button onClick={() => handleComment('New comment')}>
+          <Button onClick={() => handleComment("New comment")}>
             Add Comment
           </Button>
-          <Button variant="contained" component="label">
-        Upload Image
-        <input type="file" hidden accept="image/*" onChange={onImageUpload} />
-      </Button>
+
           {comments.map((comment) => (
             <Typography key={comment.id} variant="body2" color="text.secondary">
               {comment.text}

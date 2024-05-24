@@ -9,6 +9,8 @@ import {
 } from '../../../services/register';
 import { useNavigate } from 'react-router-dom';
 import { InStepper } from '../../Stepper/Stepper';
+import Anchor from '../../Anchor/Anchor';
+import { type } from 'node:os';
 
 const steps = ['Cadastro', 'Dados', 'Verificação'];
 
@@ -196,6 +198,11 @@ export default function FormHeadOffice() {
               autoComplete="new-password"
               onChange={handlePasswordChange}
             />
+            <Grid item>
+              <Anchor id="login-page" to="/login">
+                Já possui uma conta? Faça login.
+              </Anchor>
+            </Grid>
             <Box
               sx={{
                 display: 'flex',

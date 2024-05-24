@@ -19,13 +19,13 @@
     "faker": "^5.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.0",
+    "react-router-dom": "^6.23.1",
     "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@cypress/electron-plugin": "^1.1.0",
     "@types/node": "^18.19.31",
-    "@types/react": "^18.3.1",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.2.21",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
