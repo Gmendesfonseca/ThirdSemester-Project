@@ -72,7 +72,7 @@ export const Add = () => {
           borderRadius={5}
         >
           <Typography variant="h6" color="gray" textAlign="center">
-            Create post
+            Criar Nova Publicação
           </Typography>
           <UserBox>
             <Avatar
@@ -86,7 +86,7 @@ export const Add = () => {
             id="standard-multiline-static"
             multiline
             rows={3}
-            placeholder="What's on your mind?"
+            placeholder="Compartilhe suas experiências..."
             variant="standard"
           />
           <Stack direction="row" gap={1} mt={2} mb={3}>

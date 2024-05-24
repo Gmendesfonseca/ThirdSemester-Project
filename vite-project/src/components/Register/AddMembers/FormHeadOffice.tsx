@@ -204,10 +204,19 @@ export default function FormHeadOffice() {
                 marginTop: '30px',
               }}
             >
-              <Button onClick={handleBack} variant="contained" disabled>
+              <Button
+                id="institution-register-back-home"
+                onClick={handleBack}
+                variant="contained"
+                disabled
+              >
                 Voltar
               </Button>
-              <Button onClick={handleNext} variant="contained">
+              <Button
+                id="institution-register-next-step-1"
+                onClick={handleNext}
+                variant="contained"
+              >
                 Próximo
               </Button>
             </Box>
@@ -249,10 +258,18 @@ export default function FormHeadOffice() {
                   marginTop: '30px',
                 }}
               >
-                <Button onClick={handleBack} variant="contained">
+                <Button
+                  id="institution-register-back-step-1"
+                  onClick={handleBack}
+                  variant="contained"
+                >
                   Voltar
                 </Button>
-                <Button onClick={handleNext} variant="contained">
+                <Button
+                  id="institution-register-next-step-2"
+                  onClick={handleNext}
+                  variant="contained"
+                >
                   Próximo
                 </Button>
               </Box>
@@ -289,7 +306,11 @@ export default function FormHeadOffice() {
                     marginTop: '30px',
                   }}
                 >
-                  <Button onClick={handleBack} variant="contained">
+                  <Button
+                    id="institution-register-back-step-2"
+                    onClick={handleBack}
+                    variant="contained"
+                  >
                     Voltar
                   </Button>
                   <Button
