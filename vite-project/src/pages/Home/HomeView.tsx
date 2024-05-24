@@ -27,7 +27,7 @@ export function Home() {
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={'background.default'} color={'text.primary'}>
         <Navbar />
-        <Stack direction="row" spacing={2} justifyContent="space-between">
+        <Stack direction="row" spacing={0} justifyContent="space-between">
           <SidebarMenu mode={mode} setMode={setMode} />
           <Feed />
           <Rightbar />

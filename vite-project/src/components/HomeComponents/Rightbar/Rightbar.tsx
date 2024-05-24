@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
 import {
   AvatarGroup,
+  Container,
   Divider,
   //ImageList,
   //ImageListItem,
@@ -48,7 +49,7 @@ export const Rightbar = () => {
   }, []);
 
   return (
-    <Box flex={2} p={2} sx={{ display: { xs: 'none', sm: 'block' } }}>
+    <Box flex={2} p={2} sx={{ display: { xs:'none', sm: 'none', lg:'block' } }}>
       <Box position="fixed">
         <Typography variant="h6" fontWeight={100}>
           Conexões
@@ -89,9 +90,9 @@ export const Rightbar = () => {
           Conversas
         </Typography>
         <Divider />
-        <Box sx={{ overflowY: 'scroll', maxHeight: '500px' }}>
+        <Box sx={{ display: { lg: 'block' }, overflowY: { lg: 'scroll' }, maxHeight: { lg: '75vh' } }}> 
           <List
-            sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+            sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
           >
             {recentChats.map(
               (recentChat, index) =>

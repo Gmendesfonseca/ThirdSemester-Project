@@ -7,6 +7,7 @@ import {
   //getAllPosts
 } from '../../../services/posts';
 import faker from 'faker';
+import camaleao from "../../../assets/image.png";
 
 export const Feed = () => {
   const [posts, setPosts] = useState<PostType[]>([]);
@@ -23,15 +24,15 @@ export const Feed = () => {
         // Add more fields as needed for CommentType
       })) as CommentType[],
       description: faker.lorem.paragraph(),
-      image: faker.image.imageUrl(),
+      image: camaleao,
       // Add more fields as needed
-    }));
+    }));  
 
     setPosts(fakePosts);
   }, []);
 
   return (
-    <Box flex={4}>
+    <Box flex={4} sx={{paddingRight:{md:"0px"}}}>
       {posts.map((post, index) => (
         <Post key={index} data={post} />
       ))}
