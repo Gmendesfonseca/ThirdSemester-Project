@@ -48,7 +48,7 @@ export const Rightbar = () => {
   }, []);
 
   return (
-    <Box flex={2} p={2} sx={{ display: { xs: "none", lg: "block" } }}>
+    <Box flex={1} pt={10} pr={10} sx={{ display: { xs: "none", lg: "block" } }}>
       <Box position="fixed">
         <Typography variant="h6" fontWeight={100}>
           Conexões
@@ -92,7 +92,7 @@ export const Rightbar = () => {
         <Box
           sx={{
             display: { lg: "block" },
-            overflowY: "scroll",
+            overflowY: "auto",
             maxHeight: { md: "65vh", xl: "75vh" },
           }}
         >

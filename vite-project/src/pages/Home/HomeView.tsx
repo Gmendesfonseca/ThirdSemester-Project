@@ -24,7 +24,7 @@ export function Home() {
     },
   });
   return (
-    // <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={darkTheme}>
       <Box
         bgcolor={"background.default"}
         color={"text.primary"}
@@ -38,6 +38,6 @@ export function Home() {
         </Stack>
         <Add />
       </Box>
-    // </ThemeProvider>
+    </ThemeProvider>
   );
 }
