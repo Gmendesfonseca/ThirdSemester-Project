@@ -7,41 +7,35 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import Box from '@mui/material/Box';
-import { Navbar } from '../../HomeComponents/NavBar/Navbar';
-import { SidebarMenu } from '../../HomeComponents/Sidebar/SidebarHome';
-import { HeadCell, InTable } from '../../Table/Table';
-import { StudentListType } from '../../../services/login';
+import { Navbar } from '../HomeComponents/NavBar/Navbar';
+import { SidebarMenu } from '../HomeComponents/Sidebar/SidebarHome';
+import { HeadCell, InTable } from '../Table/Table';
+import { StudentListType } from '../../services/login';
 import faker from 'faker';
+import { More } from '../More/More';
 
 const headCells: readonly HeadCell<StudentListType>[] = [
-  { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
+  { id: 'name', numeric: false, disablePadding: false, label: 'Nome' },
   { id: 'email', numeric: false, disablePadding: false, label: 'Email' },
   { id: 'cpf', numeric: false, disablePadding: false, label: 'CPF' },
-  { id: 'curso', numeric: false, disablePadding: false, label: 'Course' },
-  { id: 'periodo', numeric: false, disablePadding: false, label: 'Period' },
+  { id: 'curso', numeric: false, disablePadding: false, label: 'Curso' },
   {
     id: 'matricula',
     numeric: false,
     disablePadding: false,
-    label: 'Registration',
+    label: 'Matricula',
   },
-  {
-    id: 'institution',
-    numeric: false,
-    disablePadding: false,
-    label: 'Institution',
-  },
+  { id: 'options', numeric: false, disablePadding: false, label: 'Opções' },
 ];
 
-const rows: StudentListType[] = Array.from({ length: 10 }, (_, index) => ({
+const rows: StudentListType[] = Array.from({ length: 50 }, (_, index) => ({
   id: index + 1,
   name: faker.name.findName(),
   email: faker.internet.email(),
   cpf: faker.finance.creditCardNumber(),
   curso: faker.random.arrayElement(['Course1', 'Course2', 'Course3']),
-  periodo: faker.date.month(),
   matricula: faker.datatype.uuid(),
-  institution: faker.company.companyName(),
+  options: <More type="Estudante" id={index + 1} idMore={index + 1} />,
 }));
 
 export default function ListStudent() {

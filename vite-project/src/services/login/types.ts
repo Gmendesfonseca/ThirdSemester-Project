@@ -51,15 +51,28 @@ export type InstitutionType = {
   professors?: ProfessorType[];
 };
 
+export type BranchType = {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  domain: string;
+  cnpj: string;
+  localidadeInstituicao?: string;
+  dataCriacao?: Date;
+  courses?: CourseDto[];
+  students?: StudentType[];
+  professors?: ProfessorType[];
+};
+
 export type StudentListType = {
   id: number;
   name: string;
   email: string;
   cpf: string;
   curso: string;
-  periodo: string;
   matricula: string;
-  institution: string;
+  options: JSX.Element;
 };
 
 export type ProfessorListType = {
@@ -68,9 +81,10 @@ export type ProfessorListType = {
   email: string;
   type: string;
   registration: string;
+  options: JSX.Element;
 };
 
-export type InstitutionListType = {
+export type BranchListType = {
   id: number;
   name: string;
   email: string;
@@ -78,6 +92,7 @@ export type InstitutionListType = {
   cnpj: string;
   localidadeInstituicao?: string;
   dataCriacao?: Date;
+  options: JSX.Element;
 };
 
 export type CourseDto = {

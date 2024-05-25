@@ -12,7 +12,7 @@ import { InStepper } from '../../Stepper/Stepper';
 
 const steps = ['Cadastro', 'Dados', 'Verificação'];
 
-export function RegisterBranch() {
+export function FormStudent(/*disabled, data*/) {
   const [activeStep, setActiveStep] = useState(0);
   const [cnpjError, setCnpjError] = useState(false);
   const [domainError, setDomainError] = useState(false);
@@ -309,7 +309,7 @@ export function RegisterBranch() {
         </Box>
       </form>
       <Button
-        onClick={() => navigate('/branch/list')}
+        onClick={() => navigate('/student/list')}
         style={{ color: blue[500] }}
         onMouseOver={(event) => {
           event.currentTarget.style.color = blue[900];

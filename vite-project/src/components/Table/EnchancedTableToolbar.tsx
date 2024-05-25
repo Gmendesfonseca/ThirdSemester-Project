@@ -1,4 +1,6 @@
-import { AddCircleOutline, Tune } from '@mui/icons-material';
+import {
+  AddCircleOutline, //Tune
+} from '@mui/icons-material';
 import { Button, Toolbar, Typography, alpha } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -48,7 +50,7 @@ export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
             {props.name}
           </Typography>
         </Button>
-        <Button style={{ color: 'black' }}>
+        {/* <Button style={{ color: 'black' }}>
           <Tune />
           <Typography
             variant="button"
@@ -58,7 +60,7 @@ export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
           >
             Filtros
           </Typography>
-        </Button>
+        </Button> */}
       </>
     </Toolbar>
   );

@@ -5,45 +5,38 @@ import {
   ThemeProvider,
   createTheme,
   useMediaQuery,
-  Box,
 } from '@mui/material';
-
-import { Navbar } from '../../HomeComponents/NavBar/Navbar';
-import { SidebarMenu } from '../../HomeComponents/Sidebar/SidebarHome';
-import { HeadCell, InTable } from '../../Table/Table';
-import { InstitutionListType } from '../../../services/login';
+import Box from '@mui/material/Box';
+import { Navbar } from '../HomeComponents/NavBar/Navbar';
+import { SidebarMenu } from '../HomeComponents/Sidebar/SidebarHome';
+import { HeadCell, InTable } from '../Table/Table';
+import { ProfessorListType } from '../../services/login';
 import faker from 'faker';
+import { More } from '../More/More';
 
-const headCells: readonly HeadCell<InstitutionListType>[] = [
+const headCells: readonly HeadCell<ProfessorListType>[] = [
   { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
   { id: 'email', numeric: false, disablePadding: false, label: 'Email' },
-  { id: 'domain', numeric: false, disablePadding: false, label: 'Domain' },
-  { id: 'cnpj', numeric: false, disablePadding: false, label: 'CNPJ' },
+  { id: 'type', numeric: false, disablePadding: false, label: 'Type' },
   {
-    id: 'localidadeInstituicao',
+    id: 'registration',
     numeric: false,
     disablePadding: false,
-    label: 'Location',
+    label: 'Registration',
   },
-  {
-    id: 'dataCriacao',
-    numeric: false,
-    disablePadding: false,
-    label: 'Creation Date',
-  },
+  { id: 'options', numeric: false, disablePadding: false, label: 'Opções' },
 ];
 
-const rows: InstitutionListType[] = Array.from({ length: 10 }, (_, index) => ({
+const rows: ProfessorListType[] = Array.from({ length: 50 }, (_, index) => ({
   id: index + 1,
-  name: faker.company.companyName(),
+  name: faker.name.findName(),
   email: faker.internet.email(),
-  domain: faker.internet.domainName(),
-  cnpj: faker.datatype.uuid(),
-  localidadeInstituicao: faker.address.city(),
-  dataCriacao: faker.date.past(),
+  type: faker.random.arrayElement(['Type1', 'Type2', 'Type3']),
+  registration: faker.datatype.uuid(),
+  options: <More type="Professor" id={index + 1} idMore={index + 1} />,
 }));
 
-export default function ListBranch() {
+export default function ListProfessor() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
 
   const [mode, setMode] = React.useState<PaletteMode>(
@@ -62,9 +55,9 @@ export default function ListBranch() {
         <Navbar />
         <Stack direction="row" spacing={2} justifyContent="space-between">
           <SidebarMenu mode={mode} setMode={setMode} />
-          <InTable<InstitutionListType>
-            title="Unidades"
-            name="Novas Unidades"
+          <InTable<ProfessorListType>
+            title="Professores"
+            name="Novo Professor"
             rowsItems={rows}
             headCells={headCells}
           />

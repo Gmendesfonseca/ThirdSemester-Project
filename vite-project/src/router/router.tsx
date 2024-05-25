@@ -5,13 +5,13 @@ import SignInSide from '../pages/Login/SignInView';
 import Profile from '../pages/Profile/ProfileView';
 import { Settings } from '../pages/Settings/SettingsView';
 import { RegisterInstitution } from '../pages/Register/RegisterInstitution';
-import { RegisterStudent } from '../components/Register/AddMembers/FormStudent';
-import { RegisterProfessor } from '../components/Register/AddMembers/FormProfessor';
+import { FormStudent } from '../components/Register/Register/FormStudent';
+import { FormProfessor } from '../components/Register/Register/FormProfessor';
+import { FormBranch } from '../components/Register/Register/FormBranch';
 import { ChangePassword } from '../pages/Login/ChangePassword/ChangePassword';
-import { RegisterBranch } from '../components/Register/AddMembers/FormBranch';
-import ListBranch from '../components/Register/Lists/ListBrach';
-import ListStudent from '../components/Register/Lists/ListStudent';
-import ListProfessor from '../components/Register/Lists/ListProfessor';
+import ListBranch from '../components/Lists/ListBrach';
+import ListStudent from '../components/Lists/ListStudent';
+import ListProfessor from '../components/Lists/ListProfessor';
 import { Friends } from '../pages/Friends/Friends';
 import { Groups } from '../pages/Groups/Groups';
 
@@ -91,7 +91,7 @@ export function createRoutes() {
     },
     {
       path: '/branch/register',
-      element: <RegisterBranch />,
+      element: <FormBranch />,
     },
     {
       path: '/student/list',
@@ -99,7 +99,7 @@ export function createRoutes() {
     },
     {
       path: '/student/register',
-      element: <RegisterStudent />,
+      element: <FormStudent />,
     },
     {
       path: '/professor/list',
@@ -107,7 +107,7 @@ export function createRoutes() {
     },
     {
       path: '/professor/register',
-      element: <RegisterProfessor />,
+      element: <FormProfessor />,
     },
     {
       path: '/forgot-password',

@@ -12,7 +12,7 @@ import { InStepper } from '../../Stepper/Stepper';
 
 const steps = ['Cadastro', 'Dados', 'Verificação'];
 
-export function RegisterProfessor() {
+export function FormProfessor(/*disabled, data*/) {
   const [activeStep, setActiveStep] = useState(0);
   const [cnpjError, setCnpjError] = useState(false);
   const [domainError, setDomainError] = useState(false);

@@ -23,10 +23,9 @@ const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL'];
 function createWindow() {
   const win = new BrowserWindow({
     icon: path.join(__dirname, '../src/assets/IL.png'),
-    height: 715,
-    width: 1200,
-    minWidth: 600,
-    minHeight: 200,
+    minWidth: 1000,
+    minHeight: 700,
+
     center: true,
     show: false,
     autoHideMenuBar: true,

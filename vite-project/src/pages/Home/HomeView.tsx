@@ -26,9 +26,9 @@ export function Home() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Box
-        bgcolor={"background.default"}
-        color={"text.primary"}
-        sx={{ padding: "0px" }}
+        bgcolor={'background.default'}
+        color={'text.primary'}
+        sx={{ padding: '0px' }}
       >
         <Navbar />
         <Stack direction="row" spacing={0} justifyContent="space-between">
