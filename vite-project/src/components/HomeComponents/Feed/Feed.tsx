@@ -32,7 +32,11 @@ export const Feed = () => {
   }, []);
 
   return (
-    <Box flex={4} paddingTop={5} sx={{ paddingRight: { md: "0px" } }}>
+    <Box
+      // flex={4}
+      paddingTop={5}
+      sx={{ paddingRight: { md: "0px" }, flex: { sm: 4, lg: 5, xl: 3 } }}
+    >
       {posts.map((post, index) => (
         <Post key={index} data={post} />
       ))}

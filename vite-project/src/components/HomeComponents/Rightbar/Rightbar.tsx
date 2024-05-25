@@ -48,7 +48,11 @@ export const Rightbar = () => {
   }, []);
 
   return (
-    <Box flex={1} pt={10} pr={10} sx={{ display: { xs: "none", lg: "block" } }}>
+    <Box
+      pt={10}
+      pr={5}
+      sx={{ display: { xs: "none", lg: "block" }, flex: { lg: 2, xl: 1 } }}
+    >
       <Box position="fixed">
         <Typography variant="h6" fontWeight={100}>
           Conexões
