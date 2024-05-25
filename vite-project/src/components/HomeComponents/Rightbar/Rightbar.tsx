@@ -76,8 +76,6 @@ export const Rightbar = () => {
               width: '100%',
               maxWidth: 360,
               bgcolor: 'background.paper',
-              position: 'relative',
-              zIndex: 9,
             }}
           >
             {onlineFriends.map(
