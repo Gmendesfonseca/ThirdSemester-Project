@@ -24,20 +24,20 @@ export function Home() {
   //   },
   // });
   return (
-    // <ThemeProvider theme={darkTheme}>
-    <Box
-      bgcolor={'background.default'}
-      color={'text.primary'}
-      sx={{ padding: '0px' }}
-    >
-      <Navbar />
-      <Stack direction="row" spacing={0} justifyContent="space-between">
-        <SidebarMenu mode={mode} setMode={setMode} />
-        <Feed />
-        <Rightbar />
-      </Stack>
-      <Add />
-    </Box>
-    // </ThemeProvider>
+    <ThemeProvider theme={darkTheme}>
+      <Box
+        bgcolor={"background.default"}
+        color={"text.primary"}
+        sx={{ padding: "0px" }}
+      >
+        <Navbar />
+        <Stack direction="row" spacing={0} justifyContent="space-between">
+          <SidebarMenu mode={mode} setMode={setMode} />
+          <Feed />
+          <Rightbar />
+        </Stack>
+        <Add />
+      </Box>
+    </ThemeProvider>
   );
 }
