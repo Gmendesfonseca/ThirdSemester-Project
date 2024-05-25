@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Box } from '@mui/system';
+import { useEffect, useState } from "react";
+import { Box } from "@mui/system";
 import {
   AvatarGroup,
   Divider,
@@ -10,18 +10,18 @@ import {
   // ListItemAvatar,
   // ListItemText,
   Typography,
-} from '@mui/material';
-import { AvatarComponent } from '../Avatar/Avatar';
-import { RecentChat } from '../RecentChat/RecentChat';
-import {} from '../../../services/chats/request';
+} from "@mui/material";
+import { AvatarComponent } from "../Avatar/Avatar";
+import { RecentChat } from "../RecentChat/RecentChat";
+import {} from "../../../services/chats/request";
 import {
   RecentChatType, //, getRecentChat
-} from '../../../services/chats/index';
+} from "../../../services/chats/index";
 import {
   //getOnlineFriends,
   OnlineFriendsType,
-} from '../../../services/friends/index';
-import faker from 'faker';
+} from "../../../services/friends/index";
+import faker from "faker";
 
 export const Rightbar = () => {
   const [recentChats, setRecentChat] = useState<RecentChatType[]>([]);
@@ -55,34 +55,34 @@ export const Rightbar = () => {
         </Typography>
         <Box
           sx={{
-            paddingLeft: '8px',
-            overflowY: 'hidden',
-            overflowX: 'scroll',
-            maxWidth: '400px',
-            '&::-webkit-scrollbar': {
-              height: '8px',
-              width: '8px',
+            paddingLeft: "8px",
+            overflowY: "hidden",
+            overflowX: "scroll",
+            maxWidth: "400px",
+            "&::-webkit-scrollbar": {
+              height: "0px",
+              width: "8px",
             },
-            '&::-webkit-scrollbar-thumb': {
-              backgroundColor: 'rgba(0,0,0,.1)',
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "rgba(0,0,0,.1)",
             },
           }}
         >
           <AvatarGroup
             max={onlineFriends.length}
             sx={{
-              justifyContent: 'start',
-              height: '100%',
-              width: '100%',
+              justifyContent: "start",
+              height: "100%",
+              width: "100%",
               maxWidth: 360,
-              bgcolor: 'background.paper',
+              bgcolor: "background.paper",
             }}
           >
             {onlineFriends.map(
               (onlineFriends, index) =>
                 onlineFriends && (
                   <AvatarComponent key={index} data={onlineFriends} />
-                ),
+                )
             )}
           </AvatarGroup>
         </Box>
@@ -95,10 +95,17 @@ export const Rightbar = () => {
             display: { lg: "block" },
             overflowY: "auto",
             maxHeight: { md: "65vh", xl: "75vh" },
+            "&::-webkit-scrollbar": {
+              height: "8px",
+              width: "0px",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "rgba(0,0,0,.1)",
+            },
           }}
         >
           <List
-            sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
           >
             {recentChats.map(
               (recentChat, index) =>
@@ -109,7 +116,7 @@ export const Rightbar = () => {
                     avatar={onlineFriends[index]}
                     data={recentChat}
                   />
-                ),
+                )
             )}
           </List>
         </Box>

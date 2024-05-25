@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Box } from '@mui/system';
-import { Post } from '../Post/Post';
+import React, { useEffect, useState } from "react";
+import { Box } from "@mui/system";
+import { Post } from "../Post/Post";
 import {
   CommentType,
   PostType,
   //getAllPosts
-} from '../../../services/posts';
-import faker from 'faker';
+} from "../../../services/posts";
+import faker from "faker";
 import camaleao from "../../../assets/image.png";
 
 export const Feed = () => {
@@ -26,13 +26,13 @@ export const Feed = () => {
       description: faker.lorem.paragraph(),
       image: camaleao,
       // Add more fields as needed
-    }));  
+    }));
 
     setPosts(fakePosts);
   }, []);
 
   return (
-    <Box flex={4} sx={{paddingRight:{md:"0px"}}}>
+    <Box flex={4} paddingTop={5} sx={{ paddingRight: { md: "0px" } }}>
       {posts.map((post, index) => (
         <Post key={index} data={post} />
       ))}
