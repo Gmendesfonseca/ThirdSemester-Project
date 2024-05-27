@@ -62,7 +62,7 @@ export const Rightbar = () => {
             paddingLeft: "8px",
             overflowY: "hidden",
             overflowX: "scroll",
-            maxWidth: "400px",
+            maxWidth: { md: "300px", lg: "320px" },
             "&::-webkit-scrollbar": {
               height: "0px",
               width: "8px",
