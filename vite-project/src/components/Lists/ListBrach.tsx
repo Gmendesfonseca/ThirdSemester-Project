@@ -37,7 +37,7 @@ const rows: BranchListType[] = Array.from({ length: 50 }, (_, index) => ({
   cnpj: faker.datatype.uuid(),
   localidadeInstituicao: faker.address.city(),
   dataCriacao: faker.date.past(),
-  options: <More type="Unidade" idItem={index + 1} idMore={index + 1} />,
+  options: <More type="Unidade" id={index + 1} idMore={index + 1} />,
 }));
 
 export default function ListBranch() {

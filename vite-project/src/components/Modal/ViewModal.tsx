@@ -5,41 +5,28 @@ import {
   DialogContent,
   DialogTitle,
 } from '@mui/material';
-import { updateStudent } from '../../services/lists/student/request';
-import { updateProfessor } from '../../services/lists/professor/request';
-import { updateBranch } from '../../services/lists/branch/request';
-import { FormBranch } from '../Register/Register/FormBranch';
 import { FormProfessor } from '../Register/Register/FormProfessor';
 import { FormStudent } from '../Register/Register/FormStudent';
+import { InModalProps } from '../../interfaces/Modal';
+import { FormBranch } from '../Register/Register/FormBranch';
+import { useState } from 'react';
 
-interface InModalProps {
-  data: any;
-  title: string;
-  open: boolean;
-  disabled?: boolean;
-}
-
-const InModalView = ({ data, title, open, disabled }: InModalProps) => {
-  const handleClose = () => {
-    open = false;
+const InModalView = ({ data, title, open, onClose }: InModalProps) => {
+  const [disabled, setDisabled] = useState(true);
+  const navigate = (path: string) => {
+    window.location.pathname = path;
   };
-
-  const handleEnable = () => {
-    disabled = false;
-  };
-
-  const handleUpdate = () => {
-    if (title === 'Aluno') updateStudent(data);
-    else if (title === 'Professor') updateProfessor(data);
-    else if (title === 'Unidade') updateBranch(data);
+  const onEnable = () => {
+    navigate('/branch/edit');
+    setDisabled(false);
   };
 
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog open={open} onClose={onClose}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
         {title === 'Unidade' ? (
-          <FormBranch /*disabled={disabled} data={data}*/ />
+          <FormBranch disabled={disabled} data={data} />
         ) : title === 'Professor' ? (
           <FormProfessor /*disabled={disabled} data={data}*/ />
         ) : title === 'Aluno' ? (
@@ -47,12 +34,8 @@ const InModalView = ({ data, title, open, disabled }: InModalProps) => {
         ) : null}
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Fechar</Button>
-        {disabled ? (
-          <Button onClick={handleEnable}>Editar</Button>
-        ) : (
-          <Button onClick={handleUpdate}>Confirmar</Button>
-        )}
+        <Button onClick={onClose}>Fechar</Button>
+        <Button onClick={onEnable}>Editar</Button>
       </DialogActions>
     </Dialog>
   );

@@ -91,7 +91,7 @@ export function createRoutes() {
     },
     {
       path: '/branch/register',
-      element: <FormBranch />,
+      element: <FormBranch disabled={true} data={null} />,
     },
     {
       path: '/student/list',

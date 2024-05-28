@@ -8,39 +8,49 @@ import {
 import { deleteBranch } from '../../services/lists/branch/request';
 import { deleteProfessor } from '../../services/lists/professor/request';
 import { deleteStudent } from '../../services/lists/student/request';
-import React from 'react';
 
-interface InModalProps {
+interface InModalDeleteProps {
   id: number;
   title: string;
   open: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 }
 
-const InModalDelete = ({ id, title, open }: InModalProps) => {
-  const [openDelete, setOpen] = React.useState(false);
-
+export const InModalDelete = ({
+  id,
+  title,
+  open,
+  onClose,
+}: InModalDeleteProps) => {
   const handleConfirmDelete = () => {
-    if (title === 'Aluno') deleteStudent(id);
-    else if (title === 'Professor') deleteProfessor(id);
-    else if (title === 'Unidade') deleteBranch(id);
-    setOpen(false);
+    if (title === 'Aluno') deleteStudent(id).then(() => onClose());
+    else if (title === 'Professor') deleteProfessor(id).then(() => onClose());
+    else if (title === 'Unidade') deleteBranch(id).then(() => onClose());
   };
 
   const handleCancelDelete = () => {
-    setOpen(false);
+    onClose();
   };
 
-  openDelete !== open && setOpen(open);
-
   return (
-    <Dialog open={openDelete} onClose={setOpen}>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      sx={{ display: 'flex', justifyContent: 'center' }}
+    >
       <DialogTitle>{`Excluir ${title}`}</DialogTitle>
-      <DialogContentText>{`Você tem certeza que deseja excluir esse ${title}? Cuidado, essa ação é irreversível`}</DialogContentText>
+      <DialogContentText
+        sx={{ textAlign: 'justify', padding: '0 24px' }}
+      >{`Você tem certeza que deseja excluir esse ${title}? Cuidado, essa ação é irreversível`}</DialogContentText>
       <DialogActions>
-        <Button onClick={handleConfirmDelete}>Excluir</Button>
-        <Button onClick={handleCancelDelete}>Cancelar</Button>
+        <Button color="info" onClick={handleCancelDelete}>
+          Cancelar
+        </Button>
+        <Button color="error" onClick={handleConfirmDelete}>
+          Excluir
+        </Button>
       </DialogActions>
     </Dialog>
   );
 };
-export default InModalDelete;
