@@ -32,22 +32,29 @@ export const More = (props: MorePropsInterface) => {
     setOpenView(false);
   };
 
+  const navigate = (path: string) => {
+    window.location.pathname = path;
+  };
+
   const handleView = () => {
     if (props.type === 'Aluno') {
       getStudent(props.id).then((res) => {
         setData(res);
         setOpenView(true);
       });
+      navigate('/student/view');
     } else if (props.type === 'Professor') {
       getProfessor(props.id).then((res) => {
         setData(res);
         setOpenView(true);
       });
+      navigate('/professor/view');
     } else if (props.type === 'Unidade') {
       getBranch(props.id).then((res) => {
         setData(res);
         setOpenView(true);
       });
+      navigate('/branch/view');
     }
   };
 
@@ -56,17 +63,23 @@ export const More = (props: MorePropsInterface) => {
       getStudent(props.id).then((res) => {
         setData(res);
         setOpenEdit(true);
+        setOpenView(false);
       });
+      navigate('/student/edit');
     } else if (props.type === 'Professor') {
       getProfessor(props.id).then((res) => {
         setData(res);
         setOpenEdit(true);
+        setOpenView(false);
       });
+      navigate('/professor/edit');
     } else if (props.type === 'Unidade') {
       getBranch(props.id).then((res) => {
         setData(res);
         setOpenEdit(true);
+        setOpenView(false);
       });
+      navigate('/branch/edit');
     }
   };
 

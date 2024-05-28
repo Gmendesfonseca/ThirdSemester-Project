@@ -91,7 +91,15 @@ export function createRoutes() {
     },
     {
       path: '/branch/register',
+      element: <FormBranch disabled={false} data={null} />,
+    },
+    {
+      path: '/branch/view',
       element: <FormBranch disabled={true} data={null} />,
+    },
+    {
+      path: '/branch/edit',
+      element: <FormBranch disabled={false} data={null} />,
     },
     {
       path: '/student/list',
@@ -99,7 +107,15 @@ export function createRoutes() {
     },
     {
       path: '/student/register',
-      element: <FormStudent />,
+      element: <FormStudent disabled={false} data={null} />,
+    },
+    {
+      path: '/student/view',
+      element: <FormStudent disabled={true} data={null} />,
+    },
+    {
+      path: '/student/edit',
+      element: <FormStudent disabled={false} data={null} />,
     },
     {
       path: '/professor/list',
@@ -107,7 +123,19 @@ export function createRoutes() {
     },
     {
       path: '/professor/register',
-      element: <FormProfessor />,
+      element: <FormProfessor disabled={false} data={null} />,
+    },
+    // {
+    //   path: `/professor/view/${id}`,
+    //   element: <FormProfessor disabled={true} data={data={getProfessor(id)}}/>,
+    // },
+    {
+      path: `/professor/view`,
+      element: <FormProfessor disabled={true} data={null} />,
+    },
+    {
+      path: '/professor/edit',
+      element: <FormProfessor disabled={false} data={null} />,
     },
     {
       path: '/forgot-password',

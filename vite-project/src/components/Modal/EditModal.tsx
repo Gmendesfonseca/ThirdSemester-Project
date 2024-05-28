@@ -28,9 +28,9 @@ const InModalEdit = ({ data, title, open, onClose }: InModalProps) => {
         {title === 'Unidade' ? (
           <FormBranch disabled={false} data={data} />
         ) : title === 'Professor' ? (
-          <FormProfessor /*disabled={disabled} data={data}*/ />
+          <FormProfessor disabled={false} data={data} />
         ) : title === 'Aluno' ? (
-          <FormStudent /*disabled={disabled} data={data}*/ />
+          <FormStudent disabled={false} data={data} />
         ) : null}
       </DialogContent>
       <DialogActions>
