@@ -16,12 +16,6 @@ export function FormBranch({ disabled, data }: FormProps) {
   const [passwordError, setPasswordError] = useState(false);
   const [domainError, setDomainError] = useState(false);
   const [cnpjError, setCnpjError] = useState(false);
-  const [formData, setFormData] = useState({
-    email: data.email || '',
-    password: data.password || '',
-    domain: data.domain || '',
-    cnpj: data.cnpj || '',
-  });
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -29,7 +23,6 @@ export function FormBranch({ disabled, data }: FormProps) {
       setEmailError(true);
     } else {
       setEmailError(false);
-      setFormData((prevState) => ({ ...prevState, email: event.target.value }));
     }
   };
 
@@ -38,10 +31,6 @@ export function FormBranch({ disabled, data }: FormProps) {
       setPasswordError(true);
     } else {
       setPasswordError(false);
-      setFormData((prevState) => ({
-        ...prevState,
-        password: event.target.value,
-      }));
     }
   };
   const handleDomainChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,10 +39,6 @@ export function FormBranch({ disabled, data }: FormProps) {
       setDomainError(true);
     } else {
       setDomainError(false);
-      setFormData((prevState) => ({
-        ...prevState,
-        domain: event.target.value,
-      }));
     }
   };
 
@@ -63,7 +48,6 @@ export function FormBranch({ disabled, data }: FormProps) {
       setCnpjError(true);
     } else {
       setCnpjError(false);
-      setFormData((prevState) => ({ ...prevState, cnpj: event.target.value }));
     }
   };
 
