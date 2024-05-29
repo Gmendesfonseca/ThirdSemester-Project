@@ -6,11 +6,11 @@
         #region "Declaração de variáveis"
 
         private uint _idMarketplace;
-        private string _nameMarketplace;
-        private string _descriptionMarketplace;
-        private uint _idUser;
-        private uint _idNotification;
-        private uint _idPost;
+        private string _nomeMarketplace;
+        private string _descricaoMarketplace;
+        private uint _idUsuario;
+        private uint _idNotificacao;
+        private uint _idPostagem;
 
         #endregion
 
@@ -22,34 +22,34 @@
             set { _idMarketplace = value; }
         }
 
-        public string NameMarketplace
+        public string NomeMarketplace
         { 
-            get { return _nameMarketplace; } 
-            set { _nameMarketplace = value; } 
+            get { return _nomeMarketplace; } 
+            set { _nomeMarketplace = value; } 
         }
 
-        public string DescriptionMarketplace
+        public string DescricaoMarketplace
         {
-            get { return _descriptionMarketplace; }
-            set { _descriptionMarketplace = value; }
+            get { return _descricaoMarketplace; }
+            set { _descricaoMarketplace = value; }
         }
 
-        public uint IdUser
+        public uint IdUsuario
         {
-            get { return _idUser; }
-            set { _idUser = value;}
+            get { return _idUsuario; }
+            set { _idUsuario = value;}
         }
 
-        public uint IdNotification
+        public uint IdNotificacao
         {
-            get { return _idNotification;}
-            set { _idNotification = value;}
+            get { return _idNotificacao;}
+            set { _idNotificacao = value;}
         }
 
-        public uint IdPost
+        public uint IdPostagem
         {
-            get { return _idPost; }
-            set { _idPost = value;}
+            get { return _idPostagem; }
+            set { _idPostagem = value;}
         }
         #endregion
 

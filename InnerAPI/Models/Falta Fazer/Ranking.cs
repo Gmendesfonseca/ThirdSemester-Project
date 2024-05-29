@@ -5,7 +5,7 @@
         #region "Declaração de variáveis"
 
         private uint _idRanking;
-        private string _name;
+        private string _nome;
 
         #endregion
 
@@ -17,10 +17,10 @@
             set { _idRanking = value; }
         }
 
-        public string Name
+        public string Nome
         { 
-            get { return _name; } 
-            set {  _name = value; } 
+            get { return _nome; } 
+            set {  _nome = value; } 
         }
 
         #endregion
