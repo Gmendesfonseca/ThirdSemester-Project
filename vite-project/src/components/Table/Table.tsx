@@ -155,14 +155,14 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
     // <ThemeProvider theme={darkTheme}>
     <Box
       pt={10}
-      flex={6}
+      // flex={6}
       display="flex"
-      justifyContent="center"
+      justifyContent="flex-start"
       alignItems="center"
       sx={{
         maxWidth: { sm: '610px', md: 'none' },
         minWidth: { sm: '610px', md: 'none' },
-        flex: { sm: 4, lg: 5, xl: 3 },
+        flex: { sm: 4, lg: 7, xl: 5 },
       }}
       // position="fixed"
       // right={10}
