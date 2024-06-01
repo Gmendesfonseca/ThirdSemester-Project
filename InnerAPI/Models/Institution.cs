@@ -6,14 +6,14 @@
         private string _address;
         private DateOnly _creationDate;
         public string _cnpj;
+        string _domain;
         #endregion
 
         #region "Construtores"
         public Institution() : base()
         {
-            _address = "";
             _creationDate = new DateOnly();
-            _cnpj = "";
+            _address = _cnpj = _domain = "";
         }
         #endregion
 
@@ -34,6 +34,12 @@
         {
             get { return _cnpj; }
             set { _cnpj = value; }
+        }
+
+        public string Domain
+        {
+            get { return _domain; }
+            set { _domain = value; }
         }
         #endregion
     }

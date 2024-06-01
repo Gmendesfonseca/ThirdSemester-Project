@@ -11,19 +11,19 @@ namespace InnerAPI.Services
         List<Branch> institutions;
         public ProfessorServices(SharedService _sharedService)
         {
-            institutions = _sharedService.Institutions;
+            institutions = _sharedService.Branches;
         }
 
         public Professor Register(RegisterProfessorDto register)
         {
-            var institution = GetInstitution(register.Email);
+            var institution = GetBranch(register.Email);
             professors = institution.Professors;
             if (institution == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
             }
 
-            var existingProfessor = professors.Exists(r => r.Matricula == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
+            var existingProfessor = professors.Exists(r => r.Registration == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
             if (existingProfessor)
             {
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
@@ -42,7 +42,7 @@ namespace InnerAPI.Services
             string email = user.Email;
             string password = user.Password;
 
-            var institution = GetInstitution(email);
+            var institution = GetBranch(email);
             if (institution == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
@@ -82,12 +82,13 @@ namespace InnerAPI.Services
         public bool Delete(int id)
         { institutions.SelectMany(i => i.Professors).ToList().RemoveAll(usuario => usuario.Id == id); return true; }
 
-        public List<Professor> GetProfessors()
+        public List<Professor> GetProfessors(string email)
         {
-            return institutions.SelectMany(i => i.Professors).ToList();
+            Branch institution = GetBranch(email);
+            return institution.Professors;
         }
 
-        public Branch GetInstitution(string email)
+        public Branch GetBranch(string email)
         {
             var domain = email.Split('@')[1];
             return institutions.FirstOrDefault(i => i.Domain == domain);

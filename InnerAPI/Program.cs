@@ -23,10 +23,10 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Adiciona serviços ao contêiner.
+// Adiciona serviï¿½os ao contï¿½iner.
 
 builder.Services.AddControllers();
-// Saiba mais sobre a configuração do Swagger/OpenAPI em https://aka.ms/aspnetcore/swashbuckle
+// Saiba mais sobre a configuraï¿½ï¿½o do Swagger/OpenAPI em https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -34,16 +34,17 @@ var app = builder.Build();
 
 app.UseCors();
 
-// Obtém as instâncias dos serviços diretamente do contêiner de serviços
+// Obtï¿½m as instï¿½ncias dos serviï¿½os diretamente do contï¿½iner de serviï¿½os
 var sharedService = app.Services.GetRequiredService<SharedService>();
 
 app.MapStudentEndpoint(sharedService);
-app.MapInstitutionEndpoint(sharedService);
+app.MapBranchEndpoint(sharedService);
+app.MapHeadOfficeEndpoint(sharedService);
 app.MapProfessorEndpoint(sharedService);
 app.MapLoginEndpoint(sharedService);
 app.MapPostEndpoint(sharedService);
 
-// Configura o pipeline de requisições HTTP.
+// Configura o pipeline de requisiï¿½ï¿½es HTTP.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -4,7 +4,7 @@ using InnerAPI.Dtos.Professor;
 
 namespace InnerAPI.Controllers
 {
-    public static class ProfessorController 
+    public static class ProfessorController
     {
         public static RouteGroupBuilder MapProfessorEndpoint(this WebApplication app, SharedService sharedService)
         {
@@ -13,9 +13,9 @@ namespace InnerAPI.Controllers
 
 
             // GET /professor/{id}
-            group.MapGet("{id}", (int id, string domain) =>
+            group.MapGet("{id}", (int id, string email) =>
             {
-                var professor = professorServices.GetProfessors().FirstOrDefault(s => s.Id == id);
+                var professor = professorServices.GetProfessors(email).FirstOrDefault(s => s.Id == id);
                 if (professor == null)
                 {
                     return Results.NotFound($"Professor com ID {id} não encontrado.");
@@ -23,8 +23,8 @@ namespace InnerAPI.Controllers
                 return Results.Ok(professor);
             });
 
-            // POST /professor
-            group.MapPost("", (RegisterProfessorDto professor) =>
+            // POST /professor/register
+            group.MapPost("/register", (RegisterProfessorDto professor) =>
             {
                 professorServices.Register(professor);
                 return Results.Ok(professor);

@@ -19,8 +19,8 @@ namespace InnerAPI.Controllers
                 return Results.Ok(studentServices.GetStudents().FirstOrDefault(s => s.Id == id));
             });
 
-            // POST /student
-            group.MapPost("", (RegisterStudentDto newStudent) =>
+            // POST /student/register
+            group.MapPost("/register", (RegisterStudentDto newStudent) =>
             {
                 Student student = studentServices.Register(newStudent);
 

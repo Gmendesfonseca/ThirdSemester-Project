@@ -46,7 +46,7 @@ namespace InnerAPI.Controllers
             // POST /Branch/register
             group.MapPost("/register", (RegisterBranchDto newBranch) =>
             {
-                var exists = branches.Exists(r => r.Name == newBranch.Name || r.Email == newBranch.Email || r.CNPJ == newBranch.Cnpj || r.Domain == newBranch.Domain);
+                var exists = branches.Exists(r => r.Name == newBranch.Name || r.Email == newBranch.Email || r.CNPJ == newBranch.Cnpj);
                 if (!exists)
                 {
                     var createdBranch = branchServices.Register(newBranch);
@@ -73,7 +73,8 @@ namespace InnerAPI.Controllers
                     updateBranch.Name,
                     updateBranch.Email,
                     updateBranch.Password,
-                    updateBranch.Domain,
+                    updateBranch.Address,
+                    updateBranch.CreationDate,
                     updateBranch.Cnpj);
 
                 return Results.NoContent();

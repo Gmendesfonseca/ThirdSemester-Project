@@ -5,10 +5,10 @@ using InnerAPI.Utils;
 
 namespace InnerAPI.Controllers
 {
-  public static class headOfficeController
+  public static class HeadOfficeController
   {
-    const string GetNameheadOfficeEndpoint = "GetheadOffice";
-    public static RouteGroupBuilder MapheadOfficeEndpoint(this WebApplication app, SharedService sharedService)
+    const string GetNameHeadOfficeEndpoint = "GetheadOffice";
+    public static RouteGroupBuilder MapHeadOfficeEndpoint(this WebApplication app, SharedService sharedService)
     {
       var group = app.MapGroup("headOffice").WithParameterValidation();
       List<HeadOffice> headOffices = sharedService.HeadOffices;
@@ -19,7 +19,7 @@ namespace InnerAPI.Controllers
       {
         HeadOffice? headOffice = headOffices.Find(headOffice => headOffice.Id == id);
         return headOffice is null ? Results.NotFound() : Results.Ok(headOffice);
-      }).WithName(GetNameheadOfficeEndpoint);
+      }).WithName(GetNameHeadOfficeEndpoint);
 
       //GET /headOffice/{id}/branches
       group.MapGet("/{id}/branches", (uint id) =>
@@ -38,8 +38,8 @@ namespace InnerAPI.Controllers
         var exists = headOffices.Exists(r => r.Name == newheadOffice.Name || r.Email == newheadOffice.Email || r.CNPJ == newheadOffice.Cnpj || r.Domain == newheadOffice.Domain);
         if (!exists)
         {
-          var createdheadOffice = headOfficeServices.Register(newheadOffice);
-          return Results.CreatedAtRoute(GetNameheadOfficeEndpoint, new { id = createdheadOffice.Id }, createdheadOffice);
+          var createdHeadOffice = headOfficeServices.Register(newheadOffice);
+          return Results.CreatedAtRoute(GetNameHeadOfficeEndpoint, new { id = createdHeadOffice.Id }, createdHeadOffice);
         }
         else
         {
@@ -48,7 +48,7 @@ namespace InnerAPI.Controllers
       });
 
       // PUT /headOffice/{id}
-      group.MapPut("/{id}", (uint id, UpdateHeadOfficeDto updateheadOffice) =>
+      group.MapPut("/{id}", (uint id, UpdateHeadOfficeDto updateHeadOffice) =>
       {
         var index = headOffices.FindIndex(headOffice => headOffice.Id == id);
 
@@ -57,13 +57,13 @@ namespace InnerAPI.Controllers
           return Results.NotFound();
         }
 
-        headOffices[index] = new headOffice(
+        headOffices[index] = new HeadOffice(
                   id,
-                  updateheadOffice.Name,
-                  updateheadOffice.Email,
-                  updateheadOffice.Password,
-                  updateheadOffice.Domain,
-                  updateheadOffice.Cnpj);
+                  updateHeadOffice.Name,
+                  updateHeadOffice.Email,
+                  updateHeadOffice.Password,
+                  updateHeadOffice.Domain,
+                  updateHeadOffice.Cnpj);
 
         return Results.NoContent();
       });
