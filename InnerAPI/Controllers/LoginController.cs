@@ -31,8 +31,7 @@ namespace InnerAPI.Controllers
                 });
             });
 
-            //POST /login/student
-            group.MapPost("/student", (LoginDto login) =>
+             group.MapPost("/student", (LoginDto login) =>
             {
                 StudentServices user = new(sharedService);
                 var student = user.Login(login);
@@ -50,7 +49,8 @@ namespace InnerAPI.Controllers
                     }
 
                 });
-   
+            }); 
+
             group.MapPost("/professor", (LoginDto login) =>
             {
                 ProfessorServices user = new(sharedService);
