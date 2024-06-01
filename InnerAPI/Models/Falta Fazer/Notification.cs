@@ -4,23 +4,23 @@
     {
         #region "Declaração de variáveis"
         
-        private uint _idNotificacao;
-        private string _tituloNotificacao;
+        private uint _idNotification;
+        private string _titleNotification;
 
         #endregion
 
         #region "Propriedades"
 
-        public uint IdNotificacao
+        public uint IdNotification
         {
-            get { return _idNotificacao; }
-            set { _idNotificacao = value;}
+            get { return _idNotification; }
+            set { _idNotification = value;}
         }
 
-        public string TituloNotificacao
+        public string TitleNotification
         {
-            get { return _tituloNotificacao; }
-            set { _tituloNotificacao = value; }
+            get { return _titleNotification; }
+            set { _titleNotification = value; }
         }
 
         #endregion
