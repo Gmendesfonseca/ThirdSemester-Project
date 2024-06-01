@@ -1,6 +1,6 @@
 ﻿namespace InnerAPI.Models
 {
-    public class Postagem
+    public class Post
     {
         #region "Declaração de variáveis"
 
@@ -18,19 +18,19 @@
         public uint IdPost
         {
             get { return _idPost; }
-            set { _idPost = value;}
+            set { _idPost = value; }
         }
 
         public string TitlePost
-        { 
-            get { return _titlePost; } 
+        {
+            get { return _titlePost; }
             set { _titlePost = value; }
         }
 
         public uint NumLikes
         {
-            get { return _numLikes;}
-            set { _numLikes = value;}
+            get { return _numLikes; }
+            set { _numLikes = value; }
         }
 
         public string Comment
@@ -42,13 +42,13 @@
         public string ContentPost
         {
             get { return _contentPost; }
-            set { _contentPost = value;}
+            set { _contentPost = value; }
         }
 
         public DateOnly DatePost
         {
-            get { return _datePost;}
-            set { _datePost = value;}
+            get { return _datePost; }
+            set { _datePost = value; }
         }
 
         #endregion

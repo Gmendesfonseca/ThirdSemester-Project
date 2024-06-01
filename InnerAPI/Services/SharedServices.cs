@@ -1,16 +1,14 @@
-﻿using InnerAPI.Dtos.Follower;
-using InnerAPI.Dtos.Groups;
-using InnerAPI.Dtos.Notification;
-using InnerAPI.Dtos.Post;
-using InnerAPI.Models;
-using InnerAPI.Utils;
-using System.Xml.Linq;
+﻿using InnerAPI.Models;
+
 
 namespace InnerAPI.Services
 {
     public class SharedService
     {
-        private static List<Branch> institutions = new List<Branch>();
+        private static List<Branch> branches = new List<Branch>();
+        private static List<HeadOffice> headOffices = new List<HeadOffice>();
+        private static List<Professor> professors = new List<Professor>();
+        private static List<Student> students = new List<Student>();
 
         public SharedService()
         {
@@ -22,11 +20,14 @@ namespace InnerAPI.Services
             string domain = "exemplo.com";
 
 
-            institutions.Add(new Branch(id, name, email, password, cnpj, domain));
+            branches.Add(new Branch(id, name, email, password, cnpj, domain));
         }
 
-        public List<Branch> Institutions { get { return institutions; } }
-        public void AddInstitution(Branch institution){ institutions.Add(institution); }
+        public List<Branch> Branches { get { return branches; } }
+        public List<HeadOffice> HeadOffices{ get { return headOffices; }}
+        public List<Professor> Professors { get { return professors; }}
+        public List<Student> Students{ get { return students; }}
+        public void AddBranch(Branch institution){ branches.Add(institution); }
         
     }
 }
