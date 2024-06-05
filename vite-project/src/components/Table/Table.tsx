@@ -20,7 +20,6 @@ import {
   ProfessorListType,
   StudentListType,
 } from "../../services/login";
-import Hidden from "@mui/material/Hidden";
 
 export type CombinedType = BranchListType | StudentListType | ProfessorListType;
 
@@ -154,7 +153,6 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
 
   return (
     // <ThemeProvider theme={darkTheme}>
-<<<<<<< Updated upstream
     <Box
       pt={10}
       // flex={6}
@@ -162,8 +160,8 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
       justifyContent="flex-start"
       alignItems="center"
       sx={{
-        maxWidth: { sm: '610px', md: 'none' },
-        minWidth: { sm: '610px', md: 'none' },
+        maxWidth: { sm: "610px", md: "none" },
+        minWidth: { sm: "610px", md: "none" },
         flex: { sm: 4, lg: 7, xl: 5 },
       }}
       // position="fixed"
@@ -173,9 +171,9 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
         <EnhancedTableToolbar title={props.title} name={props.name} />
         <TableContainer>
           <Table
-            sx={{ minWidth: 750, overflow: 'auto', position: 'relative' }}
+            sx={{ minWidth: 750, overflow: "auto", position: "relative" }}
             aria-labelledby="tableTitle"
-            size={'medium'}
+            size={"medium"}
           >
             <EnhancedTableHead
               headCells={props.headCells}
@@ -188,91 +186,51 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
             <TableBody>
               {visibleRows.map((row) => {
                 return (
-=======
-    <Hidden lgDown>
-      <Box
-        pt={10}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        sx={{
-          maxWidth: { sm: "610px", md: "none" },
-          minWidth: { sm: "610px", md: "none" },
-          flex: { sm: 4, lg: 5, xl: 7 },
-        }}
-        // position="fixed"
-        // right={10}
-      >
-        <Paper sx={{ mb: 2 }}>
-          <EnhancedTableToolbar title={props.title} name={props.name} />
-          <TableContainer>
-            <Table
-              sx={{
-                minWidth: { sm: 900, md: 1300 },
-                overflow: "auto",
-                position: "relative",
-              }}
-              aria-labelledby="tableTitle"
-              size={"medium"}
-            >
-              <EnhancedTableHead
-                headCells={props.headCells}
-                numSelected={selected.length}
-                order={order}
-                orderBy={orderBy}
-                onRequestSort={handleRequestSort}
-                rowCount={rows?.length || 0}
-              />
-              <TableBody>
-                {visibleRows.map((row) => {
-                  return (
-                    <TableRow
-                      hover
-                      onClick={(event) => handleClick(event, Number(row.id))}
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={row.id}
-                      sx={{ cursor: "pointer" }}
-                    >
-                      {Object.keys(row).map((key, index) => {
-                        const cellValue = row[key];
-                        if (
-                          React.isValidElement(cellValue) ||
-                          typeof cellValue === "string" ||
-                          typeof cellValue === "number"
-                        ) {
-                          return <TableCell key={index}>{cellValue}</TableCell>;
-                        }
-                        return null;
-                      })}
-                    </TableRow>
-                  );
-                })}
-                {emptyRows > 0 && (
->>>>>>> Stashed changes
                   <TableRow
-                    style={{
-                      height: 53 * emptyRows,
-                    }}
+                    hover
+                    onClick={(event) => handleClick(event, Number(row.id))}
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={row.id}
+                    sx={{ cursor: "pointer" }}
                   >
-                    <TableCell colSpan={6} />
+                    {Object.keys(row).map((key, index) => {
+                      const cellValue = row[key];
+                      if (
+                        React.isValidElement(cellValue) ||
+                        typeof cellValue === "string" ||
+                        typeof cellValue === "number"
+                      ) {
+                        return <TableCell key={index}>{cellValue}</TableCell>;
+                      }
+                      return null;
+                    })}
                   </TableRow>
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 50]}
-            component="div"
-            count={rows?.length || 0}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Paper>
-      </Box>
-    </Hidden>
+                );
+              })}
+              {emptyRows > 0 && (
+                <TableRow
+                  style={{
+                    height: 53 * emptyRows,
+                  }}
+                >
+                  <TableCell colSpan={6} />
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 50]}
+          component="div"
+          count={rows?.length || 0}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+    </Box>
     // </ThemeProvider>
   );
 }
