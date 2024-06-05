@@ -31,8 +31,8 @@ export function Home() {
         sx={{ padding: '0px' }}
       >
         <Navbar />
-        <Stack direction="row" spacing={0} justifyContent="space-between">
-          <SidebarMenu mode={mode} setMode={setMode} />
+        <Stack direction="row" spacing={0}>
+          <SidebarMenu mode={mode} setMode={setMode}/>
           <Feed />
           <Rightbar />
         </Stack>
