@@ -1,0 +1,39 @@
+.profile {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.profile_header {
+  height: 300px;
+  width: 600px;
+  background-image: linear-gradient(#91baff, #205fff);
+}
+
+.profile_body {
+  height: 400px;
+  width: 600px;
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile_footer {
+  height: 200px;
+  width: 600px;
+  background-color: aquamarine;
+}
+
+.profile_body img {
+  height: 150px;
+  width: 150px;
+  background-color: white;
+  border-radius: 50%;
+  margin-top: -75px;
+  padding: 5px;
+}
