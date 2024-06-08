@@ -94,7 +94,7 @@
   transform: translateX(50%);
 }
 
-@media (max-width: 1001px) {
+@media (max-width: 1536px) {
   .profile_header {
     height: 150px;
     width: 400px;

@@ -1,7 +1,6 @@
 // import avatar from "../../assets/IL.png";
 import { useState } from "react";
 import "./Profile.css";
-import img from "./profileAvatar.png";
 import { useNavigate } from "react-router";
 
 export default function ProfileCard(props) {
@@ -32,8 +31,9 @@ export default function ProfileCard(props) {
           </button>
         </div>
         <div className="profile_body">
-          <img src={img} alt="Elon Musk" />
+          <img src={props.avatar} alt="Foto de Perfil" />
           <h1>{props.name}</h1>
+          <span>{props.email}</span>
           <p>{props.description}</p>
         </div>
 
