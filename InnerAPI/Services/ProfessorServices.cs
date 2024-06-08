@@ -5,7 +5,7 @@ using InnerAPI.Utils;
 
 namespace InnerAPI.Services
 {
-    public class ProfessorServices : UserServices
+    public class ProfessorServices
     {
         List<Professor> professors;
         List<Branch> institutions;

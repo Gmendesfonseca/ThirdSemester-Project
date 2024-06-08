@@ -6,7 +6,7 @@ using InnerAPI.Utils;
 
 namespace InnerAPI.Services
 {
-  public class HeadOfficeServices : UserServices
+  public class HeadOfficeServices
   {
     List<HeadOffice> headOffices;
 
@@ -82,12 +82,6 @@ namespace InnerAPI.Services
     {
       var headOffice = headOffices.FirstOrDefault(i => i.Id == id);
       return headOffice.Branches;
-    }
-
-    public List<Professor> GetProfessors(GetListDto getProfessorsDto)
-    {
-      var HeadOffic = headOffices.FirstOrDefault(i => i.Name == getProfessorsDto.HeadOfficeName);
-      return HeadOffic.Professors;
     }
 
     public bool Delete(int id)

@@ -3,22 +3,19 @@
     public class Post
     {
         #region "Declaração de variáveis"
-
-        private uint _idPost;
+        private uint _id;
         private string _titlePost;
         private uint _numLikes; //Talvez mudar tipo para ushort
-        private string _comment; //Criar uma lista
+        private List<CommentDto> _comment; //Criar uma lista
         private string _contentPost; //Será informado o endereço do arquivo a ser postado - Criar Lista
         private DateOnly _datePost;
-
         #endregion
 
         #region "Propriedades"
-
-        public uint IdPost
+        public uint Id
         {
-            get { return _idPost; }
-            set { _idPost = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
         public string TitlePost

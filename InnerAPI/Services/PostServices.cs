@@ -9,7 +9,7 @@ namespace InnerAPI.Services
         List<Branch> institutions;
         public PostServices(SharedService sharedService)
         {
-            List<Branch> institutions = sharedService.Institutions;
+            List<Branch> institutions = sharedService.Branches;
         }
 
         public Stack<Post> GetPosts(int id)

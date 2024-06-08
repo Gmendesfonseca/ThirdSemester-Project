@@ -7,5 +7,5 @@
         string description,
         string workload,
         string period
-    )
+    );
 }

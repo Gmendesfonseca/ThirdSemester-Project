@@ -9,7 +9,7 @@ namespace InnerAPI.Models
         private List<CourseDto> courses;
         private readonly List<Student> students;
         private readonly List<Professor> professors;
-        private Stack<Post> allPosts;
+        private Stack<Post> feed;
         #endregion
 
         #region "Construtores"
@@ -18,7 +18,7 @@ namespace InnerAPI.Models
             courses = new List<CourseDto>();
             students = new List<Student>();
             professors = new List<Professor>();
-            allPosts = new Stack<Post>();
+            feed = new Stack<Post>();
         }
 
         public Branch(uint id, string name, string email, string password, string address, DateOnly creationDate, string cnpj) : base()
@@ -35,7 +35,7 @@ namespace InnerAPI.Models
             courses = new List<CourseDto>();
             students = new List<Student>();
             professors = new List<Professor>();
-            allPosts = new Stack<Post>();
+            feed = new Stack<Post>();
         }
         #endregion
 
@@ -44,71 +44,74 @@ namespace InnerAPI.Models
         {
             get { return courses; }
         }
-        public void addCourse(CourseDto course)
-        {
-            courses.Add(course);
-        }
-        public void removeCourse(CourseDto course)
-        {
-            courses.Remove(course);
-        }
 
         public List<Student> Students
         {
             get { return students; }
-        }
-        public void addStudent(Student student)
-        {
-            students.Add(student);
-        }
-        public void removeStudent(Student student)
-        {
-            students.Remove(student);
         }
 
         public List<Professor> Professors
         {
             get { return professors; }
         }
-        public void addProfessor(Professor professor)
-        {
-            professors.Add(professor);
-        }
-        public void removeProfessor(Professor professor)
-        {
-            professors.Remove(professor);
-        }
 
-        public Stack<Post> AllPosts
+        public Stack<Post> Feed
         {
             get
             {
                 List<Post> listPosts = new List<Post>();
-                for (int i = 0; i < allPosts.Count; i++)
+                for (int i = 0; i < feed.Count; i++)
                 {
-                    listPosts.Add(allPosts.Pop());
+                    listPosts.Add(feed.Pop());
                 }
-                return allPosts;
+                return feed;
             }
         }
         public void addPost(Post post)
         {
-            allPosts.Push(post);
+            feed.Push(post);
         }
-        public void removePost(Post post)
+        public Post updatePost(int id, Post postUpdate)
         {
             Stack<Post> tempStack = new Stack<Post>();
-            while (allPosts.Count > 0)
+            Post updatedPost = null;
+
+            while (feed.Count > 0)
             {
-                Post currentPost = allPosts.Pop();
-                if (currentPost != post)
+                Post currentPost = feed.Pop();
+                if (currentPost.Id != id)
+                {
+                    tempStack.Push(currentPost);
+                }
+                else
+                {
+                    // Update the post here
+                    // currentPost.SomeProperty = newValue;
+                    updatedPost = currentPost;
+                }
+            }
+
+            while (tempStack.Count > 0)
+            {
+                feed.Push(tempStack.Pop());
+            }
+
+            return updatedPost;
+        }
+        public void removePost(Post postDelete)
+        {
+            Stack<Post> tempStack = new Stack<Post>();
+            while (feed.Count > 0)
+            {
+                Post currentPost = feed.Pop();
+                if (currentPost != postDelete)
                 {
                     tempStack.Push(currentPost);
                 }
             }
             while (tempStack.Count > 0)
             {
-                allPosts.Push(tempStack.Pop());
+                feed.Push(tempStack.Pop());
             }
         }
         #endregion

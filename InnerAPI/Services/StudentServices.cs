@@ -5,13 +5,14 @@ using InnerAPI.Utils;
 
 namespace InnerAPI.Services
 {
-    public class StudentServices : UserServices
+    public class StudentServices
     {
         List<Branch> institutions;
         List<Student> students;
 
-        public StudentServices(SharedService _sharedService) { 
-            institutions = _sharedService.Institutions;
+        public StudentServices(SharedService _sharedService)
+        {
+            institutions = _sharedService.Branches;
         }
 
         public Student Register(RegisterStudentDto register)
@@ -24,7 +25,7 @@ namespace InnerAPI.Services
             }
 
             // Verifica se o estudante já existe
-            var existingStudent = students.Exists(r => r.Matricula == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
+            var existingStudent = students.Exists(r => r.Registration == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
             if (existingStudent)
             {
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
@@ -64,18 +65,20 @@ namespace InnerAPI.Services
             return student;
         }
 
-
         public Student Update(int id, Student newStudent)
         {
-            Student student = institutions.SelectMany(i => i.Students).FirstOrDefault(s => s.Id == id);
+            Branch institution = GetBranch(newStudent.Email);
+            if (institution == null)
+            {
+                throw new ArgumentException("Este usuário não encontrado.");
+            }
+            Student student = institution.Students.FirstOrDefault(s => s.Id == id);
 
             if (student == null)
             {
                 throw new ArgumentException("Usuário não encontrado.");
             }
-
             student = newStudent;
-
 
             return student;
         }
@@ -86,13 +89,13 @@ namespace InnerAPI.Services
             return true;
         }
 
-        public List<Student> GetStudents()
+        public List<Student> GetStudents(string email)
         {
-            students = institutions.SelectMany(i => i.Students).ToList();
-            return students;
+            Branch institution = GetBranch(email);
+            return institution.Students;
         }
-            
-        public Branch GetInstitution(string email)
+
+        public Branch GetBranch(string email)
         {
             var domain = email.Split('@')[1];
             return institutions.FirstOrDefault(i => i.Domain == domain);

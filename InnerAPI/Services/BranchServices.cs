@@ -6,7 +6,7 @@ using InnerAPI.Utils;
 
 namespace InnerAPI.Services
 {
-    public class BranchServices : UserServices
+    public class BranchServices
     {
         List<Branch> branches;
 
