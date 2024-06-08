@@ -166,28 +166,6 @@ export const SidebarMenu: React.FC<SidebarProps> = () =>
             <ListItemText primary="Profile" />
           </ListItemButton>
         </ListItem>
-        {/* <ListItem disablePadding>
-        <ListItemButton
-          onClick={() => navigate('/settings')}
-          style={{
-            backgroundColor:
-              location.pathname === '/settings' ? blue[50] : 'default',
-          }}
-        >
-          <ListItemIcon>
-            <Settings />
-          </ListItemIcon>
-          <ListItemText primary="Settings" />
-        </ListItemButton>
-      </ListItem> */}
-        {/* <ListItem disablePadding>
-        <ListItemButton>
-          <ListItemIcon>
-            <DarkMode />
-          </ListItemIcon>
-          <Switch onChange={toggleMode} />
-        </ListItemButton>
-      </ListItem> */}
       </Sidebar>
     );
   };
