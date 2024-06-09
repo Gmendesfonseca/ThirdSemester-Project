@@ -1,21 +1,30 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { addToast } from '../../Toast/toast';
-import {
-  RegisterResponse,
-  registerInstitution,
-} from '../../../services/register';
-import { FormProps } from '../../../interfaces/Form';
+import { addToast } from '../Toast/toast';
+import { RegisterResponse, registerInstitution } from '../../services/register';
+import { FormProps } from '../../interfaces/Form';
 
-export function FormProfessor({ disabled, data }: FormProps) {
+export function FormProfessor({ onDataChange, disabled, data }: FormProps) {
   const navigate = useNavigate();
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [domainError, setDomainError] = useState(false);
   const [cnpjError, setCnpjError] = useState(false);
+
+  const [name, setName] = useState(data?.name ?? '');
+  const [email, setEmail] = useState(data?.email ?? '');
+  const [password, setPassword] = useState(data?.password ?? '');
+  const [domain, setDomain] = useState(data?.domain ?? '');
+  const [cnpj, setCnpj] = useState(data?.cnpj ?? '');
+
+  useEffect(() => {
+    if (onDataChange) {
+      onDataChange({ name, email, password, domain, cnpj });
+    }
+  }, [name, email, password, domain, cnpj]);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -23,6 +32,7 @@ export function FormProfessor({ disabled, data }: FormProps) {
       setEmailError(true);
     } else {
       setEmailError(false);
+      setEmail(event.target.value);
     }
   };
 
@@ -31,6 +41,7 @@ export function FormProfessor({ disabled, data }: FormProps) {
       setPasswordError(true);
     } else {
       setPasswordError(false);
+      setPassword(event.target.value);
     }
   };
   const handleDomainChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +50,7 @@ export function FormProfessor({ disabled, data }: FormProps) {
       setDomainError(true);
     } else {
       setDomainError(false);
+      setDomain(event.target.value);
     }
   };
 
@@ -48,7 +60,12 @@ export function FormProfessor({ disabled, data }: FormProps) {
       setCnpjError(true);
     } else {
       setCnpjError(false);
+      setCnpj(event.target.value);
     }
+  };
+
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -127,8 +144,9 @@ export function FormProfessor({ disabled, data }: FormProps) {
             id="institution"
             label="Nome da Instituição"
             autoFocus
+            onChange={handleNameChange}
             disabled={disabled}
-            defaultValue={data.name || ''}
+            defaultValue={data?.name ?? ''}
             sx={(theme) => ({
               [theme.breakpoints.down('md')]: {
                 '& .MuiInputBase-root': { height: 50 },
@@ -148,7 +166,7 @@ export function FormProfessor({ disabled, data }: FormProps) {
             autoComplete="cnpj"
             onChange={handleCnpjChange}
             disabled={disabled}
-            defaultValue={data.cnpj || ''}
+            defaultValue={data?.cnpj ?? ''}
             sx={(theme) => ({
               [theme.breakpoints.down('md')]: {
                 '& .MuiInputBase-root': { height: 50 },
@@ -168,7 +186,7 @@ export function FormProfessor({ disabled, data }: FormProps) {
             autoComplete="domain"
             disabled={disabled}
             onChange={handleDomainChange}
-            defaultValue={data.domain || ''}
+            defaultValue={data?.domain ?? ''}
             sx={(theme) => ({
               [theme.breakpoints.down('md')]: {
                 '& .MuiInputBase-root': { height: 50 },
@@ -188,7 +206,7 @@ export function FormProfessor({ disabled, data }: FormProps) {
             autoComplete="email"
             disabled={disabled}
             onChange={handleEmailChange}
-            defaultValue={data.email || ''}
+            defaultValue={data?.email ?? ''}
             sx={(theme) => ({
               [theme.breakpoints.down('md')]: {
                 '& .MuiInputBase-root': { height: 50 },
@@ -209,7 +227,7 @@ export function FormProfessor({ disabled, data }: FormProps) {
             autoComplete="new-password"
             onChange={handlePasswordChange}
             disabled={disabled}
-            defaultValue={data.password || ''}
+            defaultValue={data?.password ?? ''}
             sx={(theme) => ({
               [theme.breakpoints.down('md')]: {
                 '& .MuiInputBase-root': { height: 50 },

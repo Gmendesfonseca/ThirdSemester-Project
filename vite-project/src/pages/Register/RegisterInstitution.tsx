@@ -9,7 +9,7 @@ import { Container, ThemeProvider } from '@mui/material';
 import { darkTheme } from '../../Theme';
 import { Copyright } from '../../components/Login/Copyright/Copyright';
 import logo from '../../assets/IL.png';
-import FormInstitution from '../../components/Register/Register/FormHeadOffice';
+import FormInstitution from '../../components/Forms/FormHeadOffice';
 
 export function RegisterInstitution() {
   return (

@@ -2,17 +2,24 @@ import {
   AddCircleOutline, //Tune
 } from '@mui/icons-material';
 import { Button, Toolbar, Typography, alpha } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import InModalRegisterStudent from '../Modal/Register/RegisterStudent';
+import InModalRegisterProfessor from '../Modal/Register/RegisterProfessor';
+import InModalRegisterBranch from '../Modal/Register/RegisterBranch';
 
 export interface EnhancedTableToolbarProps {
   title: string;
   name: string;
 }
 export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
-  const navigate = useNavigate();
+  const [openRegister, setOpenRegister] = useState(false);
 
   const handleClicked = () => {
-    navigate('/branch/register');
+    setOpenRegister(true);
+  };
+
+  const handleClose = () => {
+    setOpenRegister(false);
   };
 
   return (
@@ -61,6 +68,25 @@ export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
             Filtros
           </Typography>
         </Button> */}
+        {props.title === 'Alunos' ? (
+          <InModalRegisterStudent
+            title={props.name}
+            opened={openRegister}
+            onClose={handleClose}
+          />
+        ) : props.title === 'Professores' ? (
+          <InModalRegisterProfessor
+            title={props.name}
+            opened={openRegister}
+            onClose={handleClose}
+          />
+        ) : props.title === 'Unidades' ? (
+          <InModalRegisterBranch
+            title={props.name}
+            opened={openRegister}
+            onClose={handleClose}
+          />
+        ) : null}
       </>
     </Toolbar>
   );

@@ -23,7 +23,7 @@ export function getStudent(studentId: number): Promise<StudentType> {
 }
 
 export function registerStudent(
-  params: RegisterStudentParams,
+  params: RegisterStudentParams | undefined,
 ): Promise<RegisterResponse> {
   return api.post<RegisterResponse>('/student', params).then((response) => {
     if (response.status !== 200) {

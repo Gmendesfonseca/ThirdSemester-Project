@@ -25,7 +25,7 @@ export function getProfessor(professorId: number): Promise<ProfessorType> {
 }
 
 export function registerProfessor(
-  params: RegisterProfessorParams,
+  params: RegisterProfessorParams | undefined,
 ): Promise<RegisterResponse> {
   return api.post<RegisterResponse>('/professor', params).then((response) => {
     if (response.status !== 200) {

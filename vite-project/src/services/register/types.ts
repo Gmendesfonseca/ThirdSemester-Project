@@ -6,6 +6,14 @@ export type RegisterInstitutionParams = {
   cnpj: string;
 };
 
+export type RegisterBranchParams = {
+  name: string;
+  email: string;
+  password: string;
+  domain: string;
+  cnpj: string;
+};
+
 export type RegisterProfessorParams = {
   name: string;
   email: string;

@@ -3,10 +3,10 @@ import { IconButton, MenuItem } from '@mui/material';
 import React from 'react';
 import InMenu from '../Menu/Menu';
 import { InModalDelete } from '../Modal/DeleteModal';
-import InModalView from '../Modal/ViewModal';
 import { getProfessor, getStudent } from '../../services/login';
 import { getBranch } from '../../services/lists/branch/request';
-import InModalEdit from '../Modal/EditModal';
+import InModalEditStudent from '../Modal/Edit/EditStudent';
+import InModalViewStudent from '../Modal/View/ViewStudent';
 
 interface MorePropsInterface {
   id: number;
@@ -30,6 +30,10 @@ export const More = (props: MorePropsInterface) => {
 
   const handleCloseView = () => {
     setOpenView(false);
+  };
+
+  const handleCloseEdit = () => {
+    setOpenEdit(false);
   };
 
   const handleView = () => {
@@ -107,18 +111,52 @@ export const More = (props: MorePropsInterface) => {
           Deletar
         </MenuItem>
       </InMenu>
-      <InModalView
-        data={data}
-        title={props.type}
-        open={openView}
-        onClose={handleCloseView}
-      />
-      <InModalEdit
-        data={data}
-        title={props.type}
-        open={openEdit}
-        onClose={handleCloseView}
-      />
+      {props.type === 'Aluno' ? (
+        <>
+          <InModalViewStudent
+            actualData={data}
+            title={props.type}
+            open={openView}
+            onClose={handleCloseView}
+          />
+          <InModalEditStudent
+            actualData={data}
+            title={props.type}
+            open={openEdit}
+            onClose={handleCloseEdit}
+          />
+        </>
+      ) : props.type === 'Professor' ? (
+        <>
+          <InModalViewStudent
+            actualData={data}
+            title={props.type}
+            open={openView}
+            onClose={handleCloseView}
+          />
+          <InModalEditStudent
+            actualData={data}
+            title={props.type}
+            open={openEdit}
+            onClose={handleCloseEdit}
+          />
+        </>
+      ) : props.type === 'Unidade' ? (
+        <>
+          <InModalViewStudent
+            actualData={data}
+            title={props.type}
+            open={openView}
+            onClose={handleCloseView}
+          />
+          <InModalEditStudent
+            actualData={data}
+            title={props.type}
+            open={openEdit}
+            onClose={handleCloseEdit}
+          />
+        </>
+      ) : null}
       <InModalDelete
         id={props.id}
         title={props.type}

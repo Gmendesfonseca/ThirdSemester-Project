@@ -1,5 +1,6 @@
 import api from '../../api';
 import { BranchType } from '../../login';
+import { RegisterBranchParams } from '../../register';
 
 export function getBranches(id: number): Promise<BranchType[]> {
   return api.get(`/institution/${id}/branches`).then((response) => {
@@ -19,7 +20,7 @@ export function getBranch(branchId: number) {
   });
 }
 
-export function createBranch(branch: BranchType) {
+export function registerBranch(branch: RegisterBranchParams | undefined) {
   return api.post('/branches', branch);
 }
 

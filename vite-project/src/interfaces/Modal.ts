@@ -1,5 +1,5 @@
 export interface InModalProps {
-  data: any;
+  actualData: any;
   title: string;
   open: boolean;
   onClose: () => void;

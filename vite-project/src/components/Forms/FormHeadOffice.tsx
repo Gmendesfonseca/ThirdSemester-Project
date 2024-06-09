@@ -2,15 +2,11 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Stack, Button, Box } from '@mui/material';
 import { Grid, TextField } from '@mui/material';
-import { addToast } from '../../Toast/toast';
-import {
-  registerInstitution,
-  RegisterResponse,
-} from '../../../services/register';
+import { addToast } from '../Toast/toast';
+import { registerInstitution, RegisterResponse } from '../../services/register';
 import { useNavigate } from 'react-router-dom';
-import { InStepper } from '../../Stepper/Stepper';
-import Anchor from '../../Anchor/Anchor';
-import { type } from 'node:os';
+import { InStepper } from '../Stepper/Stepper';
+import Anchor from '../Anchor/Anchor';
 
 const steps = ['Cadastro', 'Dados', 'Verificação'];
 

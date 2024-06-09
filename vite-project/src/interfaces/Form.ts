@@ -1,4 +1,5 @@
 export interface FormProps {
   disabled: boolean;
-  data: any;
+  data: any | null;
+  onDataChange: (data: any) => void;
 }

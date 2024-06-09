@@ -5,9 +5,9 @@ import SignInSide from '../pages/Login/SignInView';
 import Profile from '../pages/Profile/ProfileView';
 import { Settings } from '../pages/Settings/SettingsView';
 import { RegisterInstitution } from '../pages/Register/RegisterInstitution';
-import { FormStudent } from '../components/Register/Register/FormStudent';
-import { FormProfessor } from '../components/Register/Register/FormProfessor';
-import { FormBranch } from '../components/Register/Register/FormBranch';
+import { FormStudent } from '../components/Forms/FormStudent';
+import { FormProfessor } from '../components/Forms/FormProfessor';
+import { FormBranch } from '../components/Forms/FormBranch';
 import { ChangePassword } from '../pages/Login/ChangePassword/ChangePassword';
 import ListBranch from '../components/Lists/ListBrach';
 import ListStudent from '../components/Lists/ListStudent';
@@ -88,10 +88,7 @@ export function createRoutes() {
     {
       path: '/branch/list',
       element: <ListBranch />,
-    },
-    {
-      path: '/branch/register',
-      element: <FormBranch disabled={false} data={null} />,
+      permissions: ['HEADOFFICE'],
     },
     {
       path: '/branch/view',
@@ -106,10 +103,6 @@ export function createRoutes() {
       element: <ListStudent />,
     },
     {
-      path: '/student/register',
-      element: <FormStudent disabled={false} data={null} />,
-    },
-    {
       path: '/student/view',
       element: <FormStudent disabled={true} data={null} />,
     },
@@ -120,10 +113,6 @@ export function createRoutes() {
     {
       path: '/professor/list',
       element: <ListProfessor />,
-    },
-    {
-      path: '/professor/register',
-      element: <FormProfessor disabled={false} data={null} />,
     },
     // {
     //   path: `/professor/view/${id}`,
