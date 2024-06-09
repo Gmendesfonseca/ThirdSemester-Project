@@ -36,7 +36,7 @@
 
          public void Alertar()
          {
-
+              Console.WriteLine($"Notificação: {_titleNotification}");
          }
 
          #endregion
