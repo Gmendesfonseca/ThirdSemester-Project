@@ -1,21 +1,31 @@
-// import avatar from "../../assets/IL.png";
-import { useState } from "react";
-import "./Profile.css";
-import { useNavigate } from "react-router";
+import { useState } from 'react';
+import './Profile.css';
+import { useNavigate } from 'react-router';
+import { FormHeadOffice } from '../../components/Forms/FormHeadOffice';
 
 export default function ProfileCard(props) {
   const navigate = useNavigate();
   const [isSettingsVisible, setSettingsVisible] = useState(false);
+  const [data, setData] = useState(props.data);
 
   const toggleSettings = () => {
     setSettingsVisible(!isSettingsVisible);
   };
 
+  const handleDataChange = (newData) => {
+    setData(newData);
+  };
+
   return (
     <div className="content">
-      <div className={`profile ${isSettingsVisible ? "hide" : ""}`}>
+      <div className={`profile ${isSettingsVisible ? 'hide' : ''}`}>
         <div className="profile_header">
-          <button className="" onClick={toggleSettings}>
+          <button
+            title="config"
+            type="button"
+            className=""
+            onClick={toggleSettings}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -38,12 +48,16 @@ export default function ProfileCard(props) {
         </div>
 
         <div className="profile_footer">
-          <button onClick={() => navigate("/home")}>Teste</button>
+          <button onClick={() => navigate('/home')}>Teste</button>
         </div>
       </div>
-      <div
-        className={`profile_settings ${isSettingsVisible ? "show" : ""}`}
-      ></div>
+      <div className={`profile_settings ${isSettingsVisible ? 'show' : ''}`}>
+        <FormHeadOffice
+          disabled={false}
+          data={data}
+          onDataChange={handleDataChange}
+        />
+      </div>
     </div>
   );
 }
