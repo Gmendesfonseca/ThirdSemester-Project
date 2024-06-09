@@ -5,9 +5,6 @@ import SignInSide from '../pages/Login/SignInView';
 import Profile from '../pages/Profile/ProfileView';
 import { Settings } from '../pages/Settings/SettingsView';
 import { RegisterInstitution } from '../pages/Register/RegisterInstitution';
-import { FormStudent } from '../components/Forms/FormStudent';
-import { FormProfessor } from '../components/Forms/FormProfessor';
-import { FormBranch } from '../components/Forms/FormBranch';
 import { ChangePassword } from '../pages/Login/ChangePassword/ChangePassword';
 import ListBranch from '../pages/Lists/ListBrach';
 import ListStudent from '../pages/Lists/ListStudent';
@@ -91,40 +88,12 @@ export function createRoutes() {
       permissions: ['HEADOFFICE'],
     },
     {
-      path: '/branch/view',
-      element: <FormBranch disabled={true} data={null} />,
-    },
-    {
-      path: '/branch/edit',
-      element: <FormBranch disabled={false} data={null} />,
-    },
-    {
       path: '/student/list',
       element: <ListStudent />,
     },
     {
-      path: '/student/view',
-      element: <FormStudent disabled={true} data={null} />,
-    },
-    {
-      path: '/student/edit',
-      element: <FormStudent disabled={false} data={null} />,
-    },
-    {
       path: '/professor/list',
       element: <ListProfessor />,
-    },
-    // {
-    //   path: `/professor/view/${id}`,
-    //   element: <FormProfessor disabled={true} data={data={getProfessor(id)}}/>,
-    // },
-    {
-      path: `/professor/view`,
-      element: <FormProfessor disabled={true} data={null} />,
-    },
-    {
-      path: '/professor/edit',
-      element: <FormProfessor disabled={false} data={null} />,
     },
     {
       path: '/forgot-password',
