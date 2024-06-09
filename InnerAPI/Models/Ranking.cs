@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 namespace InnerAPI.Models
 {
     public class Ranking
@@ -7,7 +8,7 @@ namespace InnerAPI.Models
         #region "Declaração de variáveis"
 
         private uint _idRanking;
-        private string _name;
+        private string? _name;
         private List<RankingItem> _items;
 
         #endregion
@@ -38,7 +39,7 @@ namespace InnerAPI.Models
 
         public string Name
         {
-            get { return _name; }
+            get { return _name  ?? string.Empty; }
             set { _name = value; }
         }
 

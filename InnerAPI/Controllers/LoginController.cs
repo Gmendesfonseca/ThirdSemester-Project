@@ -51,12 +51,8 @@ namespace InnerAPI.Controllers
 
                 });
             });
-<<<<<<< Updated upstream
 
-            //POST /login/professor
-=======
-   
->>>>>>> Stashed changes
+           
             group.MapPost("/professor", (LoginDto login) =>
             {
                 ProfessorServices user = new(sharedService);
