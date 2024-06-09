@@ -1,4 +1,5 @@
-﻿namespace InnerAPI.Models
+﻿using System;
+namespace InnerAPI.Models
 {
     public class Chat
     {
@@ -8,6 +9,25 @@
         private uint _idUser1;
         private uint _idUser2;
         private DateOnly _dateCreation;
+        private List<string> _messages;
+
+        #endregion
+        
+        #region "Construtores"
+
+        public Chat()
+        {
+            _messages = new List<string>();
+        }
+
+        public Chat(uint idChat, uint idUser1, uint idUser2, DateOnly dateCreation)
+        {
+            _idChat = idChat;
+            _idUser1 = idUser1;
+            _idUser2 = idUser2;
+            _dateCreation = dateCreation;
+            _messages = new List<string>();
+        }
 
         #endregion
 
@@ -37,19 +57,25 @@
             set { _dateCreation = value;}
         }
 
+         public List<string> Messages
+        {
+            get { return _messages; }
+            private set { _messages = value; }
+        }
+
         #endregion
 
         #region "Metodos"
 
         //Futuramente alterar nome dos métodos
-        public void Enviar()
+       public void SendMessage(string message)
         {
-
+            _messages.Add(message);
         }
 
-        public void Receber() 
+        public List<string> ReceiveMessages()
         {
-
+            return _messages;
         }
 
         #endregion
