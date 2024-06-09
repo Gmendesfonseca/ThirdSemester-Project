@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Box } from "@mui/system";
-import { Post } from "../Post/Post";
+import { useEffect, useState } from 'react';
+import { Post } from '../Post/Post';
 import {
   CommentType,
   PostType,
   //getAllPosts
-} from "../../../services/posts";
-import faker from "faker";
-import camaleao from "../../../assets/image.png";
+} from '../../../services/posts';
+import faker from 'faker';
+import camaleao from '../../../assets/image.png';
+import { Stack } from '@mui/material';
 
 export const Feed = () => {
   const [posts, setPosts] = useState<PostType[]>([]);
@@ -32,14 +32,17 @@ export const Feed = () => {
   }, []);
 
   return (
-    <Box
-      // flex={4}
-      paddingTop={5}
-      sx={{ paddingRight: { md: "0px" }, flex: { sm: 4, lg: 5, xl: 3 } }}
+    <Stack
+      p={2}
+      sx={{
+        flex: { sm: 4, lg: 4, xl: 3 },
+        gap: 2,
+      }}
+      height="max-content"
     >
       {posts.map((post, index) => (
         <Post key={index} data={post} />
       ))}
-    </Box>
+    </Stack>
   );
 };

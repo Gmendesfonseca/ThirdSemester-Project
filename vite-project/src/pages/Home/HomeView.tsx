@@ -29,10 +29,10 @@ export function Home() {
       <Box
         bgcolor={'background.default'}
         color={'text.primary'}
-        sx={{ padding: '0px' }}
+        sx={{ padding: '0px', height: '100%' }}
       >
         <Navbar />
-        <Stack direction="row" spacing={0}>
+        <Stack direction="row" spacing={0} height="100%">
           <SidebarMenu mode={mode} setMode={setMode} />
           <Feed />
           <Rightbar />

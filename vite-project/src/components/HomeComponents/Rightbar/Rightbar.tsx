@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Box } from "@mui/system";
+import { useEffect, useState } from 'react';
+import { Box } from '@mui/system';
 import {
   AvatarGroup,
   Divider,
@@ -10,18 +10,18 @@ import {
   // ListItemAvatar,
   // ListItemText,
   Typography,
-} from "@mui/material";
-import { AvatarComponent } from "../Avatar/Avatar";
-import { RecentChat } from "../RecentChat/RecentChat";
-import {} from "../../../services/chats/request";
+} from '@mui/material';
+import { AvatarComponent } from '../Avatar/Avatar';
+import { RecentChat } from '../RecentChat/RecentChat';
+import {} from '../../../services/chats/request';
 import {
   RecentChatType, //, getRecentChat
-} from "../../../services/chats/index";
+} from '../../../services/chats/index';
 import {
   //getOnlineFriends,
   OnlineFriendsType,
-} from "../../../services/friends/index";
-import faker from "faker";
+} from '../../../services/friends/index';
+import faker from 'faker';
 
 export const Rightbar = () => {
   const [recentChats, setRecentChat] = useState<RecentChatType[]>([]);
@@ -49,44 +49,45 @@ export const Rightbar = () => {
 
   return (
     <Box
-      pt={10}
-      pr={5}
-      sx={{ display: { xs: "none", lg: "block" }, flex: { lg: 2, xl: 1 } }}
+      pt={2}
+      sx={{ display: { xs: 'none', lg: 'block' }, flex: { lg: 2, xl: 1 } }}
+      height="100%"
+      width="100%"
     >
-      <Box position="fixed">
+      <Box position="fixed" height="80%" width="22%">
         <Typography variant="h6" fontWeight={100}>
           Conexões
         </Typography>
         <Box
           sx={{
-            paddingLeft: "8px",
-            overflowY: "hidden",
-            overflowX: "scroll",
-            maxWidth: { md: "300px", lg: "320px" },
-            "&::-webkit-scrollbar": {
-              height: "0px",
-              width: "8px",
+            paddingLeft: '8px',
+            overflowY: 'hidden',
+            overflowX: 'scroll',
+            maxWidth: '100%',
+            '&::-webkit-scrollbar': {
+              height: '0px',
+              width: '8px',
             },
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: "rgba(0,0,0,.1)",
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: 'rgba(0,0,0,.1)',
             },
           }}
         >
           <AvatarGroup
             max={onlineFriends.length}
             sx={{
-              justifyContent: "start",
-              height: "100%",
-              width: "100%",
-              maxWidth: 360,
-              bgcolor: "background.paper",
+              justifyContent: 'start',
+              height: '100%',
+              width: '100%',
+
+              bgcolor: 'background.paper',
             }}
           >
             {onlineFriends.map(
               (onlineFriends, index) =>
                 onlineFriends && (
                   <AvatarComponent key={index} data={onlineFriends} />
-                )
+                ),
             )}
           </AvatarGroup>
         </Box>
@@ -96,31 +97,37 @@ export const Rightbar = () => {
         <Divider />
         <Box
           sx={{
-            display: { lg: "block" },
-            overflowY: "auto",
-            maxHeight: { md: "65vh", xl: "75vh" },
-            "&::-webkit-scrollbar": {
-              height: "8px",
-              width: "0px",
+            display: { lg: 'block' },
+            overflowY: 'auto',
+            height: '97.5%',
+            '&::-webkit-scrollbar': {
+              height: '8px',
+              width: '0px',
             },
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: "rgba(0,0,0,.1)",
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: 'rgba(0,0,0,.1)',
             },
           }}
         >
           <List
-            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+            sx={{
+              width: '100%',
+              maxWidth: 360,
+              maxHeight: '100%',
+              bgcolor: 'background.paper',
+            }}
           >
             {recentChats.map(
               (recentChat, index) =>
                 recentChat && (
-                  <RecentChat
-                    key={index}
-                    id={index}
-                    avatar={onlineFriends[index]}
-                    data={recentChat}
-                  />
-                )
+                  <li key={index}>
+                    <RecentChat
+                      id={index}
+                      avatar={onlineFriends[index]}
+                      data={recentChat}
+                    />
+                  </li>
+                ),
             )}
           </List>
         </Box>

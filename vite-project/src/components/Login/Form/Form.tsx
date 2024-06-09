@@ -115,12 +115,15 @@ export function Form() {
           onChange={handleTypeChange}
         >
           <MenuItem id="institution" value={1}>
-            Instituição
+            Matriz da Instituição
           </MenuItem>
-          <MenuItem id="professor" value={2}>
+          <MenuItem id="institution" value={2}>
+            Filial da Instituição
+          </MenuItem>
+          <MenuItem id="professor" value={3}>
             Professor
           </MenuItem>
-          <MenuItem id="student" value={3}>
+          <MenuItem id="student" value={4}>
             Aluno
           </MenuItem>
         </Select>
@@ -174,6 +177,11 @@ export function Form() {
         <Grid item>
           {type === 1 && (
             <Anchor id="register-institution" to="/headoffice/register">
+              É uma matriz? Cadastre-se aqui
+            </Anchor>
+          )}
+          {type === 2 && (
+            <Anchor id="register-institution" to="/branch/register">
               É uma nova instituição? Cadastre-se aqui
             </Anchor>
           )}

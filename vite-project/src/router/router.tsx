@@ -9,9 +9,9 @@ import { FormStudent } from '../components/Forms/FormStudent';
 import { FormProfessor } from '../components/Forms/FormProfessor';
 import { FormBranch } from '../components/Forms/FormBranch';
 import { ChangePassword } from '../pages/Login/ChangePassword/ChangePassword';
-import ListBranch from '../components/Lists/ListBrach';
-import ListStudent from '../components/Lists/ListStudent';
-import ListProfessor from '../components/Lists/ListProfessor';
+import ListBranch from '../pages/Lists/ListBrach';
+import ListStudent from '../pages/Lists/ListStudent';
+import ListProfessor from '../pages/Lists/ListProfessor';
 import { Friends } from '../pages/Friends/Friends';
 import { Groups } from '../pages/Groups/Groups';
 
