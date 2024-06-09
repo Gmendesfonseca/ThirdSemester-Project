@@ -1,32 +1,31 @@
-import * as React from 'react';
 import {
-  PaletteMode,
+  // PaletteMode,
   Stack,
-  ThemeProvider,
-  createTheme,
-  useMediaQuery,
+  // ThemeProvider,
+  // createTheme,
+  // useMediaQuery,
   Box,
-} from '@mui/material';
+} from "@mui/material";
 
-import { Navbar } from '../HomeComponents/NavBar/Navbar';
-import { SidebarMenu } from '../HomeComponents/Sidebar/SidebarHome';
-import { HeadCell, InTable } from '../Table/Table';
-import { BranchListType } from '../../services/login';
-import faker from 'faker';
-import { More } from '../More/More';
+import { Navbar } from "../HomeComponents/NavBar/Navbar";
+import { SidebarMenu } from "../HomeComponents/Sidebar/SidebarHome";
+import { HeadCell, InTable } from "../Table/Table";
+import { BranchListType } from "../../services/login";
+import faker from "faker";
+import { More } from "../More/More";
 
 const headCells: readonly HeadCell<BranchListType>[] = [
-  { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
-  { id: 'email', numeric: false, disablePadding: false, label: 'Email' },
-  { id: 'domain', numeric: false, disablePadding: false, label: 'Domain' },
-  { id: 'cnpj', numeric: false, disablePadding: false, label: 'CNPJ' },
+  { id: "name", numeric: false, disablePadding: false, label: "Name" },
+  { id: "email", numeric: false, disablePadding: false, label: "Email" },
+  { id: "domain", numeric: false, disablePadding: false, label: "Domain" },
+  { id: "cnpj", numeric: false, disablePadding: false, label: "CNPJ" },
   {
-    id: 'localidadeInstituicao',
+    id: "localidadeInstituicao",
     numeric: false,
     disablePadding: false,
-    label: 'Location',
+    label: "Location",
   },
-  { id: 'options', numeric: false, disablePadding: false, label: 'Opções' },
+  { id: "options", numeric: false, disablePadding: false, label: "Opções" },
 ];
 
 const rows: BranchListType[] = Array.from({ length: 50 }, (_, index) => ({
@@ -41,32 +40,32 @@ const rows: BranchListType[] = Array.from({ length: 50 }, (_, index) => ({
 }));
 
 export default function ListBranch() {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
+  // const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
 
-  const [mode, setMode] = React.useState<PaletteMode>(
-    prefersDarkMode ? 'dark' : 'light',
-  );
+  // const [mode, setMode] = React.useState<PaletteMode>(
+  //   prefersDarkMode ? 'dark' : 'light',
+  // );
 
-  const darkTheme = createTheme({
-    palette: {
-      mode: mode,
-    },
-  });
+  // const darkTheme = createTheme({
+  //   palette: {
+  //     mode: mode,
+  //   },
+  // });
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Box bgcolor={'background.default'} color={'text.primary'}>
-        <Navbar />
-        <Stack direction="row" spacing={2} justifyContent="space-between">
-          <SidebarMenu mode={mode} setMode={setMode} />
-          <InTable<BranchListType>
-            title="Unidades"
-            name="Nova Unidade"
-            rowsItems={rows}
-            headCells={headCells}
-          />
-        </Stack>
-      </Box>
-    </ThemeProvider>
+    // <ThemeProvider theme={darkTheme}>
+    <Box bgcolor={"background.default"} color={"text.primary"}>
+      <Navbar />
+      <Stack direction="row" spacing={2} justifyContent="space-between">
+        <SidebarMenu />
+        <InTable<BranchListType>
+          title="Unidades"
+          name="Nova Unidade"
+          rowsItems={rows}
+          headCells={headCells}
+        />
+      </Stack>
+    </Box>
+    // </ThemeProvider>
   );
 }

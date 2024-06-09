@@ -5,39 +5,39 @@ import { Navbar } from "../../components/HomeComponents/NavBar/Navbar";
 import { Add } from "../../components/HomeComponents/Add/Add";
 import {
   Box,
-  createTheme,
+  // createTheme,
   PaletteMode,
   Stack,
-  ThemeProvider,
+  // ThemeProvider,
   useMediaQuery,
 } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 export function Home() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: light)");
   const [mode, setMode] = useState<PaletteMode>(
     prefersDarkMode ? "dark" : "light"
   );
 
-  const darkTheme = createTheme({
-    palette: {
-      mode: mode,
-    },
-  });
+  // const darkTheme = createTheme({
+  //   palette: {
+  //     mode: mode,
+  //   },
+  // });
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Box
-        bgcolor={'background.default'}
-        color={'text.primary'}
-        sx={{ padding: '0px' }}
-      >
-        <Navbar />
-        <Stack direction="row" spacing={0}>
-          <SidebarMenu mode={mode} setMode={setMode}/>
-          <Feed />
-          <Rightbar />
-        </Stack>
-        <Add />
-      </Box>
-    </ThemeProvider>
+    // <ThemeProvider theme={darkTheme}>
+    <Box
+      bgcolor={"background.default"}
+      color={"text.primary"}
+      sx={{ padding: "0px" }}
+    >
+      <Navbar />
+      <Stack direction="row" spacing={0}>
+        <SidebarMenu mode={mode} setMode={setMode} />
+        <Feed />
+        <Rightbar />
+      </Stack>
+      <Add />
+    </Box>
+    // </ThemeProvider>
   );
 }

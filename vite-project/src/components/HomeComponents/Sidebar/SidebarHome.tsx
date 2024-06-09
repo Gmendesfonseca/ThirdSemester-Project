@@ -3,10 +3,9 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  PaletteMode,
+  // PaletteMode,
   //Switch,
 } from "@mui/material";
-import React, { Dispatch, SetStateAction } from "react";
 import {
   AddHomeOutlined,
   //AccountBox,
@@ -26,12 +25,12 @@ import { useNavigate } from "react-router-dom";
 import { Sidebar } from "../../Sidebar/Sidebar";
 import { blue } from "@mui/material/colors";
 
-interface SidebarProps {
-  mode: PaletteMode;
-  setMode: Dispatch<SetStateAction<PaletteMode>>;
-}
+// interface SidebarProps {
+//   mode: PaletteMode;
+//   setMode: Dispatch<SetStateAction<PaletteMode>>;
+// }
 
-export const SidebarMenu: React.FC<SidebarProps> = () =>
+export const SidebarMenu = () =>
   // position,
   // { mode, setMode },
   {
