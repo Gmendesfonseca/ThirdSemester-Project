@@ -50,7 +50,7 @@ export default function ListProfessor() {
 
   return (
     // <ThemeProvider theme={darkTheme}>
-    <Box bgcolor={"background.default"} color={"text.primary"}>
+    <Box bgcolor={"#171410"} color={"text.primary"} height={"100vh"}>
       <Navbar />
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <SidebarMenu />

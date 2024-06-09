@@ -45,8 +45,9 @@ export const SidebarMenu = () =>
           <ListItemButton
             onClick={() => navigate("/home")}
             style={{
+              borderRadius: "10px",
               backgroundColor:
-                location.pathname === "/home" ? blue[50] : "default",
+                location.pathname === "/home" ? "#403d39" : "default",
             }}
           >
             <ListItemIcon>
@@ -58,8 +59,9 @@ export const SidebarMenu = () =>
         {/* <ListItem disablePadding>
         <ListItemButton onClick={() => navigate('/branch/list')}
         style={{
+        borderRadius:"10px",
           backgroundColor:
-            location.pathname === '/branch/list' ? blue[50] : 'default',
+            location.pathname === '/branch/list' ? "#403d39" : 'default',
         }}>
           <ListItemIcon>
             <PostAdd />
@@ -71,8 +73,9 @@ export const SidebarMenu = () =>
           <ListItemButton
             onClick={() => navigate("/branch/list")}
             style={{
+              borderRadius: "10px",
               backgroundColor:
-                location.pathname === "/branch/list" ? blue[50] : "default",
+                location.pathname === "/branch/list" ? "#403d39" : "default",
             }}
           >
             <ListItemIcon>
@@ -85,8 +88,9 @@ export const SidebarMenu = () =>
           <ListItemButton
             onClick={() => navigate("/professor/list")}
             style={{
+              borderRadius: "10px",
               backgroundColor:
-                location.pathname === "/professor/list" ? blue[50] : "default",
+                location.pathname === "/professor/list" ? "#403d39" : "default",
             }}
           >
             <ListItemIcon>
@@ -99,8 +103,9 @@ export const SidebarMenu = () =>
           <ListItemButton
             onClick={() => navigate("/student/list")}
             style={{
+              borderRadius: "10px",
               backgroundColor:
-                location.pathname === "/student/list" ? blue[50] : "default",
+                location.pathname === "/student/list" ? "#403d39" : "default",
             }}
           >
             <ListItemIcon>
@@ -113,8 +118,9 @@ export const SidebarMenu = () =>
           <ListItemButton
             onClick={() => navigate("/friends")}
             style={{
+              borderRadius: "10px",
               backgroundColor:
-                location.pathname === "/friends" ? blue[50] : "default",
+                location.pathname === "/friends" ? "#403d39" : "default",
             }}
           >
             <ListItemIcon>
@@ -127,8 +133,9 @@ export const SidebarMenu = () =>
           <ListItemButton
             onClick={() => navigate("/groups")}
             style={{
+              borderRadius: "10px",
               backgroundColor:
-                location.pathname === "/groups" ? blue[50] : "default",
+                location.pathname === "/groups" ? "#403d39" : "default",
             }}
           >
             <ListItemIcon>
@@ -141,8 +148,9 @@ export const SidebarMenu = () =>
           <ListItemButton
             onClick={() => navigate("/marketplace")}
             style={{
+              borderRadius: "10px",
               backgroundColor:
-                location.pathname === "/marketplace" ? blue[50] : "default",
+                location.pathname === "/marketplace" ? "#403d39" : "default",
             }}
           >
             <ListItemIcon>
@@ -155,8 +163,9 @@ export const SidebarMenu = () =>
           <ListItemButton
             onClick={() => navigate("/profile")}
             style={{
+              borderRadius: "10px",
               backgroundColor:
-                location.pathname === "/profile" ? blue[50] : "default",
+                location.pathname === "/profile" ? "#403d39" : "default",
             }}
           >
             <ListItemIcon>

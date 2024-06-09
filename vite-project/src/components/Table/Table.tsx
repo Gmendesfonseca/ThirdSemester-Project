@@ -154,12 +154,14 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
   return (
     // <ThemeProvider theme={darkTheme}>
     <Box
-      pt={10}
+      // pt={10}
       // flex={6}
       display="flex"
-      justifyContent="flex-start"
+      justifyContent="center"
       alignItems="center"
       sx={{
+        padding: 10,
+        height: "100%",
         maxWidth: { sm: "610px", md: "none" },
         minWidth: { sm: "610px", md: "none" },
         flex: { sm: 4, lg: 7, xl: 5 },
@@ -167,11 +169,17 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
       // position="fixed"
       // right={10}
     >
-      <Paper sx={{ mb: 2 }}>
+      <Paper sx={{ mb: 2, bgcolor: "#403d39" }}>
         <EnhancedTableToolbar title={props.title} name={props.name} />
         <TableContainer>
           <Table
-            sx={{ minWidth: 750, overflow: "auto", position: "relative" }}
+            sx={{
+              minWidth: 750,
+              overflow: "auto",
+              position: "relative",
+              bgcolor: "#403d39",
+              border: "1px solid #403d39",
+            }}
             aria-labelledby="tableTitle"
             size={"medium"}
           >
@@ -201,7 +209,11 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
                         typeof cellValue === "string" ||
                         typeof cellValue === "number"
                       ) {
-                        return <TableCell key={index}>{cellValue}</TableCell>;
+                        return (
+                          <TableCell key={index} style={{ color: "#ffffff" }}>
+                            {cellValue}
+                          </TableCell>
+                        );
                       }
                       return null;
                     })}
@@ -212,16 +224,17 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
                 <TableRow
                   style={{
                     height: 53 * emptyRows,
+                    color: "#ffffff",
                   }}
                 >
-                  <TableCell colSpan={6} />
+                  <TableCell colSpan={6} style={{ color: "#ffffff" }} />
                 </TableRow>
               )}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[10, 25, 50]}
+          rowsPerPageOptions={[5, 10]}
           component="div"
           count={rows?.length || 0}
           rowsPerPage={rowsPerPage}

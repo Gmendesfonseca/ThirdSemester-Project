@@ -28,28 +28,28 @@ export function Groups() {
 
   return (
     // <ThemeProvider theme={darkTheme}>
-      <Box bgcolor={"background.default"} color={"text.primary"}>
-        <Navbar />
-        <Stack direction="row" spacing={2} justifyContent="space-between">
-          <SidebarMenu />
-          <Box flex={6}>
-            <Button
-              onClick={() => navigate("/home")}
-              style={{ color: blue[500] }}
-              onMouseOver={(event) => {
-                event.currentTarget.style.color = blue[900];
-                event.currentTarget.style.textDecoration = "underline";
-              }}
-              onMouseOut={(event) => {
-                event.currentTarget.style.color = blue[500];
-                event.currentTarget.style.textDecoration = "none";
-              }}
-            >
-              Página Inicial
-            </Button>
-          </Box>
-        </Stack>
-      </Box>
+    <Box bgcolor={"#171410"} color={"text.primary"}>
+      <Navbar />
+      <Stack direction="row" spacing={2} justifyContent="space-between">
+        <SidebarMenu />
+        <Box flex={6}>
+          <Button
+            onClick={() => navigate("/home")}
+            style={{ color: blue[500] }}
+            onMouseOver={(event) => {
+              event.currentTarget.style.color = blue[900];
+              event.currentTarget.style.textDecoration = "underline";
+            }}
+            onMouseOut={(event) => {
+              event.currentTarget.style.color = blue[500];
+              event.currentTarget.style.textDecoration = "none";
+            }}
+          >
+            Página Inicial
+          </Button>
+        </Box>
+      </Stack>
+    </Box>
     // </ThemeProvider>
   );
 }

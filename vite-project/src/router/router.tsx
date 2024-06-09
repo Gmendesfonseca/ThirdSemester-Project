@@ -1,38 +1,38 @@
-import { Navigate, RouteObject } from 'react-router-dom';
-import { Home } from '../pages/Home/HomeView';
-import { Chat } from '../pages/Chat/ChatView';
-import SignInSide from '../pages/Login/SignInView';
-import Profile from '../pages/Profile/ProfileView';
-import { Settings } from '../pages/Settings/SettingsView';
-import { RegisterInstitution } from '../pages/Register/RegisterInstitution';
-import { FormStudent } from '../components/Register/Register/FormStudent';
-import { FormProfessor } from '../components/Register/Register/FormProfessor';
-import { FormBranch } from '../components/Register/Register/FormBranch';
-import { ChangePassword } from '../pages/Login/ChangePassword/ChangePassword';
-import ListBranch from '../components/Lists/ListBrach';
-import ListStudent from '../components/Lists/ListStudent';
-import ListProfessor from '../components/Lists/ListProfessor';
-import { Friends } from '../pages/Friends/Friends';
-import { Groups } from '../pages/Groups/Groups';
+import { Navigate, RouteObject } from "react-router-dom";
+import { Home } from "../pages/Home/HomeView";
+import { Chat } from "../pages/Chat/ChatView";
+import SignInSide from "../pages/Login/SignInView";
+import Profile from "../pages/Profile/ProfileView";
+import { Settings } from "../pages/Settings/SettingsView";
+import { RegisterInstitution } from "../pages/Register/RegisterInstitution";
+import { FormStudent } from "../components/Register/Register/FormStudent";
+import { FormProfessor } from "../components/Register/Register/FormProfessor";
+import { FormBranch } from "../components/Register/Register/FormBranch";
+import { ChangePassword } from "../pages/Login/ChangePassword/ChangePassword";
+import ListBranch from "../components/Lists/ListBrach";
+import ListStudent from "../components/Lists/ListStudent";
+import ListProfessor from "../components/Lists/ListProfessor";
+import { Friends } from "../pages/Friends/Friends";
+import { Groups } from "../pages/Groups/Groups";
 
 export type RouteType = {
   path: string;
   element?: JSX.Element;
-  options?: Omit<RouteObject, 'path' | 'element' | 'children'>;
+  options?: Omit<RouteObject, "path" | "element" | "children">;
   permissions?: string[];
   children?: RouteType[];
 } & Partial<RouteObject>;
 
 export function routesResolver(
   routes: RouteType[],
-  accountPermissions: string[],
+  accountPermissions: string[]
 ): RouteObject[] {
   return routes.reduce<RouteObject[]>((acc, route) => {
     const { path, element, options, children, permissions } = route;
 
     if (permissions) {
       const hasPermission = permissions.some((permission) =>
-        accountPermissions.includes(permission),
+        accountPermissions.includes(permission)
       );
       if (!hasPermission) {
         return [
@@ -66,63 +66,63 @@ export function routesResolver(
 export function createRoutes() {
   const routes: RouteType[] = [
     {
-      path: '/',
+      path: "/",
       element: <Navigate to="/login" replace />,
     },
     {
-      path: '/login',
+      path: "/login",
       element: <SignInSide />,
     },
     {
-      path: '/home',
+      path: "/home",
       element: <Home />,
     },
     {
-      path: '/profile',
+      path: "/profile",
       element: <Profile />,
     },
     {
-      path: '/headoffice/register',
+      path: "/headoffice/register",
       element: <RegisterInstitution />,
     },
     {
-      path: '/branch/list',
+      path: "/branch/list",
       element: <ListBranch />,
     },
     {
-      path: '/branch/register',
+      path: "/branch/register",
       element: <FormBranch disabled={false} data={null} />,
     },
     {
-      path: '/branch/view',
+      path: "/branch/view",
       element: <FormBranch disabled={true} data={null} />,
     },
     {
-      path: '/branch/edit',
+      path: "/branch/edit",
       element: <FormBranch disabled={false} data={null} />,
     },
     {
-      path: '/student/list',
+      path: "/student/list",
       element: <ListStudent />,
     },
     {
-      path: '/student/register',
+      path: "/student/register",
       element: <FormStudent disabled={false} data={null} />,
     },
     {
-      path: '/student/view',
+      path: "/student/view",
       element: <FormStudent disabled={true} data={null} />,
     },
     {
-      path: '/student/edit',
+      path: "/student/edit",
       element: <FormStudent disabled={false} data={null} />,
     },
     {
-      path: '/professor/list',
+      path: "/professor/list",
       element: <ListProfessor />,
     },
     {
-      path: '/professor/register',
+      path: "/professor/register",
       element: <FormProfessor disabled={false} data={null} />,
     },
     // {
@@ -134,31 +134,31 @@ export function createRoutes() {
       element: <FormProfessor disabled={true} data={null} />,
     },
     {
-      path: '/professor/edit',
+      path: "/professor/edit",
       element: <FormProfessor disabled={false} data={null} />,
     },
     {
-      path: '/forgot-password',
+      path: "/forgot-password",
       element: <ChangePassword />,
     },
     {
-      path: '/settings',
+      path: "/settings",
       element: <Settings />,
     },
     {
-      path: '/chat',
+      path: "/chat",
       element: <Chat />,
     },
     {
-      path: '/friends',
+      path: "/friends",
       element: <Friends />,
     },
     {
-      path: '/groups',
+      path: "/groups",
       element: <Groups />,
     },
     {
-      path: '/marketplace',
+      path: "/marketplace",
       element: <Chat />,
     },
   ];

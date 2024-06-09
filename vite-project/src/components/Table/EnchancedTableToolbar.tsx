@@ -1,8 +1,8 @@
 import {
   AddCircleOutline, //Tune
-} from '@mui/icons-material';
-import { Button, Toolbar, Typography, alpha } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+} from "@mui/icons-material";
+import { Button, Toolbar, Typography, alpha } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export interface EnhancedTableToolbarProps {
   title: string;
@@ -12,7 +12,7 @@ export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
   const navigate = useNavigate();
 
   const handleClicked = () => {
-    navigate('/branch/register');
+    navigate("/branch/register");
   };
 
   return (
@@ -21,16 +21,12 @@ export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
         ...(props.name && {
-          bgcolor: (theme) =>
-            alpha(
-              theme.palette.primary.main,
-              theme.palette.action.activatedOpacity,
-            ),
+          bgcolor: "#403d39",
         }),
       }}
     >
       <Typography
-        sx={{ flex: '1 1 100%' }}
+        sx={{ flex: "1 1 100%" }}
         variant="h6"
         id="tableTitle"
         component="div"
@@ -44,7 +40,7 @@ export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
             variant="button"
             id="tableTitle"
             component="div"
-            style={{ width: '200px' }}
+            style={{ width: "200px" }}
             sx={{ pr: -3, pl: -3 }}
           >
             {props.name}

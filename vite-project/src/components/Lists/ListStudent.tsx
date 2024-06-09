@@ -52,7 +52,7 @@ export default function ListStudent() {
 
   return (
     // <ThemeProvider theme={darkTheme}>
-    <Box bgcolor={"background.default"} color={"text.primary"}>
+    <Box bgcolor={"#171410"} color={"text.primary"}>
       <Navbar />
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <SidebarMenu />

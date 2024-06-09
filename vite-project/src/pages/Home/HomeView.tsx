@@ -28,7 +28,7 @@ export function Home() {
     <Box
       // bgcolor={"background.default"}
       color={"text.primary"}
-      sx={{ padding: "0px", bgcolor: "#171410" }}
+      sx={{ padding: "0px", bgcolor: "#171410", color: "white" }}
     >
       <Navbar />
       <Stack direction="row" spacing={0}>
