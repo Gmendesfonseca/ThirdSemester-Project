@@ -1,28 +1,31 @@
 ﻿using System.Collections.Generic;
 namespace InnerAPI.Models
 {
-    public class Seguidor
+    public class Follower
     {
         #region "Declaração de variáveis"
         
-        private uint _idFollower; //Criar Lista de seguidores
+        private uint _idFollower; //Criar Lista de Seguidores
         private string? _nameFollower;
-        private List<Seguidor> _followers;//lista de seguidores
+        private List<Follower> _followers;//lista de Seguidores
+        private List<Follower> _pendingRequests; 
 
         #endregion
 
         #region "Construtores"
 
-        public Seguidor()
+        public Follower()
         {
-            _followers = new List<Seguidor>();
+            _followers = new List<Follower>();
+            _pendingRequests = new List<Follower>();
         }
 
-        public Seguidor(uint idFollower, string nameFollower)
+        public Follower(uint idFollower, string nameFollower)
         {
             _idFollower = idFollower;
             _nameFollower = nameFollower;
-            _followers = new List<Seguidor>();
+            _followers = new List<Follower>();
+            _pendingRequests = new List<Follower>();
         }
 
         #endregion
@@ -36,14 +39,20 @@ namespace InnerAPI.Models
 
         public string NameFollower
         {
-            get { return _nameFollower; }
+            get { return _nameFollower ?? string.Empty; }
             set { _nameFollower = value;}
         }
 
-          public List<Seguidor> Followers
+          public List<Follower> Followers
         {
             get { return _followers; }
             private set { _followers = value; }
+        }
+
+        public List<Follower> PendingRequests
+        {
+            get { return _pendingRequests; }
+            private set { _pendingRequests = value; }
         }
 
         #endregion
@@ -51,16 +60,26 @@ namespace InnerAPI.Models
         #region "Metodos"
 
     
-        public void EnviarSolicitacao(Seguidor seguidor)
+        public void EnviarSolicitacao(Follower follower)
         {
-          //lógica que faltam
+         if (follower != null && !follower._pendingRequests.Contains(this))
+            {
+                follower._pendingRequests.Add(this);
+                
+        }
         }
 
-        public void ReceberSolicitacao(Seguidor seguidor)
+
+        public void ReceberSolicitacao(Follower follower)
         {
-            
-            _followers.Add(seguidor);
+            if (follower != null && _pendingRequests.Contains(follower))
+            {
+                _followers.Add(follower);
+                _pendingRequests.Remove(follower);
+               
+            }
         }
         #endregion
-    }
+   
+}
 }

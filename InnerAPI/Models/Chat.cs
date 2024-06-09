@@ -67,7 +67,7 @@ namespace InnerAPI.Models
 
         #region "Metodos"
 
-        //Futuramente alterar nome dos métodos
+    
        public void SendMessage(string message)
         {
             _messages.Add(message);
