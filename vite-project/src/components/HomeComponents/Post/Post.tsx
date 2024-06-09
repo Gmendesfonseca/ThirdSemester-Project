@@ -30,7 +30,7 @@ export const Post = ({ data }: PostProps, onImageUpload) => {
 
   return (
     <Box flex={4} pt={7} mx={8}>
-      <Card>
+      <Card sx={{ bgcolor: "#403d39" }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -44,6 +44,7 @@ export const Post = ({ data }: PostProps, onImageUpload) => {
           }
           title={data.title}
           subheader={data.subheader}
+          subheaderTypographyProps={{ style: { color: "#ffffff" } }}
         />
         <CardMedia
           component="img"
@@ -53,7 +54,7 @@ export const Post = ({ data }: PostProps, onImageUpload) => {
           alt={data.title}
         />
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="white">
             {data.description}
           </Typography>
         </CardContent>
@@ -64,15 +65,15 @@ export const Post = ({ data }: PostProps, onImageUpload) => {
               checkedIcon={<Favorite sx={{ color: "red" }} />}
             />
           </IconButton>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="white">
             {likes} Likes
           </Typography>
           <Button onClick={() => handleComment("New comment")}>
-            Add Comment
+            Adicionar comentário
           </Button>
 
           {comments.map((comment) => (
-            <Typography key={comment.id} variant="body2" color="text.secondary">
+            <Typography key={comment.id} variant="body2" color="white">
               {comment.text}
             </Typography>
           ))}

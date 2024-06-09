@@ -81,7 +81,7 @@ export const Navbar = () => {
   };
 
   return (
-    <AppBar position="fixed" sx={{ marginBottom: "100px" }}>
+    <AppBar position="fixed" sx={{ marginBottom: "100px", bgcolor: "#403d39" }}>
       <StyledToolbar>
         <Typography variant="h6" sx={{ xs: "none", sm: "block" }}>
           InnerLink

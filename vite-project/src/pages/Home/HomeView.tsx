@@ -6,17 +6,17 @@ import { Add } from "../../components/HomeComponents/Add/Add";
 import {
   Box,
   // createTheme,
-  PaletteMode,
+  // PaletteMode,
   Stack,
   // ThemeProvider,
-  useMediaQuery,
+  // useMediaQuery,
 } from "@mui/material";
-import { useState } from "react";
+// import { useState } from "react";
 export function Home() {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: light)");
-  const [mode, setMode] = useState<PaletteMode>(
-    prefersDarkMode ? "dark" : "light"
-  );
+  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: light)");
+  // const [mode, setMode] = useState<PaletteMode>(
+  //   prefersDarkMode ? "dark" : "light"
+  // );
 
   // const darkTheme = createTheme({
   //   palette: {
@@ -26,13 +26,13 @@ export function Home() {
   return (
     // <ThemeProvider theme={darkTheme}>
     <Box
-      bgcolor={"background.default"}
+      // bgcolor={"background.default"}
       color={"text.primary"}
-      sx={{ padding: "0px" }}
+      sx={{ padding: "0px", bgcolor: "#171410" }}
     >
       <Navbar />
       <Stack direction="row" spacing={0}>
-        <SidebarMenu mode={mode} setMode={setMode} />
+        <SidebarMenu />
         <Feed />
         <Rightbar />
       </Stack>

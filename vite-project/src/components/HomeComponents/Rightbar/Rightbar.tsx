@@ -51,7 +51,10 @@ export const Rightbar = () => {
     <Box
       pt={10}
       pr={5}
-      sx={{ display: { xs: "none", lg: "block" }, flex: { lg: 2, xl: 1 } }}
+      sx={{
+        display: { xs: "none", lg: "block" },
+        flex: { lg: 2, xl: 1 },
+      }}
     >
       <Box position="fixed">
         <Typography variant="h6" fontWeight={100}>
@@ -79,7 +82,7 @@ export const Rightbar = () => {
               height: "100%",
               width: "100%",
               maxWidth: 360,
-              bgcolor: "background.paper",
+              bgcolor: "#171410",
             }}
           >
             {onlineFriends.map(
@@ -109,7 +112,12 @@ export const Rightbar = () => {
           }}
         >
           <List
-            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+            sx={{
+              width: "100%",
+              maxWidth: 360,
+              bgcolor: "#171410",
+              color: "text.primary",
+            }}
           >
             {recentChats.map(
               (recentChat, index) =>
