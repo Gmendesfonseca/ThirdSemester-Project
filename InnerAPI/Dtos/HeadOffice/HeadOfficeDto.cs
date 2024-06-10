@@ -20,7 +20,7 @@ namespace InnerAPI.Dtos.HeadOffice
         public string Email { get; init; } = Email;
         public string Address { get; init; } = Address;
         public DateOnly CreationDate { get; init; } = CreationDate;
-        public string CPNJ { get; init; } = CNPJ;
+        public string CNPJ { get; init; } = CNPJ;  
         public string Domain { get; init; } = Domain;
         public List<BranchDto> Branches { get; init; } = Branches ?? new List<BranchDto>();
     }

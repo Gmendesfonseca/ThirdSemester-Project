@@ -8,7 +8,7 @@
         private string _address;
         private DateOnly _creationDate;
         public string _cnpj;
-        string _domain;
+        public string _domain;
         #endregion
 
         #region "Construtores"
