@@ -7,7 +7,7 @@
          #region "Declaração de variáveis"
         
          private uint _idNotification;
-         private string? _titleNotification;
+         private string _titleNotification;
 
          #endregion
 
@@ -26,7 +26,7 @@
          public string TitleNotification
          {
             
-             get { return _titleNotification ?? string.Empty;}
+             get { return _titleNotification;}
              set { _titleNotification = value; }
          }
 
