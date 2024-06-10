@@ -22,7 +22,7 @@ namespace InnerAPI.Services
       string email = register.Email;
       string password = register.Password;
       string domain = register.Domain;
-      string cnpj = register.Cnpj;
+      string cnpj = register.CNPJ;
       int type = 1;
 
       Email Email = new Email();

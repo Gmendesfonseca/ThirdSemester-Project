@@ -9,6 +9,7 @@ namespace InnerAPI.Services
         private static List<HeadOffice> headOffices = new List<HeadOffice>();
         private static List<Professor> professors = new List<Professor>();
         private static List<Student> students = new List<Student>();
+        private static List<Post> posts = new List<Post>();
 
         public SharedService()
         {
@@ -20,13 +21,15 @@ namespace InnerAPI.Services
             string domain = "exemplo.com";
 
 
-            branches.Add(new Branch(id, name, email, password, cnpj, domain));
+            headOffices.Add(new HeadOffice(id, name, email, password, cnpj, domain));
+            branches.Add(new Branch(id, name, email, password, cnpj));
         }
 
         public List<Branch> Branches { get { return branches; } }
         public List<HeadOffice> HeadOffices{ get { return headOffices; }}
         public List<Professor> Professors { get { return professors; }}
         public List<Student> Students{ get { return students; }}
+        public List<Post> Posts { get { return posts; } }
         public void AddBranch(Branch institution){ branches.Add(institution); }
         
     }

@@ -35,7 +35,7 @@ namespace InnerAPI.Controllers
       // POST /headOffice/register
       group.MapPost("/register", (RegisterHeadOfficeDto newheadOffice) =>
       {
-        var exists = headOffices.Exists(r => r.Name == newheadOffice.Name || r.Email == newheadOffice.Email || r.CNPJ == newheadOffice.Cnpj || r.Domain == newheadOffice.Domain);
+        var exists = headOffices.Exists(r => r.Name == newheadOffice.Name || r.Email == newheadOffice.Email || r.CNPJ == newheadOffice.CNPJ || r.Domain == newheadOffice.Domain);
         if (!exists)
         {
           var createdHeadOffice = headOfficeServices.Register(newheadOffice);
