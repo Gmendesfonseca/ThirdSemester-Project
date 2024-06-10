@@ -177,14 +177,14 @@ export function Form() {
       </Button>
       <Grid container>
         <Grid item xs>
-          <Anchor id="forgot-password" to="/home/student">
+          <Anchor id="forgot-password" to="/home">
             Esqueceu a senha?
           </Anchor>
         </Grid>
         <Grid item>
           {accountType === AccountType.HEADOFFICE && (
             <Anchor id="register-institution" to="/headoffice/register">
-              É uma matriz? Cadastre-se aqui
+              É uma nova matriz? Cadastre-se aqui
             </Anchor>
           )}
           {accountType === AccountType.BRANCH && (

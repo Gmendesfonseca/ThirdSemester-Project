@@ -23,6 +23,8 @@ import {
   Settings,
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import { useSession } from '../../../context/SessionContext';
+import { useChat } from '../../../context/ChatsContext';
 
 const StyledToolbar = styled(Toolbar)({
   display: 'flex',
@@ -59,6 +61,8 @@ const UserBox = styled(Box)(({ theme }) => ({
 export const Navbar = () => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const { setAccountType, setInstitution, setUser } = useSession();
+  const { setChatList } = useChat();
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -69,6 +73,10 @@ export const Navbar = () => {
 
   const handleLogout = () => {
     //localStorage.removeItem('token');
+    setAccountType(null);
+    setInstitution(null);
+    setUser(null);
+    setChatList([]);
     navigate('/login');
   };
 

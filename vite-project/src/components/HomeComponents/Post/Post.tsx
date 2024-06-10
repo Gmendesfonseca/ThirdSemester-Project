@@ -8,23 +8,33 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import { Favorite, FavoriteBorder, MoreVert } from '@mui/icons-material';
+import {
+  ChatBubble,
+  ChatBubbleOutline,
+  Favorite,
+  FavoriteBorder,
+  MoreVert,
+} from '@mui/icons-material';
 import { PostType, CommentType } from '../../../services/posts';
 import { Button, Checkbox, MenuItem } from '@mui/material';
 import InMenu from '../../Menu/Menu';
 import { InModalDelete } from '../../Modal/DeleteModal';
+import { Comment } from './Comment';
 
 interface PostProps {
   data: PostType;
 }
 
 export const Post = ({ data }: PostProps) => {
-  const [likes, setLikes] = useState(0);
-  const [comments, setComments] = useState<CommentType[]>([]);
+  const [liked, setLiked] = useState(data.liked);
+  const [likes, setLikes] = useState(data.likes);
+  const [comments, setComments] = useState<CommentType[]>(data.comments);
+  const [showComments, setShowComments] = useState(false);
   const [open, setOpen] = useState(false);
 
   const handleLike = () => {
-    setLikes(likes + 1);
+    setLiked(!liked);
+    liked ? setLikes(likes - 1) : setLikes(likes + 1);
   };
 
   const handleComment = (comment) => {
@@ -37,6 +47,10 @@ export const Post = ({ data }: PostProps) => {
 
   const handleCloseDelete = () => {
     setOpen(false);
+  };
+
+  const handleShowComments = () => {
+    setShowComments(!showComments);
   };
 
   return (
@@ -77,7 +91,7 @@ export const Post = ({ data }: PostProps) => {
               </InMenu>
               <InModalDelete
                 id={data.id}
-                title="Post"
+                title="post"
                 open={open}
                 onOpen={handleDelete}
                 onClose={handleCloseDelete}
@@ -95,28 +109,46 @@ export const Post = ({ data }: PostProps) => {
           alt={data.title}
         />
         <CardContent>
+          <Box display="flex" alignItems="start" justifyContent="start">
+            <Box flexGrow={1}>
+              <IconButton aria-label="add to favorites" onClick={handleLike}>
+                <Checkbox
+                  icon={<FavoriteBorder />}
+                  checkedIcon={<Favorite sx={{ color: 'red' }} />}
+                  checked={liked}
+                />
+              </IconButton>
+              <Typography variant="body2" color="text.secondary">
+                {likes} Likes
+              </Typography>
+            </Box>
+            <IconButton aria-label="show comments" onClick={handleShowComments}>
+              <Checkbox
+                icon={<ChatBubbleOutline />}
+                checkedIcon={<ChatBubble />}
+                checked={showComments}
+              />
+            </IconButton>
+          </Box>
+        </CardContent>
+        <CardContent>
           <Typography variant="body2" color="text.secondary">
             {data.description}
           </Typography>
-        </CardContent>
-        <CardContent>
-          <IconButton aria-label="add to favorites" onClick={handleLike}>
-            <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite sx={{ color: 'red' }} />}
-            />
-          </IconButton>
-          <Typography variant="body2" color="text.secondary">
-            {likes} Likes
-          </Typography>
-          <Button onClick={() => handleComment('New comment')}>
-            Add Comment
-          </Button>
-          {comments.map((comment) => (
-            <Typography key={comment.id} variant="body2" color="text.secondary">
-              {comment.text}
-            </Typography>
-          ))}
+          {showComments && (
+            <>
+              <Button
+                onClick={() => handleComment('New comment')}
+                aria-label="Add a new comment"
+              >
+                Add Comment
+              </Button>
+              {Array.isArray(comments) &&
+                comments.map((comment) => (
+                  <Comment key={comment.id} comment={comment} />
+                ))}
+            </>
+          )}
         </CardContent>
       </Card>
     </Box>

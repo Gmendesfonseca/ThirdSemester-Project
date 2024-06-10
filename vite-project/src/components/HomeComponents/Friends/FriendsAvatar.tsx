@@ -1,5 +1,5 @@
-import { OfflineAvatar, OnlineAvatar } from '../HomeComponents/Avatar/Avatar';
-import { AvatarType } from '../../services/avatar/type';
+import { OfflineAvatar, OnlineAvatar } from '../../Avatar/Avatar';
+import { AvatarType } from '../../../services/avatar/type';
 
 interface FriendsProps {
   data: AvatarType;

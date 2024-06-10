@@ -4,23 +4,12 @@ import {
   ListItemIcon,
   ListItemText,
   PaletteMode,
-  //Switch,
 } from '@mui/material';
 import React, { Dispatch, SetStateAction } from 'react';
 import {
   AddHomeOutlined,
-  //AccountBox,
-  //Article,
-  //DarkMode,
-  Groups,
-  Home,
-  //Home,
-  Person,
   PersonOutlineOutlined,
-  //PostAdd,
   SchoolOutlined,
-  //Settings,
-  // Storefront,
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { Sidebar } from '../../Sidebar/Sidebar';
@@ -89,7 +78,7 @@ export const SidebarMenu: React.FC<SidebarProps> = () => {
           </ListItem>
         </>
       )}
-      {(accountType === 'student' || accountType === 'professor') && (
+      {/* {(accountType === 'student' || accountType === 'professor') && (
         <>
           <ListItem disablePadding={location.pathname.includes('home')}>
             <ListItemButton
@@ -134,7 +123,7 @@ export const SidebarMenu: React.FC<SidebarProps> = () => {
               <ListItemText primary="Groups" />
             </ListItemButton>
           </ListItem>
-          {/* <ListItem disablePadding={location.pathname !== '/marketplace'}>
+           <ListItem disablePadding={location.pathname !== '/marketplace'}>
             <ListItemButton
               onClick={() => navigate('/marketplace')}
               style={{
@@ -147,10 +136,10 @@ export const SidebarMenu: React.FC<SidebarProps> = () => {
               </ListItemIcon>
               <ListItemText primary="Marketplace" />
             </ListItemButton>
-          </ListItem> */}
+          </ListItem> 
         </>
-      )}
-      {/* <ListItem disablePadding={location.pathname !== '/profile'}>
+      )} 
+       <ListItem disablePadding={location.pathname !== '/profile'}>
         <ListItemButton
           onClick={() => navigate('/profile')}
           style={{

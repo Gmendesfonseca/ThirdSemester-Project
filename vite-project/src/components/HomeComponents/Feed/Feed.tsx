@@ -24,9 +24,11 @@ export const Feed = () => {
       id: faker.datatype.number(),
       title: faker.lorem.sentence(),
       subheader: faker.lorem.sentence(),
+      liked: faker.datatype.boolean(),
       likes: faker.datatype.number(),
       comments: Array.from({ length: 5 }).map(() => ({
         id: faker.datatype.uuid(),
+        author: faker.name.findName(),
         text: faker.lorem.sentence(),
       })) as CommentType[],
       description: faker.lorem.paragraph(),

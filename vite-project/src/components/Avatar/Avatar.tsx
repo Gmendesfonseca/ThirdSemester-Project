@@ -1,7 +1,7 @@
 import { Avatar, Badge, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { AvatarType } from '../../../services/avatar/type';
-import { FriendsType } from '../../../services/friends';
+import { AvatarType } from '../../services/avatar/type';
+import { FriendsType } from '../../services/friends';
 
 interface AvatarProps {
   data: AvatarType;

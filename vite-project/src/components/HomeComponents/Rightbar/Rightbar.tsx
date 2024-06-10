@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
 import { AvatarGroup, Divider, List, Typography } from '@mui/material';
-import { AvatarComponent } from '../Avatar/Avatar';
+import { AvatarComponent } from '../../Avatar/Avatar';
 import { RecentChat } from '../RecentChat/RecentChat';
 import {
   ChatType,
@@ -36,6 +36,12 @@ export const Rightbar = () => {
       name: faker.name.findName(),
       description: faker.lorem.sentence(),
       icon: faker.image.avatar(),
+      messages: Array.from({ length: 1 }, () => ({
+        id: faker.datatype.uuid(),
+        text: faker.lorem.sentence(),
+        creatorId: faker.datatype.number(),
+        created_at: faker.date.recent().toString(),
+      })),
       updated_at: faker.date.recent().toString(),
       created_at: faker.date.recent().toString(),
     }));

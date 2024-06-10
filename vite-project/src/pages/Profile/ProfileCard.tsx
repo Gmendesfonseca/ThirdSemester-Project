@@ -50,9 +50,7 @@ export default function ProfileCard(props) {
         </div>
 
         <div className="profile_footer">
-          <button onClick={() => navigate(`/home/${accountType}`)}>
-            Teste
-          </button>
+          <button onClick={() => navigate(`/home`)}>Teste</button>
         </div>
       </div>
       <div className={`profile_settings ${isSettingsVisible ? 'show' : ''}`}>
