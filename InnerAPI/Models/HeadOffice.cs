@@ -4,7 +4,6 @@
     {
         #region "Declaração de variáveis"
         List<Branch> branches;
-
         #endregion
 
         #region "Construtores"
