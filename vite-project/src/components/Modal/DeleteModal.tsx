@@ -5,9 +5,7 @@ import {
   DialogContentText,
   DialogTitle,
 } from '@mui/material';
-import { deleteBranch } from '../../services/lists/branch/request';
-import { deleteProfessor } from '../../services/lists/professor/request';
-import { deleteStudent } from '../../services/lists/student/request';
+import { deletePost } from '../../services/posts';
 
 interface InModalDeleteProps {
   id: number;
@@ -24,9 +22,9 @@ export const InModalDelete = ({
   onClose,
 }: InModalDeleteProps) => {
   const handleConfirmDelete = () => {
-    if (title === 'Aluno') deleteStudent(id).then(() => onClose());
-    else if (title === 'Professor') deleteProfessor(id).then(() => onClose());
-    else if (title === 'Unidade') deleteBranch(id).then(() => onClose());
+    deletePost(id).then(() => {
+      onClose();
+    });
   };
 
   const handleCancelDelete = () => {

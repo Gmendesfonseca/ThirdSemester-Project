@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Post } from '../Post/Post';
-import {
-  CommentType,
-  PostType,
-  // getAllPosts
-} from '../../../services/posts';
+import { CommentType, PostType } from '../../../services/posts';
 import faker from 'faker';
 import camaleao from '../../../assets/image.png';
 import { Stack } from '@mui/material';
+// import { useSession } from '../../../context/SessionContext';
+// import { getAllPosts } from '../../../services/posts';
 
 export const Feed = () => {
   const [posts, setPosts] = useState<PostType[]>([]);
+  // const { institution } = useSession();
 
   // useEffect(() => {
-  //   getAllPosts().then((response) => {
+  //   if (!institution) return;
+  //   getAllPosts(institution).then((response) => {
   //     setPosts(response);
   //   });
   // }, []);
@@ -21,6 +21,7 @@ export const Feed = () => {
   useEffect(() => {
     const fakePosts = Array.from({ length: 10 }).map(() => ({
       creatorId: faker.datatype.number(),
+      id: faker.datatype.number(),
       title: faker.lorem.sentence(),
       subheader: faker.lorem.sentence(),
       likes: faker.datatype.number(),
@@ -44,9 +45,6 @@ export const Feed = () => {
       }}
       height="max-content"
     >
-      {posts.map((post, index) => (
-        <Post key={index} data={post} />
-      ))}
       {posts.map((post, index) => (
         <Post key={index} data={post} />
       ))}

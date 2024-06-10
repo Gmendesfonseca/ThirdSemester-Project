@@ -10,7 +10,9 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import { Favorite, FavoriteBorder, MoreVert } from '@mui/icons-material';
 import { PostType, CommentType } from '../../../services/posts';
-import { Button, Checkbox } from '@mui/material';
+import { Button, Checkbox, MenuItem } from '@mui/material';
+import InMenu from '../../Menu/Menu';
+import { InModalDelete } from '../../Modal/DeleteModal';
 
 interface PostProps {
   data: PostType;
@@ -19,6 +21,7 @@ interface PostProps {
 export const Post = ({ data }: PostProps) => {
   const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState<CommentType[]>([]);
+  const [open, setOpen] = useState(false);
 
   const handleLike = () => {
     setLikes(likes + 1);
@@ -26,6 +29,14 @@ export const Post = ({ data }: PostProps) => {
 
   const handleComment = (comment) => {
     setComments([...comments, comment]);
+  };
+
+  const handleDelete = () => {
+    setOpen(true);
+  };
+
+  const handleCloseDelete = () => {
+    setOpen(false);
   };
 
   return (
@@ -39,7 +50,38 @@ export const Post = ({ data }: PostProps) => {
           }
           action={
             <IconButton aria-label="settings">
-              <MoreVert />
+              <InMenu
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                renderAnchor={({ openMenu }) => (
+                  <IconButton
+                    size="small"
+                    onClick={(ev) => {
+                      ev.stopPropagation();
+                      openMenu(ev);
+                    }}
+                  >
+                    <MoreVert />
+                  </IconButton>
+                )}
+              >
+                <MenuItem id="delete" onClick={() => handleDelete()}>
+                  Deletar
+                </MenuItem>
+              </InMenu>
+              <InModalDelete
+                id={data.id}
+                title="Post"
+                open={open}
+                onOpen={handleDelete}
+                onClose={handleCloseDelete}
+              />
             </IconButton>
           }
           title={data.title}
@@ -70,7 +112,6 @@ export const Post = ({ data }: PostProps) => {
           <Button onClick={() => handleComment('New comment')}>
             Add Comment
           </Button>
-
           {comments.map((comment) => (
             <Typography key={comment.id} variant="body2" color="text.secondary">
               {comment.text}

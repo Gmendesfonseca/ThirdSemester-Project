@@ -1,11 +1,11 @@
 import { PostType } from './types';
 import { api } from '../api';
 
-// GET
-export function getPost(id: number): Promise<PostType> {
-  return api.get<PostType>(`/post/${id}`).then((response) => {
+// GET ALL
+export function getAllPosts(id: number): Promise<PostType[]> {
+  return api.get<PostType[]>(`/post/${id}`).then((response) => {
     if (response.status !== 200) {
-      throw new Error('Post not found');
+      throw new Error('Error getting posts');
     }
     return response.data;
   });
@@ -37,15 +37,5 @@ export function deletePost(id: number): Promise<void> {
     if (response.status !== 204) {
       throw new Error('Error deleting post');
     }
-  });
-}
-
-// GET ALL
-export function getAllPosts(): Promise<PostType[]> {
-  return api.get<PostType[]>('/post').then((response) => {
-    if (response.status !== 200) {
-      throw new Error('Error getting posts');
-    }
-    return response.data;
   });
 }

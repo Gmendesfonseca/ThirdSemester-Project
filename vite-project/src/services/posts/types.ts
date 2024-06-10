@@ -1,5 +1,6 @@
 export type PostType = {
   creatorId: number;
+  id: number;
   title: string;
   subheader: string;
   likes: number;
@@ -13,5 +14,3 @@ export type CommentType = {
   text: string;
   creatorId: number;
 };
-
-

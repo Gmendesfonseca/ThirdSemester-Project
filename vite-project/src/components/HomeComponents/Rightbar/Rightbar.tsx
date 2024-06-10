@@ -16,6 +16,7 @@ import faker from 'faker';
 export const Rightbar = () => {
   const [chats, setChat] = useState<ChatType[]>([]);
   const [friends, setFriends] = useState<FriendsType[]>([]);
+  // const {id} = useSession();
 
   // useEffect(() => {
   //   getChat().then((response) => {
