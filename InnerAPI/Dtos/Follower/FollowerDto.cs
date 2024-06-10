@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace InnerAPI.Dtos.Follower
 {
@@ -6,9 +7,9 @@ namespace InnerAPI.Dtos.Follower
     (
         [Required] uint IdFollower,
         [Required] string NameFollower, 
-        List<string> Followers
+         List<FollowerDto> Followers
     )
     {
-        public List<string> Followers { get; set; } = Followers;
+        public List<FollowerDto> Followers { get; set; } = Followers ?? new List<FollowerDto>();
     }
 }

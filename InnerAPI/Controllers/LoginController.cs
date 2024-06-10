@@ -2,6 +2,7 @@
 using InnerAPI.Models;
 using InnerAPI.Services;
 
+
 namespace InnerAPI.Controllers
 {
     public static class LoginController
@@ -52,7 +53,7 @@ namespace InnerAPI.Controllers
                 });
             });
 
-            //POST /login/professor
+           
             group.MapPost("/professor", (LoginDto login) =>
             {
                 ProfessorServices user = new(sharedService);
