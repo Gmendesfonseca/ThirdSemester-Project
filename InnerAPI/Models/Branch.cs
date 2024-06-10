@@ -21,6 +21,21 @@ namespace InnerAPI.Models
             feed = new Stack<Post>();
         }
 
+        public Branch(uint id, string name, string email, string password, string cnpj) : base()
+        {
+            Id = id;
+            Name = name;
+            Email = email;
+            Password = password;
+            Online = false;
+            Active = true;
+            CNPJ = cnpj;
+            courses = new List<CourseDto>();
+            students = new List<Student>();
+            professors = new List<Professor>();
+            feed = new Stack<Post>();
+        }
+
         public Branch(uint id, string name, string email, string password, string address, DateOnly creationDate, string cnpj) : base()
         {
             Id = id;
@@ -79,7 +94,7 @@ namespace InnerAPI.Models
             while (feed.Count > 0)
             {
                 Post currentPost = feed.Pop();
-                if (currentPost.Id != id)
+                if (currentPost.IdPost != id)
                 {
                     tempStack.Push(currentPost);
                 }

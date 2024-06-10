@@ -35,7 +35,9 @@ namespace InnerAPI.Controllers
             //POST /login/branch
             group.MapPost("/branch", (LoginDto login) =>
             {
+
                 HeadOfficeServices user = new(sharedService);
+
                 var institution = user.Login(login);
                 if (institution == null)
                 {

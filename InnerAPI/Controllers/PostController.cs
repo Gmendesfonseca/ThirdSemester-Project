@@ -13,7 +13,7 @@ namespace InnerAPI.Controllers
             //GET /post
             group.MapGet("", (uint id) =>
             {
-                return Results.Ok(sharedServices.Institutions.Count > id ? sharedServices.Institutions[(int)id].Posts : null);
+                return Results.Ok(sharedServices.Posts.Count > id ? sharedServices.Posts.Count : null);
             });
 
             // GET /post/{id}
