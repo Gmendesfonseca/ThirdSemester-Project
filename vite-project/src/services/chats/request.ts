@@ -1,8 +1,4 @@
-import { RecentChatType } from './types';
+import { ChatType } from './types';
 
 //A fazer
-export function getRecentChat(): Promise<RecentChatType[]> {
-  return fetch('https://jsonplaceholder.typicode.com/posts')
-    .then((response) => response.json())
-    .then((data) => data);
-}
+export function getChat(): Promise<ChatType[]> {}

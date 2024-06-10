@@ -1,0 +1,6 @@
+export enum AccountType {
+  HEADOFFICE = 'HEADOFFICE',
+  BRANCH = 'BRANCH',
+  PROFESSOR = 'PROFESSOR',
+  STUDENT = 'STUDENT',
+}

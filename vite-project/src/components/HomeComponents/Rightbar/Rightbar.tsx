@@ -1,50 +1,53 @@
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
-import {
-  AvatarGroup,
-  Divider,
-  //ImageList,
-  //ImageListItem,
-  List,
-  // ListItem,
-  // ListItemAvatar,
-  // ListItemText,
-  Typography,
-} from '@mui/material';
+import { AvatarGroup, Divider, List, Typography } from '@mui/material';
 import { AvatarComponent } from '../Avatar/Avatar';
 import { RecentChat } from '../RecentChat/RecentChat';
-import {} from '../../../services/chats/request';
 import {
-  RecentChatType, //, getRecentChat
+  ChatType,
+  // getChat
 } from '../../../services/chats/index';
 import {
-  //getOnlineFriends,
-  OnlineFriendsType,
+  FriendsType,
+  // getFriends
 } from '../../../services/friends/index';
 import faker from 'faker';
 
 export const Rightbar = () => {
-  const [recentChats, setRecentChat] = useState<RecentChatType[]>([]);
-  const [onlineFriends, setOnlineFriends] = useState<OnlineFriendsType[]>([]);
+  const [chats, setChat] = useState<ChatType[]>([]);
+  const [friends, setFriends] = useState<FriendsType[]>([]);
+
+  // useEffect(() => {
+  //   getChat().then((response) => {
+  //     setChat(response);
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   getFriends().then((response) => {
+  //     setFriends(response);
+  //   });
+  // }, []);
 
   useEffect(() => {
-    // Replace this with actual API call
-    const fakeRecentChats = Array.from({ length: 20 }, () => ({
+    const fakeChats = Array.from({ length: 20 }, () => ({
       id: faker.datatype.uuid(),
       name: faker.name.findName(),
-      message: faker.lorem.sentence(),
+      description: faker.lorem.sentence(),
+      icon: faker.image.avatar(),
+      updated_at: faker.date.recent().toString(),
+      created_at: faker.date.recent().toString(),
     }));
-    setRecentChat(fakeRecentChats);
+    setChat(fakeChats);
   }, []);
 
   useEffect(() => {
-    // Replace this with actual API call
     const fakeOnlineFriends = Array.from({ length: 20 }, () => ({
       name: faker.name.findName(),
       src: faker.image.avatar(),
       online: faker.datatype.boolean(),
     }));
-    setOnlineFriends(fakeOnlineFriends);
+    setFriends(fakeOnlineFriends);
   }, []);
 
   return (
@@ -74,7 +77,7 @@ export const Rightbar = () => {
           }}
         >
           <AvatarGroup
-            max={onlineFriends.length}
+            max={friends.length}
             sx={{
               justifyContent: 'start',
               height: '100%',
@@ -83,11 +86,9 @@ export const Rightbar = () => {
               bgcolor: 'background.paper',
             }}
           >
-            {onlineFriends.map(
-              (onlineFriends, index) =>
-                onlineFriends && (
-                  <AvatarComponent key={index} data={onlineFriends} />
-                ),
+            {friends.map(
+              (friends, index) =>
+                friends && <AvatarComponent key={index} data={friends} />,
             )}
           </AvatarGroup>
         </Box>
@@ -117,14 +118,14 @@ export const Rightbar = () => {
               bgcolor: 'background.paper',
             }}
           >
-            {recentChats.map(
-              (recentChat, index) =>
-                recentChat && (
+            {chats.map(
+              (chat, index) =>
+                chat && (
                   <li key={index}>
                     <RecentChat
                       id={index}
-                      avatar={onlineFriends[index]}
-                      data={recentChat}
+                      avatar={friends[index]}
+                      data={chat}
                     />
                   </li>
                 ),

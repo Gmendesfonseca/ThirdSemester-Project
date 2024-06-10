@@ -5,14 +5,16 @@ export type LoginParams = {
 
 export type LoginError = {
   message: string;
+  company_id: number;
   success: boolean;
   user: null;
 };
 
 export type LoginSuccess = {
   message: string;
+  company_id: number;
   success: boolean;
-  user: StudentType | ProfessorType | InstitutionType;
+  user: StudentType | ProfessorType | HeadOfficeType | BranchType;
 };
 
 export type StudentType = {
@@ -37,7 +39,7 @@ export type ProfessorType = {
   registration: string;
 };
 
-export type InstitutionType = {
+export type HeadOfficeType = {
   id: number;
   name: string;
   email: string;

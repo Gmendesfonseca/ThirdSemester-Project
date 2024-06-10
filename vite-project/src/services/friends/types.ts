@@ -3,9 +3,3 @@ export type FriendsType = {
   src: string;
   online: boolean;
 };
-
-export type OnlineFriendsType = {
-  name: string;
-  src: string;
-  online: true;
-};

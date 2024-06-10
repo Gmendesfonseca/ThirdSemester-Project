@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createRoutes, routesResolver } from './router/router';
 import ToastUI from './components/Toast/ToastUI';
+import SessionProvider from './context/SessionContext';
 
 function App() {
   const accountPermissions = ['HEADOFFICE', 'BRANCH', 'PROFESSOR', 'STUDENT'];
@@ -8,7 +9,7 @@ function App() {
   const resolvedRoutes = routesResolver(routes, accountPermissions);
 
   return (
-    <>
+    <SessionProvider>
       <ToastUI />
       <Router>
         <Routes>
@@ -17,7 +18,7 @@ function App() {
           ))}
         </Routes>
       </Router>
-    </>
+    </SessionProvider>
   );
 }
 

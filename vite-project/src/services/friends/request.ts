@@ -1,7 +1,3 @@
-export function getFriends() {
-  //A fazer
-}
+import { FriendsType } from './types';
 
-export function getOnlineFriends() {
-  //A fazer
-}
+export function getFriends(): Promise<FriendsType[]> {}

@@ -2,9 +2,11 @@ import { useState } from 'react';
 import './Profile.css';
 import { useNavigate } from 'react-router';
 import { FormHeadOffice } from '../../components/Forms/FormHeadOffice';
+import { useSession } from '../../context/SessionContext';
 
 export default function ProfileCard(props) {
   const navigate = useNavigate();
+  const { accountType } = useSession();
   const [isSettingsVisible, setSettingsVisible] = useState(false);
   const [data, setData] = useState(props.data);
 
@@ -48,7 +50,9 @@ export default function ProfileCard(props) {
         </div>
 
         <div className="profile_footer">
-          <button onClick={() => navigate('/home')}>Teste</button>
+          <button onClick={() => navigate(`/home/${accountType}`)}>
+            Teste
+          </button>
         </div>
       </div>
       <div className={`profile_settings ${isSettingsVisible ? 'show' : ''}`}>

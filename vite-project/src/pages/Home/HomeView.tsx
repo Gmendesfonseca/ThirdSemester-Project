@@ -11,7 +11,7 @@ import {
   ThemeProvider,
   useMediaQuery,
 } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Add2 } from '../../components/HomeComponents/Add/Add2';
 export function Home() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
@@ -24,6 +24,7 @@ export function Home() {
       mode: mode,
     },
   });
+
   return (
     <ThemeProvider theme={darkTheme}>
       <Box

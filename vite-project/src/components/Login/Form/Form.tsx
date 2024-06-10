@@ -10,27 +10,29 @@ import { SelectChangeEvent } from '@mui/material';
 import { Copyright } from '../Copyright/Copyright';
 import Grid from '@mui/material/Grid';
 import {
-  loginInstitution,
+  loginBranch,
+  loginHeadOffice,
   loginProfessor,
   LoginResponse,
   loginStudent,
 } from '../../../services/login/index';
 import Anchor from '../../Anchor/Anchor';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { useSession } from '../../../context/SessionContext';
+import { AccountType } from '../../../services/login/enum';
 
 export function Form() {
   const navigate = useNavigate();
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [type, setType] = React.useState(1);
-
+  const { accountType, setAccountType, setInstitution } = useSession();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
-  const handleTypeChange = (event: SelectChangeEvent<number>) => {
-    setType(Number(event.target.value));
+  const handleTypeChange = (event: SelectChangeEvent<string>) => {
+    setAccountType(event.target.value);
   };
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +65,7 @@ export function Form() {
     //const remember = data.get('remember') as boolean;
 
     if (!emailError && !passwordError && email !== '' && password !== '') {
-      handleLogin(type, email, password);
+      handleLogin(email, password);
     } else if (email === '' || password === '') {
       addToast('Preencha todos os campos', { appearance: 'error' });
     }
@@ -76,15 +78,19 @@ export function Form() {
     return true;
   };
 
-  const handleLogin = async (type: number, email: string, password: string) => {
+  const handleLogin = async (email: string, password: string) => {
     try {
       let data: LoginResponse;
-      if (type === 1) {
-        data = await loginInstitution({ email, password });
-      } else if (type === 2) {
+      if (accountType === AccountType.HEADOFFICE) {
+        data = await loginHeadOffice({ email, password });
+      } else if (accountType === AccountType.BRANCH) {
+        data = await loginBranch({ email, password });
+      } else if (accountType === AccountType.PROFESSOR) {
         data = await loginProfessor({ email, password });
+        setInstitution(data.company_id);
       } else {
         data = await loginStudent({ email, password });
+        setInstitution(data.company_id);
       }
       if (data.success) {
         navigate('/home');
@@ -108,22 +114,23 @@ export function Form() {
       <FormControl fullWidth>
         <InputLabel id="type-login-label">Fazer login como</InputLabel>
         <Select
+          defaultValue={AccountType.HEADOFFICE}
+          required
           labelId="type-login-label"
           id="type-login-selector"
-          value={type}
           label="Fazer login como"
           onChange={handleTypeChange}
         >
-          <MenuItem id="institution" value={1}>
+          <MenuItem id="institution" value={AccountType.HEADOFFICE}>
             Matriz da Instituição
           </MenuItem>
-          <MenuItem id="institution" value={2}>
+          <MenuItem id="institution" value={AccountType.BRANCH}>
             Filial da Instituição
           </MenuItem>
-          <MenuItem id="professor" value={3}>
+          <MenuItem id="professor" value={AccountType.PROFESSOR}>
             Professor
           </MenuItem>
-          <MenuItem id="student" value={4}>
+          <MenuItem id="student" value={AccountType.STUDENT}>
             Aluno
           </MenuItem>
         </Select>
@@ -170,17 +177,17 @@ export function Form() {
       </Button>
       <Grid container>
         <Grid item xs>
-          <Anchor id="forgot-password" to="/home">
+          <Anchor id="forgot-password" to="/home/student">
             Esqueceu a senha?
           </Anchor>
         </Grid>
         <Grid item>
-          {type === 1 && (
+          {accountType === AccountType.HEADOFFICE && (
             <Anchor id="register-institution" to="/headoffice/register">
               É uma matriz? Cadastre-se aqui
             </Anchor>
           )}
-          {type === 2 && (
+          {accountType === AccountType.BRANCH && (
             <Anchor id="register-institution" to="/branch/register">
               É uma nova instituição? Cadastre-se aqui
             </Anchor>

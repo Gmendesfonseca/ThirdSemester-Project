@@ -85,7 +85,6 @@ export function createRoutes() {
     {
       path: '/branch/list',
       element: <ListBranch />,
-      permissions: ['HEADOFFICE'],
     },
     {
       path: '/student/list',
