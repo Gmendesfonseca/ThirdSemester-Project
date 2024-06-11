@@ -8,7 +8,7 @@ import {
 import { FormStudent } from '../../Forms/FormStudent';
 import { RegisterStudentParams } from '../../../services/register';
 import { useState } from 'react';
-import { registerStudent } from '../../../services/lists/student/request';
+import { registerStudent } from '../../../services/student/request';
 
 const InModalRegisterStudent = ({ title, opened, onClose }) => {
   const [data, setData] = useState<RegisterStudentParams>();

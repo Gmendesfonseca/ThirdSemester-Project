@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogTitle,
 } from '@mui/material';
-import { updateBranch } from '../../../services/lists/branch/request';
+import { updateBranch } from '../../../services/branch/request';
 
 import { InModalProps } from '../../../interfaces/Modal';
 import { FormBranch } from '../../Forms/FormBranch';

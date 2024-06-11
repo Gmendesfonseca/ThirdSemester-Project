@@ -11,9 +11,9 @@ import {
 import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
 import { SidebarMenu } from '../../components/HomeComponents/Sidebar/SidebarHome';
 import { HeadCell, InTable } from '../../components/Table/Table';
-import { BranchListType } from '../../services/login';
 import faker from 'faker';
 import { More } from '../../components/More/More';
+import { BranchListType } from '../../services/branch/types';
 
 const headCells: readonly HeadCell<BranchListType>[] = [
   { id: 'name', numeric: false, disablePadding: false, label: 'Name' },

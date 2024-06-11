@@ -8,7 +8,7 @@ import {
 import { FormBranch } from '../../Forms/FormBranch';
 import { RegisterBranchParams } from '../../../services/register';
 import { useState } from 'react';
-import { registerBranch } from '../../../services/lists/branch/request';
+import { registerBranch } from '../../../services/branch/request';
 
 const InModalRegisterBranch = ({ title, opened, onClose }) => {
   const [data, setData] = useState<RegisterBranchParams>();

@@ -5,9 +5,9 @@ import {
   DialogContent,
   DialogTitle,
 } from '@mui/material';
-import { updateStudent } from '../../../services/lists/student/request';
-import { updateProfessor } from '../../../services/lists/professor/request';
-import { updateBranch } from '../../../services/lists/branch/request';
+import { updateStudent } from '../../../services/student/request';
+import { updateProfessor } from '../../../services/professor/request';
+import { updateBranch } from '../../../services/branch/request';
 
 import { FormStudent } from '../../Forms/FormStudent';
 import { InModalProps } from '../../../interfaces/Modal';

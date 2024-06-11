@@ -3,11 +3,11 @@ import { IconButton, MenuItem } from '@mui/material';
 import React from 'react';
 import InMenu from '../Menu/Menu';
 import { InModalDelete } from '../Modal/DeleteModal';
-import { getBranch } from '../../services/lists/branch/request';
+import { getBranch } from '../../services/branch/request';
 import InModalEditStudent from '../Modal/Edit/EditStudent';
 import InModalViewStudent from '../Modal/View/ViewStudent';
-import { getStudent } from '../../services/lists/student/request';
-import { getProfessor } from '../../services/lists/professor/request';
+import { getStudent } from '../../services/student/request';
+import { getProfessor } from '../../services/professor/request';
 
 interface MorePropsInterface {
   id: number;

@@ -11,6 +11,7 @@ import ListStudent from '../pages/Lists/ListStudent';
 import ListProfessor from '../pages/Lists/ListProfessor';
 import { Friends } from '../pages/Friends/Friends';
 import { Groups } from '../pages/Groups/Groups';
+import ListCourse from '../pages/Lists/ListCourses';
 
 export type RouteType = {
   path: string;
@@ -93,6 +94,10 @@ export function createRoutes() {
     {
       path: '/professor/list',
       element: <ListProfessor />,
+    },
+    {
+      path: '/course/list',
+      element: <ListCourse />,
     },
     {
       path: '/forgot-password',
