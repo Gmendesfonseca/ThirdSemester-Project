@@ -10,6 +10,7 @@ namespace InnerAPI.Services
         private static List<Professor> professors = new List<Professor>();
         private static List<Student> students = new List<Student>();
         private static List<Post> posts = new List<Post>();
+        private static List<Chat> chats = new List<Chat>();
 
         public SharedService()
         {
@@ -30,6 +31,7 @@ namespace InnerAPI.Services
         public List<Professor> Professors { get { return professors; }}
         public List<Student> Students{ get { return students; }}
         public List<Post> Posts { get { return posts; } }
+        public List<Chat> Chat { get { return chats; } }
         public void AddBranch(Branch institution){ branches.Add(institution); }
         
     }

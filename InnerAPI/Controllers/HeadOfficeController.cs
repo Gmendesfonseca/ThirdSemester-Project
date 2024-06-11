@@ -10,29 +10,31 @@ namespace InnerAPI.Controllers
     const string GetNameHeadOfficeEndpoint = "GetheadOffice";
     public static RouteGroupBuilder MapHeadOfficeEndpoint(this WebApplication app, SharedService sharedService)
     {
-      var group = app.MapGroup("headOffice").WithParameterValidation();
+      var group = app.MapGroup("headoffice").WithParameterValidation();
       List<HeadOffice> headOffices = sharedService.HeadOffices;
       HeadOfficeServices headOfficeServices = new HeadOfficeServices(sharedService);
 
-      //GET /headOffice/{id}
-      group.MapGet("/{id}", (uint id) =>
-      {
-        HeadOffice? headOffice = headOffices.Find(headOffice => headOffice.Id == id);
-        return headOffice is null ? Results.NotFound() : Results.Ok(headOffice);
-      }).WithName(GetNameHeadOfficeEndpoint);
-
-      //GET /headOffice/{id}/branches
-      group.MapGet("/{id}/branches", (uint id) =>
-      {
-        HeadOffice? headOffice = headOffices.Find(headOffice => headOffice.Id == id);
-        if (headOffice == null)
+        //GET /headoffice/{id}/branches
+        group.MapGet("/{id}/branches", (uint id) =>
         {
-          return Results.BadRequest(new { success = false, message = "headOffice not found" });
-        }
-        return Results.Ok(headOffice.Branches);
-      });
+            HeadOffice? headOffice = headOffices.Find(headOffice => headOffice.Id == id);
+            if (headOffice == null)
+            {
+                return Results.BadRequest(new { success = false, message = "headOffice not found" });
+            }
+            return Results.Ok(headOffice.Branches);
+        });
 
-      // POST /headOffice/register
+        //GET /headoffice/{id}
+        group.MapGet("/{id}", (uint id) =>
+        {
+            HeadOffice? headOffice = headOffices.Find(headOffice => headOffice.Id == id);
+            return headOffice is null ? Results.NotFound() : Results.Ok(headOffice);
+        }).WithName(GetNameHeadOfficeEndpoint);
+
+
+
+      // POST /headoffice/register
       group.MapPost("/register", (RegisterHeadOfficeDto newheadOffice) =>
       {
         var exists = headOffices.Exists(r => r.Name == newheadOffice.Name || r.Email == newheadOffice.Email || r.CNPJ == newheadOffice.CNPJ || r.Domain == newheadOffice.Domain);
@@ -47,7 +49,7 @@ namespace InnerAPI.Controllers
         }
       });
 
-      // PUT /headOffice/{id}
+      // PUT /headoffice/{id}
       group.MapPut("/{id}", (uint id, UpdateHeadOfficeDto updateHeadOffice) =>
       {
         var index = headOffices.FindIndex(headOffice => headOffice.Id == id);
@@ -68,7 +70,7 @@ namespace InnerAPI.Controllers
         return Results.NoContent();
       });
 
-      // DELETE /headOffice/{id}
+      // DELETE /headoffice/{id}
       group.MapDelete("/{id}", (int id) =>
       {
         bool deleted = headOfficeServices.Delete(id); // Corrigido para usar um método que retorna um booleano
