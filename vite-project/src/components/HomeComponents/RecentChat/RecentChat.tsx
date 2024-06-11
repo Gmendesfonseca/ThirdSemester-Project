@@ -19,8 +19,13 @@ interface RecentChatProps {
 
 export function RecentChat({ id, data, avatar }: RecentChatProps) {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-      <Container sx={{ display: 'flex', alignItems: 'center' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'row', padding: '0px' }}>
+      <Container
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
         <AvatarComponent data={avatar} />
         <ListItemText
           className={styles.parent}

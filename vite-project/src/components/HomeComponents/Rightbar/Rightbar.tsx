@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
-import { AvatarGroup, Divider, List, Typography } from '@mui/material';
+import { AvatarGroup, Button, Divider, List, Typography } from '@mui/material';
 import { AvatarComponent } from '../../Avatar/Avatar';
 import { RecentChat } from '../RecentChat/RecentChat';
 import {
@@ -12,10 +12,12 @@ import {
   // getFriends
 } from '../../../services/friends/index';
 import faker from 'faker';
+import { useNavigate } from 'react-router-dom';
 
 export const Rightbar = () => {
   const [chats, setChat] = useState<ChatType[]>([]);
   const [friends, setFriends] = useState<FriendsType[]>([]);
+  const navigate = useNavigate();
   // const {id} = useSession();
 
   // useEffect(() => {
@@ -29,6 +31,10 @@ export const Rightbar = () => {
   //     setFriends(response);
   //   });
   // }, []);
+
+  const handleClick = () => {
+    navigate('/chat');
+  };
 
   useEffect(() => {
     const fakeChats = Array.from({ length: 20 }, () => ({
@@ -100,7 +106,7 @@ export const Rightbar = () => {
           </AvatarGroup>
         </Box>
         <Typography variant="h6" fontWeight={100} mt={2}>
-          Conversas
+          <Button onClick={handleClick}>Conversas</Button>
         </Typography>
         <Divider />
         <Box

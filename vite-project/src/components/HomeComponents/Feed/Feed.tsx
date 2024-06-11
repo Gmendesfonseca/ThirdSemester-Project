@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Post } from '../Post/Post';
-import { CommentType, PostType } from '../../../services/posts';
+import { PostType } from '../../../services/posts';
 import faker from 'faker';
 import camaleao from '../../../assets/image.png';
 import { Stack } from '@mui/material';
+import { CommentType } from '../../../services/comment/types';
 // import { useSession } from '../../../context/SessionContext';
 // import { getAllPosts } from '../../../services/posts';
 
