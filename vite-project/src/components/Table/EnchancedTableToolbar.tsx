@@ -45,18 +45,20 @@ export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
         {props.title}
       </Typography>
       <>
-        <Button variant="contained" color="primary" onClick={handleClicked}>
-          <AddCircleOutline />
-          <Typography
-            variant="button"
-            id="tableTitle"
-            component="div"
-            style={{ width: '200px' }}
-            sx={{ pr: -3, pl: -3 }}
-          >
-            {props.name}
-          </Typography>
-        </Button>
+        {props.name ? (
+          <Button variant="contained" color="primary" onClick={handleClicked}>
+            <AddCircleOutline />
+            <Typography
+              variant="button"
+              id="tableTitle"
+              component="div"
+              style={{ width: '200px' }}
+              sx={{ pr: -3, pl: -3 }}
+            >
+              {props.name}
+            </Typography>
+          </Button>
+        ) : null}
         {/* <Button style={{ color: 'black' }}>
           <Tune />
           <Typography
