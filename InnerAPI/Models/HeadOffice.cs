@@ -4,7 +4,6 @@
     {
         #region "Declaração de variáveis"
         List<Branch> branches;
-
         #endregion
 
         #region "Construtores"
@@ -23,6 +22,18 @@
             Active = true;
             Address = address;
             CreationDate = creationDate;
+            CNPJ = cnpj;
+            Domain = domain;
+            branches = new List<Branch>();
+        }
+        public HeadOffice(uint id, string name, string email, string password, string cnpj, string domain) : base()
+        {
+            Id = id;
+            Name = name;
+            Email = email;
+            Password = password;
+            Online = false;
+            Active = true;
             CNPJ = cnpj;
             Domain = domain;
             branches = new List<Branch>();

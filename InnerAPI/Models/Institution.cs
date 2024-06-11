@@ -1,16 +1,14 @@
 ﻿namespace InnerAPI.Models
 {
-<<<<<<< Updated upstream
+
     public abstract class Institution : User
-=======
-    public class Institution : User
->>>>>>> Stashed changes
+
     {
         #region "Declaração de variáveis"
         private string _address;
         private DateOnly _creationDate;
         public string _cnpj;
-        string _domain;
+        public string _domain;
         #endregion
 
         #region "Construtores"

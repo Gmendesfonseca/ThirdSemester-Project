@@ -30,16 +30,16 @@ namespace InnerAPI.Controllers
                 return Results.Ok(professor);
             });
 
-            // PUT /professor
-            group.MapPut("", (Professor professor) =>
+            // PUT /professor/id
+            group.MapPut("/{id}", (Professor professor) =>
             {
                 var professorToUpdate = professorServices.GetProfessors(professor.Email).FirstOrDefault(s => s.Id == professor.Id);
                 professorToUpdate = professor;
                 return Results.Ok(professorToUpdate);
             });
 
-            //DELETE /professor
-            group.MapDelete("{id}", (int id) =>
+            //DELETE /professor/{id}
+            group.MapDelete("/{id}", (int id) =>
             {
                 bool deleted = professorServices.Delete(id);
                 if (!deleted)

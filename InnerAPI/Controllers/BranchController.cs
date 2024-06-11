@@ -21,7 +21,7 @@ namespace InnerAPI.Controllers
                 return branch is null ? Results.NotFound() : Results.Ok(branch);
             }).WithName(GetNameBranchEndpoint);
 
-            //GET /Branch/{id}/students
+            //GET /branch/{id}/students
             group.MapGet("/{id}/students", (uint id) =>
             {
                 Branch? branch = branches.Find(Branch => Branch.Id == id);
@@ -32,7 +32,7 @@ namespace InnerAPI.Controllers
                 return Results.Ok(branch.Students);
             });
 
-            //GET /Branch/{id}/professors
+            //GET /branch/{id}/professors
             group.MapGet("/{id}/professors", (uint id) =>
             {
                 Branch? Branch = branches.Find(Branch => Branch.Id == id);
@@ -43,7 +43,18 @@ namespace InnerAPI.Controllers
                 return Results.Ok(Branch.Professors);
             });
 
-            // POST /Branch/register
+            //GET /branch/{id}/courses
+            group.MapGet("/{id}/courses", (uint id) =>
+            {
+                Branch? Branch = branches.Find(Branch => Branch.Id == id);
+                if (Branch == null)
+                {
+                    return Results.BadRequest(new { success = false, message = "Branch not found" });
+                }
+                return Results.Ok(Branch.Courses);
+            });
+
+            // POST /branch/register
             group.MapPost("/register", (RegisterBranchDto newBranch) =>
             {
                 var exists = branches.Exists(r => r.Name == newBranch.Name || r.Email == newBranch.Email || r.CNPJ == newBranch.Cnpj);
@@ -58,7 +69,7 @@ namespace InnerAPI.Controllers
                 }
             });
 
-            // PUT /Branch/{id}
+            // PUT /branch/{id}
             group.MapPut("/{id}", (uint id, UpdateBranchDto updateBranch) =>
             {
                 var index = branches.FindIndex(Branch => Branch.Id == id);
@@ -80,7 +91,7 @@ namespace InnerAPI.Controllers
                 return Results.NoContent();
             });
 
-            // DELETE /Branch/{id}
+            // DELETE /branch/{id}
             group.MapDelete("/{id}", (int id) =>
             {
                 bool deleted = branchServices.Delete(id); // Corrigido para usar um método que retorna um booleano

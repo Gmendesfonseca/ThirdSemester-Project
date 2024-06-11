@@ -137,3 +137,14 @@ C:\Users\Nicol\Projeto Enari\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\Inn
 C:\Users\Nicol\Projeto Enari\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.dll
 C:\Users\Nicol\Projeto Enari\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\refint\InnerAPI.dll
 C:\Users\Nicol\Projeto Enari\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.pdb
+C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.csproj.AssemblyReference.cache
+C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.AssemblyInfoInputs.cache
+C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.AssemblyInfo.cs
+C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.csproj.CoreCompileInputs.cache
+C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.sourcelink.json
+C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.dll
+C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\refint\InnerAPI.dll
+C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.pdb

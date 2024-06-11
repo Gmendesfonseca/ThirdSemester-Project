@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\avill\\OneDrive\\Documentos\\GitHub\\ThirdSemester-Project\\InnerAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\avill\\onedrive\\documentos\\github\\thirdsemester-project\\innerapi\\dtos\\headoffice\\updateheadofficedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:dtos\\headoffice\\updateheadofficedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\avill\\onedrive\\documentos\\github\\thirdsemester-project\\innerapi\\services\\headofficeservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:services\\headofficeservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|c:\\users\\avill\\onedrive\\documentos\\github\\thirdsemester-project\\innerapi\\dtos\\headoffice\\registerheadofficedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|C:\\Users\\avill\\OneDrive\\Documentos\\GitHub\\ThirdSemester-Project\\InnerAPI\\dtos\\headoffice\\registerheadofficedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{808FB8D4-73E3-4CEB-A0EF-23EE8ED94E00}|InnerAPI.csproj|solutionrelative:dtos\\headoffice\\registerheadofficedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -67,19 +71,36 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UpdateHeadOfficeDto.cs",
+              "DocumentMoniker": "C:\\Users\\avill\\OneDrive\\Documentos\\GitHub\\ThirdSemester-Project\\InnerAPI\\Dtos\\HeadOffice\\UpdateHeadOfficeDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\HeadOffice\\UpdateHeadOfficeDto.cs",
+              "ToolTip": "C:\\Users\\avill\\OneDrive\\Documentos\\GitHub\\ThirdSemester-Project\\InnerAPI\\Dtos\\HeadOffice\\UpdateHeadOfficeDto.cs*",
+              "RelativeToolTip": "Dtos\\HeadOffice\\UpdateHeadOfficeDto.cs*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-11T14:10:03.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "HeadOfficeServices.cs",
               "DocumentMoniker": "C:\\Users\\avill\\OneDrive\\Documentos\\GitHub\\ThirdSemester-Project\\InnerAPI\\Services\\HeadOfficeServices.cs",
               "RelativeDocumentMoniker": "Services\\HeadOfficeServices.cs",
               "ToolTip": "C:\\Users\\avill\\OneDrive\\Documentos\\GitHub\\ThirdSemester-Project\\InnerAPI\\Services\\HeadOfficeServices.cs",
               "RelativeToolTip": "Services\\HeadOfficeServices.cs",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAADAAAAAAAAAAAAApwDoAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-11T14:02:26.635Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "RegisterHeadOfficeDto.cs",
               "DocumentMoniker": "C:\\Users\\avill\\OneDrive\\Documentos\\GitHub\\ThirdSemester-Project\\InnerAPI\\Dtos\\HeadOffice\\RegisterHeadOfficeDto.cs",
               "RelativeDocumentMoniker": "Dtos\\HeadOffice\\RegisterHeadOfficeDto.cs",
@@ -87,12 +108,11 @@
               "RelativeToolTip": "Dtos\\HeadOffice\\RegisterHeadOfficeDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T11:57:59.97Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-10T11:57:59.97Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "HeadOfficeDto.cs",
               "DocumentMoniker": "C:\\Users\\avill\\OneDrive\\Documentos\\GitHub\\ThirdSemester-Project\\InnerAPI\\Dtos\\HeadOffice\\HeadOfficeDto.cs",
               "RelativeDocumentMoniker": "Dtos\\HeadOffice\\HeadOfficeDto.cs",
@@ -104,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "GroupsDto.cs",
               "DocumentMoniker": "C:\\Users\\avill\\OneDrive\\Documentos\\GitHub\\ThirdSemester-Project\\InnerAPI\\Dtos\\Groups\\GroupsDto.cs",
               "RelativeDocumentMoniker": "Dtos\\Groups\\GroupsDto.cs",
@@ -116,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Branch.cs",
               "DocumentMoniker": "C:\\Users\\avill\\OneDrive\\Documentos\\GitHub\\ThirdSemester-Project\\InnerAPI\\Models\\Branch.cs",
               "RelativeDocumentMoniker": "Models\\Branch.cs",

@@ -21,7 +21,6 @@ namespace InnerAPI.Services
             string name = register.Name;
             string email = register.Email;
             string password = register.Password;
-            string domain = register.Domain;
             string cnpj = register.Cnpj;
             int type = 1;
 
@@ -29,13 +28,13 @@ namespace InnerAPI.Services
             if (!Email.IsValid(email))
                 throw new ArgumentException("Email inválido.");
 
-            var existingUser = branches.Exists(r => r.Name == register.Name || r.Email == register.Email || r._cnpj == register.Cnpj || r._domain == register.Domain);
+            var existingUser = branches.Exists(r => r.Name == register.Name || r.Email == register.Email || r._cnpj == register.Cnpj);
             if (existingUser)
             {
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            Branch newBranch = new Branch(id, name, email, password, cnpj, domain);
+            Branch newBranch = new Branch(id, name, email, password, cnpj);
 
             branches.Add(newBranch);
 
@@ -86,7 +85,7 @@ namespace InnerAPI.Services
 
         public List<Professor> GetProfessors(GetListDto getProfessorsDto)
         {
-            var Branch = branches.FirstOrDefault(i => i.Name == getProfessorsDto.BranchName);
+            var Branch = branches.FirstOrDefault(i => i.Name == getProfessorsDto.institutionName);
             return Branch.Professors;
         }
 
