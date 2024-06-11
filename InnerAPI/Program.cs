@@ -43,6 +43,8 @@ app.MapHeadOfficeEndpoint(sharedService);
 app.MapProfessorEndpoint(sharedService);
 app.MapLoginEndpoint(sharedService);
 app.MapPostEndpoint(sharedService);
+app.MapChatEndpoint(sharedService);
+app.MapCourseEndpoint(sharedService);
 
 // Configura o pipeline de requisi��es HTTP.
 if (app.Environment.IsDevelopment())

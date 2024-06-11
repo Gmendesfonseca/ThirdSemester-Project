@@ -1,8 +1,10 @@
-﻿namespace InnerAPI.Controllers
+﻿using InnerAPI.Services;
+
+namespace InnerAPI.Controllers
 {
     public static class ChatController
     {
-        public static RouteGroupBuilder MapChatEndpoint(this WebApplication app, SharedService sharedServices)
+        public static RouteGroupBuilder MapChatEndpoint(this WebApplication app, SharedService  sharedServices)
         {
             ChatServices chatServices = new ChatServices(sharedServices);
             var group = app.MapGroup("chat").WithParameterValidation();
