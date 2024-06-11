@@ -1,10 +1,10 @@
 // import { useNavigate } from "react-router-dom";
-import { Navbar } from "../../components/HomeComponents/NavBar/Navbar";
-import ProfileCard from "./ProfileCard";
-import img from "./profileAvatar.png";
-import { useNavigate } from "react-router-dom";
-import { darkTheme } from "../../Theme";
-import { Box, ThemeProvider } from "@mui/material";
+import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
+import ProfileCard from './ProfileCard';
+import img from './profileAvatar.png';
+import { useNavigate } from 'react-router-dom';
+import { darkTheme } from '../../Theme';
+import { Box, ThemeProvider } from '@mui/material';
 
 // import { useState } from 'react';
 
@@ -14,7 +14,7 @@ export default function Profile() {
   const navigate = useNavigate();
 
   const btnBackHome = (
-    <button className="backHome" onClick={() => navigate("/home")}>
+    <button title="back" className="backHome" onClick={() => navigate('/home')}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -33,14 +33,14 @@ export default function Profile() {
     <ThemeProvider theme={darkTheme}>
       <Box
         className="profilePage"
-        bgcolor={"background.default"}
+        bgcolor={'background.default'}
         sx={{
-          overflow: "hidden",
-          "&::-webkit-scrollbar": {
-            display: "none",
+          overflow: 'hidden',
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
-          msOverflowStyle: "none" /* IE and Edge */,
-          scrollbarWidth: "none" /* Firefox */,
+          msOverflowStyle: 'none' /* IE and Edge */,
+          scrollbarWidth: 'none' /* Firefox */,
         }}
       >
         <Navbar navAct={btnBackHome} />
@@ -49,7 +49,7 @@ export default function Profile() {
           name="Elon Musk"
           description="O empresário Elon Musk é fundador e CEO da empresa de foguetes SpaceX; CEO da marca de carros elétricos Tesla; fundador e CEO da Neuralink (que implantou um chip no cérebro de humanos)..."
           avatar={img}
-          email={"jonas_jm@live.com"}
+          email={'jonas_jm@live.com'}
         />
       </Box>
     </ThemeProvider>

@@ -33,7 +33,7 @@ interface Identifiable {
 
 interface InTableProps<T> {
   title: string;
-  name: string;
+  name: string | null;
   rowsItems: T[];
   headCells: readonly HeadCell<T>[];
 }

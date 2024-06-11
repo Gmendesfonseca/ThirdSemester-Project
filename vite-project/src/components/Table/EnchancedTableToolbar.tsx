@@ -9,7 +9,7 @@ import InModalRegisterBranch from '../Modal/Register/RegisterBranch';
 
 export interface EnhancedTableToolbarProps {
   title: string;
-  name: string;
+  name: string | null;
 }
 export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
   const [openRegister, setOpenRegister] = useState(false);

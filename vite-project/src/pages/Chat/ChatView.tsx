@@ -13,7 +13,7 @@ export function ChatView() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={'background.default'} color={'text.primary'}>
-        <Navbar />
+        <Navbar navAct="InnerLink" />
         <Stack direction="row" spacing={0} height="100%">
           <ChatsSide />
           <Chat />

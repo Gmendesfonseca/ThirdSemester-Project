@@ -13,50 +13,50 @@ import {
   Menu,
   IconButton,
   Tooltip,
-} from "@mui/material";
-import MailIcon from "@mui/icons-material/Mail";
-import React from "react";
+} from '@mui/material';
+import MailIcon from '@mui/icons-material/Mail';
+import React from 'react';
 import {
   Logout,
   Notifications,
   // PersonAdd,
-  Settings,
-} from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
-import { useSession } from "../../../context/SessionContext";
+  // Settings,
+} from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import { useSession } from '../../../context/SessionContext';
 // import { useChat } from '../../../context/ChatsContext';
-import { darkTheme } from "../../../Theme";
-import { ThemeProvider } from "@emotion/react";
+import { darkTheme } from '../../../Theme';
+import { ThemeProvider } from '@emotion/react';
 
 const StyledToolbar = styled(Toolbar)({
-  display: "flex",
-  justifyContent: "space-between",
+  display: 'flex',
+  justifyContent: 'space-between',
 });
 
-const Search = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  backgroundColor: "white",
+const Search = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  backgroundColor: 'white',
   borderRadius: theme.shape.borderRadius,
-  width: "40%",
-  padding: "0 10px",
+  width: '40%',
+  padding: '0 10px',
 }));
 
 const Icons = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: "20px",
-  [theme.breakpoints.down("sm")]: {
-    display: "none",
+  display: 'flex',
+  alignItems: 'center',
+  gap: '20px',
+  [theme.breakpoints.down('sm')]: {
+    display: 'none',
   },
 }));
 
 const UserBox = styled(Box)(({ theme }) => ({
-  display: "none",
-  alignItems: "center",
-  gap: "10px",
-  [theme.breakpoints.down("sm")]: {
-    display: "flex",
+  display: 'none',
+  alignItems: 'center',
+  gap: '10px',
+  [theme.breakpoints.down('sm')]: {
+    display: 'flex',
   },
 }));
 
@@ -79,22 +79,22 @@ export const Navbar = (props) => {
     setInstitution(null);
     setUser(null);
     // setChatList([]);
-    navigate("/login");
+    navigate('/login');
   };
 
   const handleProfile = () => {
-    navigate("/profile");
+    navigate('/profile');
   };
 
-  const handleSettings = () => {
-    navigate("/settings");
-  };
+  // const handleSettings = () => {
+  //   navigate("/settings");
+  // };
 
   return (
     <ThemeProvider theme={darkTheme}>
       <AppBar
         position="sticky"
-        sx={{ width: "100%", bgcolor: "background.paper" }}
+        sx={{ width: '100%', bgcolor: 'background.paper' }}
       >
         <StyledToolbar>
           {props.navAct}
@@ -113,9 +113,9 @@ export const Navbar = (props) => {
                 onClick={handleClick}
                 size="small"
                 sx={{ ml: 2 }}
-                aria-controls={open ? "account-menu" : undefined}
+                aria-controls={open ? 'account-menu' : undefined}
                 aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
+                aria-expanded={open ? 'true' : undefined}
               >
                 <Avatar
                   sx={{ width: 32, height: 32 }}
@@ -130,9 +130,9 @@ export const Navbar = (props) => {
                 onClick={handleClick}
                 size="small"
                 sx={{ ml: 2, gap: 1 }}
-                aria-controls={open ? "account-menu" : undefined}
+                aria-controls={open ? 'account-menu' : undefined}
                 aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
+                aria-expanded={open ? 'true' : undefined}
               >
                 <Avatar
                   sx={{ width: 32, height: 32 }}
@@ -154,31 +154,31 @@ export const Navbar = (props) => {
           PaperProps={{
             elevation: 0,
             sx: {
-              overflow: "visible",
-              filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+              overflow: 'visible',
+              filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
               mt: 1.5,
-              "& .MuiAvatar-root": {
+              '& .MuiAvatar-root': {
                 width: 32,
                 height: 32,
                 ml: -0.5,
                 mr: 1,
               },
-              "&::before": {
+              '&::before': {
                 content: '""',
-                display: "block",
-                position: "absolute",
+                display: 'block',
+                position: 'absolute',
                 top: 0,
                 right: 14,
                 width: 10,
                 height: 10,
-                bgcolor: "background.paper",
-                transform: "translateY(-50%) rotate(45deg)",
+                bgcolor: 'background.paper',
+                transform: 'translateY(-50%) rotate(45deg)',
                 zIndex: 0,
               },
             },
           }}
-          transformOrigin={{ horizontal: "right", vertical: "top" }}
-          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
           {/* <MenuItem onClick={handleClose}>
           <Avatar /> Profile
@@ -193,12 +193,12 @@ export const Navbar = (props) => {
           </ListItemIcon>
           Add another account
         </MenuItem> */}
-          <MenuItem onClick={handleSettings}>
+          {/* <MenuItem onClick={handleSettings}>
             <ListItemIcon>
               <Settings fontSize="small" />
             </ListItemIcon>
             Settings
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem onClick={handleLogout}>
             <ListItemIcon>
               <Logout fontSize="small" />
