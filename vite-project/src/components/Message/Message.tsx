@@ -10,8 +10,8 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-import InMenu from '../../Menu/Menu';
-import { InModalDelete } from '../../Modal/DeleteModal';
+import InMenu from '../Menu/Menu';
+import { InModalDelete } from '../Modal/DeleteModal';
 
 export const Message = ({ message }) => {
   const [liked, setLiked] = useState(false);
