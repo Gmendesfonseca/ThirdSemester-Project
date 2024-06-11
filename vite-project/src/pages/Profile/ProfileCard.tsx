@@ -5,11 +5,12 @@ import { FormHeadOffice } from "../../components/Forms/FormHeadOffice";
 import instagramIcon from "./instagramIcon.png";
 import linkedinIcon from "./linkedin.png";
 import githubIcon from "./github.png";
+import { useSession } from "../../context/SessionContext";
 
 export default function ProfileCard(props) {
   // const { accountType } = useSession();
   const [isSettingsVisible, setSettingsVisible] = useState(false);
-  const [data, setData] = useState(props.data);
+  const {user} = useSession();
 
   const toggleSettings = () => {
     setSettingsVisible(!isSettingsVisible);
@@ -65,7 +66,14 @@ export default function ProfileCard(props) {
       </div>
       <div className={`profile_settings ${isSettingsVisible ? "show" : ""}`}>
         <h1>Alterar Dados</h1>
-        <label id="updateName">Teste</label>
+        <form className="profile_form">
+        <label id="updateName" htmlFor="name">Nome</label>
+        <input id="updateName" type="text" name="updateName" placeholder="Alterar Nome" value={user?.name}/>
+        <label id="updateEmail" htmlFor="email">E-mail</label>
+        <input id="updateEmail" type="text" name="updateEmail" placeholder="Alterar Email" value={user?.email}/>
+        <label id="updateName" htmlFor="description">Descrição</label>
+        <input id="updateDescription" type="text" name="updateDescription" placeholder="Alterar Descrição" value={user?.about}/>
+        </form>
       </div>
     </div>
   );

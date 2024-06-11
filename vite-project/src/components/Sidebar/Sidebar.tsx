@@ -12,7 +12,7 @@ export const Sidebar = ({ children }) => {
           display: 'block',
           flex: { lg: 2, xl: 1 },
           maxWidth: '200px',
-          background: '#fff',
+          backgroundColor: 'background.default',
         }}
       >
         <Box

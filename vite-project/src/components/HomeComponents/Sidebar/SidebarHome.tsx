@@ -14,6 +14,7 @@ import { Sidebar } from '../../Sidebar/Sidebar';
 import { blue } from '@mui/material/colors';
 import { useSession } from '../../../context/SessionContext';
 import { AccountType } from '../../../services/login/enum';
+import { darkTheme } from '../../../Theme';
 
 export const SidebarMenu = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ export const SidebarMenu = () => {
             onClick={() => navigate('/branch/list')}
             style={{
               backgroundColor: location.pathname.includes('/branch/list')
-                ? blue[50]
+                ? 'background.default'
                 : 'default',
             }}
           >
@@ -46,8 +47,8 @@ export const SidebarMenu = () => {
               style={{
                 backgroundColor:
                   location.pathname === '/professor/list'
-                    ? blue[50]
-                    : 'default',
+                    ? 'background.default'
+                    : 'background.paper',
               }}
             >
               <ListItemIcon>
@@ -61,7 +62,7 @@ export const SidebarMenu = () => {
               onClick={() => navigate('/student/list')}
               style={{
                 backgroundColor:
-                  location.pathname === '/student/list' ? blue[50] : 'default',
+                  location.pathname === '/student/list' ? 'background.default' : 'background.paper',
               }}
             >
               <ListItemIcon>
@@ -75,7 +76,7 @@ export const SidebarMenu = () => {
               onClick={() => navigate('/course/list')}
               style={{
                 backgroundColor:
-                  location.pathname === '/course/list' ? blue[50] : 'default',
+                  location.pathname === '/course/list' ?  'background.default' : 'background.paper',
               }}
             >
               <ListItemIcon>

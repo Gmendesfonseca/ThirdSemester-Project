@@ -98,7 +98,7 @@
 
 .profile_settings {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   height: 800px;
   width: 600px;
   /* position: absolute; */
@@ -110,8 +110,30 @@
   border-radius: 20px;
 }
 
+.profile_settings h1 {
+  display: flex;
+  align-self: center;
+  font-size: 24px;
+}
+.profile_settings input {
+  padding-left: 10px;
+  height: 40px;
+  border-radius: 5px;
+}
+
 .profile_settings.show {
   transform: translateX(45%);
+}
+.profile_form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin-left: 3rem;
+}
+
+.profile_form label {
+  margin-top: 1rem;
 }
 
 .profilePage {
