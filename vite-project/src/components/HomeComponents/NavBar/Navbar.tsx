@@ -89,7 +89,7 @@ export const Navbar = () => {
   };
 
   return (
-    <AppBar position="sticky" sx={{ width: '100%' }}>
+    <AppBar position="sticky" sx={{ width: '100%', bgcolor: '#011824' }}>
       <StyledToolbar>
         <Typography variant="h6" sx={{ xs: 'none', sm: 'block' }}>
           InnerLink
