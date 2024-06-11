@@ -1,27 +1,26 @@
-import { useState } from "react";
-import "./Profile.css";
-import { FormHeadOffice } from "../../components/Forms/FormHeadOffice";
+import { useState } from 'react';
+import './Profile.css';
 // import { useSession } from "../../context/SessionContext";
-import instagramIcon from "./instagramIcon.png";
-import linkedinIcon from "./linkedin.png";
-import githubIcon from "./github.png";
+import instagramIcon from './instagramIcon.png';
+import linkedinIcon from './linkedin.png';
+import githubIcon from './github.png';
 
 export default function ProfileCard(props) {
   // const { accountType } = useSession();
   const [isSettingsVisible, setSettingsVisible] = useState(false);
-  const [data, setData] = useState(props.data);
+  // const [data, setData] = useState(props.data);
 
   const toggleSettings = () => {
     setSettingsVisible(!isSettingsVisible);
   };
 
-  const handleDataChange = (newData) => {
-    setData(newData);
-  };
+  // const handleDataChange = (newData) => {
+  //   setData(newData);
+  // };
 
   return (
     <div className="content">
-      <div className={`profile ${isSettingsVisible ? "hide" : ""}`}>
+      <div className={`profile ${isSettingsVisible ? 'hide' : ''}`}>
         <div className="profile_header">
           <button
             title="config"
@@ -63,7 +62,7 @@ export default function ProfileCard(props) {
           </a>
         </div>
       </div>
-      <div className={`profile_settings ${isSettingsVisible ? "show" : ""}`}>
+      <div className={`profile_settings ${isSettingsVisible ? 'show' : ''}`}>
         <h1>Alterar Dados</h1>
       </div>
     </div>
