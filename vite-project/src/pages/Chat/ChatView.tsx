@@ -1,7 +1,7 @@
 import { Box, createTheme, Stack, ThemeProvider } from '@mui/material';
 import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
-import ChatsSide from '../../components/Chats/ChatSide/ChatsSide';
 import Chat from '../../components/Chats/Chat';
+import ChatsSide from '../../components/ChatSide/ChatsSide';
 
 export function ChatView() {
   const darkTheme = createTheme({
