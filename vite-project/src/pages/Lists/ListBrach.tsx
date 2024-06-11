@@ -1,6 +1,4 @@
-import * as React from 'react';
 import { Stack, ThemeProvider, createTheme, Box } from '@mui/material';
-
 import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
 import { HeadCell, InTable } from '../../components/Table/Table';
 import faker from 'faker';

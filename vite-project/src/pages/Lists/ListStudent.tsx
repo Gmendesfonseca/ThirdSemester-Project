@@ -46,7 +46,7 @@ export default function ListStudent() {
         sx={{ padding: '0px', height: '100%' }}
       >
         <Navbar />
-        <Stack direction="row" spacing={0}>
+        <Stack direction="row" spacing={0} justifyContent="space-between">
           <SidebarMenu />
           <InTable<StudentListType>
             title="Alunos"
