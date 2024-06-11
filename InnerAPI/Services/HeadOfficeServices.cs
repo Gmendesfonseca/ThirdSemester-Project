@@ -62,9 +62,9 @@ namespace InnerAPI.Services
             {
                 headOffice.Name = updateHeadOffice.Name;
                 headOffice.Email = updateHeadOffice.Email;
-                headOffice.Password = updateHeadOffice.Password;
                 headOffice.CNPJ = updateHeadOffice.Cnpj;
                 headOffice.Domain = updateHeadOffice.Domain;
+                headOffice.Password = updateHeadOffice.Password;
                 return true;
             }
             return false;
