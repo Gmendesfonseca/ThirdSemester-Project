@@ -64,6 +64,7 @@ export default function ProfileCard(props) {
       </div>
       <div className={`profile_settings ${isSettingsVisible ? 'show' : ''}`}>
         <h1>Alterar Dados</h1>
+        <label id="updateName">Teste</label>
       </div>
     </div>
   );

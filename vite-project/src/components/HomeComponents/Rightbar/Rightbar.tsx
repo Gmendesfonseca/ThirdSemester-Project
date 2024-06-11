@@ -119,7 +119,7 @@ export const Rightbar = () => {
                 justifyContent: 'start',
                 height: '100%',
                 width: '100%',
-                bgcolor: 'background.paper',
+                bgcolor: 'background.default',
               }}
             >
               {friends.map(
@@ -167,7 +167,7 @@ export const Rightbar = () => {
                 width: '100%',
                 maxWidth: 360,
                 maxHeight: '100%',
-                bgcolor: 'background.paper',
+                bgcolor: 'background.default',
               }}
             >
               {chats.map(

@@ -102,7 +102,7 @@
   height: 800px;
   width: 600px;
   /* position: absolute; */
-  background-color: wheat;
+  background-color: white;
   z-index: 0;
   transition: transform ease-in-out 0.5s;
   transform: translateX(0);
