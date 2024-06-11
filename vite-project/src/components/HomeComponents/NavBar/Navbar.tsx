@@ -24,7 +24,7 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { useSession } from '../../../context/SessionContext';
-import { useChat } from '../../../context/ChatsContext';
+// import { useChat } from '../../../context/ChatsContext';
 
 const StyledToolbar = styled(Toolbar)({
   display: 'flex',
@@ -62,7 +62,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const { setAccountType, setInstitution, setUser } = useSession();
-  const { setChatList } = useChat();
+  // const { setChatList } = useChat();
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -76,7 +76,7 @@ export const Navbar = () => {
     setAccountType(null);
     setInstitution(null);
     setUser(null);
-    setChatList([]);
+    // setChatList([]);
     navigate('/login');
   };
 

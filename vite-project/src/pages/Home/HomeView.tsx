@@ -2,12 +2,17 @@ import { Feed } from '../../components/HomeComponents/Feed/Feed';
 import { Rightbar } from '../../components/HomeComponents/Rightbar/Rightbar';
 import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
 
-import { Box, Stack, ThemeProvider } from '@mui/material';
+import { Box, Stack, ThemeProvider, createTheme } from '@mui/material';
 
 import { Add2 } from '../../components/HomeComponents/Add/Add2';
 export function Home() {
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
   return (
-    <ThemeProvider theme>
+    <ThemeProvider theme={darkTheme}>
       <Box
         bgcolor={'background.default'}
         color={'text.primary'}
