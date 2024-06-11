@@ -18,12 +18,14 @@ import { BranchListType } from '../../services/branch/types';
 import { StudentListType } from '../../services/student/types';
 import { ProfessorListType } from '../../services/professor/types';
 import { CourseListType } from '../../services/courses';
+import { FriendsListType } from '../../services/friends';
 
 export type CombinedType =
   | BranchListType
   | StudentListType
   | ProfessorListType
-  | CourseListType;
+  | CourseListType
+  | FriendsListType;
 
 interface Identifiable {
   id: number;
