@@ -1,15 +1,7 @@
 import * as React from 'react';
-import {
-  PaletteMode,
-  Stack,
-  ThemeProvider,
-  createTheme,
-  useMediaQuery,
-  Box,
-} from '@mui/material';
+import { Stack, ThemeProvider, createTheme, Box } from '@mui/material';
 
 import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
-import { SidebarMenu } from '../../components/HomeComponents/Sidebar/SidebarHome';
 import { HeadCell, InTable } from '../../components/Table/Table';
 import faker from 'faker';
 import { More } from '../../components/More/More';
@@ -41,15 +33,9 @@ const rows: BranchListType[] = Array.from({ length: 50 }, (_, index) => ({
 }));
 
 export default function ListBranch() {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
-
-  const [mode, setMode] = React.useState<PaletteMode>(
-    prefersDarkMode ? 'dark' : 'light',
-  );
-
   const darkTheme = createTheme({
     palette: {
-      mode: mode,
+      mode: 'dark',
     },
   });
 
@@ -57,8 +43,8 @@ export default function ListBranch() {
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={'background.default'} color={'text.primary'}>
         <Navbar />
-        <Stack direction="row" spacing={2} justifyContent="space-between">
-          <SidebarMenu mode={mode} setMode={setMode} />
+        <Stack direction="row" spacing={2} justifyContent="center">
+          {/* <SidebarMenu mode={mode} setMode={setMode} /> */}
           <InTable<BranchListType>
             title="Unidades"
             name="Nova Unidade"

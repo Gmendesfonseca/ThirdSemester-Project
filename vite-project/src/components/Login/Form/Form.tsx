@@ -114,6 +114,7 @@ export function Form() {
       <FormControl fullWidth>
         <InputLabel id="type-login-label">Fazer login como</InputLabel>
         <Select
+          value={accountType || undefined}
           defaultValue={AccountType.HEADOFFICE}
           required
           labelId="type-login-label"
@@ -121,10 +122,10 @@ export function Form() {
           label="Fazer login como"
           onChange={handleTypeChange}
         >
-          <MenuItem id="institution" value={AccountType.HEADOFFICE}>
+          <MenuItem id="headoofice" value={AccountType.HEADOFFICE}>
             Matriz da Instituição
           </MenuItem>
-          <MenuItem id="institution" value={AccountType.BRANCH}>
+          <MenuItem id="branch" value={AccountType.BRANCH}>
             Filial da Instituição
           </MenuItem>
           <MenuItem id="professor" value={AccountType.PROFESSOR}>
@@ -177,9 +178,20 @@ export function Form() {
       </Button>
       <Grid container>
         <Grid item xs>
-          <Anchor id="forgot-password" to="/home">
-            Esqueceu a senha?
-          </Anchor>
+          {accountType === AccountType.STUDENT ||
+          accountType === AccountType.PROFESSOR ? (
+            <Anchor id="forgot-password" to="/home">
+              Esqueceu a senha?
+            </Anchor>
+          ) : accountType === AccountType.BRANCH ? (
+            <Anchor id="forgot-password" to="/professor/list">
+              Esqueceu a senha?{' '}
+            </Anchor>
+          ) : (
+            <Anchor id="forgot-password" to="/branch/list">
+              Esqueceu a senha?{' '}
+            </Anchor>
+          )}
         </Grid>
         <Grid item>
           {accountType === AccountType.HEADOFFICE && (

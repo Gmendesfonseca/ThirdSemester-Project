@@ -3,9 +3,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  PaletteMode,
 } from '@mui/material';
-import React, { Dispatch, SetStateAction } from 'react';
 import {
   AddHomeOutlined,
   PersonOutlineOutlined,
@@ -15,19 +13,15 @@ import { useNavigate } from 'react-router-dom';
 import { Sidebar } from '../../Sidebar/Sidebar';
 import { blue } from '@mui/material/colors';
 import { useSession } from '../../../context/SessionContext';
+import { AccountType } from '../../../services/login/enum';
 
-interface SidebarProps {
-  mode: PaletteMode;
-  setMode: Dispatch<SetStateAction<PaletteMode>>;
-}
-
-export const SidebarMenu: React.FC<SidebarProps> = () => {
+export const SidebarMenu = () => {
   const navigate = useNavigate();
   const { accountType } = useSession();
 
   return (
     <Sidebar>
-      {accountType === 'headoffice' && (
+      {accountType === AccountType.HEADOFFICE && (
         <ListItem disablePadding={location.pathname.includes('/branch/list')}>
           <ListItemButton
             onClick={() => navigate('/branch/list')}
@@ -44,7 +38,7 @@ export const SidebarMenu: React.FC<SidebarProps> = () => {
           </ListItemButton>
         </ListItem>
       )}
-      {accountType === 'branch' && (
+      {accountType === AccountType.BRANCH && (
         <>
           <ListItem disablePadding={location.pathname !== '/professor/list'}>
             <ListItemButton

@@ -1,11 +1,4 @@
-import * as React from 'react';
-import {
-  PaletteMode,
-  Stack,
-  ThemeProvider,
-  createTheme,
-  useMediaQuery,
-} from '@mui/material';
+import { Stack, ThemeProvider, createTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
 import { SidebarMenu } from '../../components/HomeComponents/Sidebar/SidebarHome';
@@ -39,15 +32,9 @@ const rows: StudentListType[] = Array.from({ length: 50 }, (_, index) => ({
 }));
 
 export default function ListStudent() {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
-
-  const [mode, setMode] = React.useState<PaletteMode>(
-    prefersDarkMode ? 'dark' : 'light',
-  );
-
   const darkTheme = createTheme({
     palette: {
-      mode: mode,
+      mode: 'dark',
     },
   });
 
@@ -60,7 +47,7 @@ export default function ListStudent() {
       >
         <Navbar />
         <Stack direction="row" spacing={0}>
-          <SidebarMenu mode={mode} setMode={setMode} />
+          <SidebarMenu />
           <InTable<StudentListType>
             title="Alunos"
             name="Novo Aluno"

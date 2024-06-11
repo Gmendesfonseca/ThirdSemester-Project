@@ -60,6 +60,7 @@ export const Rightbar = () => {
   return (
     <Box
       pt={2}
+      pl={2}
       sx={{ display: { xs: 'none', lg: 'block' }, flex: { lg: 2, xl: 1 } }}
       height="100%"
       width="100%"
@@ -89,7 +90,6 @@ export const Rightbar = () => {
               justifyContent: 'start',
               height: '100%',
               width: '100%',
-
               bgcolor: 'background.paper',
             }}
           >
