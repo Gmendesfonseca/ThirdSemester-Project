@@ -10,18 +10,19 @@
         #region "Construtores"
         public Professor() : base()
         {
+            _areaLecionada = _formação = "";
         }
 
-        public Professor(uint id, string name, string email, string password, string matricula, string cpf, DateOnly birthDate, string instituicao, string areaLecionada, string formacao)
+        public Professor(uint id, string name, string email, string password, string registration, string cpf, DateOnly birthDate, string institution, string areaLecionada, string formacao) : base()
         {
             this.Id = id;
             this.Name = name;
             this.Email = email;
             this.Password = password;
-            this.Matricula = matricula;
+            this.Registration = registration;
             this.CPF = cpf;
             this.BirthDate = birthDate;
-            this.Institution = instituicao;
+            this.Institution = institution;
             this._areaLecionada = areaLecionada;
             this._formação = formacao;
         }
@@ -30,14 +31,14 @@
         #region "Propriedades"
         public string AreaLecionada
         {
-            get { return _areaLecionada;}
-            set { _areaLecionada = value;}
+            get { return _areaLecionada; }
+            set { _areaLecionada = value; }
         }
 
         public string Formacao
         {
-            get { return _formação;}
-            set { _formação = value;}
+            get { return _formação; }
+            set { _formação = value; }
         }
 
         #endregion

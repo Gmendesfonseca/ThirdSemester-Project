@@ -1,25 +1,27 @@
 ﻿namespace InnerAPI.Models
 {
-    public class Member  : User
+    public abstract class Member : User
     {
         #region "Declaração de variáveis"
-        private string _matrícula;
+        private string _registration;
         private string _cpf;
         public DateOnly _birthDate;
-        private string _instituicao;
+        private string _institution;
         #endregion
 
         #region "Construtores"
         public Member() : base()
         {
+            _registration = _cpf = _institution = "";
+            _birthDate = new DateOnly();
         }
         #endregion
 
         #region "Propriedades"
-        public string Matricula
+        public string Registration
         {
-            get { return _matrícula; }
-            set { _matrícula = value; }
+            get { return _registration; }
+            set { _registration = value; }
         }
 
         public string CPF
@@ -36,8 +38,8 @@
 
         public string Institution
         {
-            get { return _instituicao; }
-            set { _instituicao = value; }
+            get { return _institution; }
+            set { _institution = value; }
         }
         #endregion
     }

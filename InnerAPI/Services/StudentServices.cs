@@ -5,37 +5,38 @@ using InnerAPI.Utils;
 
 namespace InnerAPI.Services
 {
-    public class StudentServices : UserServices, ICRUD
+    public class StudentServices
     {
-        List<Institution> institutions;
+        List<Branch> institutions;
         List<Student> students;
 
-        public StudentServices(SharedService _sharedService) { 
-            institutions = _sharedService.Institutions;
-            students = _sharedService.Students;
+        public StudentServices(SharedService _sharedService)
+        {
+            students = new List<Student>();
+            institutions = _sharedService.Branches;
         }
 
         public Student Register(RegisterStudentDto register)
         {
-            var domain = register.Email.Split('@')[1]; // Pega o domínio do email
-            // Encontra a instituição correta pelo ID
-            var institution = institutions.FirstOrDefault(i => i.Domain == domain);
+            var institution = GetBranch(register.Email);
+            
             if (institution == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
             }
+             students = institution.Students;    
 
             // Verifica se o estudante já existe
-            var existingStudent = institution.Students.Exists(r => r.Matricula == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
+            var existingStudent = students.Exists(r => r.Registration == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
             if (existingStudent)
             {
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
             // Cria e adiciona o novo estudante à instituição correta
-            uint id = (uint)institution.Students.Count + 1;
+            uint id = (uint)students.Count + 1;
             Student newStudent = new Student(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.Curso, register.Periodo, register.Pontuacao);
-            institution.Students.Add(newStudent);
+            //institution.Students.Add(newStudent);
             students.Add(newStudent);
 
             return newStudent;
@@ -45,60 +46,94 @@ namespace InnerAPI.Services
         {
             string email = user.Email;
             string password = user.Password;
-            string domain = email.Split('@')[1];
 
-            var institution = institutions.FirstOrDefault(i => i.Domain == domain);
-            Student student = institution.Students.FirstOrDefault(s => s.Email == email && s.Password == password);
+            var institution = GetBranch(email);
+            if (institution == null)
+                throw new ArgumentException("Institution not found.");
+
+            students = institution.Students;
+
+            Student student = students.FirstOrDefault(s => s.Email == email && s.Password == password);
 
             Email Email = new Email();
             if (!Email.IsValid(email))
-                throw new ArgumentException("Email inválido.");
+                throw new ArgumentException("Invalid email.");
 
             if (student == null)
-                throw new ArgumentException("Usuário não encontrado.");
+                throw new ArgumentException("User not found.");
 
             if (student.Password != password)
-                throw new ArgumentException("Senha incorreta.");
+                throw new ArgumentException("Incorrect password.");
 
             return student;
         }
 
-        public Student Update(int id, Student register)
+        public Student Update(int id, Student newStudent)
         {
-            Student student = institutions.SelectMany(i => i.Students).FirstOrDefault(s => s.Id == id);
+            Branch institution = GetBranch(newStudent.Email);
+            if (institution == null)
+            {
+                throw new ArgumentException("Este usuário não encontrado.");
+            }
+            Student student = institution.Students.FirstOrDefault(s => s.Id == id);
+
             if (student == null)
             {
                 throw new ArgumentException("Usuário não encontrado.");
             }
-
-            student.Name = register.Name;
-            student.Email = register.Email;
-            student.Password = register.Password;
-            student.Matricula = register.Matricula;
-            student.CPF = register.CPF;
-            student.BirthDate = register.BirthDate;
-            student.Institution = register.Institution;
-            student.Curso = register.Curso;
-            student.Periodo = register.Periodo;
-            student.Pontuacao = register.Pontuacao;
+            student = newStudent;
+            student.Name = newStudent.Name;
+            student.Email = newStudent.Email;
+            student.Password = newStudent.Password;
+            student.Registration = newStudent.Registration;
+            student.CPF = newStudent.CPF;
+            student.BirthDate = newStudent.BirthDate;
+            student.Instituicao = newStudent.Instituicao;
+            student.Curso = newStudent.Curso;
+            student.Periodo = newStudent.Periodo;
+           // student.Pontuacao = newStudent.Pontuacao;
 
             return student;
         }
 
         public bool Delete(int id)
         {
-            institutions.SelectMany(i => i.Students).ToList().RemoveAll(usuario => usuario.Id == id);
-            return true;
+            foreach (var institution in institutions)
+            {
+                var student = institution.Students.FirstOrDefault(s => s.Id == id);
+                if (student != null)
+                {
+                    institution.Students.Remove(student);
+                    return true;
+                }
+            }
+            return false;
+        }
+        // {
+        //     institutions.SelectMany(i => i.Students).ToList().RemoveAll(usuario => usuario.Id == id);
+        //     return true;
+        // }
+
+        public List<Student> GetStudents(string email)
+        {
+            Branch institution = GetBranch(email);
+            if (institution == null)
+            {
+                throw new ArgumentException("Instituição não encontrada.");
+            }
+            return institution.Students;
         }
 
-        public List<Student> GetStudents()
+        public Branch GetBranch(string email)
         {
-            return students;
+            var domain = email.Split('@')[1];
+            return institutions.FirstOrDefault(i => i.Domain == domain) ?? throw new ArgumentException("Instituição não encontrada.");
+
         }
 
         public void Seguir()
         {
-
+            //falta implementar
         }
     }
 }

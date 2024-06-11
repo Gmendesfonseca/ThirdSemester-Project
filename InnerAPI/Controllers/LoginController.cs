@@ -2,6 +2,7 @@
 using InnerAPI.Models;
 using InnerAPI.Services;
 
+
 namespace InnerAPI.Controllers
 {
     public static class LoginController
@@ -9,10 +10,11 @@ namespace InnerAPI.Controllers
         public static RouteGroupBuilder MapLoginEndpoint(this WebApplication app, SharedService sharedService)
         {
             var group = app.MapGroup("login").WithParameterValidation();
-            
-            group.MapPost("/institution", (LoginDto login) =>
+
+            //POST /login/headoffice
+            group.MapPost("/headoffice", (LoginDto login) =>
             {
-                InstitutionServices user = new(sharedService);
+                HeadOfficeServices user = new(sharedService);
                 var institution = user.Login(login);
                 if (institution == null)
                 {
@@ -30,11 +32,14 @@ namespace InnerAPI.Controllers
                 });
             });
 
-            group.MapPost("/student", (LoginDto login) =>
+            //POST /login/branch
+            group.MapPost("/branch", (LoginDto login) =>
             {
-                StudentServices user = new(sharedService);
-                var student = user.Login(login);
-                if (student == null)
+
+                BranchServices user = new(sharedService);
+
+                var institution = user.Login(login);
+                if (institution == null)
                 {
                     return Results.BadRequest(new { success = false, message = "User not found" });
                 }
@@ -44,12 +49,13 @@ namespace InnerAPI.Controllers
                     message = "Login successful",
                     user = new
                     {
-                        student
+                        institution
                     }
 
                 });
-            }); 
+            });
 
+            //POST /login/professor
             group.MapPost("/professor", (LoginDto login) =>
             {
                 ProfessorServices user = new(sharedService);
@@ -69,6 +75,27 @@ namespace InnerAPI.Controllers
 
                 });
             });
+
+            //POST /login/student
+             group.MapPost("/student", (LoginDto login) =>
+            {
+                StudentServices user = new(sharedService);
+                var student = user.Login(login);
+                if (student == null)
+                {
+                    return Results.BadRequest(new { success = false, message = "User not found" });
+                }
+                return Results.Ok(new
+                {
+                    success = true,
+                    message = "Login successful",
+                    user = new
+                    {
+                        student
+                    }
+
+                });
+            }); 
 
             return group;
         }
