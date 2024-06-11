@@ -3,30 +3,33 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
+  background-color: white;
+  color: #171410;
 }
 
 .profile {
   height: min-content;
   width: min-content;
-  background-color: white;
+  /* background-color: white; */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   z-index: 1;
   transition: transform 0.5s ease-in-out;
+  color: #171410;
 }
 
 .profile.hide {
-  transform: translateX(-50%);
+  transform: translateX(-45%);
 }
 
 .profile_header {
   height: 200px;
   width: 600px;
-  background-image: linear-gradient(#91baff, #205fff);
+  background-image: linear-gradient(#91baff, #004ba2);
   display: flex;
   justify-content: flex-end;
   border-radius: 20px 20px 0 0;
@@ -51,18 +54,28 @@
 
 .profile_footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 200px;
   width: 600px;
   background-color: aliceblue;
   border-radius: 0 0 20px 20px;
+  padding: 50px;
 }
 
-.profile_footer button {
-  height: 50px;
-  width: 50px;
+/* .profile_footer button {
+  height: 4rem;
+  width: 80%;
   border: none;
   margin: 10px;
+  background-image: linear-gradient(#91baff, #205fff);
+  border-radius: 20px;
+} */
+
+.profile_footer img,
+.profile_footer a {
+  height: 50px;
+  width: 50px;
+  /* margin-right: 20px; */
 }
 
 .profile_body img {
@@ -77,6 +90,11 @@
 .profile_body p {
   padding: 2rem;
   text-align: justify;
+  color: #171410;
+}
+.profile_body h1,
+.profile_body span {
+  color: #171410;
 }
 
 .profile_settings {
@@ -88,10 +106,11 @@
   transition: transform ease-in-out 0.5s;
   transform: translateX(0);
   position: absolute;
+  border-radius: 20px;
 }
 
 .profile_settings.show {
-  transform: translateX(50%);
+  transform: translateX(45%);
 }
 
 @media (max-width: 1536px) {
@@ -112,4 +131,35 @@
     height: 600px;
     width: 400px;
   }
+}
+
+.profilePage {
+  /* margin: 1rem; */
+  display: flex;
+  flex-direction: column;
+}
+
+.backHome {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  background-color: transparent;
+  border: none;
+  margin: 10px;
+  transition: all ease-in-out 0.25s;
+  color: white;
+}
+
+.backHome:hover {
+  cursor: pointer;
+  color: #011824;
+  background-color: white;
+}
+
+.profileDescription {
+  background-color: blanchedalmond;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+  border-radius: 10px;
 }

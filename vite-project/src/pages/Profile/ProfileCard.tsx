@@ -1,12 +1,13 @@
-import { useState } from 'react';
-import './Profile.css';
-import { useNavigate } from 'react-router';
-import { FormHeadOffice } from '../../components/Forms/FormHeadOffice';
-import { useSession } from '../../context/SessionContext';
+import { useState } from "react";
+import "./Profile.css";
+import { FormHeadOffice } from "../../components/Forms/FormHeadOffice";
+// import { useSession } from "../../context/SessionContext";
+import instagramIcon from "./instagramIcon.png";
+import linkedinIcon from "./linkedin.png";
+import githubIcon from "./github.png";
 
 export default function ProfileCard(props) {
-  const navigate = useNavigate();
-  const { accountType } = useSession();
+  // const { accountType } = useSession();
   const [isSettingsVisible, setSettingsVisible] = useState(false);
   const [data, setData] = useState(props.data);
 
@@ -20,7 +21,7 @@ export default function ProfileCard(props) {
 
   return (
     <div className="content">
-      <div className={`profile ${isSettingsVisible ? 'hide' : ''}`}>
+      <div className={`profile ${isSettingsVisible ? "hide" : ""}`}>
         <div className="profile_header">
           <button
             title="config"
@@ -46,14 +47,23 @@ export default function ProfileCard(props) {
           <img src={props.avatar} alt="Foto de Perfil" />
           <h1>{props.name}</h1>
           <span>{props.email}</span>
-          <p>{props.description}</p>
+          <p className="profileDescription">{props.description}</p>
         </div>
 
         <div className="profile_footer">
-          <button onClick={() => navigate(`/home`)}>Teste</button>
+          {/* <button onClick={() => navigate(`/home`)}>Teste</button> */}
+          <a href="/home">
+            <img src={instagramIcon} alt="Instagram" />
+          </a>
+          <a href="/home">
+            <img src={linkedinIcon} alt="Linkedin" />
+          </a>
+          <a href="/home">
+            <img src={githubIcon} alt="GitHub" />
+          </a>
         </div>
       </div>
-      <div className={`profile_settings ${isSettingsVisible ? 'show' : ''}`}>
+      <div className={`profile_settings ${isSettingsVisible ? "show" : ""}`}>
         <FormHeadOffice
           disabled={false}
           data={data}

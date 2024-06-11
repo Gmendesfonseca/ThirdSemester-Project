@@ -58,7 +58,7 @@ const UserBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const Navbar = () => {
+export const Navbar = (props) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const { setAccountType, setInstitution, setUser } = useSession();
@@ -91,9 +91,7 @@ export const Navbar = () => {
   return (
     <AppBar position="sticky" sx={{ width: "100%", bgcolor: "#011824" }}>
       <StyledToolbar>
-        <Typography variant="h6" sx={{ xs: "none", sm: "block" }}>
-          InnerLink
-        </Typography>
+        {props.navAct}
         <Search>
           <InputBase placeholder="Search" />
         </Search>
