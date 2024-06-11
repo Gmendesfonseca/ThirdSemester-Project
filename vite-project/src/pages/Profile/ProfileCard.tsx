@@ -1,6 +1,5 @@
-import { useState } from "react";
-import "./Profile.css";
-import { FormHeadOffice } from "../../components/Forms/FormHeadOffice";
+import { useState } from 'react';
+import './Profile.css';
 // import { useSession } from "../../context/SessionContext";
 import instagramIcon from "./instagramIcon.png";
 import linkedinIcon from "./linkedin.png";
@@ -16,13 +15,13 @@ export default function ProfileCard(props) {
     setSettingsVisible(!isSettingsVisible);
   };
 
-  const handleDataChange = (newData) => {
-    setData(newData);
-  };
+  // const handleDataChange = (newData) => {
+  //   setData(newData);
+  // };
 
   return (
     <div className="content">
-      <div className={`profile ${isSettingsVisible ? "hide" : ""}`}>
+      <div className={`profile ${isSettingsVisible ? 'hide' : ''}`}>
         <div className="profile_header">
           <button
             title="config"
@@ -64,7 +63,7 @@ export default function ProfileCard(props) {
           </a>
         </div>
       </div>
-      <div className={`profile_settings ${isSettingsVisible ? "show" : ""}`}>
+      <div className={`profile_settings ${isSettingsVisible ? 'show' : ''}`}>
         <h1>Alterar Dados</h1>
         <form className="profile_form">
         <label id="updateName" htmlFor="name">Nome</label>
