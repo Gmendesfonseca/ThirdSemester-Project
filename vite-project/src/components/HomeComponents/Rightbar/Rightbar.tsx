@@ -14,7 +14,7 @@ import { RecentChat } from '../RecentChat/RecentChat';
 import {
   ChatType,
   // getChat
-} from '../../../services/chats/index';
+} from "../../../services/chats/index";
 import {
   FriendsType,
   // getFriends

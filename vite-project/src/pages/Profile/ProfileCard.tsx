@@ -64,11 +64,7 @@ export default function ProfileCard(props) {
         </div>
       </div>
       <div className={`profile_settings ${isSettingsVisible ? "show" : ""}`}>
-        <FormHeadOffice
-          disabled={false}
-          data={data}
-          onDataChange={handleDataChange}
-        />
+        <h1>Alterar Dados</h1>
       </div>
     </div>
   );
