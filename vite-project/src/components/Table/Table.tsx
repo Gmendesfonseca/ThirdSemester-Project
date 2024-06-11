@@ -14,13 +14,16 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { EnhancedTableToolbar } from './EnchancedTableToolbar';
 import { EnhancedTableHead } from './EnchancedTableHead';
-import {
-  BranchListType,
-  ProfessorListType,
-  StudentListType,
-} from '../../services/login';
+import { BranchListType } from '../../services/branch/types';
+import { StudentListType } from '../../services/student/types';
+import { ProfessorListType } from '../../services/professor/types';
+import { CourseListType } from '../../services/courses';
 
-export type CombinedType = BranchListType | StudentListType | ProfessorListType;
+export type CombinedType =
+  | BranchListType
+  | StudentListType
+  | ProfessorListType
+  | CourseListType;
 
 interface Identifiable {
   id: number;

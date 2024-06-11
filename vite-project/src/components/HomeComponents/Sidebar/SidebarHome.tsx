@@ -76,6 +76,20 @@ export const SidebarMenu: React.FC<SidebarProps> = () => {
               <ListItemText primary="Aluno" />
             </ListItemButton>
           </ListItem>
+          <ListItem disablePadding={location.pathname !== '/course/list'}>
+            <ListItemButton
+              onClick={() => navigate('/course/list')}
+              style={{
+                backgroundColor:
+                  location.pathname === '/course/list' ? blue[50] : 'default',
+              }}
+            >
+              <ListItemIcon>
+                <SchoolOutlined />
+              </ListItemIcon>
+              <ListItemText primary="Cursos" />
+            </ListItemButton>
+          </ListItem>
         </>
       )}
       {/* {(accountType === 'student' || accountType === 'professor') && (

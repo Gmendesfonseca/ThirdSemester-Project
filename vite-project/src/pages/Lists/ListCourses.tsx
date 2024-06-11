@@ -5,40 +5,44 @@ import {
   ThemeProvider,
   createTheme,
   useMediaQuery,
+  Box,
 } from '@mui/material';
-import Box from '@mui/material/Box';
+
 import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
 import { SidebarMenu } from '../../components/HomeComponents/Sidebar/SidebarHome';
 import { HeadCell, InTable } from '../../components/Table/Table';
 import faker from 'faker';
 import { More } from '../../components/More/More';
-import { StudentListType } from '../../services/student/types';
+import { CourseListType } from '../../services/courses';
 
-const headCells: readonly HeadCell<StudentListType>[] = [
+const headCells: readonly HeadCell<CourseListType>[] = [
   { id: 'name', numeric: false, disablePadding: false, label: 'Nome' },
-  { id: 'email', numeric: false, disablePadding: false, label: 'Email' },
-  { id: 'cpf', numeric: false, disablePadding: false, label: 'CPF' },
-  { id: 'curso', numeric: false, disablePadding: false, label: 'Curso' },
   {
-    id: 'matricula',
+    id: 'description',
     numeric: false,
     disablePadding: false,
-    label: 'Matricula',
+    label: 'Descrção',
   },
+  {
+    id: 'workload',
+    numeric: false,
+    disablePadding: false,
+    label: 'Carga Horária',
+  },
+  { id: 'period', numeric: false, disablePadding: false, label: 'Período' },
   { id: 'options', numeric: false, disablePadding: false, label: 'Opções' },
 ];
 
-const rows: StudentListType[] = Array.from({ length: 50 }, (_, index) => ({
+const rows: CourseListType[] = Array.from({ length: 50 }, (_, index) => ({
   id: index + 1,
-  name: faker.name.findName(),
-  email: faker.internet.email(),
-  cpf: faker.finance.creditCardNumber(),
-  curso: faker.random.arrayElement(['Course1', 'Course2', 'Course3']),
-  matricula: faker.datatype.uuid(),
-  options: <More type="Estudante" id={index + 1} idMore={index + 1} />,
+  name: faker.company.companyName(),
+  description: faker.lorem.sentence(),
+  workload: faker.random.number(),
+  period: faker.random.arrayElement(['Period1', 'Period2', 'Period3']),
+  options: <More type="Unidade" id={index + 1} idMore={index + 1} />,
 }));
 
-export default function ListStudent() {
+export default function ListCourse() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
 
   const [mode, setMode] = React.useState<PaletteMode>(
@@ -53,17 +57,13 @@ export default function ListStudent() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box
-        bgcolor={'background.default'}
-        color={'text.primary'}
-        sx={{ padding: '0px', height: '100%' }}
-      >
+      <Box bgcolor={'background.default'} color={'text.primary'}>
         <Navbar />
-        <Stack direction="row" spacing={0}>
+        <Stack direction="row" spacing={2} justifyContent="space-between">
           <SidebarMenu mode={mode} setMode={setMode} />
-          <InTable<StudentListType>
-            title="Alunos"
-            name="Novo Aluno"
+          <InTable<CourseListType>
+            title="Cursos"
+            name="Novo Curso"
             rowsItems={rows}
             headCells={headCells}
           />

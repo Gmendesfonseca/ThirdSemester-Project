@@ -10,9 +10,9 @@ import Box from '@mui/material/Box';
 import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
 import { SidebarMenu } from '../../components/HomeComponents/Sidebar/SidebarHome';
 import { HeadCell, InTable } from '../../components/Table/Table';
-import { ProfessorListType } from '../../services/login';
 import faker from 'faker';
 import { More } from '../../components/More/More';
+import { ProfessorListType } from '../../services/professor/types';
 
 const headCells: readonly HeadCell<ProfessorListType>[] = [
   { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
