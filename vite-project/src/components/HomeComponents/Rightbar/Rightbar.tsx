@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
-import { AvatarGroup, Button, Divider, List, Typography } from '@mui/material';
+import {
+  AvatarGroup,
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  Typography,
+} from '@mui/material';
 import { AvatarComponent } from '../../Avatar/Avatar';
 import { RecentChat } from '../RecentChat/RecentChat';
 import {
@@ -13,6 +21,10 @@ import {
 } from '../../../services/friends/index';
 import faker from 'faker';
 import { useNavigate } from 'react-router-dom';
+import { ThemeProvider } from '@emotion/react';
+import { darkTheme } from '../../../Theme';
+import { blue } from '@mui/material/colors';
+import { Chat, Groups } from '@mui/icons-material';
 
 export const Rightbar = () => {
   const [chats, setChat] = useState<ChatType[]>([]);
@@ -31,10 +43,6 @@ export const Rightbar = () => {
   //     setFriends(response);
   //   });
   // }, []);
-
-  const handleClick = () => {
-    navigate('/chat');
-  };
 
   useEffect(() => {
     const fakeChats = Array.from({ length: 20 }, () => ({
@@ -64,88 +72,120 @@ export const Rightbar = () => {
   }, []);
 
   return (
-    <Box
-      pt={2}
-      pl={2}
-      sx={{ display: { xs: 'none', lg: 'block' }, flex: { lg: 2, xl: 1 } }}
-      height="100%"
-      width="100%"
-    >
-      <Box position="fixed" height="80%" width="22%">
-        <Typography variant="h6" fontWeight={100}>
-          Conexões
-        </Typography>
-        <Box
-          sx={{
-            paddingLeft: '8px',
-            overflowY: 'hidden',
-            overflowX: 'scroll',
-            maxWidth: '100%',
-            '&::-webkit-scrollbar': {
-              height: '0px',
-              width: '8px',
-            },
-            '&::-webkit-scrollbar-thumb': {
-              backgroundColor: 'rgba(0,0,0,.1)',
-            },
-          }}
-        >
-          <AvatarGroup
-            max={friends.length}
+    <ThemeProvider theme={darkTheme}>
+      <Box
+        pt={2}
+        pl={2}
+        sx={{ display: { xs: 'none', lg: 'block' }, flex: { lg: 2, xl: 1 } }}
+        height="100%"
+        width="100%"
+      >
+        <Box position="fixed" height="80%" width="22%">
+          <ListItem disablePadding>
+            <ListItemButton
+              onClick={() => navigate(`/friends`)}
+              style={{
+                backgroundColor: location.pathname.includes('chat')
+                  ? blue[50]
+                  : 'default',
+              }}
+            >
+              <ListItemIcon>
+                <Groups />
+              </ListItemIcon>
+              <Typography variant="h6" fontWeight={100}>
+                Conexões
+              </Typography>
+            </ListItemButton>
+          </ListItem>
+          <Box
             sx={{
-              justifyContent: 'start',
-              height: '100%',
-              width: '100%',
-              bgcolor: 'background.paper',
+              paddingLeft: '8px',
+              overflowY: 'hidden',
+              overflowX: 'scroll',
+              maxWidth: '100%',
+              '&::-webkit-scrollbar': {
+                height: '0px',
+                width: '8px',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: 'rgba(0,0,0,.1)',
+              },
             }}
           >
-            {friends.map(
-              (friends, index) =>
-                friends && <AvatarComponent key={index} data={friends} />,
-            )}
-          </AvatarGroup>
-        </Box>
-        <Typography variant="h6" fontWeight={100} mt={2}>
-          <Button onClick={handleClick}>Conversas</Button>
-        </Typography>
-        <Divider />
-        <Box
-          sx={{
-            display: { lg: 'block' },
-            overflowY: 'auto',
-            height: '97.5%',
-            '&::-webkit-scrollbar': {
-              height: '8px',
-              width: '0px',
-            },
-            '&::-webkit-scrollbar-thumb': {
-              backgroundColor: 'rgba(0,0,0,.1)',
-            },
-          }}
-        >
-          <List
+            <AvatarGroup
+              max={friends.length}
+              sx={{
+                justifyContent: 'start',
+                height: '100%',
+                width: '100%',
+                bgcolor: 'background.paper',
+              }}
+            >
+              {friends.map(
+                (friends, index) =>
+                  friends && <AvatarComponent key={index} data={friends} />,
+              )}
+            </AvatarGroup>
+          </Box>
+          <Typography variant="h6" fontWeight={100} mt={2}>
+            <ListItem disablePadding>
+              <ListItemButton
+                onClick={() => navigate(`/chat`)}
+                style={{
+                  backgroundColor: location.pathname.includes('chat')
+                    ? blue[50]
+                    : 'default',
+                }}
+              >
+                <ListItemIcon>
+                  <Chat />
+                </ListItemIcon>
+                <Typography variant="h6" fontWeight={100}>
+                  Chat
+                </Typography>
+              </ListItemButton>
+            </ListItem>
+          </Typography>
+          <Divider />
+          <Box
             sx={{
-              width: '100%',
-              maxWidth: 360,
-              maxHeight: '100%',
-              bgcolor: 'background.paper',
+              display: { lg: 'block' },
+              overflowY: 'auto',
+              height: '97.5%',
+              '&::-webkit-scrollbar': {
+                height: '8px',
+                width: '0px',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: 'rgba(0,0,0,.1)',
+              },
             }}
           >
-            {chats.map(
-              (chat, index) =>
-                chat && (
-                  <li key={index}>
-                    <RecentChat
-                      id={index}
-                      avatar={friends[index]}
-                      data={chat}
-                    />
-                  </li>
-                ),
-            )}
-          </List>
+            <List
+              sx={{
+                width: '100%',
+                maxWidth: 360,
+                maxHeight: '100%',
+                bgcolor: 'background.paper',
+              }}
+            >
+              {chats.map(
+                (chat, index) =>
+                  chat && (
+                    <li key={index}>
+                      <RecentChat
+                        id={index}
+                        avatar={friends[index]}
+                        data={chat}
+                      />
+                    </li>
+                  ),
+              )}
+            </List>
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 };

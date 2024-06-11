@@ -1,14 +1,26 @@
-import { Box, List, createTheme } from '@mui/material';
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  createTheme,
+} from '@mui/material';
 import { ChatType } from '../../services/chats';
 import { FriendsType } from '../../services/friends';
 import { RecentChat } from '../HomeComponents/RecentChat/RecentChat';
 import { useEffect, useState } from 'react';
 import faker from 'faker';
 import { ThemeProvider } from '@emotion/react';
+import { blue } from '@mui/material/colors';
+import { useNavigate } from 'react-router-dom';
+import { Home } from '@mui/icons-material';
 
 export default function ChatsSide() {
   const [chats, setChat] = useState<ChatType[]>([]);
   const [friends, setFriends] = useState<FriendsType[]>([]);
+  const navigate = useNavigate();
 
   const darkTheme = createTheme({
     palette: {
@@ -50,6 +62,21 @@ export default function ChatsSide() {
         width="100%"
       >
         <Box position="fixed" height="80%" width="22%">
+          <ListItem disablePadding={location.pathname.includes('home')}>
+            <ListItemButton
+              onClick={() => navigate(`/home`)}
+              style={{
+                backgroundColor: location.pathname.includes('home')
+                  ? blue[50]
+                  : 'default',
+              }}
+            >
+              <ListItemIcon>
+                <Home />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItemButton>
+          </ListItem>
           <Box
             sx={{
               display: { lg: 'block' },

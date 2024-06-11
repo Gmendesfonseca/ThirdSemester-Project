@@ -14,12 +14,14 @@ import {
   Favorite,
   FavoriteBorder,
   MoreVert,
+  Send,
 } from '@mui/icons-material';
-import { PostType, CommentType } from '../../../services/posts';
-import { Button, Checkbox, MenuItem } from '@mui/material';
+import { PostType } from '../../../services/posts';
+import { Checkbox, InputAdornment, MenuItem, TextField } from '@mui/material';
 import InMenu from '../../Menu/Menu';
 import { InModalDelete } from '../../Modal/DeleteModal';
 import { Comment } from './Comment';
+import { CommentType } from '../../../services/comment/types';
 
 interface PostProps {
   data: PostType;
@@ -31,10 +33,16 @@ export const Post = ({ data }: PostProps) => {
   const [comments, setComments] = useState<CommentType[]>(data.comments);
   const [showComments, setShowComments] = useState(false);
   const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleLike = () => {
     setLiked(!liked);
     liked ? setLikes(likes - 1) : setLikes(likes + 1);
+  };
+
+  const handleSend = () => {
+    handleComment(message);
+    setMessage('');
   };
 
   const handleComment = (comment) => {
@@ -137,12 +145,33 @@ export const Post = ({ data }: PostProps) => {
           </Typography>
           {showComments && (
             <>
-              <Button
-                onClick={() => handleComment('New comment')}
-                aria-label="Add a new comment"
+              <Box
+                component="form"
+                sx={{
+                  '& > :not(style)': { m: 1 },
+                }}
+                noValidate
+                autoComplete="off"
+                width={'100%'}
               >
-                Add Comment
-              </Button>
+                <TextField
+                  id="outlined-basic"
+                  label="Message"
+                  variant="outlined"
+                  value={message}
+                  sx={{ width: '100%' }}
+                  onChange={(e) => setMessage(e.target.value)}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton onClick={handleSend}>
+                          <Send />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </Box>
               {Array.isArray(comments) &&
                 comments.map((comment) => (
                   <Comment key={comment.id} comment={comment} />
