@@ -1,0 +1,31 @@
+using NUnit.Framework;
+using InnerAPI.Dtos.HeadOffice;
+using InnerAPI.Models;
+using InnerAPI.Services;
+using Moq;
+
+namespace InnerAPI.Tests
+{
+    [TestFixture]
+    public class HeadOfficeServiceTests
+    {
+        [Test]
+        public void Register_NewHeadOffice_ReturnsCreatedHeadOffice()
+        {
+            // Arrange
+            var sharedServiceMock = new Mock<SharedService>();
+            var headOfficeService = new HeadOfficeService(sharedServiceMock.Object);
+            var newHeadOfficeDto = new RegisterHeadOfficeDto {Name = "HeadOffice2", Email = "headoffice2@example.com", CNPJ = "23456789012345", Domain = "example.org};
+
+            // Act
+            var createdHeadOffice = headOfficeService.Register(newHeadOfficeDto);
+
+            // Assert
+            Assert.IsNotNull(createdHeadOffice);
+            // Adicione mais asserções conforme necessário
+        }
+
+        // Adicione mais testes para os outros métodos do HeadOfficeService
+    }
+}
+}
