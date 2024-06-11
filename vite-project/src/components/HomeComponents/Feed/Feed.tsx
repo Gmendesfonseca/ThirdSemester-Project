@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { Post } from '../Post/Post';
-import { PostType } from '../../../services/posts';
-import faker from 'faker';
-import camaleao from '../../../assets/image.png';
-import { Stack } from '@mui/material';
-import { CommentType } from '../../../services/comment/types';
+import { useEffect, useState } from "react";
+import { Post } from "../Post/Post";
+import { PostType } from "../../../services/posts";
+import faker from "faker";
+import camaleao from "../../../assets/image.png";
+import { Stack } from "@mui/material";
+import { CommentType } from "../../../services/comment/types";
 // import { useSession } from '../../../context/SessionContext';
 // import { getAllPosts } from '../../../services/posts';
 
@@ -45,6 +45,7 @@ export const Feed = () => {
       sx={{
         flex: { sm: 4, lg: 4, xl: 3 },
         gap: 2,
+        paddingRight: { xs: 0, lg: 10 },
       }}
       height="max-content"
     >

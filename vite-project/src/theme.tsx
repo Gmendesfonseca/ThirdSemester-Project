@@ -19,7 +19,7 @@ export const darkTheme = createTheme({
       secondary: "#000",
     },
     background: {
-      default: "#011824",
+      default: "#010f17",
       paper: "#112733",
     },
   },

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import './Profile.css';
+import { useState } from "react";
+import "./Profile.css";
 // import { useSession } from "../../context/SessionContext";
 import instagramIcon from "./instagramIcon.png";
 import linkedinIcon from "./linkedin.png";
@@ -9,7 +9,7 @@ import { useSession } from "../../context/SessionContext";
 export default function ProfileCard(props) {
   // const { accountType } = useSession();
   const [isSettingsVisible, setSettingsVisible] = useState(false);
-  const {user} = useSession();
+  const { user } = useSession();
 
   const toggleSettings = () => {
     setSettingsVisible(!isSettingsVisible);
@@ -21,7 +21,7 @@ export default function ProfileCard(props) {
 
   return (
     <div className="content">
-      <div className={`profile ${isSettingsVisible ? 'hide' : ''}`}>
+      <div className={`profile ${isSettingsVisible ? "hide" : ""}`}>
         <div className="profile_header">
           <button
             title="config"
@@ -47,7 +47,7 @@ export default function ProfileCard(props) {
           <img src={props.avatar} alt="Foto de Perfil" />
           <h1>{props.name}</h1>
           <span>{props.email}</span>
-          <p className="profileDescription">{props.description}</p>
+          {/* <p className="profileDescription">{props.description}</p> */}
         </div>
 
         <div className="profile_footer">
@@ -63,15 +63,39 @@ export default function ProfileCard(props) {
           </a>
         </div>
       </div>
-      <div className={`profile_settings ${isSettingsVisible ? 'show' : ''}`}>
+      <div className={`profile_settings ${isSettingsVisible ? "show" : ""}`}>
         <h1>Alterar Dados</h1>
         <form className="profile_form">
-        <label id="updateName" htmlFor="name">Nome</label>
-        <input id="updateName" type="text" name="updateName" placeholder="Alterar Nome" value={user?.name}/>
-        <label id="updateEmail" htmlFor="email">E-mail</label>
-        <input id="updateEmail" type="text" name="updateEmail" placeholder="Alterar Email" value={user?.email}/>
-        <label id="updateName" htmlFor="description">Descrição</label>
-        <input id="updateDescription" type="text" name="updateDescription" placeholder="Alterar Descrição" value={user?.about}/>
+          <label id="updateName" htmlFor="name">
+            Nome
+          </label>
+          <input
+            id="updateName"
+            type="text"
+            name="updateName"
+            placeholder="Alterar Nome"
+            value={user?.name}
+          />
+          <label id="updateEmail" htmlFor="email">
+            E-mail
+          </label>
+          <input
+            id="updateEmail"
+            type="text"
+            name="updateEmail"
+            placeholder="Alterar Email"
+            value={user?.email}
+          />
+          <label id="updateDescription" htmlFor="description">
+            Descrição
+          </label>
+          <input
+            id="updateDescription"
+            type="text"
+            name="updateDescription"
+            placeholder="Alterar Descrição"
+            value={user?.about}
+          />
         </form>
       </div>
     </div>
