@@ -8,7 +8,7 @@ import {
 import { InModalProps } from '../../../interfaces/Modal';
 import { FormBranch } from '../../Forms/FormBranch';
 import { useState } from 'react';
-import { updateBranch } from '../../../services/lists/branch/request';
+import { updateBranch } from '../../../services/branch/request';
 
 const InModalViewBranch = ({
   actualData,

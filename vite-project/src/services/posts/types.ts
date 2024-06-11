@@ -1,3 +1,5 @@
+import { CommentType } from '../comment/types';
+
 export type PostType = {
   id: number;
   creatorId: number;
@@ -8,11 +10,4 @@ export type PostType = {
   likes: number;
   comments: CommentType[];
   description: string;
-};
-
-export type CommentType = {
-  id: string;
-  author: string;
-  text: string;
-  creatorId: number;
 };

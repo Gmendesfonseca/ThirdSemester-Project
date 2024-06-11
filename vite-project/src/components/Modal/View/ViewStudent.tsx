@@ -8,7 +8,7 @@ import {
 import { InModalProps } from '../../../interfaces/Modal';
 import { FormStudent } from '../../Forms/FormStudent';
 import { useState } from 'react';
-import { updateStudent } from '../../../services/lists/student/request';
+import { updateStudent } from '../../../services/student/request';
 
 const InModalViewStudent = ({
   actualData,

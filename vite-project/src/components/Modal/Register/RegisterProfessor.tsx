@@ -8,7 +8,7 @@ import {
 import { FormProfessor } from '../../Forms/FormProfessor';
 import { RegisterProfessorParams } from '../../../services/register';
 import { useState } from 'react';
-import { registerProfessor } from '../../../services/lists/professor/request';
+import { registerProfessor } from '../../../services/professor/request';
 
 const InModalRegisterProfessor = ({ title, opened, onClose }) => {
   const [data, setData] = useState<RegisterProfessorParams>();

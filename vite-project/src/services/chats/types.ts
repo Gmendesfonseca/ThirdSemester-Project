@@ -1,3 +1,5 @@
+import { MessageType } from '../messages';
+
 export type ChatType = {
   id: string;
   name: string;
@@ -8,9 +10,15 @@ export type ChatType = {
   created_at: string;
 };
 
-export type MessageType = {
+export type RegisterChatParams = {
+  name: string;
+  description: string;
+  icon: string;
+};
+
+export type UpdateChatParams = {
   id: string;
-  text: string;
-  creatorId: number;
-  created_at: string;
+  name: string;
+  description: string;
+  icon: string;
 };
