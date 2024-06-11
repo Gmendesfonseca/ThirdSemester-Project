@@ -12,17 +12,19 @@ namespace InnerAPI.Services
 
         public StudentServices(SharedService _sharedService)
         {
+            students = new List<Student>();
             institutions = _sharedService.Branches;
         }
 
         public Student Register(RegisterStudentDto register)
         {
-            var institution = GetInstitution(register.Email);
-            students = institution.Students;
+            var institution = GetBranch(register.Email);
+            
             if (institution == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
             }
+             students = institution.Students;    
 
             // Verifica se o estudante já existe
             var existingStudent = students.Exists(r => r.Registration == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
@@ -45,10 +47,11 @@ namespace InnerAPI.Services
             string email = user.Email;
             string password = user.Password;
 
-            var institution = GetInstitution(email);
-            students = institution.Students;
+            var institution = GetBranch(email);
             if (institution == null)
                 throw new ArgumentException("Institution not found.");
+
+            students = institution.Students;
 
             Student student = students.FirstOrDefault(s => s.Email == email && s.Password == password);
 
@@ -79,31 +82,58 @@ namespace InnerAPI.Services
                 throw new ArgumentException("Usuário não encontrado.");
             }
             student = newStudent;
+            student.Name = newStudent.Name;
+            student.Email = newStudent.Email;
+            student.Password = newStudent.Password;
+            student.Registration = newStudent.Registration;
+            student.CPF = newStudent.CPF;
+            student.BirthDate = newStudent.BirthDate;
+            student.Instituicao = newStudent.Instituicao;
+            student.Curso = newStudent.Curso;
+            student.Periodo = newStudent.Periodo;
+           // student.Pontuacao = newStudent.Pontuacao;
 
             return student;
         }
 
         public bool Delete(int id)
         {
-            institutions.SelectMany(i => i.Students).ToList().RemoveAll(usuario => usuario.Id == id);
-            return true;
+            foreach (var institution in institutions)
+            {
+                var student = institution.Students.FirstOrDefault(s => s.Id == id);
+                if (student != null)
+                {
+                    institution.Students.Remove(student);
+                    return true;
+                }
+            }
+            return false;
         }
+        // {
+        //     institutions.SelectMany(i => i.Students).ToList().RemoveAll(usuario => usuario.Id == id);
+        //     return true;
+        // }
 
         public List<Student> GetStudents(string email)
         {
             Branch institution = GetBranch(email);
+            if (institution == null)
+            {
+                throw new ArgumentException("Instituição não encontrada.");
+            }
             return institution.Students;
         }
 
         public Branch GetBranch(string email)
         {
             var domain = email.Split('@')[1];
-            return institutions.FirstOrDefault(i => i.Domain == domain);
+            return institutions.FirstOrDefault(i => i.Domain == domain) ?? throw new ArgumentException("Instituição não encontrada.");
+
         }
 
         public void Seguir()
         {
-
+            //falta implementar
         }
     }
 }
