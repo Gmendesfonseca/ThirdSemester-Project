@@ -135,6 +135,7 @@ export const Post = ({ data }: PostProps) => {
             <Box flexGrow={1}>
               <IconButton aria-label="add to favorites" onClick={handleLike}>
                 <Checkbox
+                sx={{color:"text.primary"}}
                   icon={<FavoriteBorder />}
                   checkedIcon={<Favorite sx={{ color: 'red' }} />}
                   checked={liked}
@@ -146,6 +147,7 @@ export const Post = ({ data }: PostProps) => {
             </Box>
             <IconButton aria-label="show comments" onClick={handleShowComments}>
               <Checkbox
+              sx={{color:"text.primary"}}
                 icon={<ChatBubbleOutline />}
                 checkedIcon={<ChatBubble />}
                 checked={showComments}
@@ -167,7 +169,7 @@ export const Post = ({ data }: PostProps) => {
               >
                 <TextField
                   id="outlined-basic"
-                  label="Message"
+                  label="Comentário"
                   variant="outlined"
                   value={message}
                   sx={{ width: '100%' }}
