@@ -82,6 +82,9 @@ namespace InnerAPI.Models
                 return feed;
             }
         }
+
+        public object Type { get; internal set; }
+
         public void addPost(Post post)
         {
             feed.Push(post);

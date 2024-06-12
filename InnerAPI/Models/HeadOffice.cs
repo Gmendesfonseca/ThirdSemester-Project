@@ -1,4 +1,6 @@
-﻿namespace InnerAPI.Models
+﻿using InnerAPI.Dtos.Login;
+
+namespace InnerAPI.Models
 {
     public class HeadOffice : Institution
     {
@@ -41,6 +43,13 @@
         #endregion
 
         #region "Métodos Listas"
+
+        public bool Login(LoginDto login)
+        {
+            // Verifica se o e-mail e a senha correspondem às credenciais do head office
+            return Email == login.Email && Password == login.Password;
+        }
+
         public List<Branch> Branches { get { return branches; } }
         public void addBranch(Branch branch)
         {

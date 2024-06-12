@@ -13,12 +13,14 @@ namespace InnerAPI.Services
         private int _nextChatId = 1;
         private int _nextMessageId = 1;
 
+
         public SharedService sharedServices { get; }
 
         public ChatService(SharedService sharedServices)
         {
             this.sharedServices = sharedServices;
         }
+
 
         public IEnumerable<Chat> GetChats() => _chats.Values;
 
