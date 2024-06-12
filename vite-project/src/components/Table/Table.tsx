@@ -1,24 +1,26 @@
-import React from 'react';
+import React from "react";
 // import {
 //   PaletteMode,
 //   ThemeProvider,
 //   createTheme,
 //   useMediaQuery,
 // } from '@mui/material';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { EnhancedTableToolbar } from './EnchancedTableToolbar';
-import { EnhancedTableHead } from './EnchancedTableHead';
-import { BranchListType } from '../../services/branch/types';
-import { StudentListType } from '../../services/student/types';
-import { ProfessorListType } from '../../services/professor/types';
-import { CourseListType } from '../../services/courses';
-import { FriendsListType } from '../../services/friends';
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { EnhancedTableToolbar } from "./EnchancedTableToolbar";
+import { EnhancedTableHead } from "./EnchancedTableHead";
+import { BranchListType } from "../../services/branch/types";
+import { StudentListType } from "../../services/student/types";
+import { ProfessorListType } from "../../services/professor/types";
+import { CourseListType } from "../../services/courses";
+import { FriendsListType } from "../../services/friends";
+import "./Table.css";
+import { darkTheme } from "../../Theme";
 
 export type CombinedType =
   | BranchListType
@@ -50,14 +52,14 @@ function createData<T extends object>(data: T): T {
 }
 
 export function InTable<T extends Identifiable>(props: InTableProps<T>) {
-  const [order, setOrder] = React.useState<Order>('asc');
-  const [orderBy, setOrderBy] = React.useState<keyof T>('id');
+  const [order, setOrder] = React.useState<Order>("asc");
+  const [orderBy, setOrderBy] = React.useState<keyof T>("id");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const rows = props.rowsItems.map((row) => createData(row));
 
-  type Order = 'asc' | 'desc';
+  type Order = "asc" | "desc";
 
   function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     if (b[orderBy] < a[orderBy]) {
@@ -71,16 +73,16 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
 
   function getComparator<Key extends keyof any>(
     order: Order,
-    orderBy: Key,
+    orderBy: Key
   ): (a: { [key in Key]: any }, b: { [key in Key]: any }) => number {
-    return order === 'desc'
+    return order === "desc"
       ? (a, b) => descendingComparator(a, b, orderBy)
       : (a, b) => -descendingComparator(a, b, orderBy);
   }
 
   function stableSort<T>(
     array: readonly T[] = [],
-    comparator: (a: T, b: T) => number,
+    comparator: (a: T, b: T) => number
   ) {
     const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
     stabilizedThis.sort((a, b) => {
@@ -95,10 +97,10 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
-    property: keyof T,
+    property: keyof T
   ) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
   };
 
@@ -115,7 +117,7 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
+        selected.slice(selectedIndex + 1)
       );
     }
     setSelected(newSelected);
@@ -126,7 +128,7 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
   };
 
   const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
@@ -139,9 +141,9 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
     () =>
       stableSort(rows, getComparator(order, orderBy)).slice(
         page * rowsPerPage,
-        page * rowsPerPage + rowsPerPage,
+        page * rowsPerPage + rowsPerPage
       ),
-    [order, orderBy, page, rowsPerPage, rows, getComparator],
+    [order, orderBy, page, rowsPerPage, rows, getComparator]
   );
 
   // //THEME
@@ -156,18 +158,19 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
   // });
 
   return (
-    <Paper sx={{ mb: 2, width: '85%' }}>
+    <Paper className="table">
       <EnhancedTableToolbar title={props.title} name={props.name} />
-      <TableContainer sx={{ width: '100%' }}>
+      <TableContainer sx={{ width: "100%", height: "80%" }}>
         <Table
           sx={{
+            bgcolor: "background.default",
             minWidth: 750,
-            overflow: 'auto',
-            position: 'relative',
-            width: '100%',
+            overflow: "auto",
+            position: "relative",
+            width: "100%",
           }}
           aria-labelledby="tableTitle"
-          size={'medium'}
+          size={"medium"}
         >
           <EnhancedTableHead
             headCells={props.headCells}
@@ -186,14 +189,14 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
                   role="checkbox"
                   tabIndex={-1}
                   key={row.id}
-                  sx={{ cursor: 'pointer' }}
+                  sx={{ cursor: "pointer" }}
                 >
                   {Object.keys(row).map((key, index) => {
                     const cellValue = row[key];
                     if (
                       React.isValidElement(cellValue) ||
-                      typeof cellValue === 'string' ||
-                      typeof cellValue === 'number'
+                      typeof cellValue === "string" ||
+                      typeof cellValue === "number"
                     ) {
                       return <TableCell key={index}>{cellValue}</TableCell>;
                     }

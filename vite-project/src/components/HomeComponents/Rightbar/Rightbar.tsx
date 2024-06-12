@@ -120,7 +120,8 @@ export const Rightbar = () => {
                 justifyContent: "start",
                 height: "100%",
                 width: "100%",
-                bgcolor: "background.default",
+                bgcolor: "background.paper",
+                borderRadius:"10px"
               }}
             >
               {friends.map(

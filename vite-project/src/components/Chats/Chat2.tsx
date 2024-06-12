@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Avatar } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
@@ -7,6 +7,7 @@ export default function Chat2() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<string[]>([]);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const handleMouseEnter = () => {
     setHovered(true);
@@ -30,6 +31,10 @@ export default function Chat2() {
   const handleInputChange = (event) => {
     setMessage(event.target.value);
   };
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <>
@@ -57,6 +62,7 @@ export default function Chat2() {
               {message}
             </div>
           ))}
+          <div ref={messagesEndRef} />
         </div>
         <div className="chat_footer">
           <input
@@ -64,7 +70,7 @@ export default function Chat2() {
             placeholder="Digite uma mensagem"
             value={message}
             onChange={handleInputChange}
-            onKeyPress={(event) => {
+            onKeyDown={(event) => {
               if (event.key === "Enter") {
                 handleSendMessage();
               }

@@ -81,9 +81,11 @@
 }
 
 .chat_body {
+  overflow-y: auto;
+  scrollbar-width: thin;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   align-items: flex-end;
   background-color: #112733;
   height: 90%;
@@ -132,6 +134,20 @@
   animation: rotate 0.2s normal linear;
 }
 
+.message {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 10px;
+  max-width: 300px;
+  max-width: 30%;
+  background-color: #304452;
+  margin-top: 10px;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -148,17 +164,4 @@
   .chat {
     width: 100%;
   }
-}
-
-.message {
-  display: flex;
-  align-items: center;
-  border-radius: 20px;
-  margin: 20px;
-  padding: 10px;
-  height: 50px;
-  background-color: #304452;
-  margin-top: 10px;
-  text-overflow: ellipsis;
-  word-break: break-all;
 }
