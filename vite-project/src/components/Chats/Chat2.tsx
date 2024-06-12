@@ -1,6 +1,22 @@
+import { useState } from "react";
 import { Avatar } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 export default function Chat2() {
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
+
+  const handleDropdownOpen = () => {
+    // Code to open the dropdown with 3 options
+  };
+
   return (
     <>
       <div className="chat">
@@ -10,7 +26,7 @@ export default function Chat2() {
             src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           />
           <span>Chat With Elon Musk</span>
-          <button>
+          <button className="chatElipsis" onClick={handleDropdownOpen}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -24,7 +40,16 @@ export default function Chat2() {
         <div className="chat_body"></div>
         <div className="chat_footer">
           <input type="text" placeholder="Digite uma mensagem" />
-          <button>Enviar</button>
+          <button
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            {hovered ? (
+              <SendIcon className={hovered ? "rotate" : ""} />
+            ) : (
+              "Enviar"
+            )}
+          </button>
         </div>
       </div>
     </>

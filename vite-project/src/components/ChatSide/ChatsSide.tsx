@@ -24,7 +24,7 @@ export default function ChatsSide() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fakeChats = Array.from({ length: 20 }, () => ({
+    const fakeChats = Array.from({ length: 10 }, () => ({
       id: faker.datatype.uuid(),
       name: faker.name.findName(),
       description: faker.lorem.sentence(),
@@ -42,7 +42,7 @@ export default function ChatsSide() {
   }, []);
 
   useEffect(() => {
-    const fakeOnlineFriends = Array.from({ length: 20 }, () => ({
+    const fakeOnlineFriends = Array.from({ length: 10 }, () => ({
       name: faker.name.findName(),
       src: faker.image.avatar(),
       online: faker.datatype.boolean(),
@@ -53,7 +53,10 @@ export default function ChatsSide() {
     <>
       <ThemeProvider theme={darkTheme}>
         <Box className="chatsSide" bgcolor={"#011824"} marginTop="10px">
-          <ListItem disablePadding={location.pathname.includes("home")}>
+          <ListItem
+            className="listItem"
+            disablePadding={location.pathname.includes("home")}
+          >
             <ListItemButton
               onClick={() => navigate(`/home`)}
               style={{

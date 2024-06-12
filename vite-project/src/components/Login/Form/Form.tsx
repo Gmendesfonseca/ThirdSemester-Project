@@ -1,25 +1,26 @@
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import { addToast } from '../../Toast/toast';
-import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
-import { SelectChangeEvent } from '@mui/material';
-import { Copyright } from '../Copyright/Copyright';
-import Grid from '@mui/material/Grid';
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import { addToast } from "../../Toast/toast";
+import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { SelectChangeEvent } from "@mui/material";
+import { Copyright } from "../Copyright/Copyright";
+import Grid from "@mui/material/Grid";
 import {
   loginBranch,
   loginHeadOffice,
   loginProfessor,
   LoginResponse,
   loginStudent,
-} from '../../../services/login/index';
-import Anchor from '../../Anchor/Anchor';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { useSession } from '../../../context/SessionContext';
-import { AccountType } from '../../../services/login/enum';
+} from "../../../services/login/index";
+import Anchor from "../../Anchor/Anchor";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { useSession } from "../../../context/SessionContext";
+import { AccountType } from "../../../services/login/enum";
+import { darkTheme } from "../../../Theme";
 
 export function Form() {
   const navigate = useNavigate();
@@ -27,8 +28,8 @@ export function Form() {
   const [passwordError, setPasswordError] = useState(false);
   const { accountType, setAccountType, setInstitution } = useSession();
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const handleTypeChange = (event: SelectChangeEvent<string>) => {
@@ -37,7 +38,7 @@ export function Form() {
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-    if (!emailRegex.test(event.target.value) && event.target.value != '') {
+    if (!emailRegex.test(event.target.value) && event.target.value != "") {
       setEmailError(true);
     } else {
       setEmailError(false);
@@ -46,7 +47,7 @@ export function Form() {
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value.length < 8 && event.target.value != '') {
+    if (event.target.value.length < 8 && event.target.value != "") {
       setPasswordError(true);
     } else {
       setPasswordError(false);
@@ -60,14 +61,14 @@ export function Form() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const email = data.get('email') as string;
-    const password = data.get('password') as string;
+    const email = data.get("email") as string;
+    const password = data.get("password") as string;
     //const remember = data.get('remember') as boolean;
 
-    if (!emailError && !passwordError && email !== '' && password !== '') {
+    if (!emailError && !passwordError && email !== "" && password !== "") {
       handleLogin(email, password);
-    } else if (email === '' || password === '') {
-      addToast('Preencha todos os campos', { appearance: 'error' });
+    } else if (email === "" || password === "") {
+      addToast("Preencha todos os campos", { appearance: "error" });
     }
   };
 
@@ -93,12 +94,12 @@ export function Form() {
         setInstitution(data.company_id);
       }
       if (data.success) {
-        navigate('/home');
+        navigate("/home");
       } else {
-        addToast('Email ou senha incorretos', { appearance: 'error' });
+        addToast("Email ou senha incorretos", { appearance: "error" });
       }
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error("Login failed:", error);
     }
   };
 
@@ -112,7 +113,9 @@ export function Form() {
       }}
     >
       <FormControl fullWidth>
-        <InputLabel id="type-login-label">Fazer login como</InputLabel>
+        <InputLabel id="type-login-label" sx={{ color: "text.primary" }}>
+          Fazer login como
+        </InputLabel>
         <Select
           value={accountType || undefined}
           defaultValue={AccountType.HEADOFFICE}
@@ -137,8 +140,9 @@ export function Form() {
         </Select>
       </FormControl>
       <TextField
+        sx={{ color: "text.primary" }}
         error={emailError}
-        helperText={emailError ? 'Email inválido' : ''}
+        helperText={emailError ? "Email inválido" : ""}
         margin="normal"
         required
         fullWidth
@@ -151,7 +155,7 @@ export function Form() {
       />
       <TextField
         error={passwordError}
-        helperText={passwordError ? 'Senha inválida' : ''}
+        helperText={passwordError ? "Senha inválida" : ""}
         margin="normal"
         required
         fullWidth
@@ -185,11 +189,11 @@ export function Form() {
             </Anchor>
           ) : accountType === AccountType.BRANCH ? (
             <Anchor id="forgot-password" to="/professor/list">
-              Esqueceu a senha?{' '}
+              Esqueceu a senha?{" "}
             </Anchor>
           ) : (
             <Anchor id="forgot-password" to="/branch/list">
-              Esqueceu a senha?{' '}
+              Esqueceu a senha?{" "}
             </Anchor>
           )}
         </Grid>
