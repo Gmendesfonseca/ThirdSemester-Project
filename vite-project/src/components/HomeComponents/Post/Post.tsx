@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { Box } from "@mui/system";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
+import { useState } from 'react';
+import { Box } from '@mui/system';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import { red } from '@mui/material/colors';
 import {
   ChatBubble,
   ChatBubbleOutline,
@@ -15,13 +15,14 @@ import {
   FavoriteBorder,
   MoreVert,
   Send,
-} from "@mui/icons-material";
-import { PostType } from "../../../services/posts";
-import { Checkbox, InputAdornment, MenuItem, TextField } from "@mui/material";
-import InMenu from "../../Menu/Menu";
-import { InModalDelete } from "../../Modal/DeleteModal";
-import { Comment } from "./Comment";
+} from '@mui/icons-material';
+import { PostType } from '../../../services/posts';
+import { Checkbox, InputAdornment, MenuItem, TextField } from '@mui/material';
+import InMenu from '../../Menu/Menu';
+import { InModalDelete } from '../../Modal/DeleteModal';
+import { Comment } from './Comment';
 import { CommentType } from '../../../services/comment/types';
+import { useSession } from '../../../context/SessionContext';
 
 interface PostProps {
   data: PostType;
@@ -34,6 +35,7 @@ export const Post = ({ data }: PostProps) => {
   const [showComments, setShowComments] = useState(false);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
+  const { user } = useSession();
 
   const handleLike = () => {
     setLiked(!liked);
@@ -41,7 +43,14 @@ export const Post = ({ data }: PostProps) => {
   };
 
   const handleSend = () => {
-    handleComment(message);
+    handleComment({
+      id: comments.length + 1,
+      postId: data.id,
+      author: user?.name,
+      text: message,
+      creatorId: comments.length + 1,
+      created_at: new Date().toISOString(),
+    } as CommentType);
     setMessage('');
   };
 
@@ -74,12 +83,12 @@ export const Post = ({ data }: PostProps) => {
             <IconButton aria-label="settings">
               <InMenu
                 anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
+                  vertical: 'bottom',
+                  horizontal: 'right',
                 }}
                 transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
+                  vertical: 'top',
+                  horizontal: 'right',
                 }}
                 renderAnchor={({ openMenu }) => (
                   <IconButton
@@ -119,12 +128,15 @@ export const Post = ({ data }: PostProps) => {
           alt={data.title}
         />
         <CardContent>
+          <Typography variant="body2" color="text.primary">
+            {data.description}
+          </Typography>
           <Box display="flex" alignItems="start" justifyContent="start">
             <Box flexGrow={1}>
               <IconButton aria-label="add to favorites" onClick={handleLike}>
                 <Checkbox
                   icon={<FavoriteBorder />}
-                  checkedIcon={<Favorite sx={{ color: "red" }} />}
+                  checkedIcon={<Favorite sx={{ color: 'red' }} />}
                   checked={liked}
                 />
               </IconButton>
@@ -142,9 +154,6 @@ export const Post = ({ data }: PostProps) => {
           </Box>
         </CardContent>
         <CardContent>
-          <Typography variant="body2" color="text.primary">
-            {data.description}
-          </Typography>
           {showComments && (
             <>
               <Box
