@@ -84,9 +84,9 @@ export const Navbar = (props) => {
     navigate("/login");
   };
 
-  const handleProfile = () => {
-    navigate("/profile");
-  };
+  // const handleProfile = () => {
+  //   navigate("/profile");
+  // };
 
   // const handleSettings = () => {
   //   navigate("/settings");

@@ -174,7 +174,7 @@
   border-radius: 10px;
 }
 
-@media (max-width: 1536px) {
+@media (max-width: 3000px) {
   .profile_header {
     height: 100px;
     width: 350px;

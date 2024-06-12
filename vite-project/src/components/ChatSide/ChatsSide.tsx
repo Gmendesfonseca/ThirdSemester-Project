@@ -5,28 +5,23 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  createTheme,
-} from '@mui/material';
-import { ChatType } from '../../services/chats';
-import { FriendsType } from '../../services/friends';
-import { RecentChat } from '../HomeComponents/RecentChat/RecentChat';
-import { useEffect, useState } from 'react';
-import faker from 'faker';
-import { ThemeProvider } from '@emotion/react';
-import { blue } from '@mui/material/colors';
-import { useNavigate } from 'react-router-dom';
-import { Home } from '@mui/icons-material';
+} from "@mui/material";
+import { ChatType } from "../../services/chats";
+import { FriendsType } from "../../services/friends";
+import { RecentChat } from "../HomeComponents/RecentChat/RecentChat";
+import { useEffect, useState } from "react";
+import faker from "faker";
+import { ThemeProvider } from "@emotion/react";
+import { blue } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
+import { Home } from "@mui/icons-material";
+import { darkTheme } from "../../Theme";
+import "../../pages/Chat/Chat.css";
 
 export default function ChatsSide() {
   const [chats, setChat] = useState<ChatType[]>([]);
   const [friends, setFriends] = useState<FriendsType[]>([]);
   const navigate = useNavigate();
-
-  const darkTheme = createTheme({
-    palette: {
-      mode: 'dark',
-    },
-  });
 
   useEffect(() => {
     const fakeChats = Array.from({ length: 20 }, () => ({
@@ -55,20 +50,16 @@ export default function ChatsSide() {
     setFriends(fakeOnlineFriends);
   }, []);
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Box
-        sx={{ display: { xs: 'none', lg: 'block' }, flex: { lg: 2, xl: 2 } }}
-        height="100%"
-        width="100%"
-      >
-        <Box position="fixed" height="80%" width="22%">
-          <ListItem disablePadding={location.pathname.includes('home')}>
+    <>
+      <ThemeProvider theme={darkTheme}>
+        <Box className="chatsSide" bgcolor={"background.paper"}>
+          <ListItem disablePadding={location.pathname.includes("home")}>
             <ListItemButton
               onClick={() => navigate(`/home`)}
               style={{
-                backgroundColor: location.pathname.includes('home')
+                backgroundColor: location.pathname.includes("home")
                   ? blue[50]
-                  : 'default',
+                  : "default",
               }}
             >
               <ListItemIcon>
@@ -78,27 +69,21 @@ export default function ChatsSide() {
             </ListItemButton>
           </ListItem>
           <Box
+            bgcolor={"background.paper"}
             sx={{
-              display: { lg: 'block' },
-              overflowY: 'auto',
-              height: '97.5%',
-              '&::-webkit-scrollbar': {
-                height: '8px',
-                width: '0px',
+              display: { lg: "block" },
+              overflowY: "auto",
+              height: "97.5%",
+              "&::-webkit-scrollbar": {
+                height: "8px",
+                width: "0px",
               },
-              '&::-webkit-scrollbar-thumb': {
-                backgroundColor: 'rgba(0,0,0,.1)',
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "rgba(0,0,0,.1)",
               },
             }}
           >
-            <List
-              sx={{
-                width: '100%',
-                maxWidth: 360,
-                maxHeight: '100%',
-                bgcolor: 'background.paper',
-              }}
-            >
+            <List className="chatsList">
               {chats.map(
                 (chat, index) =>
                   chat && (
@@ -109,12 +94,12 @@ export default function ChatsSide() {
                         data={chat}
                       />
                     </li>
-                  ),
+                  )
               )}
             </List>
           </Box>
         </Box>
-      </Box>
-    </ThemeProvider>
+      </ThemeProvider>
+    </>
   );
 }

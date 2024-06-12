@@ -1,0 +1,25 @@
+.ChatPage {
+  height: 100vh;
+}
+
+.chat {
+  display: flex;
+  height: calc(100vh - 70px);
+  width: 80%;
+}
+
+.chat_header {
+  height: 100px;
+  width: 100%;
+  background-color: aliceblue;
+}
+
+.chatsSide {
+  height: calc(100vh - 108px);
+  width: 20%;
+}
+
+.chatsList {
+  height: calc(100vh - 108px);
+  width: 100%;
+}

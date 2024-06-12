@@ -1,22 +1,27 @@
-import { Box, createTheme, Stack, ThemeProvider } from '@mui/material';
-import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
-import Chat from '../../components/Chats/Chat';
-import ChatsSide from '../../components/ChatSide/ChatsSide';
+import { Box, Stack, ThemeProvider } from "@mui/material";
+import { Navbar } from "../../components/HomeComponents/NavBar/Navbar";
+import Chat2 from "../../components/Chats/Chat2";
+import ChatsSide from "../../components/ChatSide/ChatsSide";
+import { darkTheme } from "../../Theme";
+import "./Chat.css";
 
 export function ChatView() {
-  const darkTheme = createTheme({
-    palette: {
-      mode: 'dark',
-    },
-  });
-
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box bgcolor={'background.default'} color={'text.primary'}>
+      <Box
+        className="ChatPage"
+        bgcolor={"background.default"}
+        color={"text.primary"}
+      >
         <Navbar navAct="InnerLink" />
-        <Stack direction="row" spacing={0} height="100%">
+        <Stack
+          spacing={0}
+          display={"flex"}
+          flexDirection={"row"}
+          justifyContent={"space-between"}
+        >
           <ChatsSide />
-          <Chat />
+          <Chat2 />
         </Stack>
       </Box>
     </ThemeProvider>
