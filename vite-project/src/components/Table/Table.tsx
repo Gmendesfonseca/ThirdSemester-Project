@@ -163,7 +163,7 @@ export function InTable<T extends Identifiable>(props: InTableProps<T>) {
       <TableContainer sx={{ width: "100%", height: "80%" }}>
         <Table
           sx={{
-            bgcolor: "background.default",
+
             minWidth: 750,
             overflow: "auto",
             position: "relative",
