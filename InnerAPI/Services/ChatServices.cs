@@ -1,4 +1,88 @@
-﻿// using System;
+﻿using InnerAPI.Dtos.Chat;
+using InnerAPI.Models;
+using System.Collections.Generic;
+using System.Linq;
+
+
+namespace InnerAPI.Services
+{
+    public class ChatService
+    {
+        private readonly Dictionary<int, Chat> _chats = new();
+        private readonly Dictionary<int, List<Message>> _messages = new();
+        private int _nextChatId = 1;
+        private int _nextMessageId = 1;
+
+        public SharedService sharedServices { get; }
+
+        public ChatService(SharedService sharedServices)
+        {
+            this.sharedServices = sharedServices;
+        }
+
+        public IEnumerable<Chat> GetChats() => _chats.Values;
+
+        public Chat? GetChatById(int id) => _chats.TryGetValue(id, out var chat) ? chat : null;
+
+        public Chat Register(RegisterChatDto newChat)
+        {
+            var chat = new Chat
+            {
+                Id = _nextChatId++,
+                UserId1 = (int)newChat.IdUser1,
+                UserId2 = (int)newChat.IdUser2,
+                DateCreation = DateTime.Now
+            };
+            _chats[chat.Id] = chat;
+            _messages[chat.Id] = new List<Message>();
+            return chat;
+        }
+
+        public Chat? Update(int id, Chat updatedChat)
+        {
+            if (!_chats.ContainsKey(id)) return null;
+
+            _chats[id] = updatedChat;
+            return updatedChat;
+        }
+
+        public bool Delete(int id)
+        {
+            if (!_chats.Remove(id)) return false;
+
+            _messages.Remove(id);
+            return true;
+        }
+
+        public void SendMessage(int chatId, int senderId, string text)
+        {
+            if (!_chats.ContainsKey(chatId)) return;
+
+            var message = new Message
+            {
+                Id = _nextMessageId++,
+                ChatId = chatId,
+                SenderId = senderId,
+                Text = text,
+                Timestamp = DateTime.Now
+            };
+
+            if (!_messages.ContainsKey(chatId))
+            {
+                _messages[chatId] = new List<Message>();
+            }
+            _messages[chatId].Add(message);
+        }
+
+        public IEnumerable<Message> GetMessages(int chatId)
+        {
+            return _messages.TryGetValue(chatId, out var messages) ? messages : Enumerable.Empty<Message>();
+        }
+    }
+}
+
+
+// using System;
 // using System.Collections.Generic;
 // using System.Linq;
 // using InnerAPI.Dtos.Chat;

@@ -1,4 +1,7 @@
 ﻿using InnerAPI.Services;
+using InnerAPI.Dtos.Chat;
+using InnerAPI.Models;
+
 
 namespace InnerAPI.Controllers
 {
@@ -6,20 +9,27 @@ namespace InnerAPI.Controllers
     {
         public static RouteGroupBuilder MapChatEndpoint(this WebApplication app, SharedService  sharedServices)
         {
-            ChatServices chatServices = new ChatServices(sharedServices);
+            ChatService chatServices = new ChatService(sharedServices);
             var group = app.MapGroup("chat").WithParameterValidation();
 
             //GET /{id}/chats
             group.MapGet("/{id}/chats", (int id) =>
             {
-                return Results.Ok(chatServices.GetChats().Where(s => s.UserId == id));
+                return Results.Ok(chatServices.GetChats().Where(s => s.UserId1 == id || s.UserId2 == id));
             });
 
             // GET /chat/{id}
             group.MapGet("/{id}", (int id) =>
             {
-                return Results.Ok(chatServices.GetChats().FirstOrDefault(s => s.Id == id));
+                var chat = chatServices.GetChatById(id);
+                return chat == null ? Results.NotFound() : Results.Ok(chat);
             });
+
+            //// GET /chat/{id}
+            //group.MapGet("/{id}", (int id) =>
+            //{
+            //    return Results.Ok(chatServices.GetChats().FirstOrDefault(s => s.Id == id));
+            //});
 
             // POST /chat/register
             group.MapPost("/register", (RegisterChatDto newChat) =>
@@ -32,23 +42,28 @@ namespace InnerAPI.Controllers
             // PUT /chat/{id}
             group.MapPut("/{id}", (int id, Chat updatedChat) =>
             {
+
                 var result = chatServices.Update(id, updatedChat);
-                if (result == null)
-                {
-                    return Results.NotFound();
-                }
-                return Results.Ok(result);
+                return result == null ? Results.NotFound() : Results.Ok(result);
+
+                //var result = chatServices.Update(id, updatedChat);
+                //if (result == null)
+                //{
+                //    return Results.NotFound();
+                //}
+                //return Results.Ok(result);
             });
 
             // DELETE /chat/{id}
             group.MapDelete("/{id}", (int id) =>
             {
                 bool deleted = chatServices.Delete(id);
-                if (!deleted)
-                {
-                    return Results.NotFound();
-                }
-                return Results.NoContent();
+                return deleted ? Results.NoContent() : Results.NotFound();
+                //if (!deleted)
+                //{
+                //    return Results.NotFound();
+                //}
+                //return Results.NoContent();
             });
 
             return group;
