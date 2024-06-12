@@ -1,17 +1,43 @@
 .ChatPage {
   height: 100vh;
+  width: 100%;
 }
 
 .chat {
   display: flex;
+  flex-direction: column;
   height: calc(100vh - 70px);
   width: 80%;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 10px;
 }
 
 .chat_header {
-  height: 100px;
+  /* position: fixed; */
+  display: flex;
+  align-items: center;
+  color: black;
+  height: 80px;
   width: 100%;
   background-color: aliceblue;
+  padding-left: 10px;
+}
+
+.chat_header button {
+  height: 35px;
+  width: 35px;
+  border: none;
+  background: none;
+  justify-self: flex-end;
+}
+
+.chat_header button:hover {
+  cursor: pointer;
+}
+
+.chat_header span {
+  margin: 10px;
 }
 
 .chatsSide {
@@ -22,4 +48,44 @@
 .chatsList {
   height: calc(100vh - 108px);
   width: 100%;
+}
+
+.chat_body {
+  background-color: #112733;
+  height: 90%;
+  width: 100%;
+}
+
+.chat_footer {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  height: 10%;
+  width: 100%;
+}
+
+.chat_footer input {
+  height: 100%;
+  width: 90%;
+  border: none;
+  padding-left: 10px;
+  outline: none;
+}
+
+.chat_footer button {
+  height: 100%;
+  width: 10%;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  font-size: medium;
+}
+
+.chat_footer button:hover {
+  background-color: cadetblue;
+  cursor: pointer;
+}
+
+.chat_footer button:active {
+  background-color: #304452;
 }

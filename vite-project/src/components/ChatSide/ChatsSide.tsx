@@ -52,7 +52,7 @@ export default function ChatsSide() {
   return (
     <>
       <ThemeProvider theme={darkTheme}>
-        <Box className="chatsSide" bgcolor={"background.paper"}>
+        <Box className="chatsSide" bgcolor={"#011824"} marginTop="10px">
           <ListItem disablePadding={location.pathname.includes("home")}>
             <ListItemButton
               onClick={() => navigate(`/home`)}
@@ -69,7 +69,7 @@ export default function ChatsSide() {
             </ListItemButton>
           </ListItem>
           <Box
-            bgcolor={"background.paper"}
+            bgcolor={"#011824"}
             sx={{
               display: { lg: "block" },
               overflowY: "auto",
