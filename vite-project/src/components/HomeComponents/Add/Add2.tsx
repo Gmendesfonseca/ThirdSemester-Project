@@ -14,7 +14,7 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Add as AddIcon, Close, Image, Videocam } from '@mui/icons-material';
 import { Box } from '@mui/system';
 
@@ -49,7 +49,7 @@ export const Add2 = () => {
         sx={{
           position: 'fixed',
           bottom: 20,
-          left: 30,
+          right: 30,
         }}
       >
         <Fab color="primary" aria-label="add">

@@ -60,6 +60,7 @@ export default function ChatsSide() {
             <ListItemButton
               onClick={() => navigate(`/home`)}
               style={{
+                borderRadius: "10px",
                 backgroundColor: location.pathname.includes("home")
                   ? blue[50]
                   : "default",

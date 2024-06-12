@@ -84,7 +84,12 @@ export const Rightbar = () => {
           <ListItem disablePadding>
             <ListItemButton
               onClick={() => navigate(`/friends`)}
-              sx={{ borderRadius: "20px", marginBottom: "10px" }}
+              sx={{
+                borderRadius: "10px",
+                marginBottom: "10px",
+                bgcolor: "background.paper",
+                ":hover": { backgroundColor: "#304452" },
+              }}
             >
               <ListItemIcon>
                 <Groups />
@@ -127,7 +132,11 @@ export const Rightbar = () => {
           <Typography variant="h6" fontWeight={100} my={2}>
             <ListItem disablePadding>
               <ListItemButton
-                sx={{ borderRadius: "20px" }}
+                sx={{
+                  borderRadius: "10px",
+                  bgcolor: "background.paper",
+                  ":hover": { backgroundColor: "#304452" },
+                }}
                 onClick={() => navigate(`/chat`)}
                 style={{
                   backgroundColor: location.pathname.includes("chat")
@@ -161,7 +170,7 @@ export const Rightbar = () => {
           >
             <List
               sx={{
-                borderRadius: "20px",
+                borderRadius: "10px",
                 width: "100%",
                 maxWidth: "auto",
                 maxHeight: "auto",

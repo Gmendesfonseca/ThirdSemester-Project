@@ -20,7 +20,7 @@ import Anchor from "../../Anchor/Anchor";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useSession } from "../../../context/SessionContext";
 import { AccountType } from "../../../services/login/enum";
-import { darkTheme } from "../../../Theme";
+// import { darkTheme } from "../../../Theme";
 
 export function Form() {
   const navigate = useNavigate();

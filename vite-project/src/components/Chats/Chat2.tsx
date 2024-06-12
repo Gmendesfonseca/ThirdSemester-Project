@@ -4,6 +4,9 @@ import SendIcon from "@mui/icons-material/Send";
 
 export default function Chat2() {
   const [hovered, setHovered] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState<string[]>([]);
 
   const handleMouseEnter = () => {
     setHovered(true);
@@ -14,7 +17,18 @@ export default function Chat2() {
   };
 
   const handleDropdownOpen = () => {
-    // Code to open the dropdown with 3 options
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleSendMessage = () => {
+    if (message.trim() !== "") {
+      setMessages([...messages, message]);
+      setMessage("");
+    }
+  };
+
+  const handleInputChange = (event) => {
+    setMessage(event.target.value);
   };
 
   return (
@@ -37,12 +51,29 @@ export default function Chat2() {
             </svg>
           </button>
         </div>
-        <div className="chat_body"></div>
+        <div className="chat_body">
+          {messages.map((message, index) => (
+            <div key={index} className="message">
+              {message}
+            </div>
+          ))}
+        </div>
         <div className="chat_footer">
-          <input type="text" placeholder="Digite uma mensagem" />
+          <input
+            type="text"
+            placeholder="Digite uma mensagem"
+            value={message}
+            onChange={handleInputChange}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                handleSendMessage();
+              }
+            }}
+          />
           <button
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={handleSendMessage}
           >
             {hovered ? (
               <SendIcon className={hovered ? "rotate" : ""} />

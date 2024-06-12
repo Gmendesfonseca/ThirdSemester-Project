@@ -10,7 +10,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import {
   Add as AddIcon,
   DateRange,
@@ -52,15 +52,7 @@ export const Add = () => {
 
   return (
     <>
-      <Tooltip
-        onClick={handleClickOpen}
-        title="Add Post"
-        sx={{
-          position: "fixed",
-          bottom: 20,
-          left: 30,
-        }}
-      >
+      <Tooltip onClick={handleClickOpen} title="Add Post">
         <Fab color="primary" aria-label="add">
           <AddIcon />
         </Fab>
