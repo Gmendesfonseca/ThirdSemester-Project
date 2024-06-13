@@ -22,9 +22,9 @@ export const Feed = () => {
   useEffect(() => {
     const fakePosts = Array.from({ length: 10 }).map(() => ({
       creatorId: faker.datatype.number(),
+      creatorName: faker.lorem.sentence(),
       id: faker.datatype.number(),
       title: faker.lorem.sentence(),
-      subheader: faker.lorem.sentence(),
       liked: faker.datatype.boolean(),
       likes: faker.datatype.number(),
       comments: Array.from({ length: 5 }).map(() => ({

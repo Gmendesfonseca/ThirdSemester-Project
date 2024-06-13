@@ -1,4 +1,4 @@
-import { PostType } from './types';
+import { CreatePostType, PostType } from './types';
 import { api } from '../api';
 
 // GET ALL
@@ -12,7 +12,7 @@ export function getAllPosts(id: number): Promise<PostType[]> {
 }
 
 // POST
-export function createPost(postData: PostType): Promise<PostType> {
+export function createPost(postData: CreatePostType): Promise<PostType> {
   return api.post<PostType>('/post', postData).then((response) => {
     if (response.status !== 201) {
       throw new Error('Error creating post');

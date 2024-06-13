@@ -1,7 +1,7 @@
 export type CommentType = {
   id: number;
-  author: string;
+  authorName: string;
+  authorImage: string;
   text: string;
-  creatorId: number;
   created_at: string;
 };

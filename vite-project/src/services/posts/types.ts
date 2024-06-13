@@ -2,12 +2,20 @@ import { CommentType } from '../comment/types';
 
 export type PostType = {
   id: number;
-  creatorId: number;
+  creatorName: string;
+  creatorImage: string;
   title: string;
-  subheader: string;
   image: string;
   liked: boolean;
   likes: number;
   comments: CommentType[];
+  description: string;
+};
+
+export type CreatePostType = {
+  creatorId: number;
+  creatorName: string;
+  title: string;
+  image: string | ArrayBuffer | null | undefined;
   description: string;
 };

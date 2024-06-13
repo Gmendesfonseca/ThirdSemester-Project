@@ -24,11 +24,12 @@ export function getBranch(id: number): Promise<BranchType> {
   });
 }
 
-//POST /branch/register
+//POST /branch/${id}register
 export function registerBranch(
+  id,
   branch: RegisterBranchParams,
 ): Promise<RegisterResponse> {
-  return api.post('/branch/register', branch).then((response) => {
+  return api.post(`/branch/${id}/register`, branch).then((response) => {
     if (response.status !== 200) {
       throw new Error('Failed to register branch');
     }

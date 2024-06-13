@@ -1,6 +1,6 @@
 export type FriendsType = {
   name: string;
-  src: string;
+  image: string;
   online: boolean;
 };
 

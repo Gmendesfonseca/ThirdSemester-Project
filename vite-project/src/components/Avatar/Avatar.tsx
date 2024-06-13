@@ -74,7 +74,7 @@ export const OnlineAvatar = ({ data }: AvatarProps) => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         variant="dot"
       >
-        <Avatar alt={data.name} src={data.src} />
+        <Avatar alt={data.name} src={data.image} />
       </OnlineBadge>
     </Box>
   );
@@ -88,7 +88,7 @@ export const OfflineAvatar = ({ data }: AvatarProps) => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         variant="dot"
       >
-        <Avatar alt={data.name} src={data.src} />
+        <Avatar alt={data.name} src={data.image} />
       </OfflineBadge>
     </Box>
   );

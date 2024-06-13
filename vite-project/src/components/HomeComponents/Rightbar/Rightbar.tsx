@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Box } from "@mui/system";
+import { useEffect, useState } from 'react';
+import { Box } from '@mui/system';
 import {
   AvatarGroup,
   Divider,
@@ -8,23 +8,23 @@ import {
   ListItemButton,
   ListItemIcon,
   Typography,
-} from "@mui/material";
-import { AvatarComponent } from "../../Avatar/Avatar";
-import { RecentChat } from "../RecentChat/RecentChat";
+} from '@mui/material';
+import { AvatarComponent } from '../../Avatar/Avatar';
+import { RecentChat } from '../RecentChat/RecentChat';
 import {
   ChatType,
   // getChat
-} from "../../../services/chats/index";
+} from '../../../services/chats/index';
 import {
   FriendsType,
   // getFriends
-} from "../../../services/friends/index";
-import faker from "faker";
-import { useNavigate } from "react-router-dom";
-import { ThemeProvider } from "@emotion/react";
-import { darkTheme } from "../../../Theme";
-import { blue } from "@mui/material/colors";
-import { Chat, Groups } from "@mui/icons-material";
+} from '../../../services/friends/index';
+import faker from 'faker';
+import { useNavigate } from 'react-router-dom';
+import { ThemeProvider } from '@emotion/react';
+import { darkTheme } from '../../../Theme';
+import { blue } from '@mui/material/colors';
+import { Chat, Groups } from '@mui/icons-material';
 
 export const Rightbar = () => {
   const [chats, setChat] = useState<ChatType[]>([]);
@@ -76,7 +76,7 @@ export const Rightbar = () => {
       <Box
         pt={2}
         pl={2}
-        sx={{ display: { xs: "none", lg: "block" }, flex: { lg: 2, xl: 1 } }}
+        sx={{ display: { xs: 'none', lg: 'block' }, flex: { lg: 2, xl: 1 } }}
         // height="100%"
         // width="100%"
       >
@@ -85,10 +85,10 @@ export const Rightbar = () => {
             <ListItemButton
               onClick={() => navigate(`/friends`)}
               sx={{
-                borderRadius: "10px",
-                marginBottom: "10px",
-                bgcolor: "background.paper",
-                ":hover": { backgroundColor: "#304452" },
+                borderRadius: '10px',
+                marginBottom: '10px',
+                bgcolor: 'background.paper',
+                ':hover': { backgroundColor: '#304452' },
               }}
             >
               <ListItemIcon>
@@ -101,32 +101,32 @@ export const Rightbar = () => {
           </ListItem>
           <Box
             sx={{
-              paddingLeft: "8px",
-              overflowY: "hidden",
-              overflowX: "scroll",
-              maxWidth: "100%",
-              "&::-webkit-scrollbar": {
-                height: "0px",
-                width: "8px",
+              paddingLeft: '8px',
+              overflowY: 'hidden',
+              overflowX: 'scroll',
+              maxWidth: '100%',
+              '&::-webkit-scrollbar': {
+                height: '0px',
+                width: '8px',
               },
-              "&::-webkit-scrollbar-thumb": {
-                backgroundColor: "rgba(0,0,0,.1)",
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: 'rgba(0,0,0,.1)',
               },
             }}
           >
             <AvatarGroup
               max={friends.length}
               sx={{
-                justifyContent: "start",
-                height: "100%",
-                width: "100%",
-                bgcolor: "background.paper",
-                borderRadius:"10px"
+                justifyContent: 'start',
+                height: '100%',
+                width: '100%',
+                bgcolor: 'background.paper',
+                borderRadius: '10px',
               }}
             >
               {friends.map(
                 (friends, index) =>
-                  friends && <AvatarComponent key={index} data={friends} />
+                  friends && <AvatarComponent key={index} data={friends} />,
               )}
             </AvatarGroup>
           </Box>
@@ -134,15 +134,15 @@ export const Rightbar = () => {
             <ListItem disablePadding>
               <ListItemButton
                 sx={{
-                  borderRadius: "10px",
-                  bgcolor: "background.paper",
-                  ":hover": { backgroundColor: "#304452" },
+                  borderRadius: '10px',
+                  bgcolor: 'background.paper',
+                  ':hover': { backgroundColor: '#304452' },
                 }}
                 onClick={() => navigate(`/chat`)}
                 style={{
-                  backgroundColor: location.pathname.includes("chat")
+                  backgroundColor: location.pathname.includes('chat')
                     ? blue[50]
-                    : "default",
+                    : 'default',
                 }}
               >
                 <ListItemIcon>
@@ -157,25 +157,25 @@ export const Rightbar = () => {
           <Divider />
           <Box
             sx={{
-              display: { lg: "block" },
-              overflowY: "auto",
-              height: "97.5%",
-              "&::-webkit-scrollbar": {
-                height: "8px",
-                width: "0px",
+              display: { lg: 'block' },
+              overflowY: 'auto',
+              height: '97.5%',
+              '&::-webkit-scrollbar': {
+                height: '8px',
+                width: '0px',
               },
-              "&::-webkit-scrollbar-thumb": {
-                backgroundColor: "rgba(0,0,0,.1)",
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: 'rgba(0,0,0,.1)',
               },
             }}
           >
             <List
               sx={{
-                borderRadius: "10px",
-                width: "100%",
-                maxWidth: "auto",
-                maxHeight: "auto",
-                bgcolor: "background.paper",
+                borderRadius: '10px',
+                width: '100%',
+                maxWidth: 'auto',
+                maxHeight: 'auto',
+                bgcolor: 'background.paper',
               }}
             >
               {chats.map(
@@ -188,7 +188,7 @@ export const Rightbar = () => {
                         data={chat}
                       />
                     </li>
-                  )
+                  ),
               )}
             </List>
           </Box>

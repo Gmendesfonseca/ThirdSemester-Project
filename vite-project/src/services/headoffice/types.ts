@@ -1,5 +1,3 @@
-import { CourseType } from '../courses';
-
 export type HeadOfficeType = {
   id: number;
   name: string;
@@ -9,9 +7,6 @@ export type HeadOfficeType = {
   cnpj: string;
   localidadeInstituicao?: string;
   dataCriacao?: Date;
-  courses?: CourseType[];
-  students?: number[];
-  professors?: number[];
 };
 
 export type UpdateHeadOfficeParams = {

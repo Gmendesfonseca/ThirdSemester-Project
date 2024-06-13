@@ -14,9 +14,12 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import { useState } from 'react';
-import { Add as AddIcon, Close, Image, Videocam } from '@mui/icons-material';
+import { ChangeEvent, useState } from 'react';
+import { Add as AddIcon, Close, Image } from '@mui/icons-material';
 import { Box } from '@mui/system';
+import './Add.css';
+import { createPost } from '../../../services/posts';
+import { useSession } from '../../../context/SessionContext';
 
 const StyledModal = styled(Modal)({
   display: 'flex',
@@ -32,6 +35,12 @@ const UserBox = styled(Box)({
 });
 export const Add2 = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const { user } = useSession();
+  const [title, setTitle] = useState<string>('');
+  const [image, setImage] = useState<string | ArrayBuffer | null>();
+  const [description, setDescription] = useState<string>('');
+  const creatorId = user?.id;
+  const creatorName = user?.name;
 
   const handleClickOpen = (): void => {
     setOpen(true);
@@ -40,6 +49,56 @@ export const Add2 = () => {
   const handleModalClose = () => {
     setOpen(false);
   };
+
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
+
+  const handleDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setDescription(e.target.value);
+  };
+
+  const handleCreatePost = () => {
+    creatorId &&
+      creatorName &&
+      title &&
+      image &&
+      description &&
+      createPost({ creatorId, creatorName, title, image, description });
+  };
+
+  function handleOpenButtonClicked() {
+    const acceptList = ['image/png', 'image/jpg', 'image/jpeg'];
+
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = acceptList.join(',');
+    fileInput.multiple = false;
+    fileInput.style.display = 'none';
+    fileInput.addEventListener(
+      'change',
+      function () {
+        if (this.files && this.files.length > 0) {
+          const reader = new FileReader();
+
+          reader.addEventListener(
+            'load',
+            function () {
+              setImage(reader.result);
+              fileInput.remove();
+            },
+            false,
+          );
+
+          reader.readAsDataURL(this.files[0]);
+        }
+      },
+      false,
+    );
+
+    document.body.append(fileInput);
+    fileInput.click();
+  }
 
   return (
     <>
@@ -76,6 +135,9 @@ export const Add2 = () => {
                   </Stack>
                 </UserBox>
               </Stack>
+              <Typography variant="h6" color="white" textAlign="center">
+                Criar Nova Publicação
+              </Typography>
               <div>
                 <IconButton onClick={handleModalClose}>
                   <Close />
@@ -86,6 +148,15 @@ export const Add2 = () => {
           <DialogContent
             sx={{ display: 'flex', flexDirection: 'column', gap: '8px', py: 0 }}
           >
+            <Box>
+              <InputBase
+                placeholder="Insira o título do seu post aqui"
+                fullWidth
+                multiline
+                minRows={1}
+                onChange={handleTitleChange}
+              />
+            </Box>
             <Box
               sx={{
                 borderTop: '1px solid #ECECEC',
@@ -98,6 +169,7 @@ export const Add2 = () => {
                 fullWidth
                 multiline
                 minRows={6}
+                onChange={handleDescriptionChange}
               />
             </Box>
           </DialogContent>
@@ -113,14 +185,22 @@ export const Add2 = () => {
               }}
             >
               <Stack direction="row" alignItems="center" spacing={0.5}>
-                <IconButton sx={{ p: 0, borderRadius: '2px' }}>
-                  <Image sx={{ fontSize: '22px' }} />
-                </IconButton>
-                <IconButton sx={{ p: 0, borderRadius: '2px' }}>
-                  <Videocam sx={{ fontSize: '24px' }} />
-                </IconButton>
+                <div className="__itens__icons__photo">
+                  <label htmlFor="postType_img">
+                    <Image />
+                  </label>
+                  <input
+                    id="postType_img"
+                    type="file"
+                    multiple
+                    accept=".png, .jpg, .jpeg"
+                    onChange={handleOpenButtonClicked}
+                  />
+                </div>
               </Stack>
-              <Button variant="contained">Publicar agora</Button>
+              <Button variant="contained" onClick={handleCreatePost}>
+                Publicar agora
+              </Button>
             </Stack>
           </DialogActions>
         </Dialog>

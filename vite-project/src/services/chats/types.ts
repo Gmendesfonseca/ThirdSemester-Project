@@ -5,15 +5,14 @@ export type ChatType = {
   name: string;
   description: string;
   messages: MessageType[];
-  icon: string;
+  image: string;
   updated_at: string;
-  created_at: string;
 };
 
 export type RegisterChatParams = {
   name: string;
   description: string;
-  icon: string;
+  image: string;
 };
 
 export type UpdateChatParams = {
