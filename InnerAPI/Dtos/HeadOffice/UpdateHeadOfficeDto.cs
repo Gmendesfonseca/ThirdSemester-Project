@@ -11,6 +11,7 @@ namespace InnerAPI.Dtos
         [Required] string Address,
         [Required] string CNPJ,
         [Required] string Domain,
+        [Required] string Password,
         List<BranchDto>? Branches = null
     )
     {
@@ -20,6 +21,7 @@ namespace InnerAPI.Dtos
         public string Address { get; init; } = Address;
         public string CNPJ { get; init; } = CNPJ;
         public string Domain { get; init; } = Domain;
+        public string Password { get; init; } = Password;
         public List<BranchDto>? Branches { get; init; } = Branches ?? new List<BranchDto>();
     }
 }

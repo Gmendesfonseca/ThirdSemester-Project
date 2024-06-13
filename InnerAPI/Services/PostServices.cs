@@ -33,8 +33,8 @@ namespace InnerAPI.Services
             }
             uint id = (uint)posts.Count + 1;
             Post newPost = new Post(id, post.CreatorName, post.CreatorImage, post.Title, post.Image, post.Description);
-            posts.Push(newPost);
             institution.addPost(newPost.Id);
+            posts.Push(newPost);
         }
 
         public Post Update(int id, Post updatedPost)

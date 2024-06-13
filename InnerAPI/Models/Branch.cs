@@ -9,7 +9,7 @@ namespace InnerAPI.Models
         private List<CourseDto> courses;
         private readonly List<uint> students;
         private readonly List<uint> professors;
-        private Stack<Post> feed;
+        private Stack<uint> feed;
         #endregion
 
         #region "Construtores"
@@ -18,7 +18,7 @@ namespace InnerAPI.Models
             courses = new List<CourseDto>();
             students = new List<uint>();
             professors = new List<uint>();
-            feed = new Stack<Post>();
+            feed = new Stack<uint>();
         }
 
         public Branch(uint id, string name, string email, string password, string cnpj) : base()
@@ -34,7 +34,7 @@ namespace InnerAPI.Models
             courses = new List<CourseDto>();
             students = new List<uint>();
             professors = new List<uint>();
-            feed = new Stack<Post>();
+            feed = new Stack<uint>();
         }
 
         public Branch(uint id, string name, string email, string password, string address, DateOnly creationDate, string cnpj) : base()
@@ -51,7 +51,7 @@ namespace InnerAPI.Models
             courses = new List<CourseDto>();
             students = new List<uint>();
             professors = new List<uint>();
-            feed = new Stack<Post>();
+            feed = new Stack<uint>();
         }
         #endregion
 
@@ -71,56 +71,25 @@ namespace InnerAPI.Models
             get { return professors; }
         }
 
-        public Stack<Post> Feed
+        public Stack<uint> Feed
         {
-            get
-            {
-                List<Post> listPosts = new List<Post>();
-                for (int i = 0; i < feed.Count; i++)
-                {
-                    listPosts.Add(feed.Pop());
-                }
-                return feed;
-            }
+            get { return feed; }
         }
-        public void addPost(Post post)
-        {
-            feed.Push(post);
-        }
-        public Post updatePost(int id, Post postUpdate)
-        {
-            Stack<Post> tempStack = new Stack<Post>();
-            Post updatedPost = null;
 
+        public object Type { get; internal set; }
+
+        public void addPost(uint id)
+        {
+            feed.Push(id);
+        }
+        
+        public void removePost(uint id)
+        {
+            Stack<uint> tempStack = new Stack<uint>();
             while (feed.Count > 0)
             {
-                Post currentPost = feed.Pop();
-                if (currentPost.IdPost != id)
-                {
-                    tempStack.Push(currentPost);
-                }
-                else
-                {
-                    // Update the post here
-                    // currentPost.SomeProperty = newValue;
-                    updatedPost = currentPost;
-                }
-            }
-
-            while (tempStack.Count > 0)
-            {
-                feed.Push(tempStack.Pop());
-            }
-
-            return updatedPost;
-        }
-        public void removePost(Post postDelete)
-        {
-            Stack<Post> tempStack = new Stack<Post>();
-            while (feed.Count > 0)
-            {
-                Post currentPost = feed.Pop();
-                if (currentPost != postDelete)
+                uint currentPost = feed.Pop();
+                if (currentPost != id)
                 {
                     tempStack.Push(currentPost);
                 }

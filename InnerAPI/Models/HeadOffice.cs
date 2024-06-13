@@ -1,4 +1,6 @@
-﻿namespace InnerAPI.Models
+﻿using InnerAPI.Dtos.Login;
+
+namespace InnerAPI.Models
 {
     public class HeadOffice : Institution
     {
