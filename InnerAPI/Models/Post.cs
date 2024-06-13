@@ -8,10 +8,14 @@ namespace InnerAPI.Models
         #region "Declaração de variáveis"
 
         private uint _idPost;
+        private string _creatorName;
+        private string _creatorImage;
         private string _titlePost;
+        private string _imagePost;
+        private string _description;
         private uint _numLikes;
-        private List<string> _comments;
-        private List<string> _contentPosts;
+        private List<Likers> _likes; //ids dos usuarios que curtiram
+        private List<Comment> _comments; // idComment, authorName, authorImage, commentContent, dateComment
         private DateOnly _datePost;
 
         #endregion
@@ -20,59 +24,37 @@ namespace InnerAPI.Models
 
         public Post()
         {
-            _comments = new List<string>();
-            _contentPosts = new List<string>();
+            _likes = new List<Likers>();
+            _comments = new List<Comment>();
         }
-
-        public Post(uint idPost, string titlePost, uint numLikes, List<string> comments, List<string> contentPosts, DateOnly datePost)
+        public Post(uint idPost, string creatorName, string creatorImage, string titlePost, string imagePost,  string description)
         {
             _idPost = idPost;
+            _creatorName = creatorName;
+            _creatorImage = creatorImage;
             _titlePost = titlePost;
-            _numLikes = numLikes;
-            _comments = comments ?? new List<string>();
-            _contentPosts = contentPosts ?? new List<string>();
-            _datePost = datePost;
-        }
+            _imagePost = imagePost;
+            _description = description;
+            _numLikes = 0;
+            _likes =  new List<Likers>();
+            _comments =  new List<Comment>();
+            _datePost = DateOnly.FromDateTime(DateTime.Now);
 
+        
+        }
         #endregion
 
         #region "Propriedades"
 
-        public uint IdPost
-        {
-            get { return _idPost; }
-            set { _idPost = value; }
-        }
-
-        public string TitlePost
-        {
-            get { return _titlePost; }
-            set { _titlePost = value; }
-        }
-
-        public uint NumLikes
-        {
-            get { return _numLikes; }
-            set { _numLikes = value; }
-        }
-
-        public List<string> Comments
-        {
-            get { return _comments; }
-            set { _comments = value; }
-        }
-
-        public List<string> ContentPosts
-        {
-            get { return _contentPosts; }
-            set { _contentPosts = value; }
-        }
-
-        public DateOnly DatePost
-        {
-            get { return _datePost; }
-            set { _datePost = value; }
-        }
+        public uint IdPost { get => _idPost; set => _idPost = value; }
+        public string CreatorName { get => _creatorName; set => _creatorName = value; }
+        public string CreatorImage { get => _creatorImage; set => _creatorImage = value; }
+        public string TitlePost { get => _titlePost; set => _titlePost = value; }
+        public string ImagePost { get => _imagePost; set => _imagePost = value; }
+        public uint NumLikes { get => _numLikes; set => _numLikes = value; }
+        public List<Likers> Likes { get => _likes; set => _likes = value; }
+        public List<Comment> Comments { get => _comments; set => _comments = value; }
+        public DateOnly DatePost { get => _datePost; set => _datePost = value; }
 
         public uint InstitutionId { get; internal set; }
 

@@ -1,4 +1,4 @@
-﻿using InnerAPI.Dtos.Aluno;
+using InnerAPI.Dtos.Aluno;
 using InnerAPI.Dtos.Login;
 using InnerAPI.Models;
 using InnerAPI.Utils;
@@ -12,21 +12,19 @@ namespace InnerAPI.Services
 
         public StudentServices(SharedService _sharedService)
         {
-            students = new List<Student>();
+            students = _sharedService.Students;
             institutions = _sharedService.Branches;
         }
 
-        public Student Register(RegisterStudentDto register)
+        public Student Register(uint branchId, RegisterStudentDto register)
         {
-            var institution = GetBranch(register.Email);
+            var institution = institutions.FirstOrDefault(i => i.Id == branchId);
             
             if (institution == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
             }
-             students = institution.Students;    
 
-            // Verifica se o estudante já existe
             var existingStudent = students.Exists(r => r.Registration == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
             if (existingStudent)
             {
@@ -36,7 +34,8 @@ namespace InnerAPI.Services
             // Cria e adiciona o novo estudante à instituição correta
             uint id = (uint)students.Count + 1;
             Student newStudent = new Student(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.Curso, register.Periodo, register.Pontuacao);
-            //institution.Students.Add(newStudent);
+
+            institution.addStudent(newStudent.Id);
             students.Add(newStudent);
 
             return newStudent;
@@ -88,7 +87,12 @@ namespace InnerAPI.Services
             student.Registration = newStudent.Registration;
             student.CPF = newStudent.CPF;
             student.BirthDate = newStudent.BirthDate;
+<<<<<<< HEAD
             student.Institution = newStudent.Institution;
+=======
+            //student.Instituicao = newStudent.Instituicao;
+            //student.Instituicao = newStudent.Instituicao;
+>>>>>>> f618f58ca5233d05d9e86427fe0c81dce5f1cb1f
             student.Curso = newStudent.Curso;
             student.Periodo = newStudent.Periodo;
            // student.Pontuacao = newStudent.Pontuacao;
@@ -114,14 +118,23 @@ namespace InnerAPI.Services
         //     return true;
         // }
 
-        public List<Student> GetStudents(string email)
+        public List<Student> GetStudents()
+        public List<Student> GetStudents()
         {
-            Branch institution = GetBranch(email);
-            if (institution == null)
-            {
-                throw new ArgumentException("Instituição não encontrada.");
-            }
-            return institution.Students;
+            return institutions.SelectMany(i => i.Students).ToList();
+            //Branch institution = GetBranch(email);
+            //if (institution == null)
+            //{
+            //    throw new ArgumentException("Instituição não encontrada.");
+            //}
+            //return institution.Students;
+            return institutions.SelectMany(i => i.Students).ToList();
+            //Branch institution = GetBranch(email);
+            //if (institution == null)
+            //{
+            //    throw new ArgumentException("Instituição não encontrada.");
+            //}
+            //return institution.Students;
         }
 
         public Branch GetBranch(string email)

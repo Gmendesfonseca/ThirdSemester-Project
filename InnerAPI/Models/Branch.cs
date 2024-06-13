@@ -7,18 +7,18 @@ namespace InnerAPI.Models
     {
         #region "Declaração de variáveis"
         private List<CourseDto> courses;
-        private readonly List<Student> students;
-        private readonly List<Professor> professors;
-        private Stack<Post> feed;
+        private readonly List<uint> students;
+        private readonly List<uint> professors;
+        private Stack<uint> feed;
         #endregion
 
         #region "Construtores"
         public Branch() : base()
         {
             courses = new List<CourseDto>();
-            students = new List<Student>();
-            professors = new List<Professor>();
-            feed = new Stack<Post>();
+            students = new List<uint>();
+            professors = new List<uint>();
+            feed = new Stack<uint>();
         }
 
         public Branch(uint id, string name, string email, string password, string cnpj) : base()
@@ -30,10 +30,11 @@ namespace InnerAPI.Models
             Online = false;
             Active = true;
             CNPJ = cnpj;
+            Domain = email.Split('@')[1];
             courses = new List<CourseDto>();
-            students = new List<Student>();
-            professors = new List<Professor>();
-            feed = new Stack<Post>();
+            students = new List<uint>();
+            professors = new List<uint>();
+            feed = new Stack<uint>();
         }
 
         public Branch(uint id, string name, string email, string password, string address, DateOnly creationDate, string cnpj) : base()
@@ -48,9 +49,9 @@ namespace InnerAPI.Models
             CreationDate = creationDate;
             CNPJ = cnpj;
             courses = new List<CourseDto>();
-            students = new List<Student>();
-            professors = new List<Professor>();
-            feed = new Stack<Post>();
+            students = new List<uint>();
+            professors = new List<uint>();
+            feed = new Stack<uint>();
         }
         #endregion
 
@@ -60,69 +61,35 @@ namespace InnerAPI.Models
             get { return courses; }
         }
 
-        public List<Student> Students
+        public List<uint> Students
         {
             get { return students; }
         }
 
-        public List<Professor> Professors
+        public List<uint> Professors
         {
             get { return professors; }
         }
 
-        public Stack<Post> Feed
+        public Stack<uint> Feed
         {
-            get
-            {
-                List<Post> listPosts = new List<Post>();
-                for (int i = 0; i < feed.Count; i++)
-                {
-                    listPosts.Add(feed.Pop());
-                }
-                return feed;
-            }
+            get { return feed; }
         }
 
         public object Type { get; internal set; }
 
-        public void addPost(Post post)
+        public void addPost(uint id)
         {
-            feed.Push(post);
+            feed.Push(id);
         }
-        public Post updatePost(int id, Post postUpdate)
+        
+        public void removePost(uint id)
         {
-            Stack<Post> tempStack = new Stack<Post>();
-            Post updatedPost = null;
-
+            Stack<uint> tempStack = new Stack<uint>();
             while (feed.Count > 0)
             {
-                Post currentPost = feed.Pop();
-                if (currentPost.IdPost != id)
-                {
-                    tempStack.Push(currentPost);
-                }
-                else
-                {
-                    // Update the post here
-                    // currentPost.SomeProperty = newValue;
-                    updatedPost = currentPost;
-                }
-            }
-
-            while (tempStack.Count > 0)
-            {
-                feed.Push(tempStack.Pop());
-            }
-
-            return updatedPost;
-        }
-        public void removePost(Post postDelete)
-        {
-            Stack<Post> tempStack = new Stack<Post>();
-            while (feed.Count > 0)
-            {
-                Post currentPost = feed.Pop();
-                if (currentPost != postDelete)
+                uint currentPost = feed.Pop();
+                if (currentPost != id)
                 {
                     tempStack.Push(currentPost);
                 }
@@ -131,6 +98,21 @@ namespace InnerAPI.Models
             {
                 feed.Push(tempStack.Pop());
             }
+        }
+
+        public void addCourse(CourseDto course)
+        {
+            courses.Add(course);
+        }
+
+        public void addStudent(uint id)
+        {
+            students.Add(id);
+        }
+
+        public void addProfessor(uint id)
+        {
+            professors.Add(id);
         }
         #endregion
     }

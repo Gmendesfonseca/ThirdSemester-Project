@@ -5,6 +5,7 @@ namespace InnerAPI.Services
 {
     public class CourseServices
     {
+<<<<<<< HEAD
         public Course Register(RegisterCourseDto registerCourseDto) => null;
         public CourseServices Update(int id, Course course) => null;
 
@@ -16,5 +17,8 @@ namespace InnerAPI.Services
         public void GetCourses() { }
 
         public CourseServices(SharedService sharedService) { }
+=======
+        
+>>>>>>> f618f58ca5233d05d9e86427fe0c81dce5f1cb1f
     }
 }

@@ -2,6 +2,21 @@
 {
     public class Course
     {
+<<<<<<< HEAD
         public int Id { get; set; }
+=======
+        public uint Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int Credits { get; set; }
+
+        public Course(uint id, string name, string description, int credits)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            Credits = credits;
+        }
+>>>>>>> f618f58ca5233d05d9e86427fe0c81dce5f1cb1f
     }
 }

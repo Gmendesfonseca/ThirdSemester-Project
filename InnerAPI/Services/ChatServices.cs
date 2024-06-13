@@ -4,22 +4,47 @@ using System.Collections.Generic;
 using System.Linq;
 
 
+using InnerAPI.Dtos.Chat;
+using InnerAPI.Models;
+using System.Collections.Generic;
+using System.Linq;
+
+
 namespace InnerAPI.Services
 {
     public class ChatService
     {
+        //   type ChatType = {
+        //   id: string;
+        //   user1: UserType;         //só no back
+        //   user2: UserType;         //só no back
+        //   name: string;            //Nome do user != meu id
+        //   description: string;     //Ultima mensagem enviada
+        //   messages: MessageType[]; //Isso é um array de mensagens
+        //   image: string;           //Imagem do user != meu id
+        //   updated_at: string;
+        // };
+
+        // export type MessageType = {
+        //   id: string;
+        //   text: string;
+        //   creatorName: number;
+        //   creatorImage: string;
+        //   creatorAccountType: AccountType;
+        //   created_at: string;
+        // };
+
+        // export enum AccountType {
+        //   HEADOFFICE = 'HEADOFFICE',
+        //   BRANCH = 'BRANCH',
+        //   PROFESSOR = 'PROFESSOR',
+        //   STUDENT = 'STUDENT',
+        // }
+
         private readonly Dictionary<int, Chat> _chats = new();
         private readonly Dictionary<int, List<Message>> _messages = new();
         private int _nextChatId = 1;
         private int _nextMessageId = 1;
-
-
-        public SharedService sharedServices { get; }
-
-        public ChatService(SharedService sharedServices)
-        {
-            this.sharedServices = sharedServices;
-        }
 
 
         public IEnumerable<Chat> GetChats() => _chats.Values;
