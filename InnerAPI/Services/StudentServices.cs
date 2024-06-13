@@ -19,6 +19,7 @@ namespace InnerAPI.Services
         public Student Register(RegisterStudentDto register)
         {
             var institution = GetBranch(register.Email);
+
             
             if (institution == null)
             {
@@ -88,7 +89,7 @@ namespace InnerAPI.Services
             student.Registration = newStudent.Registration;
             student.CPF = newStudent.CPF;
             student.BirthDate = newStudent.BirthDate;
-            student.Instituicao = newStudent.Instituicao;
+            //student.Instituicao = newStudent.Instituicao;
             student.Curso = newStudent.Curso;
             student.Periodo = newStudent.Periodo;
            // student.Pontuacao = newStudent.Pontuacao;
@@ -114,14 +115,15 @@ namespace InnerAPI.Services
         //     return true;
         // }
 
-        public List<Student> GetStudents(string email)
+        public List<Student> GetStudents()
         {
-            Branch institution = GetBranch(email);
-            if (institution == null)
-            {
-                throw new ArgumentException("Instituição não encontrada.");
-            }
-            return institution.Students;
+            return institutions.SelectMany(i => i.Students).ToList();
+            //Branch institution = GetBranch(email);
+            //if (institution == null)
+            //{
+            //    throw new ArgumentException("Instituição não encontrada.");
+            //}
+            //return institution.Students;
         }
 
         public Branch GetBranch(string email)
