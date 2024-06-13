@@ -81,11 +81,11 @@
 }
 
 .chat_body {
-  overflow-y: auto;
-  scrollbar-width: thin;
   display: flex;
+  overflow: auto;
+  scrollbar-width: thin;
   flex-direction: column;
-  /* justify-content: flex-end; */
+  justify-content: flex-end;
   align-items: flex-end;
   background-color: #112733;
   height: 90%;
@@ -102,6 +102,7 @@
 }
 
 .chat_footer input {
+  font-size: 1rem;
   height: 100%;
   width: 90%;
   border: none;
