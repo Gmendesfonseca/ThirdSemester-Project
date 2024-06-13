@@ -32,7 +32,7 @@ export const Comment = ({ comment }) => {
         <Avatar />
         <ListItemText
           sx={{ paddingX: '10px' }}
-          primary={comment.author + ':'}
+          primary={comment.author}
           secondary={
             <React.Fragment>
               <Typography component="p" variant="body2" color="text.primary">
