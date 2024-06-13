@@ -1,4 +1,6 @@
-﻿using InnerAPI.Services;
+﻿using InnerAPI.Dtos.Courses;
+using InnerAPI.Models;
+using InnerAPI.Services;
 
 namespace InnerAPI.Controllers
 {

@@ -8,7 +8,7 @@ namespace InnerAPI.Dtos.Post
         [Required] string Title,
         [Required] uint Likes, //Talvez mudar tipo para ushort
         //[Required] Comments Comments,
-        [Required] string Content,
+        [Required] List<string> Content,
         [Required] DateOnly DataPostagem,
         [Required] uint CreatorId,
         [Required] uint InstitutionId

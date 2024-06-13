@@ -90,7 +90,10 @@ namespace InnerAPI.Services
         }
 
         public bool Delete(int id)
-        { branches.RemoveAll(usuario => usuario.Id == id); return true; }
+        { 
+            branches.RemoveAll(usuario => usuario.Id == id); 
+            return true; 
+        }
 
         public void SuspenderAcesso()
         {
