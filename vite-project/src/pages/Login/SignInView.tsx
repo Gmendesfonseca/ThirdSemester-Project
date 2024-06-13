@@ -1,13 +1,13 @@
-import Avatar from "@mui/material/Avatar";
-import CssBaseline from "@mui/material/CssBaseline";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import { ThemeProvider } from "@mui/material";
-import { Form } from "../../components/Login/Form/Form";
-import logo from "../../assets/IL.png";
-import { darkTheme } from "../../Theme";
+import Avatar from '@mui/material/Avatar';
+import CssBaseline from '@mui/material/CssBaseline';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { ThemeProvider } from '@mui/material';
+import { Form } from '../../components/Login/Form/Form';
+import logo from '../../assets/IL.png';
+import { darkTheme } from '../../Themes';
 
 export default function SignInSide() {
   return (
@@ -15,8 +15,8 @@ export default function SignInSide() {
       <Grid
         container
         component="main"
-        sx={{ height: "100dvh" }}
-        overflow={"hidden"}
+        sx={{ height: '100dvh' }}
+        overflow={'hidden'}
       >
         <CssBaseline />
         <Grid
@@ -27,14 +27,14 @@ export default function SignInSide() {
           lg={7}
           sx={{
             backgroundImage:
-              "url(https://source.unsplash.com/random?wallpapers)",
-            backgroundRepeat: "no-repeat",
+              'url(https://source.unsplash.com/random?wallpapers)',
+            backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
-              t.palette.mode === "light"
+              t.palette.mode === 'light'
                 ? t.palette.grey[50]
                 : t.palette.grey[900],
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         />
         <Grid
@@ -55,23 +55,23 @@ export default function SignInSide() {
             sx={{
               my: { sm: 4, md: 4, xl: 24 },
               mx: 8,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
             <Avatar
               sx={{
-                width: "100px",
-                height: "100px",
-                borderRadius: "0px",
-                position: "relative",
-                bottom: "1rem",
+                width: '100px',
+                height: '100px',
+                borderRadius: '0px',
+                position: 'relative',
+                bottom: '1rem',
               }}
             >
               <img src={logo} alt="Logo" />
             </Avatar>
-            <Typography component="h1" variant="h5" fontFamily={""} mb={4}>
+            <Typography component="h1" variant="h5" fontFamily={''} mb={4}>
               Bem-vindo ao InnerLink!
             </Typography>
             <Form />

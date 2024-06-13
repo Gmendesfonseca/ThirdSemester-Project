@@ -14,7 +14,7 @@ import { Sidebar } from '../../Sidebar/Sidebar';
 import { blue } from '@mui/material/colors';
 import { useSession } from '../../../context/SessionContext';
 import { AccountType } from '../../../services/login/enum';
-import { darkTheme } from '../../../Theme';
+import { darkTheme } from '../../../Themes';
 
 export const SidebarMenu = () => {
   const navigate = useNavigate();
@@ -62,7 +62,9 @@ export const SidebarMenu = () => {
               onClick={() => navigate('/student/list')}
               style={{
                 backgroundColor:
-                  location.pathname === '/student/list' ? 'background.default' : 'background.paper',
+                  location.pathname === '/student/list'
+                    ? 'background.default'
+                    : 'background.paper',
               }}
             >
               <ListItemIcon>
@@ -76,7 +78,9 @@ export const SidebarMenu = () => {
               onClick={() => navigate('/course/list')}
               style={{
                 backgroundColor:
-                  location.pathname === '/course/list' ?  'background.default' : 'background.paper',
+                  location.pathname === '/course/list'
+                    ? 'background.default'
+                    : 'background.paper',
               }}
             >
               <ListItemIcon>

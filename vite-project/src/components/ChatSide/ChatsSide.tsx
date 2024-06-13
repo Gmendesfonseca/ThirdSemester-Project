@@ -5,18 +5,18 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-} from "@mui/material";
-import { ChatType } from "../../services/chats";
-import { FriendsType } from "../../services/friends";
-import { RecentChat } from "../HomeComponents/RecentChat/RecentChat";
-import { useEffect, useState } from "react";
-import faker from "faker";
-import { ThemeProvider } from "@emotion/react";
-import { blue } from "@mui/material/colors";
-import { useNavigate } from "react-router-dom";
-import { Home } from "@mui/icons-material";
-import { darkTheme } from "../../Theme";
-import "../../pages/Chat/Chat.css";
+} from '@mui/material';
+import { ChatType } from '../../services/chats';
+import { FriendsType } from '../../services/friends';
+import { RecentChat } from '../HomeComponents/RecentChat/RecentChat';
+import { useEffect, useState } from 'react';
+import faker from 'faker';
+import { ThemeProvider } from '@emotion/react';
+import { blue } from '@mui/material/colors';
+import { useNavigate } from 'react-router-dom';
+import { Home } from '@mui/icons-material';
+import { darkTheme } from '../../Themes';
+import '../../pages/Chat/Chat.css';
 
 export default function ChatsSide() {
   const [chats, setChat] = useState<ChatType[]>([]);
@@ -52,18 +52,18 @@ export default function ChatsSide() {
   return (
     <>
       <ThemeProvider theme={darkTheme}>
-        <Box className="chatsSide" bgcolor={"#011824"} marginTop="10px">
+        <Box className="chatsSide" bgcolor={'#011824'} marginTop="10px">
           <ListItem
             className="listItem"
-            disablePadding={location.pathname.includes("home")}
+            disablePadding={location.pathname.includes('home')}
           >
             <ListItemButton
               onClick={() => navigate(`/home`)}
               style={{
-                borderRadius: "10px",
-                backgroundColor: location.pathname.includes("home")
+                borderRadius: '10px',
+                backgroundColor: location.pathname.includes('home')
                   ? blue[50]
-                  : "default",
+                  : 'default',
               }}
             >
               <ListItemIcon>
@@ -73,17 +73,17 @@ export default function ChatsSide() {
             </ListItemButton>
           </ListItem>
           <Box
-            bgcolor={"#011824"}
+            bgcolor={'#011824'}
             sx={{
-              display: { lg: "block" },
-              overflowY: "auto",
-              height: "97.5%",
-              "&::-webkit-scrollbar": {
-                height: "8px",
-                width: "0px",
+              display: { lg: 'block' },
+              overflowY: 'auto',
+              height: '97.5%',
+              '&::-webkit-scrollbar': {
+                height: '8px',
+                width: '0px',
               },
-              "&::-webkit-scrollbar-thumb": {
-                backgroundColor: "rgba(0,0,0,.1)",
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: 'rgba(0,0,0,.1)',
               },
             }}
           >
@@ -98,7 +98,7 @@ export default function ChatsSide() {
                         data={chat}
                       />
                     </li>
-                  )
+                  ),
               )}
             </List>
           </Box>

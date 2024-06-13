@@ -3,7 +3,7 @@ import { createRoutes, routesResolver } from './router/router';
 import ToastUI from './components/Toast/ToastUI';
 import SessionProvider from './context/SessionContext';
 import { ThemeProvider } from '@emotion/react';
-import { darkTheme } from './Theme';
+import { darkTheme } from './Themes';
 
 function App() {
   const accountPermissions = ['HEADOFFICE', 'BRANCH', 'PROFESSOR', 'STUDENT'];

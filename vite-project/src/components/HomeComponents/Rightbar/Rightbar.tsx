@@ -22,7 +22,7 @@ import {
 import faker from 'faker';
 import { useNavigate } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
-import { darkTheme } from '../../../Theme';
+import { darkTheme } from '../../../Themes';
 import { blue } from '@mui/material/colors';
 import { Chat, Groups } from '@mui/icons-material';
 

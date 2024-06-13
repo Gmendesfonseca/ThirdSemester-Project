@@ -1,6 +1,6 @@
 import { ThemeProvider } from '@emotion/react';
 import { Box, List } from '@mui/material';
-import { darkTheme } from '../../Theme';
+import { darkTheme } from '../../Themes';
 
 export const Sidebar = ({ children }) => {
   return (

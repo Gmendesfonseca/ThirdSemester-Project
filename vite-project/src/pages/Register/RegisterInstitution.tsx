@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { Container, ThemeProvider } from '@mui/material';
-import { darkTheme } from '../../Theme';
+import { darkTheme } from '../../Themes';
 import { Copyright } from '../../components/Login/Copyright/Copyright';
 import logo from '../../assets/IL.png';
 import FormInstitution from '../../components/Forms/FormRegisterHeadOffice';
