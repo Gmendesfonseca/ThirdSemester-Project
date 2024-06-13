@@ -1,4 +1,5 @@
 ﻿using InnerAPI.Models;
+using InnerAPI.Models.Chat;
 
 
 namespace InnerAPI.Services
