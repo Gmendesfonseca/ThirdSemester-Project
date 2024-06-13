@@ -44,7 +44,7 @@ export default function Chat2() {
             sx={{ width: 64, height: 64 }}
             src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           />
-          <span>Chat With Elon Musk</span>
+          <span>Chat With</span>
           <button className="chatElipsis" onClick={handleDropdownOpen}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
