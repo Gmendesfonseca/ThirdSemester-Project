@@ -27,7 +27,7 @@ namespace InnerAPI.Services
         public Post Update(int id, Post updatedPost)
         {
             Stack<Post> posts = institutions.Find(institution => institution.Id == updatedPost.InstitutionId).Posts;
-            Post postToUpdate = posts.FirstOrDefault(p => p.IdPost == id);
+            Post postToUpdate = posts.FirstOrDefault(p => p.Id == id);
             if (postToUpdate == null)
             {
                 return null;
@@ -37,9 +37,6 @@ namespace InnerAPI.Services
         }
 
         public bool Delete(int id)
-        { 
-            institutions.SelectMany(i => i.Posts).ToList().RemoveAll(usuario => usuario.Id == id); 
-            return true; 
-        }
+        { institutions.SelectMany(i => i.Posts).ToList().RemoveAll(usuario => usuario.Id == id); return true; }
     }
 }

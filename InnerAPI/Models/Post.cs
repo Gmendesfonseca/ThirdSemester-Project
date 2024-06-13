@@ -74,8 +74,6 @@ namespace InnerAPI.Models
             set { _datePost = value; }
         }
 
-        public uint InstitutionId { get; internal set; }
-
         #endregion
 
         #region "Métodos"

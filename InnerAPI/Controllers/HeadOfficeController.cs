@@ -1,4 +1,3 @@
-using InnerAPI.Dtos;
 using InnerAPI.Dtos.HeadOffice;
 using InnerAPI.Models;
 using InnerAPI.Services;
@@ -66,7 +65,7 @@ namespace InnerAPI.Controllers
                   updateHeadOffice.Email,
                   updateHeadOffice.Password,
                   updateHeadOffice.Domain,
-                  updateHeadOffice.CNPJ);
+                  updateHeadOffice.Cnpj);
 
         return Results.NoContent();
       });
