@@ -13,32 +13,32 @@ import {
   styled,
   Tooltip,
   Typography,
-} from '@mui/material';
-import { ChangeEvent, useState } from 'react';
-import { Add as AddIcon, Close, Image } from '@mui/icons-material';
-import { Box } from '@mui/system';
-import './Add.css';
-import { createPost } from '../../../services/posts';
-import { useSession } from '../../../context/SessionContext';
+} from "@mui/material";
+import { ChangeEvent, useState } from "react";
+import { Add as AddIcon, Close, Image } from "@mui/icons-material";
+import { Box } from "@mui/system";
+import "./Add.css";
+import { createPost } from "../../../services/posts";
+import { useSession } from "../../../context/SessionContext";
 
 const StyledModal = styled(Modal)({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 });
 
 const UserBox = styled(Box)({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '10px',
-  marginBottom: '20px',
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  marginBottom: "20px",
 });
 export const Add2 = () => {
   const [open, setOpen] = useState<boolean>(false);
   const { user } = useSession();
-  const [title, setTitle] = useState<string>('');
+  const [title, setTitle] = useState<string>("");
   const [image, setImage] = useState<string | ArrayBuffer | null>();
-  const [description, setDescription] = useState<string>('');
+  const [description, setDescription] = useState<string>("");
   const creatorId = user?.id;
   const creatorName = user?.name;
 
@@ -67,37 +67,20 @@ export const Add2 = () => {
       createPost({ creatorId, creatorName, title, image, description });
   };
 
-  function handleOpenButtonClicked() {
-    const acceptList = ['image/png', 'image/jpg', 'image/jpeg'];
+  function handleOpenButtonClicked(e: ChangeEvent<HTMLInputElement>) {
+    if (e.target.files && e.target.files.length > 0) {
+      const reader = new FileReader();
 
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = acceptList.join(',');
-    fileInput.multiple = false;
-    fileInput.style.display = 'none';
-    fileInput.addEventListener(
-      'change',
-      function () {
-        if (this.files && this.files.length > 0) {
-          const reader = new FileReader();
+      reader.addEventListener(
+        "load",
+        function () {
+          setImage(reader.result); // reader.result contém a string base64
+        },
+        false
+      );
 
-          reader.addEventListener(
-            'load',
-            function () {
-              setImage(reader.result);
-              fileInput.remove();
-            },
-            false,
-          );
-
-          reader.readAsDataURL(this.files[0]);
-        }
-      },
-      false,
-    );
-
-    document.body.append(fileInput);
-    fileInput.click();
+      reader.readAsDataURL(e.target.files[0]);
+    }
   }
 
   return (
@@ -106,7 +89,7 @@ export const Add2 = () => {
         onClick={handleClickOpen}
         title="Add Post"
         sx={{
-          position: 'fixed',
+          position: "fixed",
           bottom: 20,
           right: 30,
         }}
@@ -146,7 +129,7 @@ export const Add2 = () => {
             </Stack>
           </DialogTitle>
           <DialogContent
-            sx={{ display: 'flex', flexDirection: 'column', gap: '8px', py: 0 }}
+            sx={{ display: "flex", flexDirection: "column", gap: "8px", py: 0 }}
           >
             <Box>
               <InputBase
@@ -159,9 +142,9 @@ export const Add2 = () => {
             </Box>
             <Box
               sx={{
-                borderTop: '1px solid #ECECEC',
-                paddingTop: '8px',
-                width: '100%',
+                borderTop: "1px solid #ECECEC",
+                paddingTop: "8px",
+                width: "100%",
               }}
             >
               <InputBase
@@ -179,16 +162,16 @@ export const Add2 = () => {
               alignItems="center"
               justifyContent="space-between"
               sx={{
-                borderTop: '1px solid #ECECEC',
-                paddingTop: '8px',
-                width: '100%',
+                borderTop: "1px solid #ECECEC",
+                paddingTop: "8px",
+                width: "100%",
               }}
             >
               <Stack direction="row" alignItems="center" spacing={0.5}>
+                <label htmlFor="postType_img">
+                  <Image />
+                </label>
                 <div className="__itens__icons__photo">
-                  <label htmlFor="postType_img">
-                    <Image />
-                  </label>
                   <input
                     id="postType_img"
                     type="file"
@@ -196,11 +179,14 @@ export const Add2 = () => {
                     accept=".png, .jpg, .jpeg"
                     onChange={handleOpenButtonClicked}
                   />
-                </div>
-              </Stack>
+                  {image && (
+                    <img src={image} alt="Preview" className="imgPreview" />
+                  )}
               <Button variant="contained" onClick={handleCreatePost}>
                 Publicar agora
               </Button>
+                </div>
+              </Stack>
             </Stack>
           </DialogActions>
         </Dialog>

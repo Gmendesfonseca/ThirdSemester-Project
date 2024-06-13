@@ -16,3 +16,15 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+.imgPreview {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  /* object-fit: cover; */
+}
+
+.__itens__icons__photo {
+  display: flex;
+  flex-direction: column;
+}
