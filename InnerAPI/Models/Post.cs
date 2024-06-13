@@ -11,8 +11,9 @@ namespace InnerAPI.Models
         private string _titlePost;
         private uint _numLikes;
         private List<string> _comments;
-        private List<string> _contentPosts;
+        private List<string> _contentPost;
         private DateOnly _datePost;
+        private uint _institutionId; 
 
         #endregion
 
@@ -21,17 +22,18 @@ namespace InnerAPI.Models
         public Post()
         {
             _comments = new List<string>();
-            _contentPosts = new List<string>();
+            _contentPost = new List<string>();
         }
 
-        public Post(uint idPost, string titlePost, uint numLikes, List<string> comments, List<string> contentPosts, DateOnly datePost)
+        public Post(uint idPost, string titlePost, uint numLikes, List<string> comments, List<string> contentPost, DateOnly datePost, uint institutionId)
         {
             _idPost = idPost;
             _titlePost = titlePost;
             _numLikes = numLikes;
             _comments = comments ?? new List<string>();
-            _contentPosts = contentPosts ?? new List<string>();
+            _contentPost = contentPost ?? new List<string>();
             _datePost = datePost;
+            _institutionId = institutionId;
         }
 
         #endregion
@@ -62,10 +64,10 @@ namespace InnerAPI.Models
             set { _comments = value; }
         }
 
-        public List<string> ContentPosts
+        public List<string> ContentPost
         {
-            get { return _contentPosts; }
-            set { _contentPosts = value; }
+            get { return _contentPost; }
+            set { _contentPost = value; }
         }
 
         public DateOnly DatePost
@@ -74,6 +76,11 @@ namespace InnerAPI.Models
             set { _datePost = value; }
         }
 
+        public uint InstitutionId
+        {
+            get { return _institutionId; }
+            set { _institutionId = value; }
+        }
         #endregion
 
         #region "Métodos"
@@ -90,12 +97,12 @@ namespace InnerAPI.Models
 
         public void AddContent(string content)
         {
-            _contentPosts.Add(content);
+            _contentPost.Add(content);
         }
 
         public void RemoveContent(string content)
         {
-            _contentPosts.Remove(content);
+            _contentPost.Remove(content);
         }
 
         #endregion

@@ -9,7 +9,7 @@ namespace InnerAPI.Services
         List<Branch> institutions;
         public PostServices(SharedService sharedService)
         {
-            List<Branch> institutions = sharedService.Branches;
+            institutions = sharedService.Branches;
         }
 
         public Stack<Post> GetPosts(int id)
@@ -18,16 +18,35 @@ namespace InnerAPI.Services
             return posts;
         }
 
-        public void Register(RegisterPostDto post)
+        public void Register(RegisterPostDto postDto)
         {
-            Post newPost = new Post(post.Id, post.Title, post.Content, post.InstitutionId);
-            institutions.Find(institution => institution.Id == post.InstitutionId).Posts.Push(newPost);
+            //Criar um novo post com os dados do DTO
+            Post newPost = new Post(
+                postDto.IdPost,
+                postDto.TitlePost,
+                postDto.NumLikes,
+                new List<string> {postDto.Comments},  // Se necessário, ajuste aqui para a lista de comentários
+                new List<string> { postDto.ContentPost },
+                postDto.DatePost,
+                postDto.InstitutionId
+            );
+
+            //Encontrar a instituição pelo ID e adicionar o novo post à pilha de posts
+            var institution = institutions.Find(inst => inst.Id == postDto.InstitutionId);
+            if (institution != null)
+            {
+                institution.Posts.Push(newPost);
+            }
+            else
+            {
+                throw new InvalidOperationException("Instituição não encontrada.");
+            }
         }
 
         public Post Update(int id, Post updatedPost)
         {
             Stack<Post> posts = institutions.Find(institution => institution.Id == updatedPost.InstitutionId).Posts;
-            Post postToUpdate = posts.FirstOrDefault(p => p.Id == id);
+            Post postToUpdate = posts.FirstOrDefault(p => p.IdPost == id);
             if (postToUpdate == null)
             {
                 return null;
@@ -36,7 +55,14 @@ namespace InnerAPI.Services
             return postToUpdate;
         }
 
-        public bool Delete(int id)
-        { institutions.SelectMany(i => i.Posts).ToList().RemoveAll(usuario => usuario.Id == id); return true; }
+        public bool Delete(int id) //Bucar e remover todos os posts com o ID
+        {
+            //troquei o SelectMany por foreach 
+            foreach (var institution in institutions)
+            {
+                institution.Posts.RemoveAll(post => post.IdPost == id);
+            }
+            return true;
+        }
     }
 }

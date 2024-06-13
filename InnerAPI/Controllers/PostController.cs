@@ -26,7 +26,7 @@ namespace InnerAPI.Controllers
             group.MapPost("{id}", (RegisterPostDto newPost) =>
             {
                 postServices.Register(newPost);
-                return Results.Created($"/post/{newPost.Id}", newPost);
+                return Results.Created($"/post/{newPost.IdPost}", newPost);
             });
 
             // PUT /post/{id}
