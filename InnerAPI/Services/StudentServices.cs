@@ -88,6 +88,7 @@ namespace InnerAPI.Services
             student.CPF = newStudent.CPF;
             student.BirthDate = newStudent.BirthDate;
             //student.Instituicao = newStudent.Instituicao;
+            //student.Instituicao = newStudent.Instituicao;
             student.Curso = newStudent.Curso;
             student.Periodo = newStudent.Periodo;
            // student.Pontuacao = newStudent.Pontuacao;
@@ -114,7 +115,15 @@ namespace InnerAPI.Services
         // }
 
         public List<Student> GetStudents()
+        public List<Student> GetStudents()
         {
+            return institutions.SelectMany(i => i.Students).ToList();
+            //Branch institution = GetBranch(email);
+            //if (institution == null)
+            //{
+            //    throw new ArgumentException("Instituição não encontrada.");
+            //}
+            //return institution.Students;
             return institutions.SelectMany(i => i.Students).ToList();
             //Branch institution = GetBranch(email);
             //if (institution == null)

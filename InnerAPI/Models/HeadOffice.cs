@@ -1,5 +1,7 @@
 ﻿using InnerAPI.Dtos.Login;
 
+using InnerAPI.Dtos.Login;
+
 namespace InnerAPI.Models
 {
     public class HeadOffice : Institution

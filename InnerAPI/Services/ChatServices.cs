@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 
+using InnerAPI.Dtos.Chat;
+using InnerAPI.Models;
+using System.Collections.Generic;
+using System.Linq;
+
+
 namespace InnerAPI.Services
 {
     public class ChatService
