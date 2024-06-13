@@ -1,19 +1,17 @@
 ﻿using InnerAPI.Dtos.Login;
 
-using InnerAPI.Dtos.Login;
-
 namespace InnerAPI.Models
 {
     public class HeadOffice : Institution
     {
         #region "Declaração de variáveis"
-        List<uint> branches;
+        List<Branch> branches;
         #endregion
 
         #region "Construtores"
         public HeadOffice() : base()
         {
-            branches = new List<uint>();
+            branches = new List<Branch>();
         }
 
         public HeadOffice(uint id, string name, string email, string password, string address, DateOnly creationDate, string cnpj, string domain) : base()
@@ -28,7 +26,7 @@ namespace InnerAPI.Models
             CreationDate = creationDate;
             CNPJ = cnpj;
             Domain = domain;
-            branches = new List<uint>();
+            branches = new List<Branch>();
         }
         public HeadOffice(uint id, string name, string email, string password, string cnpj, string domain) : base()
         {
@@ -40,19 +38,26 @@ namespace InnerAPI.Models
             Active = true;
             CNPJ = cnpj;
             Domain = domain;
-            branches = new List<uint>();
+            branches = new List<Branch>();
         }
         #endregion
 
         #region "Métodos Listas"
-        public List<uint> Branches { get { return branches; } }
-        public void addBranch(uint id)
+
+        public bool Login(LoginDto login)
         {
-            branches.Add(id);
+            // Verifica se o e-mail e a senha correspondem às credenciais do head office
+            return Email == login.Email && Password == login.Password;
         }
-        public void removeBranch(uint id)
+
+        public List<Branch> Branches { get { return branches; } }
+        public void addBranch(Branch branch)
         {
-            branches.Remove(id);
+            branches.Add(branch);
+        }
+        public void removeBranch(Branch branch)
+        {
+            branches.Remove(branch);
         }
         #endregion
     }

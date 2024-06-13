@@ -1,4 +1,4 @@
-using InnerAPI.Dtos;
+﻿using InnerAPI.Dtos;
 using InnerAPI.Dtos.Branch;
 using InnerAPI.Dtos.Login;
 using InnerAPI.Models;
@@ -9,34 +9,33 @@ namespace InnerAPI.Services
     public class BranchServices
     {
         List<Branch> branches;
-        List<HeadOffice> headOffices;
 
         public BranchServices(SharedService _sharedService)
         {
             branches = _sharedService.Branches;
-            headOffices = _sharedService.HeadOffices;
         }
 
-        public Branch Register(int headOfficeId,RegisterBranchDto register)
+        public Branch Register(RegisterBranchDto register)
         {
             uint id = (uint)branches.Count + 1;
             string name = register.Name;
             string email = register.Email;
             string password = register.Password;
             string cnpj = register.Cnpj;
+            int type = 1;
 
             Email Email = new Email();
             if (!Email.IsValid(email))
                 throw new ArgumentException("Email inválido.");
 
+            var existingUser = branches.Exists(r => r.Name == register.Name || r.Email == register.Email || r._cnpj == register.Cnpj);
+            if (existingUser)
+            {
+                throw new ArgumentException("Este email já está sendo usado por outro usuário.");
+            }
+
             Branch newBranch = new Branch(id, name, email, password, cnpj);
 
-            var headOffice = headOffices.FirstOrDefault(h => h.Id == headOfficeId);
-
-            if (headOffice == null)
-                throw new ArgumentException("HeadOffice não encontrado.");
-
-            headOffice.addBranch(newBranch.Id);
             branches.Add(newBranch);
 
             return newBranch;

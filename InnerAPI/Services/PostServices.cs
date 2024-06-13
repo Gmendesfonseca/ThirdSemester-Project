@@ -12,29 +12,16 @@ namespace InnerAPI.Services
             List<Branch> institutions = sharedService.Branches;
         }
 
-        public Stack<Post> GetPosts(uint id)
+        public Stack<Post> GetPosts(int id)
         {
-            var institution = institutions.Find(institution => institution.Id == id);
-            if (institution == null)
-            {
-                throw new ArgumentException("Instituição não encontrada.");
-            }
-            Stack<Post> posts = institution.Feed;
+            Stack<Post> posts = institutions.Find(institution => institution.Id == id).Posts;
             return posts;
         }
 
-        public void Register(uint branchId, RegisterPostDto post)
+        public void Register(RegisterPostDto post)
         {
-            posts = GetPosts(branchId);
-            var institution = institutions.Find(institution => institution.Id == branchId);
-            if (institution == null)
-            {
-                throw new ArgumentException("Instituição não encontrada.");
-            }
-            uint id = (uint)posts.Count + 1;
-            Post newPost = new Post(id, post.CreatorName, post.CreatorImage, post.Title, post.Image, post.Description);
-            institution.addPost(newPost.Id);
-            posts.Push(newPost);
+            Post newPost = new Post(post.Id, post.Title, post.Content, post.InstitutionId);
+            institutions.Find(institution => institution.Id == post.InstitutionId).Posts.Push(newPost);
         }
 
         public Post Update(int id, Post updatedPost)

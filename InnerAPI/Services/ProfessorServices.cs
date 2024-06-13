@@ -1,4 +1,4 @@
-using InnerAPI.Dtos.Login;
+﻿using InnerAPI.Dtos.Login;
 using InnerAPI.Dtos.Professor;
 using InnerAPI.Models;
 using InnerAPI.Utils;
@@ -12,12 +12,12 @@ namespace InnerAPI.Services
         public ProfessorServices(SharedService _sharedService)
         {
             institutions = _sharedService.Branches;
-            professors = _sharedService.Professors;
         }
 
-        public Professor Register(uint branchId, RegisterProfessorDto register)
+        public Professor Register(RegisterProfessorDto register)
         {
-            var institution = institutions.FirstOrDefault(i => i.Id == branchId);
+            var institution = GetBranch(register.Email);
+            professors = institution.Professors;
             if (institution == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
@@ -31,8 +31,7 @@ namespace InnerAPI.Services
 
             uint id = (uint)professors.Count + 1;
             Professor newProfessor = new Professor(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.AreaLecionada, register.Formacao);
-
-            institution.addProfessor(newProfessor.Id);
+            institution.Professors.Add(newProfessor);
             professors.Add(newProfessor);
 
             return newProfessor;
@@ -49,7 +48,7 @@ namespace InnerAPI.Services
                 throw new ArgumentException("Instituição não encontrada.");
             }
 
-            Professor professor = professors.FirstOrDefault(p => p.Email == email && p.Password == password);
+            Professor professor = institution.Professors.FirstOrDefault(p => p.Email == email && p.Password == password);
 
             Email Email = new Email();
             if (!Email.IsValid(email))
@@ -66,7 +65,7 @@ namespace InnerAPI.Services
 
         public Professor Update(int id, RegisterProfessorDto professor)
         {
-            var existingProfessor = professors.FirstOrDefault(p => p.Id == id);
+            var existingProfessor = institutions.SelectMany(i => i.Professors).FirstOrDefault(p => p.Id == id);
             if (existingProfessor == null)
             {
                 throw new ArgumentException("Professor não encontrado.");

@@ -137,7 +137,6 @@ C:\Users\Nicol\Projeto Enari\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\Inn
 C:\Users\Nicol\Projeto Enari\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.dll
 C:\Users\Nicol\Projeto Enari\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\refint\InnerAPI.dll
 C:\Users\Nicol\Projeto Enari\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.pdb
-<<<<<<< HEAD
 C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.csproj.AssemblyReference.cache
 C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\avill\OneDrive\Documentos\GitHub\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.AssemblyInfoInputs.cache
@@ -160,5 +159,3 @@ E:\NewFolder\Nova pasta\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI
 E:\NewFolder\Nova pasta\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.dll
 E:\NewFolder\Nova pasta\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\refint\InnerAPI.dll
 E:\NewFolder\Nova pasta\ThirdSemester-Project\InnerAPI\obj\Debug\net8.0\InnerAPI.pdb
-=======
->>>>>>> f618f58ca5233d05d9e86427fe0c81dce5f1cb1f

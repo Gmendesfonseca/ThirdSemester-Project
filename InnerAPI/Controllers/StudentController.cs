@@ -16,34 +16,8 @@ namespace InnerAPI.Controllers
             // GET /student/{id}
             group.MapGet("/{id}", (int id) =>
             {
-                var student = studentServices.GetStudents()
-                    .FirstOrDefault(s => s.Id == id);
-
-                if (student == null)
-                {
-                    return Results.NotFound();
-                }
-
-                return Results.Ok(student);
-
-                //return Results.Ok(studentServices.GetStudents().FirstOrDefault(s => s.Id == id));
+                return Results.Ok(studentServices.GetStudents().FirstOrDefault(s => s.Id == id));
             });
-
-            ///
-            // GET /student?email={email}
-            group.MapGet("/", (string email) =>
-            {
-                try
-                {
-                    var students = studentServices.GetStudents(email);
-                    return Results.Ok(students);
-                }
-                catch (ArgumentException ex)
-                {
-                    return Results.BadRequest(ex.Message);
-                }
-            });
-            ///
 
             // POST /student/register
             group.MapPost("/register", (RegisterStudentDto newStudent) =>
