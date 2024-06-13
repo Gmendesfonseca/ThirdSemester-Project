@@ -54,13 +54,13 @@ namespace InnerAPI.Controllers
                 return Results.Ok(Branch.Courses);
             });
 
-            // POST /branch/register
-            group.MapPost("/register", (RegisterBranchDto newBranch) =>
+            // POST /branch/${id}/register
+            group.MapPost("/${id}/register", (int id, RegisterBranchDto newBranch) =>
             {
                 var exists = branches.Exists(r => r.Name == newBranch.Name || r.Email == newBranch.Email || r.CNPJ == newBranch.Cnpj);
                 if (!exists)
                 {
-                    var createdBranch = branchServices.Register(newBranch);
+                    var createdBranch = branchServices.Register(id, newBranch);
                     return Results.CreatedAtRoute(GetNameBranchEndpoint, new { id = createdBranch.Id }, createdBranch);
                 }
                 else

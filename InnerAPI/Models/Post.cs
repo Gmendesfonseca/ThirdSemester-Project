@@ -8,10 +8,14 @@ namespace InnerAPI.Models
         #region "Declaração de variáveis"
 
         private uint _idPost;
+        private uint _creatorId; 
+        private string _creatorName;
+        private string _creatorImage;
         private string _titlePost;
+        private string _imagePost;
         private uint _numLikes;
-        private List<string> _comments;
-        private List<string> _contentPosts;
+        private List<Likers> _likes; //ids dos usuarios que curtiram
+        private List<Comment> _comments; // idComment, authorName, authorImage, commentContent, dateComment
         private DateOnly _datePost;
 
         #endregion
@@ -20,19 +24,25 @@ namespace InnerAPI.Models
 
         public Post()
         {
-            _comments = new List<string>();
-            _contentPosts = new List<string>();
+            _likes = new List<Likers>();
+            _comments = new List<Comment>();
         }
 
-        public Post(uint idPost, string titlePost, uint numLikes, List<string> comments, List<string> contentPosts, DateOnly datePost)
+        public Post(uint idPost, string titlePost, uint numLikes, DateOnly datePost)
         {
             _idPost = idPost;
             _titlePost = titlePost;
             _numLikes = numLikes;
-            _comments = comments ?? new List<string>();
-            _contentPosts = contentPosts ?? new List<string>();
+            _likes = new List<Likers>();
+            _comments =  new List<Comment>();
             _datePost = datePost;
+            
+        
         }
+
+
+
+
 
         #endregion
 

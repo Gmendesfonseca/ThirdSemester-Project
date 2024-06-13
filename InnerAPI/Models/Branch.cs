@@ -7,8 +7,8 @@ namespace InnerAPI.Models
     {
         #region "Declaração de variáveis"
         private List<CourseDto> courses;
-        private readonly List<Student> students;
-        private readonly List<Professor> professors;
+        private readonly List<uint> students;
+        private readonly List<uint> professors;
         private Stack<Post> feed;
         #endregion
 
@@ -16,8 +16,8 @@ namespace InnerAPI.Models
         public Branch() : base()
         {
             courses = new List<CourseDto>();
-            students = new List<Student>();
-            professors = new List<Professor>();
+            students = new List<uint>();
+            professors = new List<uint>();
             feed = new Stack<Post>();
         }
 
@@ -30,9 +30,10 @@ namespace InnerAPI.Models
             Online = false;
             Active = true;
             CNPJ = cnpj;
+            Domain = email.Split('@')[1];
             courses = new List<CourseDto>();
-            students = new List<Student>();
-            professors = new List<Professor>();
+            students = new List<uint>();
+            professors = new List<uint>();
             feed = new Stack<Post>();
         }
 
@@ -48,8 +49,8 @@ namespace InnerAPI.Models
             CreationDate = creationDate;
             CNPJ = cnpj;
             courses = new List<CourseDto>();
-            students = new List<Student>();
-            professors = new List<Professor>();
+            students = new List<uint>();
+            professors = new List<uint>();
             feed = new Stack<Post>();
         }
         #endregion
@@ -60,12 +61,12 @@ namespace InnerAPI.Models
             get { return courses; }
         }
 
-        public List<Student> Students
+        public List<uint> Students
         {
             get { return students; }
         }
 
-        public List<Professor> Professors
+        public List<uint> Professors
         {
             get { return professors; }
         }
@@ -128,6 +129,21 @@ namespace InnerAPI.Models
             {
                 feed.Push(tempStack.Pop());
             }
+        }
+
+        public void addCourse(CourseDto course)
+        {
+            courses.Add(course);
+        }
+
+        public void addStudent(uint id)
+        {
+            students.Add(id);
+        }
+
+        public void addProfessor(uint id)
+        {
+            professors.Add(id);
         }
         #endregion
     }
