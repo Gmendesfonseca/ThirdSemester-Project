@@ -88,7 +88,7 @@ namespace InnerAPI.Services
             student.Registration = newStudent.Registration;
             student.CPF = newStudent.CPF;
             student.BirthDate = newStudent.BirthDate;
-            student.Instituicao = newStudent.Instituicao;
+            student.Institution = newStudent.Institution;
             student.Curso = newStudent.Curso;
             student.Periodo = newStudent.Periodo;
            // student.Pontuacao = newStudent.Pontuacao;

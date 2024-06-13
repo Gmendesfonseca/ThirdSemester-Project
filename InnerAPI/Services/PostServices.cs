@@ -25,7 +25,7 @@ namespace InnerAPI.Services
                 postDto.IdPost,
                 postDto.TitlePost,
                 postDto.NumLikes,
-                new List<string> {postDto.Comments},  // Se necessário, ajuste aqui para a lista de comentários
+                new List<string>(),  //Se necessário, ajuste aqui para a lista de comentários
                 new List<string> { postDto.ContentPost },
                 postDto.DatePost,
                 postDto.InstitutionId
