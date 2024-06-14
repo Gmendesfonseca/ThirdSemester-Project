@@ -7,6 +7,9 @@
         private string _name;
         private string _password;
         private string _email;
+        private string _phone;
+        private string _image;
+        private string _about;
         private bool _isOnline;
         private bool _isActive;
         private Stack<Notification> _notifications;
@@ -49,6 +52,24 @@
         {
             get { return _email; }
             set { _email = value; }
+        }
+
+        public string Phone
+        {
+            get { return _phone; }
+            set { _phone = value; }
+        }
+
+        public string Avatar
+        {
+            get { return _image; }
+            set { _image = value; }
+        }
+
+        public string About
+        {
+            get { return _about; }
+            set { _about = value; }
         }
 
         public bool Online

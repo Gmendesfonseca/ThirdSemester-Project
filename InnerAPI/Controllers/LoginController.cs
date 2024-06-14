@@ -16,15 +16,9 @@ namespace InnerAPI.Controllers
             //POST /login/headoffice
             group.MapPost("/headoffice", (LoginDto login) =>
             {
-                // Crie uma instância de HeadOffice (ou obtenha-a de onde quer que esteja)
-                var headOffice = new HeadOffice
-                {
-                    Id = 7,
-                    Email = "nicolly.alcantara@fatec.sp.gov",
-                    Password = "nicollyFatec"
-                };
+                HeadOfficeServices headOfficeServices = new HeadOfficeServices(sharedService);
+                var headOffice = headOfficeServices.Login(login);
 
-                // Verifica se o login é bem-sucedido usando o método Login
                 if (headOffice.Login(login))
                 {
                     // Se o login for bem-sucedido, retorne OK
@@ -34,10 +28,12 @@ namespace InnerAPI.Controllers
                         message = "Login successful",
                         user = new
                         {
-                            // Você pode retornar informações adicionais do usuário, se necessário
-                            headOffice.Id,
-                            headOffice.Name,
-                            headOffice.Email
+                            id = headOffice.Id,
+                            name = headOffice.Name,
+                            email = headOffice.Email,
+                            avatar = headOffice.Avatar,
+                            about = headOffice.About,
+                            branches = headOffice.Branches(sharedService),
                         }
                     });
                 }
@@ -51,11 +47,11 @@ namespace InnerAPI.Controllers
             //POST /login/branch
             group.MapPost("/branch", (LoginDto login) =>
             {
-                BranchServices user = new(sharedService);
+                BranchServices branchServices = new(sharedService);
 
-                var institution = user.Login(login);
+                var branch = branchServices.Login(login);
 
-                if (institution == null)
+                if (branch == null)
                 {
                     return Results.BadRequest(new { success = false, message = "User not found" });
                 }
@@ -65,7 +61,15 @@ namespace InnerAPI.Controllers
                     message = "Login successful",
                     user = new
                     {
-                        institution
+                        id = branch.Id,
+                        name = branch.Name,
+                        email = branch.Email,
+                        avatar = branch.Avatar,
+                        about = branch.About,
+                        professors = branchServices.Professors(branch.Id),
+                        students = branchServices.Students(branch.Id),
+                        courses = branch.Courses,
+
                     }
                 });
             });
@@ -73,8 +77,8 @@ namespace InnerAPI.Controllers
             //POST /login/professor
             group.MapPost("/professor", (LoginDto login) =>
             {
-                ProfessorServices user = new(sharedService);
-                var professor = user.Login(login);
+                ProfessorServices professorServices = new(sharedService);
+                var professor = professorServices.Login(login);
                 if (professor == null)
                 {
                     return Results.BadRequest(new { success = false, message = "User not found" });
@@ -85,7 +89,16 @@ namespace InnerAPI.Controllers
                     message = "Login successful",
                     user = new
                     {
-                        professor
+                        id = professor.Id,
+                        name = professor.Name,
+                        email = professor.Email,
+                        avatar = professor.Avatar,
+                        about = professor.About,
+                        institution = professor.Institution,
+                        institutionId = professor.InstitutionId,
+                        posts = professorServices.Posts(professor.InstitutionId),
+                        chats = professor.Chats,
+                        friends = professor.Friends(professor.InstitutionId),
                     }
                 });
             });
@@ -93,8 +106,8 @@ namespace InnerAPI.Controllers
             //POST /login/student
             group.MapPost("/student", (LoginDto login) =>
             {
-                StudentServices user = new(sharedService);
-                var student = user.Login(login);
+                StudentServices studentServices = new(sharedService);
+                var student = studentServices.Login(login);
                 if (student == null)
                 {
                     return Results.BadRequest(new { success = false, message = "User not found" });
@@ -105,7 +118,16 @@ namespace InnerAPI.Controllers
                     message = "Login successful",
                     user = new
                     {
-                        student
+                        id = student.Id,
+                        name = student.Name,
+                        email = student.Email,
+                        avatar = student.Avatar,
+                        about = student.About,
+                        institution = student.Institution,
+                        institutionId = student.InstitutionId,
+                        posts = studentServices.Posts(student.InstitutionId),
+                        chats = student.Chats,
+                        friends = student.Friends,
                     }
                 });
             });

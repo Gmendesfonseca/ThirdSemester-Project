@@ -24,7 +24,7 @@ namespace InnerAPI.Controllers
             });
 
             // PUT /course/{id}
-            group.MapPut("/{id}", (int id, Course updatedCourse) =>
+            group.MapPut("/{id}", (int id, UpdateCourseDto updatedCourse) =>
             {
                 var result = courseServices.Update(id, updatedCourse);
                 if (result == null)

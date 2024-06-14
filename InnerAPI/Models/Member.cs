@@ -4,9 +4,14 @@
     {
         #region "Declaração de variáveis"
         private string _registration;
+        private uint _institutionId;
         private string _cpf;
         public DateOnly _birthDate;
         private string _institution;
+        private List<Post> _postList;
+        private List<Chat> _chatList;
+        private List<Friend> _friendList;
+
         #endregion
 
         #region "Construtores"
@@ -40,6 +45,27 @@
         {
             get { return _institution; }
             set { _institution = value; }
+        }
+
+        public uint InstitutionId
+        {
+            get { return _institutionId; }
+            set { _institutionId = value; }
+        }
+
+        public List<Post> Posts
+        {
+            get { return _postList; }
+        }
+
+        public List<Chat> Chats
+        {
+            get { return _chatList; }
+        }
+
+        public List<Friend> Friends
+        {
+            get { return _friendList; }
         }
         #endregion
     }

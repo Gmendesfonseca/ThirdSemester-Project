@@ -1,14 +1,16 @@
 ﻿using InnerAPI.Dtos.Courses;
 using InnerAPI.Dtos.Post;
+using InnerAPI.Services;
 
 namespace InnerAPI.Models
 {
     public class Branch : Institution
     {
         #region "Declaração de variáveis"
+        private SharedService _sharedService;
         private List<CourseDto> courses;
-        private readonly List<Student> students;
-        private readonly List<Professor> professors;
+        private List<uint> students;
+        private List<uint> professors;
         private Stack<Post> feed;
         #endregion
 
@@ -60,14 +62,14 @@ namespace InnerAPI.Models
             get { return courses; }
         }
 
-        public List<Student> Students
-        {
-            get { return students; }
-        }
-
-        public List<Professor> Professors
+        public List<uint> Professors
         {
             get { return professors; }
+        }
+
+        public List<uint> Students
+        {
+            get { return students; }
         }
 
         public Stack<Post> Feed
@@ -103,8 +105,6 @@ namespace InnerAPI.Models
                 }
                 else
                 {
-                    // Update the post here
-                    // currentPost.SomeProperty = newValue;
                     updatedPost = currentPost;
                 }
             }

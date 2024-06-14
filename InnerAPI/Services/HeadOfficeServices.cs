@@ -1,5 +1,6 @@
 using InnerAPI.Dtos;
 using InnerAPI.Dtos.HeadOffice;
+using InnerAPI.Dtos.Login;
 using InnerAPI.Models;
 using InnerAPI.Utils;
 using System;
@@ -15,6 +16,22 @@ namespace InnerAPI.Services
         public HeadOfficeServices(SharedService sharedService)
         {
             _headOffices = sharedService.HeadOffices;
+        }
+
+        public HeadOffice Login(LoginDto login)
+        {
+            var headOffice = _headOffices.FirstOrDefault(h => h.Email == login.Email);
+            if (headOffice == null)
+            {
+                throw new ArgumentException("Usuário não encontrado.");
+            }
+
+            if (headOffice.Password != login.Password)
+            {
+                throw new ArgumentException("Senha incorreta.");
+            }
+
+            return headOffice;
         }
 
         public HeadOffice Register(RegisterHeadOfficeDto register)

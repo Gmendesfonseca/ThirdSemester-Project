@@ -1,5 +1,6 @@
 ﻿using InnerAPI.Dtos;
 using InnerAPI.Dtos.Branch;
+using InnerAPI.Dtos.Courses;
 using InnerAPI.Dtos.Login;
 using InnerAPI.Models;
 using InnerAPI.Utils;
@@ -9,10 +10,14 @@ namespace InnerAPI.Services
     public class BranchServices
     {
         List<Branch> branches;
+        List<Professor> globalProfessorsList;
+        List<Student> globalStudentsList;
 
         public BranchServices(SharedService _sharedService)
         {
             branches = _sharedService.Branches;
+            globalProfessorsList = _sharedService.Professors;
+            globalStudentsList = _sharedService.Students;
         }
 
         public Branch Register(RegisterBranchDto register)
@@ -22,7 +27,6 @@ namespace InnerAPI.Services
             string email = register.Email;
             string password = register.Password;
             string cnpj = register.Cnpj;
-            int type = 1;
 
             Email Email = new Email();
             if (!Email.IsValid(email))
@@ -35,6 +39,7 @@ namespace InnerAPI.Services
             }
 
             Branch newBranch = new Branch(id, name, email, password, cnpj);
+
 
             branches.Add(newBranch);
 
@@ -77,17 +82,51 @@ namespace InnerAPI.Services
             return Branch;
         }
 
-        public List<Student> GetStudents(int id)
+        public List<Student> Students(uint id)
         {
-            var Branch = branches.FirstOrDefault(i => i.Id == id);
-            return Branch.Students;
+
+            List<Student> newStudentsList = new List<Student>();
+            var branch = branches.FirstOrDefault(i => i.Id == id);
+            if (branch == null) return newStudentsList; 
+
+            List<uint> branchStudents = branch.Students;
+
+            foreach (uint studentId in branchStudents)
+            {
+                var student = globalStudentsList.FirstOrDefault(i => i.Id == studentId);
+                if (student != null)
+                    newStudentsList.Add(student);
+            }
+
+            return newStudentsList;
+
         }
 
-        public List<Professor> GetProfessors(GetListDto getProfessorsDto)
+        public List<Professor> Professors(uint id) // Alterado o nome do parâmetro para evitar conflito
         {
-            var Branch = branches.FirstOrDefault(i => i.Name == getProfessorsDto.institutionName);
-            return Branch.Professors;
+            List<Professor> newProfessorsList = new List<Professor>();
+            var branch = branches.FirstOrDefault(i => i.Id == id);
+            if (branch == null) return newProfessorsList;
+
+            List<uint> branchProfessor = branch.Professors;
+
+            foreach (uint studentId in branchProfessor)
+            {
+                var student = globalProfessorsList.FirstOrDefault(i => i.Id == studentId);
+                if (student != null)
+                    newProfessorsList.Add(student);
+            }
+
+            return newProfessorsList;
         }
+
+        public List<CourseDto> GetCourses(int id)
+        {
+            var Branch = branches.FirstOrDefault(i => i.Id == id);
+            return Branch.Courses;
+        }
+
+        public List<>
 
         public bool Delete(int id)
         { branches.RemoveAll(usuario => usuario.Id == id); return true; }
