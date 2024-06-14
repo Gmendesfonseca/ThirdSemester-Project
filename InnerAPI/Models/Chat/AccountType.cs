@@ -1,6 +1,10 @@
 ﻿namespace InnerAPI.Models.Chat
 {
-    public class AccountType
+    public enum AccountType
     {
+        HEADOFFICE,
+        BRANCH,
+        PROFESSOR,
+        STUDENT
     }
 }

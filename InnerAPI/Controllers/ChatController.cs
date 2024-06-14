@@ -1,6 +1,6 @@
 ﻿using InnerAPI.Services;
 using InnerAPI.Dtos.Chat;
-using InnerAPI.Models;
+using InnerAPI.Models.Chat;
 
 
 namespace InnerAPI.Controllers
@@ -13,10 +13,24 @@ namespace InnerAPI.Controllers
             var group = app.MapGroup("chat").WithParameterValidation();
 
             //GET /{id}/chats
+
+            //GET /{id}/chats
             group.MapGet("/{id}/chats", (int id) =>
             {
-                return Results.Ok(chatServices.GetChats().Where(s => s.UserId1 == id || s.UserId2 == id));
+                var chats = chatServices.GetChats().Where(s => s.UserId1 == id || s.UserId2 == id);
+                var chatTypes = chats.Select(chat => chatServices.GetChatById(chat.Id));
+                return Results.Ok(chatTypes);
+                // return Results.Ok(chatServices.GetChats().Where(s => s.UserId1 == id || s.UserId2 == id));
             });
+
+
+            //group.MapGet("/{id}/chats", (int id) =>
+            //{
+            //    var chats = chatServices.GetChats().Where(s => s.UserId1 == id || s.UserId2 == id);
+            //    var Chat = chats.Select(chat => chatServices.GetChatById(chat.Id));
+            //    return Results.Ok(Chat);
+            //    //return Results.Ok(chatServices.GetChats().Where(s => s.UserId1 == id || s.UserId2 == id));
+            //});
 
             // GET /chat/{id}
             group.MapGet("/{id}", (int id) =>
@@ -35,7 +49,7 @@ namespace InnerAPI.Controllers
             group.MapPost("/register", (RegisterChatDto newChat) =>
             {
                 Chat chat = chatServices.Register(newChat);
-
+                var chatType = chatServices.GetChatById(chat.Id);
                 return Results.Created($"/chat/{chat.Id}", chat);
             });
 
