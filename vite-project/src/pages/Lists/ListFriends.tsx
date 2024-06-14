@@ -1,32 +1,41 @@
-import { Stack, ThemeProvider, Box } from "@mui/material";
-import { NavBar } from "../../components/HomeComponents/NavBar/Navbar";
-import { HeadCell, InTable } from "../../components/Table/Table";
-import faker from "faker";
-import { More } from "../../components/More/More";
-import { FriendsListType } from "../../services/friends";
-import { useNavigate } from "react-router-dom";
-import { darkTheme } from "../../Themes";
+import { Stack, ThemeProvider, Box } from '@mui/material';
+import { NavBar } from '../../components/HomeComponents/NavBar/Navbar';
+import { HeadCell, InTable } from '../../components/Table/Table';
+import faker from 'faker';
+import { More } from '../../components/More/More';
+import { FriendsListType } from '../../services/friends';
+import { useNavigate } from 'react-router-dom';
+import { darkTheme } from '../../Themes';
+import { useSession } from '../../context/SessionContext';
 
 const headCells: readonly HeadCell<FriendsListType>[] = [
-  { id: "name", numeric: false, disablePadding: false, label: "Name" },
-  { id: "email", numeric: false, disablePadding: false, label: "Email" },
-  { id: "online", numeric: false, disablePadding: false, label: "Status" },
-  { id: "options", numeric: false, disablePadding: false, label: "Opções" },
+  { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
+  { id: 'email', numeric: false, disablePadding: false, label: 'Email' },
+  { id: 'online', numeric: false, disablePadding: false, label: 'Status' },
+  { id: 'options', numeric: false, disablePadding: false, label: 'Opções' },
 ];
-
-const rows: FriendsListType[] = Array.from({ length: 50 }, (_, index) => ({
-  id: index + 1,
-  name: faker.company.companyName(),
-  email: faker.internet.email(),
-  online: faker.random.arrayElement(["Online", "Offline"]),
-  options: <More type="Amizade" id={index + 1} idMore={index + 1} />,
-}));
 
 export default function ListFriends() {
   const navigate = useNavigate();
+  const { user } = useSession();
+
+  const rows: FriendsListType[] = user
+    ? user.friends.map((friend) => ({
+        ...friend,
+        id: friend.id,
+        email: friend.email,
+        options: <More type="Amizade" id={1} idMore={1} />,
+      }))
+    : Array.from({ length: 50 }, (_, index) => ({
+        id: index + 1,
+        name: faker.company.companyName(),
+        email: faker.internet.email(),
+        online: faker.random.arrayElement(['Online', 'Offline']),
+        options: <More type="Amizade" id={index + 1} idMore={index + 1} />,
+      }));
 
   const btnBackHome = (
-    <button title="back" className="backHome" onClick={() => navigate("/home")}>
+    <button title="back" className="backHome" onClick={() => navigate('/home')}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -44,7 +53,7 @@ export default function ListFriends() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box bgcolor={"background.default"} color={"text.primary"}>
+      <Box bgcolor={'background.default'} color={'text.primary'}>
         <NavBar navAct={btnBackHome} />
         <Stack direction="row" spacing={2} justifyContent="center">
           {/* <SidebarMenu mode={mode} setMode={setMode} /> */}

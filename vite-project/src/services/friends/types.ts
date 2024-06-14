@@ -11,3 +11,11 @@ export type FriendsListType = {
   online: boolean;
   options: JSX.Element;
 };
+
+export type FriendType = {
+  id: number;
+  name: string;
+  email: string;
+  online: boolean;
+  options: JSX.Element;
+};

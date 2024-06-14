@@ -1,7 +1,7 @@
 import { BranchType } from '../branch/types';
 import { ChatType } from '../chats';
 import { CourseType } from '../courses';
-import { FriendsType } from '../friends';
+import { FriendType } from '../friends';
 import { PostType } from '../posts';
 import { ProfessorType } from '../professor/types';
 import { StudentType } from '../student/types';
@@ -16,7 +16,7 @@ export type UserType = {
   institutionId: number;
   posts: PostType[];
   chats: ChatType[];
-  friends: FriendsType[];
+  friends: FriendType[];
 };
 
 export type UserHeadOfficeType = {
