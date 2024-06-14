@@ -20,11 +20,15 @@ namespace InnerAPI.Dtos.Branch
         List<CourseDto>? Courses,
         List<StudentDto>? Students,
         List<ProfessorDto>? Professors
+        [StringLength(500)] string? About = null
+
     )
     {
         public bool Status { get; init; }
         public Stack<NotificationDto> Notifications { get; init; } = new Stack<NotificationDto>();
         public Stack<PostDto> Postagens { get; init; } = new Stack<PostDto>();
         public List<GroupsDto> Grupos { get; init; } = new List<GroupsDto>();
+        public string About { get; init; } = About;
+
     }
 }

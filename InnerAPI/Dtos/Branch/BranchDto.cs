@@ -16,11 +16,12 @@ namespace InnerAPI.Dtos.Branch
         [Required][MinLength(8)][MaxLength(20)] string Password,
         [Required][StringLength(50)] string Domain,
         [Required][StringLength(14)] string Cnpj,
-        [StringLength(100)] string? LocalidadeInstituicao = null,
+        [StringLength(100)] string? Address = null,
         DateOnly? DataCriacao = null,
         List<CourseDto>? Courses = null,
         List<StudentDto>? Students = null,
-        List<ProfessorDto>? Professors = null
+        List<ProfessorDto>? Professors = null,
+        [StringLength(500)] string? About = null
     )
     {
         public bool Status { get; init; }
