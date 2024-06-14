@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Metadata;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace InnerAPI.Models
 {
@@ -15,13 +16,12 @@ namespace InnerAPI.Models
             _areaLecionada = _formação = "";
         }
 
-        public Professor(uint id, string name, string email, string password)
+        public Professor(uint id, string name, string email, string password, string cpf, string institution, string registration, uint institutionId, string areaLecionada, string formacao): base(id, name, password, email, registration, cpf, institution, institutionId)
         {
-            Id = id;
-            Name = name;
-            Email = email;
-            Password = password;
+            _areaLecionada = areaLecionada;
+            _formação = formacao;
         }
+
 
         public Professor(uint id, string name, string password, string email, string image, string about, string registration, string cpf, DateOnly birthDate, string institution, string areaLecionada, string formacao) : base(id, name, password, email, image, about, registration, cpf, birthDate, institution)
         {

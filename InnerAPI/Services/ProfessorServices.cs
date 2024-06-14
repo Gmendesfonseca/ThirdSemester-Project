@@ -31,8 +31,8 @@ namespace InnerAPI.Services
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            uint id = (uint)professors.Count + 1;
-            Professor newProfessor = new Professor(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.AreaLecionada, register.Formacao);
+            uint id = (uint)professors.Count + 1; //uint id, string name, string email, string password, string cpf, string institution, string registration, uint institutionId, string areaLecionada, string formacao
+            Professor newProfessor = new Professor(id, register.Name, register.Email, register.Password, register.Cpf, register.Instituicao, register.Matricula, register.IntitutionId, register.AreaLecionada, register.Formacao);
             branch.Professors.Add(newProfessor.Id);
             professors.Add(newProfessor);
 

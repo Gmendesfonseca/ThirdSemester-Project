@@ -15,6 +15,7 @@ namespace InnerAPI.Models
         private List<uint> students;
         private List<uint> professors;
         private Stack<Post> feed;
+        private string cnpj1;
         #endregion
 
         #region "Construtores"
@@ -41,22 +42,19 @@ namespace InnerAPI.Models
             feed = new Stack<Post>();
         }
 
-        public Branch(uint id, string name, string password, string email, string image, string about, string address, DateOnly creationDate, string cnpj) : base(id, name, password, email, image, about, address, creationDate, cnpj, domain)
+        public Branch(uint id, string name, string email, string password, string cnpj)
         {
             Id = id;
             Name = name;
             Email = email;
             Password = password;
-            Online = false;
-            Active = true;
-            Address = address;
-            CreationDate = creationDate;
             CNPJ = cnpj;
-            Domain = email.Split('@')[1];
-            courses = new List<CourseDto>();
-            students = new List<uint>();
-            professors = new List<uint>();
-            feed = new Stack<Post>();
+        }
+
+        public Branch(uint id, string name, string email, string password, string cnpj, DateOnly creationDate, string domain) : base(id, name, email, password, cnpj, domain)
+        {
+            CreationDate = creationDate;
+            this.cnpj1 = cnpj1;
         }
         #endregion
 

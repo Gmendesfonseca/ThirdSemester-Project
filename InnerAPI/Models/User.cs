@@ -38,6 +38,16 @@
             _groups = new List<Group>();
             _notifications = new Stack<Notification>();
         }
+
+        public User(uint id, string name, string email, string password)
+        {
+            _id = id;
+            _name = name;
+            _password = password;
+            _email = email;
+            _groups = new List<Group>();
+            _notifications = new Stack<Notification>();
+        }
         #endregion
 
         #region "Propriedades"

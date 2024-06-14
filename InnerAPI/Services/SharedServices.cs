@@ -2,6 +2,7 @@
 using InnerAPI.Models.Chat;
 using InnerAPI.Utils;
 using System.Net;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace InnerAPI.Services
@@ -25,12 +26,14 @@ namespace InnerAPI.Services
             string domain = "exemplo.com";
             string address = "Rua Exemplo, 123";
             DateOnly creationDate = new DateOnly(2021, 1, 1);
+            string image = "caminho/para/imagem.jpg"; // Defina o caminho da imagem
+            string about = "Sobre a instituição"; // Descrição breve
 
             // Exemplo de HeadOffice
-            headOffices.Add(new HeadOffice(id, name, email, password, address, creationDate, cnpj, domain));
+            headOffices.Add(new HeadOffice(id, name, password, email, image, about, address, creationDate, cnpj, domain));
 
             // Exemplo de Branch
-            branches.Add(new Branch(id, name, email, password, address, creationDate, cnpj));
+            branches.Add(new Branch(id, name, password, email, image, about, address, creationDate, cnpj, domain));
 
             // Exemplo de Professor
             string registration = "12345";
@@ -39,15 +42,16 @@ namespace InnerAPI.Services
             string institution = "Instituição Exemplo";
             string areaLecionada = "Matemática";
             string formacao = "Doutorado";
-            professors.Add(new Professor(id, name, email, password, registration, cpf, birthDate, institution, areaLecionada, formacao));
+            professors.Add(new Professor(id, name, password, email, image, about, registration, cpf, birthDate, institution, areaLecionada, formacao));
 
             // Exemplo de Student
             string matricula = "2021001234";
             string curso = "Ciência da Computação";
             string periodo = "Noturno";
             uint pontuacao = 100;
-            students.Add(new Student(id, name, email, password, matricula, cpf, birthDate, institution, curso, periodo, pontuacao));
+            students.Add(new Student(id, name, password, email, image, about, matricula, cpf, birthDate, institution, curso, periodo, pontuacao));
         }
+
 
         public List<Branch> Branches { get { return branches; } }
         public List<HeadOffice> HeadOffices{ get { return headOffices; }}

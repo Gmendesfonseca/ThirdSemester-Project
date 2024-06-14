@@ -1,4 +1,6 @@
 ﻿using InnerAPI.Dtos.Chat;
+using InnerAPI.Utils;
+using System.Xml.Linq;
 
 namespace InnerAPI.Models
 {
@@ -33,9 +35,28 @@ namespace InnerAPI.Models
             _chatList = new List<ChatDto>();
             _friendList = new List<Friend>();
         }
-        #endregion
 
+        public Member(uint id, string name, string password, string email, string registration, string cpf, DateOnly birthDate, string institution, uint institutionId) : base(id, name, password, email)
+        {
+            _registration = registration;
+            _cpf = cpf;
+            _birthDate = birthDate;
+            _institution = institution;
+            _institutionId = institutionId;
+            _postList = new List<Post>();
+            _chatList = new List<ChatDto>();
+            _friendList = new List<Friend>();
+        }
+        public Member(uint id, string name, string password, string email, string registration, string cpf, string institution, uint institutionId):base(id, name, password, email)
+        {
+            _registration = registration;
+            _cpf = cpf;
+            _institution = institution;
+            _institutionId = institutionId;
+        }
+        #endregion
         #region "Propriedades"
+
         public string Registration
         {
             get { return _registration; }

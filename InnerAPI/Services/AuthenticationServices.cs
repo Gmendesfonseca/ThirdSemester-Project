@@ -19,8 +19,8 @@ namespace InnerAPI.Services
             _branches = new Dictionary<string, Branch>();
 
             // Exemplo: Inicializar alguns usuários para fins de demonstração
-            _headOffices.Add("admin@example.com", new Branch(1, "Admin", "admin@example.com", "admin123", "00000000000000"));
-            _branches.Add("branch@example.com", new Branch(2, "Branch", "branch@example.com", "branch123", "11111111111111"));
+            //_headOffices.Add("admin@example.com", new Branch(1, "Admin", "admin@example.com", "admin123", "00000000000000"));
+            //_branches.Add("branch@example.com", new Branch(2, "Branch", "branch@example.com", "branch123", "11111111111111"));
         }
 
         public Branch LoginHeadOffice(LoginDto login)

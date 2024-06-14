@@ -19,16 +19,10 @@ namespace InnerAPI.Models
             branches = new List<uint>();
         }   
 
-        public HeadOffice(uint id, string name, string email, string password, string cnpj, string domain) : base()
+        public HeadOffice(uint id, string name, string email, string password, string cnpj, string domain) : base(id, name, email, password, cnpj, domain)
         {
-            Id = id;
-            Name = name;
-            Email = email;
-            Password = password;
             Online = false;
             Active = true;
-            CNPJ = cnpj;
-            Domain = domain;
             branches = new List<uint>();
         }
         #endregion

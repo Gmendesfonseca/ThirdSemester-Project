@@ -20,6 +20,12 @@ namespace InnerAPI.Models
             _address = _cnpj = _domain = "";
         }
 
+        public Institution(uint id, string name, string password, string email, string cnpj, string domain) : base(id, name, password, email)
+        {
+            _cnpj = cnpj;
+            _domain = domain;
+        }
+
         public Institution(uint id, string name, string password, string email, string image, string about, string address, DateOnly creationDate, string cnpj, string domain) : base(id, name, password, email, image, about)
         {
             _address = address;

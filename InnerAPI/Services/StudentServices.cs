@@ -35,8 +35,8 @@ namespace InnerAPI.Services
             }
 
             // Cria e adiciona o novo estudante à instituição correta
-            uint id = (uint)students.Count + 1;
-            Student newStudent = new Student(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.Curso, register.Periodo, register.Pontuacao);
+            uint id = (uint)students.Count + 1; 
+            Student newStudent = new Student(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf,  register.Instituicao, register.InstitutionId, register.Curso, register.Periodo);
             institution.Students.Add(newStudent.Id);
             students.Add(newStudent);
 

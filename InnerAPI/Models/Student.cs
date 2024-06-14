@@ -1,4 +1,5 @@
 ﻿using InnerAPI.Dtos.Aluno;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace InnerAPI.Models
 {
@@ -17,13 +18,12 @@ namespace InnerAPI.Models
             _pontuacao = 0;
         }
 
-        public Student(uint id, string name, string email, string password)
+        public Student(uint id, string name, string email, string password, string registration, string cpf, string institution, uint institutionId, string curso, string periodo): base(id, name, password, email, registration, cpf, institution, institutionId)
         {
-            Id = id;
-            Name = name;
-            Email = email;
-            Password = password;
+            _course = curso;
+            _periodo = periodo;
         }
+
 
         public Student(uint id, string name, string password, string email, string image, string about, string registration, string cpf, DateOnly birthDate, string institution, string course, string periodo, uint pontuacao) : base(id, name, password, email, image, about, registration, cpf, birthDate, institution)
         {
