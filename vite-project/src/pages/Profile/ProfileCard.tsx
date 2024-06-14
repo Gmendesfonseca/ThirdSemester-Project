@@ -1,15 +1,13 @@
 import { useState } from "react";
 import "./Profile.css";
 // import { useSession } from "../../context/SessionContext";
-import instagramIcon from "./instagramIcon.png";
-import linkedinIcon from "./linkedin.png";
-import githubIcon from "./github.png";
-import { useSession } from "../../context/SessionContext";
+// import instagramIcon from "./instagramIcon.png";
+// import linkedinIcon from "./linkedin.png";
+// import githubIcon from "./github.png";
 
 export default function ProfileCard(props) {
   // const { accountType } = useSession();
   const [isSettingsVisible, setSettingsVisible] = useState(false);
-  const { user } = useSession();
 
   const toggleSettings = () => {
     setSettingsVisible(!isSettingsVisible);
@@ -47,11 +45,10 @@ export default function ProfileCard(props) {
           <img src={props.avatar} alt="Foto de Perfil" />
           <h1>{props.name}</h1>
           <span>{props.email}</span>
-          {/* <p className="profileDescription">{props.description}</p> */}
+          <p className="profileDescription">{props.description}</p>
         </div>
 
-        <div className="profile_footer">
-          {/* <button onClick={() => navigate(`/home`)}>Teste</button> */}
+        {/* <div className="profile_footer">
           <a href="/home">
             <img src={instagramIcon} alt="Instagram" />
           </a>
@@ -61,9 +58,9 @@ export default function ProfileCard(props) {
           <a href="/home">
             <img src={githubIcon} alt="GitHub" />
           </a>
-        </div>
+        </div> */}
       </div>
-      <div className={`profile_settings ${isSettingsVisible ? "show" : ""}`}>
+      {/* <div className={`profile_settings ${isSettingsVisible ? "show" : ""}`}>
         <h1>Alterar Dados</h1>
         <form className="profile_form">
           <label id="updateName" htmlFor="name">
@@ -97,7 +94,7 @@ export default function ProfileCard(props) {
             value={user?.about}
           />
         </form>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -21,7 +21,6 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useSession } from '../../../context/SessionContext';
 import { AccountType } from '../../../services/login/enum';
 import { UserType } from '../../../services/user/types';
-// import { darkTheme } from "../../../Theme";
 
 export function Form() {
   const navigate = useNavigate();
@@ -158,6 +157,9 @@ export function Form() {
         autoComplete="email"
         autoFocus
         onChange={handleEmailChange}
+        InputProps={{
+          style: { color: '#fff' }, // Adicione esta linha
+        }}
       />
       <TextField
         error={passwordError}
@@ -207,11 +209,6 @@ export function Form() {
           {accountType === AccountType.HEADOFFICE && (
             <Anchor id="register-institution" to="/headoffice/register">
               É uma nova matriz? Cadastre-se aqui
-            </Anchor>
-          )}
-          {accountType === AccountType.BRANCH && (
-            <Anchor id="register-institution" to="/branch/register">
-              É uma nova instituição? Cadastre-se aqui
             </Anchor>
           )}
         </Grid>
