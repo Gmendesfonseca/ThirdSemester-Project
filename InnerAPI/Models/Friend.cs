@@ -6,7 +6,7 @@
         private uint id;
         private string name;
         private string email;
-        private Boolean online;
+        private string online;
         #endregion
 
         #region "Construtores"
@@ -14,7 +14,7 @@
         {
             id = 0;
             name = email = "";
-            online = false;
+            online = "false";
         }
 
         public Friend(uint id, string name, string email, Boolean online)
@@ -22,7 +22,13 @@
             this.id = id;
             this.name = name;
             this.email = email;
-            this.online = online;
+            if (online)
+            {
+                this.online = "Online";
+            } else
+            {
+                this.online = "Offline";
+            }
         }
 
         #endregion
@@ -47,11 +53,7 @@
             set { email = value; }
         }
 
-        public Boolean Online
-        {
-            get { return online; }
-            set { online = value; }
-        }
+        
 
         #endregion
 

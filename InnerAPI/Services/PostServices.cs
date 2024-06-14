@@ -7,9 +7,13 @@ namespace InnerAPI.Services
     {
         Stack<Post> posts;
         List<Branch> institutions;
+        List<Student> students;
+        List<Professor> professors;
         public PostServices(SharedService sharedService)
         {
             institutions = sharedService.Branches;
+            students = sharedService.Students;
+            professors = sharedService.Professors;
         }
 
         public Stack<Post> GetPosts(int id)
@@ -23,40 +27,45 @@ namespace InnerAPI.Services
             return posts;
         }
 
-        public void Register(RegisterPostDto postDto)
+        public void Register(string type, RegisterPostDto postDto)
         {
-            //Criar um novo post com os dados do DTO
+            if(type == "student")
+            {
+                var student = students.FirstOrDefault((i) => i.Id == postDto.creatorId);
+            }
+            else if (type == "professor")
+            {
+                var professor = professors.FirstOrDefault((i) => i.Id == postDto.creatorId);
+            }
+            
             Post newPost = new Post(
-                postDto.IdPost,
-                postDto.TitlePost,
-                postDto.NumLikes,
-                new List<string>(),  //Se necessário, ajuste aqui para a lista de comentários
-                new List<string> { postDto.ContentPost },
-                postDto.DatePost,
-                postDto.InstitutionId
+                postDto.id,
+                postDto.creatorId,
+                postDto.creatorName,
+                postDto.title,
+                postDto.image,
+                postDto.description
             );
 
-            //Encontrar a instituição pelo ID e adicionar o novo post à pilha de posts
-            var institution = institutions.Find(inst => inst.Id == postDto.InstitutionId);
+            var institution = institutions.Find(inst => inst.Id == postDto.institutionId);
             if (institution != null)
             {
                 institution.Feed.Push(newPost);
             }
-            else
-            {
-                throw new InvalidOperationException("Instituição não encontrada.");
-            }
         }
 
-        public Post Update(int id, Post updatedPost)
+        public Post Update(int id, UpdatePostDto updatedPost)
         {
             Stack<Post> posts = institutions.Find(institution => institution.Id == updatedPost.InstitutionId).Feed;
-            Post postToUpdate = posts.FirstOrDefault(p => p.IdPost == id);
+            Post postToUpdate = posts.FirstOrDefault(p => p.Id == id);
             if (postToUpdate == null)
             {
                 return null;
             }
-            postToUpdate = updatedPost;
+            
+            postToUpdate.Title = updatedPost.TitlePost;
+
+            
             return postToUpdate;
         }
 

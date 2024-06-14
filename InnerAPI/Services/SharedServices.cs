@@ -26,7 +26,7 @@ namespace InnerAPI.Services
             string domain = "exemplo.com";
             string address = "Rua Exemplo, 123";
             DateOnly creationDate = new DateOnly(2021, 1, 1);
-            string image = "caminho/para/imagem.jpg"; // Defina o caminho da imagem
+            string image = "";
             string about = "Sobre a instituição"; // Descrição breve
 
             // Exemplo de HeadOffice
@@ -34,6 +34,17 @@ namespace InnerAPI.Services
 
             // Exemplo de Branch
             branches.Add(new Branch(id, name, password, email, image, about, address, creationDate, cnpj, domain));
+
+            Branch branch = branches[0];
+
+            
+            branch.addPost(new Post(1, 0, "Elon Mush", "Post Exemplo", "https://images-ext-1.discordapp.net/external/LYkyJqBzFh9rS5gx_SJUY62XfA-jirzscWtnjDdJ1x0/https/img.freepik.com/fotos-gratis/tire-o-copo-de-cafe-plastico_1051-1597.jpg?format=webp&width=873&height=655", "Descrição do post"));
+            branch.addPost(new Post(2, 0, "Elon Mush", "Post Exemplo", "https://images-ext-1.discordapp.net/external/LYkyJqBzFh9rS5gx_SJUY62XfA-jirzscWtnjDdJ1x0/https/img.freepik.com/fotos-gratis/tire-o-copo-de-cafe-plastico_1051-1597.jpg?format=webp&width=873&height=655", "Descrição do post"));
+            branch.addPost(new Post(3, 0, "Elon Mush", "Post Exemplo", "https://images-ext-1.discordapp.net/external/LYkyJqBzFh9rS5gx_SJUY62XfA-jirzscWtnjDdJ1x0/https/img.freepik.com/fotos-gratis/tire-o-copo-de-cafe-plastico_1051-1597.jpg?format=webp&width=873&height=655", "Descrição do post"));
+            branch.addPost(new Post(4, 0, "Elon Mush", "Post Exemplo", "https://images-ext-1.discordapp.net/external/LYkyJqBzFh9rS5gx_SJUY62XfA-jirzscWtnjDdJ1x0/https/img.freepik.com/fotos-gratis/tire-o-copo-de-cafe-plastico_1051-1597.jpg?format=webp&width=873&height=655", "Descrição do post"));
+            branch.addPost(new Post(5, 0, "Elon Mush", "Post Exemplo", "https://images-ext-1.discordapp.net/external/LYkyJqBzFh9rS5gx_SJUY62XfA-jirzscWtnjDdJ1x0/https/img.freepik.com/fotos-gratis/tire-o-copo-de-cafe-plastico_1051-1597.jpg?format=webp&width=873&height=655", "Descrição do post"));
+            branch.addPost(new Post(6, 0, "Elon Mush", "Post Exemplo", "https://images-ext-1.discordapp.net/external/LYkyJqBzFh9rS5gx_SJUY62XfA-jirzscWtnjDdJ1x0/https/img.freepik.com/fotos-gratis/tire-o-copo-de-cafe-plastico_1051-1597.jpg?format=webp&width=873&height=655", "Descrição do post"));
+            branch.addPost(new Post(7, 0, "Elon Mush", "Post Exemplo", "https://images-ext-1.discordapp.net/external/LYkyJqBzFh9rS5gx_SJUY62XfA-jirzscWtnjDdJ1x0/https/img.freepik.com/fotos-gratis/tire-o-copo-de-cafe-plastico_1051-1597.jpg?format=webp&width=873&height=655", "Descrição do post"));
 
             // Exemplo de Professor
             string registration = "12345";

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using InnerAPI.Dtos.Comment;
 
 namespace InnerAPI.Models
 {
@@ -7,13 +8,18 @@ namespace InnerAPI.Models
     {
         #region "Declaração de variáveis"
 
-        private uint _idPost;
-        private string _titlePost;
-        private uint _numLikes;
         private List<string> _comments;
         private List<string> _contentPost;
-        private DateOnly _datePost;
-        private uint _institutionId; 
+        private uint id;
+        private uint creatorId;
+        private uint _numLikes;
+        private string creatorName;
+        private string creatorImage;
+        private string title;
+        private string image;
+        private string description;
+        private List<CommentDto> comments;
+
 
         #endregion
 
@@ -27,29 +33,71 @@ namespace InnerAPI.Models
 
         public Post(uint idPost, string titlePost, uint numLikes, List<string> comments, List<string> contentPost, DateOnly datePost, uint institutionId)
         {
-            _idPost = idPost;
-            _titlePost = titlePost;
+            id = idPost;
+            title = titlePost;
             _numLikes = numLikes;
             _comments = comments ?? new List<string>();
             _contentPost = contentPost ?? new List<string>();
-            _datePost = datePost;
-            _institutionId = institutionId;
+            _comments = new List<string>();
+            _contentPost = new List<string>();
+        }
+
+        public Post(uint id, uint creatorId, string creatorName, string title, string image, string description)
+        {
+            this.id = id;
+            this.creatorId = creatorId;
+            this.creatorName = creatorName;
+            this.title = title;
+            this.image = image;
+            this.description = description;
+            comments = new List<CommentDto>();
+
         }
 
         #endregion
 
         #region "Propriedades"
 
-        public uint IdPost
+        public uint Id
         {
-            get { return _idPost; }
-            set { _idPost = value; }
+            get { return id; }
+            set { id = value; }
         }
 
-        public string TitlePost
+        public uint CreatorId
         {
-            get { return _titlePost; }
-            set { _titlePost = value; }
+            get { return creatorId; }
+            set { creatorId = value; }
+        }
+
+        public string CreatorName
+        {
+            get { return creatorName; }
+            set { creatorName = value; }
+        }
+
+        public string CreatorImage
+        {
+            get { return creatorImage; }
+            set { creatorImage = value; }
+        }
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+
+        public string Image
+        {
+            get { return image; }
+            set { image = value; }
+        }
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
         }
 
         public uint NumLikes
@@ -68,18 +116,6 @@ namespace InnerAPI.Models
         {
             get { return _contentPost; }
             set { _contentPost = value; }
-        }
-
-        public DateOnly DatePost
-        {
-            get { return _datePost; }
-            set { _datePost = value; }
-        }
-
-        public uint InstitutionId
-        {
-            get { return _institutionId; }
-            set { _institutionId = value; }
         }
         #endregion
 

@@ -4,13 +4,12 @@ namespace InnerAPI.Dtos.Post
 {
     public record class RegisterPostDto
     (
-        [Required] uint IdPost,
-        [Required] string TitlePost,
-        [Required] uint NumLikes,
-        [Required] List<string> Comments,
-        [Required] string ContentPost,
-        [Required] DateOnly DatePost,
-        [Required] uint CreatorId,
-        [Required] uint InstitutionId
+        [Required] uint id,
+        [Required] uint creatorId,
+        [Required] string creatorName,
+        [Required] string title,
+        [Required] string image,
+        [Required] string description,
+        [Required] uint institutionId
     );
 }

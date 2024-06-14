@@ -5,7 +5,7 @@ namespace InnerAPI.Dtos.Post
     public record class UpdatePostDto
     (
         [Required] uint IdPost,
-        uint InstitutionId, //adicionei para tentar resolver o erro do Update nos PostServices
+        uint InstitutionId, 
         string TitlePost = null, 
         List<string> Comments = null, 
         List<string> ContentPost = null,

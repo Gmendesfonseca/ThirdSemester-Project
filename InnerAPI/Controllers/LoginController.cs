@@ -14,7 +14,7 @@ namespace InnerAPI.Controllers
             var group = app.MapGroup("login").WithParameterValidation();
 
             //POST /login/headoffice
-            group.MapPost("/headoffice", (LoginDto login) =>
+            _ = group.MapPost("/headoffice", (LoginDto login) =>
             {
                 HeadOfficeServices headOfficeServices = new HeadOfficeServices(sharedService);
                 var headOffice = headOfficeServices.Login(login);
@@ -32,10 +32,11 @@ namespace InnerAPI.Controllers
                             name = headOffice.Name,
                             email = headOffice.Email,
                             avatar = headOffice.Avatar,
+                            institution = headOffice.Name,               
                             about = headOffice.About,
                             branches = headOfficeServices.Branches(headOffice.Id),
                         }
-                    });
+                    }); ;
                 }
                 else
                 {

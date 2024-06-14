@@ -150,7 +150,7 @@ namespace InnerAPI.Services
             {
                 if (studentsList[i].InstitutionId == id)
                 {
-                    Friend newFriend = new Friend(studentsList[i].Id, studentsList[i].Name, studentsList[i].Avatar, studentsList[i].Online);
+                    Friend newFriend = new Friend(studentsList[i].Id, studentsList[i].Name, studentsList[i].Email, studentsList[i].Online);
                     newFriendsList.Add(newFriend);
                 }
             }
@@ -159,7 +159,7 @@ namespace InnerAPI.Services
             {
                 if (professorsList[i].InstitutionId == id)
                 {
-                    Friend newFriend = new Friend(professorsList[i].Id, professorsList[i].Name, professorsList[i].Avatar, professorsList[i].Online);
+                    Friend newFriend = new Friend(professorsList[i].Id, professorsList[i].Name, professorsList[i].Email, professorsList[i].Online);
                     newFriendsList.Add(newFriend);
                 }
             }

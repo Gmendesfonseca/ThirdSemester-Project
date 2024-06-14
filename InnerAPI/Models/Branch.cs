@@ -106,7 +106,7 @@ namespace InnerAPI.Models
             while (feed.Count > 0)
             {
                 Post currentPost = feed.Pop();
-                if (currentPost.IdPost != id)
+                if (currentPost.Id != id)
                 {
                     tempStack.Push(currentPost);
                 }

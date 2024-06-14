@@ -22,15 +22,24 @@ namespace InnerAPI.Controllers
                 return Results.Ok(postServices.GetPosts(id));
             });
 
-            // POST /post/{id}
-            group.MapPost("{id}", (RegisterPostDto newPost) =>
+            // POST /post
+            group.MapPost("/student", (RegisterPostDto newPost) =>
             {
-                postServices.Register(newPost);
-                return Results.Created($"/post/{newPost.IdPost}", newPost);
+                string type = "student";
+                postServices.Register(type, newPost);
+                return Results.Created($"/post/{newPost.id}", newPost);
+            });
+
+            // POST /post
+            group.MapPost("/professor", (RegisterPostDto newPost) =>
+            {
+                string type = "professor";
+                postServices.Register(type,newPost);
+                return Results.Created($"/post/{newPost.id}", newPost);
             });
 
             // PUT /post/{id}
-            group.MapPut("{id}", (int id, Post updatedPost) =>
+            group.MapPut("{id}", (int id, UpdatePostDto updatedPost) =>
             {
                 var result = postServices.Update(id, updatedPost);
                 if (result == null)
