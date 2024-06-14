@@ -17,6 +17,7 @@ namespace InnerAPI.Dtos.Branch
         [Required][StringLength(50)] string Domain,
         [Required][StringLength(14)] string Cnpj,
         [StringLength(100)] string? LocalidadeInstituicao = null,
+        [StringLength(100)] string? HeadOfficeId,
         DateOnly? DataCriacao = null,
         List<CourseDto>? Courses = null,
         List<StudentDto>? Students = null,
