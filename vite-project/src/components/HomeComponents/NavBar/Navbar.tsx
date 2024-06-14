@@ -65,7 +65,7 @@ const UserBox = styled(Box)(({ theme }) => ({
 export const Navbar = (props) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const { setAccountType, setInstitution, setUser } = useSession();
+  const { setAccountType, setUser } = useSession();
   // const { setChatList } = useChat();
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -78,7 +78,6 @@ export const Navbar = (props) => {
   const handleLogout = () => {
     //localStorage.removeItem('token');
     setAccountType(null);
-    setInstitution(null);
     setUser(null);
     // setChatList([]);
     navigate('/login');

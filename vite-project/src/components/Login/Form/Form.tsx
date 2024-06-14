@@ -20,13 +20,14 @@ import Anchor from '../../Anchor/Anchor';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useSession } from '../../../context/SessionContext';
 import { AccountType } from '../../../services/login/enum';
+import { UserType } from '../../../services/user/types';
 // import { darkTheme } from "../../../Theme";
 
 export function Form() {
   const navigate = useNavigate();
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const { setUser, accountType, setAccountType, setInstitution } = useSession();
+  const { setUser, accountType, setAccountType } = useSession();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -84,15 +85,19 @@ export function Form() {
       let data: LoginResponse;
       if (accountType === AccountType.HEADOFFICE) {
         data = await loginHeadOffice({ email, password });
-        setUser(data.user);
+        setUser(data.user as UserType | null);
       } else if (accountType === AccountType.BRANCH) {
         data = await loginBranch({ email, password });
+        setUser(data.user as UserType | null);
       } else if (accountType === AccountType.PROFESSOR) {
         data = await loginProfessor({ email, password });
-        setInstitution(data.company_id);
-      } else {
+        setUser(data.user as UserType | null);
+      } else if (accountType === AccountType.STUDENT) {
         data = await loginStudent({ email, password });
-        setInstitution(data.company_id);
+        setUser(data.user as UserType | null);
+      } else {
+        console.error('Invalid account type');
+        return;
       }
 
       if (data.success) {
@@ -120,7 +125,6 @@ export function Form() {
         </InputLabel>
         <Select
           value={accountType || undefined}
-          defaultValue={AccountType.HEADOFFICE}
           required
           labelId="type-login-label"
           id="type-login-selector"
