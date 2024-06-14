@@ -31,6 +31,7 @@ import { ThemeProvider } from "@emotion/react";
 import { ProfileCard } from "../../../pages/Profile/ProfileCard";
 // import { UserType } from "../../../services/user/types";
 // import { PostType } from "../../../services/posts/types";
+import { AccountType } from "../../../services/login/enum";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -76,8 +77,8 @@ const UserBox = styled(Box)(({ theme }) => ({
 //   };
 // }
 
-export const NavBar = () => {
-  const { user } = useSession();
+export const NavBar = (props) => {
+  const { user, accountType } = useSession();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const { setAccountType, setUser } = useSession();
@@ -113,6 +114,7 @@ export const NavBar = () => {
         sx={{ width: "100%", bgcolor: "background.paper" }}
       >
         <StyledToolbar>
+          {props.navAct}
           <Search>
             <InputBase placeholder="Search" />
           </Search>
@@ -133,7 +135,7 @@ export const NavBar = () => {
                 aria-expanded={open ? "true" : undefined}
               >
                 <Avatar
-                  sx={{ width: 32, height: 32 }}
+                  sx={{ width: 42, height: 42 }}
                   src={
                     user
                       ? user.avatar
@@ -158,7 +160,7 @@ export const NavBar = () => {
                   src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 />
                 <Typography variant="body1" color="white">
-                  John Doe
+                  {user? user.name : "Me"}
                 </Typography>
               </IconButton>
             </Tooltip>
@@ -202,9 +204,9 @@ export const NavBar = () => {
           {/* <MenuItem onClick={handleClose}>
           <Avatar /> Profile
         </MenuItem> */}
-          <MenuItem sx={{ bgcolor: "transparent" }}>
-            <ProfileCard />
-          </MenuItem>
+          {accountType===AccountType.PROFESSOR ||accountType===AccountType.STUDENT ? (<MenuItem sx={{ bgcolor: "transparent" }}>
+          <ProfileCard />
+          </MenuItem>) : null}
           <Divider />
           <MenuItem onClick={handleLogout}>
             <ListItemIcon>

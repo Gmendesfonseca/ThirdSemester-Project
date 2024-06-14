@@ -14,7 +14,7 @@ export function Home() {
         color={"text.primary"}
         sx={{ padding: "0px", height: "100%" }}
       >
-        <NavBar />
+        <NavBar navAct="InnerLink" />
         <Stack direction="row" spacing={0} height="100%">
           <Rightbar />
           <Feed />

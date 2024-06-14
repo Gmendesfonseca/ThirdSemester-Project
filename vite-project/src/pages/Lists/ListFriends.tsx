@@ -1,10 +1,11 @@
-import { Stack, ThemeProvider, createTheme, Box } from "@mui/material";
+import { Stack, ThemeProvider, Box } from "@mui/material";
 import { NavBar } from "../../components/HomeComponents/NavBar/Navbar";
 import { HeadCell, InTable } from "../../components/Table/Table";
 import faker from "faker";
 import { More } from "../../components/More/More";
 import { FriendsListType } from "../../services/friends";
 import { useNavigate } from "react-router-dom";
+import { darkTheme } from "../../Themes";
 
 const headCells: readonly HeadCell<FriendsListType>[] = [
   { id: "name", numeric: false, disablePadding: false, label: "Name" },
@@ -23,11 +24,6 @@ const rows: FriendsListType[] = Array.from({ length: 50 }, (_, index) => ({
 
 export default function ListFriends() {
   const navigate = useNavigate();
-  const darkTheme = createTheme({
-    palette: {
-      mode: "dark",
-    },
-  });
 
   const btnBackHome = (
     <button title="back" className="backHome" onClick={() => navigate("/home")}>
@@ -49,7 +45,7 @@ export default function ListFriends() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={"background.default"} color={"text.primary"}>
-        <NavBar />
+        <NavBar navAct={btnBackHome} />
         <Stack direction="row" spacing={2} justifyContent="center">
           {/* <SidebarMenu mode={mode} setMode={setMode} /> */}
           <InTable<FriendsListType>
