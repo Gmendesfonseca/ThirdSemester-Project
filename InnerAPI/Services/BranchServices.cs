@@ -43,7 +43,7 @@ namespace InnerAPI.Services
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            Branch newBranch = new Branch(id, name, email, password, cnpj, image, about, address, creationDate, domain);
+            Branch newBranch = new Branch(id, name, email, password,  image, about, address, creationDate, cnpj, domain);
 
             branches.Add(newBranch);
 
