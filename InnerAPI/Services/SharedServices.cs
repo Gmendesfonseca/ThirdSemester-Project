@@ -34,6 +34,35 @@ namespace InnerAPI.Services
         public List<Post> Posts { get { return posts; } }
         public List<Chat> Chat { get { return chats; } }
         public void AddBranch(Branch institution){ branches.Add(institution); }
-        
+
+        // Novo método GetUserById
+        public UserType GetUserById(int id)
+        {
+            var user = headOffices.FirstOrDefault(h => h.Id == id)
+                ?? branches.FirstOrDefault(b => b.Id == id)
+                ?? professors.FirstOrDefault(p => p.Id == id)
+                ?? students.FirstOrDefault(s => s.Id == id);
+
+            if (user == null)
+            {
+                Console.WriteLine("nenhum usuário for encontrado");
+                return null;
+            }
+
+            return new UserType
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Image = user.Image,
+                AccountType = user switch
+                {
+                    HeadOffice => AccountType.HEADOFFICE,
+                    Branch => AccountType.BRANCH,
+                    Professor => AccountType.PROFESSOR,
+                    Student => AccountType.STUDENT,
+                    _ => throw new InvalidOperationException("Tipo de usuário desconhecido.")
+                }
+            };
+        }
     }
 }
