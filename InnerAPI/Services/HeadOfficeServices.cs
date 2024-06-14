@@ -43,7 +43,7 @@ namespace InnerAPI.Services
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            HeadOffice newHeadOffice = new HeadOffice(id, name, email, password, cnpj, domain, image, about, address, creationDate);
+            HeadOffice newHeadOffice = new HeadOffice(id, name, email, password, image, about, address, creationDate, cnpj, domain);
 
             headOffices.Add(newHeadOffice);
 

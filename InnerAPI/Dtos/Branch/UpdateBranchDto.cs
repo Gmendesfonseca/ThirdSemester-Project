@@ -19,7 +19,7 @@ namespace InnerAPI.Dtos.Branch
         DateOnly CreationDate,
         List<CourseDto>? Courses,
         List<StudentDto>? Students,
-        List<ProfessorDto>? Professors
+        List<ProfessorDto>? Professors,
         [StringLength(500)] string? About = null
 
     )

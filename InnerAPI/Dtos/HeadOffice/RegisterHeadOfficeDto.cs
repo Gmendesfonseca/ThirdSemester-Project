@@ -9,6 +9,7 @@ namespace InnerAPI.Dtos.HeadOffice
         [Required] string Email,
         [Required] [MinLength(8)] string Password,
         [Required] string Address,
+        [Required] string About,
         [Required] DateOnly CreationDate,
         [Required] string CNPJ,
         [Required] string Domain
