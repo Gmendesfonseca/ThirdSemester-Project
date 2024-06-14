@@ -7,7 +7,6 @@
         private string _name;
         private string _password;
         private string _email;
-        private string _phone;
         private string _image;
         private string _about;
         private bool _isOnline;
@@ -24,7 +23,19 @@
             _name = _password = _email = "";
             _isOnline = _isActive = false;
             _groups = new List<Group>();
-            _personalPosts = new Stack<Post>();
+            _notifications = new Stack<Notification>();
+        }
+
+        public User(uint id, string name, string password, string email, string image, string about)
+        {
+            _id = id;
+            _name = name;
+            _password = password;
+            _email = email;
+            _image = image;
+            _about = about;
+            _isOnline = _isActive = false;
+            _groups = new List<Group>();
             _notifications = new Stack<Notification>();
         }
         #endregion
@@ -54,11 +65,11 @@
             set { _email = value; }
         }
 
-        public string Phone
-        {
-            get { return _phone; }
-            set { _phone = value; }
-        }
+        //public string Phone
+        //{
+        //    get { return _phone; }
+        //    set { _phone = value; }
+        //}
 
         public string Avatar
         {
@@ -95,30 +106,30 @@
             _notifications.Push(notification);
         }
 
-        public Stack<Post> Posts()
-        {
-            return _personalPosts;
-        }
-        public void addPost(Post post)
-        {
-            _personalPosts.Push(post);
-        }
-        public void removePost(Post post)
-        {
-            Stack<Post> tempStack = new Stack<Post>();
-            while (_personalPosts.Count > 0)
-            {
-                Post currentPost = _personalPosts.Pop();
-                if (currentPost != post)
-                {
-                    tempStack.Push(currentPost);
-                }
-            }
-            while (tempStack.Count > 0)
-            {
-                _personalPosts.Push(tempStack.Pop());
-            }
-        }
+        //public Stack<Post> Posts()
+        //{
+        //    return _personalPosts;
+        //}
+        //public void addPost(Post post)
+        //{
+        //    _personalPosts.Push(post);
+        //}
+        //public void removePost(Post post)
+        //{
+        //    Stack<Post> tempStack = new Stack<Post>();
+        //    while (_personalPosts.Count > 0)
+        //    {
+        //        Post currentPost = _personalPosts.Pop();
+        //        if (currentPost != post)
+        //        {
+        //            tempStack.Push(currentPost);
+        //        }
+        //    }
+        //    while (tempStack.Count > 0)
+        //    {
+        //        _personalPosts.Push(tempStack.Pop());
+        //    }
+        //}
 
         public List<Group> Groups()
         {

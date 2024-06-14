@@ -1,4 +1,6 @@
-﻿namespace InnerAPI.Models
+﻿using InnerAPI.Dtos.Chat;
+
+namespace InnerAPI.Models
 {
     public abstract class Member : User
     {
@@ -9,7 +11,7 @@
         public DateOnly _birthDate;
         private string _institution;
         private List<Post> _postList;
-        private List<Chat> _chatList;
+        private List<ChatDto> _chatList;
         private List<Friend> _friendList;
 
         #endregion
@@ -19,6 +21,17 @@
         {
             _registration = _cpf = _institution = "";
             _birthDate = new DateOnly();
+        }
+
+        public Member(uint id, string name, string password, string email, string image, string about, string registration, string cpf, DateOnly birthDate, string institution) : base(id, name, password, email, image, about)
+        {
+            _registration = registration;
+            _cpf = cpf;
+            _birthDate = birthDate;
+            _institution = institution;
+            _postList = new List<Post>();
+            _chatList = new List<ChatDto>();
+            _friendList = new List<Friend>();
         }
         #endregion
 
@@ -58,7 +71,7 @@
             get { return _postList; }
         }
 
-        public List<Chat> Chats
+        public List<ChatDto> Chats
         {
             get { return _chatList; }
         }

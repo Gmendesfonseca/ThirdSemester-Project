@@ -1,5 +1,7 @@
 ﻿using InnerAPI.Models;
 using InnerAPI.Models.Chat;
+using InnerAPI.Utils;
+using System.Net;
 
 
 namespace InnerAPI.Services
@@ -21,10 +23,30 @@ namespace InnerAPI.Services
             string password = "12345678";
             string cnpj = "12345678000199";
             string domain = "exemplo.com";
+            string address = "Rua Exemplo, 123";
+            DateOnly creationDate = new DateOnly(2021, 1, 1);
 
+            // Exemplo de HeadOffice
+            headOffices.Add(new HeadOffice(id, name, email, password, address, creationDate, cnpj, domain));
 
-            headOffices.Add(new HeadOffice(id, name, email, password, cnpj, domain));
-            branches.Add(new Branch(id, name, email, password, cnpj));
+            // Exemplo de Branch
+            branches.Add(new Branch(id, name, email, password, address, creationDate, cnpj));
+
+            // Exemplo de Professor
+            string registration = "12345";
+            string cpf = "12345678900";
+            DateOnly birthDate = new DateOnly(1980, 1, 1);
+            string institution = "Instituição Exemplo";
+            string areaLecionada = "Matemática";
+            string formacao = "Doutorado";
+            professors.Add(new Professor(id, name, email, password, registration, cpf, birthDate, institution, areaLecionada, formacao));
+
+            // Exemplo de Student
+            string matricula = "2021001234";
+            string curso = "Ciência da Computação";
+            string periodo = "Noturno";
+            uint pontuacao = 100;
+            students.Add(new Student(id, name, email, password, matricula, cpf, birthDate, institution, curso, periodo, pontuacao));
         }
 
         public List<Branch> Branches { get { return branches; } }
@@ -36,33 +58,20 @@ namespace InnerAPI.Services
         public void AddBranch(Branch institution){ branches.Add(institution); }
 
         // Novo método GetUserById
-        public UserType GetUserById(int id)
-        {
-            var user = headOffices.FirstOrDefault(h => h.Id == id)
-                ?? branches.FirstOrDefault(b => b.Id == id)
-                ?? professors.FirstOrDefault(p => p.Id == id)
-                ?? students.FirstOrDefault(s => s.Id == id);
+        //public UserType GetUserById(int id, string accountType)
+        //{
+        //    if
+        //    var user = headOffices.FirstOrDefault(h => h.Id == id)
+        //        ?? branches.FirstOrDefault(b => b.Id == id)
+        //        ?? professors.FirstOrDefault(p => p.Id == id)
+        //        ?? students.FirstOrDefault(s => s.Id == id);
 
-            if (user == null)
-            {
-                Console.WriteLine("nenhum usuário for encontrado");
-                return null;
-            }
+        //    if (user == null)
+        //    {
+        //        Console.WriteLine("nenhum usuário for encontrado");
+        //        return null;
+        //    }
 
-            return new UserType
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Image = user.Image,
-                AccountType = user switch
-                {
-                    HeadOffice => AccountType.HEADOFFICE,
-                    Branch => AccountType.BRANCH,
-                    Professor => AccountType.PROFESSOR,
-                    Student => AccountType.STUDENT,
-                    _ => throw new InvalidOperationException("Tipo de usuário desconhecido.")
-                }
-            };
-        }
+        //}
     }
 }

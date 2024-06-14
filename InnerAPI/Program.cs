@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//builder.WebHost.UseUrls("http://localhost:7258");
 
 // Registra SharedService como um singleton
 builder.Services.AddSingleton<SharedService>();
@@ -45,7 +46,7 @@ app.MapProfessorEndpoint(sharedService);
 app.MapLoginEndpoint(sharedService);
 app.MapPostEndpoint(sharedService);
 app.MapChatEndpoint(sharedService);
-app.MapCourseEndpoint(sharedService);
+//app.MapCourseEndpoint(sharedService);
 
 
 // Configura o pipeline de requisi��es HTTP.

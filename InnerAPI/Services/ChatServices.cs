@@ -55,60 +55,60 @@ namespace InnerAPI.Services
             return true;
         }
 
-        public void SendMessage(int chatId, int senderId, string text)
-        {
-            if (!_chats.ContainsKey(chatId)) return;
+        //public void SendMessage(int chatId, int senderId, string text)
+        //{
+        //    if (!_chats.ContainsKey(chatId)) return;
 
-            var user = sharedServices.GetUserById(senderId);
-            if (user == null) return; // Adicione um tratamento de erro adequado aqui
+        //    var user = sharedServices.GetUserById(senderId);
+        //    if (user == null) return; // Adicione um tratamento de erro adequado aqui
 
-            var message = new MessageType
-            {
-                Id = _nextMessageId++,
-                ChatId = (int)someChatId, // Converta `uint` para `int` explicitamente se necessário
-                SenderId = someSenderId,
-                Text = "Your message text",
-                CreatorName = "Creator name",
-                CreatorImage = "Image URL",
-                CreatorAccountType = AccountType.STUDENT, // ou qualquer tipo apropriado
-                CreatedAt = DateTime.Now,
-                Timestamp = DateTime.Now
-            };
+        //    var message = new MessageType
+        //    {
+        //        Id = _nextMessageId++,
+        //        ChatId = (int)someChatId, // Converta `uint` para `int` explicitamente se necessário
+        //        SenderId = someSenderId,
+        //        Text = "Your message text",
+        //        CreatorName = "Creator name",
+        //        CreatorImage = "Image URL",
+        //        CreatorAccountType = AccountType.STUDENT, // ou qualquer tipo apropriado
+        //        CreatedAt = DateTime.Now,
+        //        Timestamp = DateTime.Now
+        //    };
 
-            if (!_messages.ContainsKey(chatId))
-            {
-                _messages[chatId] = new List<MessageType>();
-            }
-            _messages[chatId].Add(message);
-        }
+        //    if (!_messages.ContainsKey(chatId))
+        //    {
+        //        _messages[chatId] = new List<MessageType>();
+        //    }
+        //    _messages[chatId].Add(message);
+        //}
 
         public IEnumerable<MessageType> GetMessages(int chatId)
         {
             return _messages.TryGetValue(chatId, out var messages) ? messages : Enumerable.Empty<MessageType>();
         }
 
-        public Chat? GetChatDetailsById(int id)
-        {
-            if (!_chats.TryGetValue(id, out var chat)) return null;
+        //public Chat? GetChatDetailsById(int id)
+        //{
+        //    if (!_chats.TryGetValue(id, out var chat)) return null;
 
-            var user1 = sharedServices.GetUserById((int)chat.UserId1);
-            var user2 = sharedServices.GetUserById((int)chat.UserId2);
+        //    //var user1 = sharedServices.GetUserById((int)chat.UserId1);
+        //    //var user2 = sharedServices.GetUserById((int)chat.UserId2);
 
-            if (user1 == null || user2 == null) return null; // Adicione um tratamento de erro adequado aqui
+        //    //if (user1 == null || user2 == null) return null; // Adicione um tratamento de erro adequado aqui
 
-            var lastMessage = _messages.TryGetValue(chat.Id, out var messages) ? messages.LastOrDefault() : null;
+        //    //var lastMessage = _messages.TryGetValue(chat.Id, out var messages) ? messages.LastOrDefault() : null;
 
-            return new Chat
-            {
-                Id = chat.Id,
-                UserId1 = user1,
-                UserId2 = user2,
-                Name = user1.Id == chat.UserId1 ? user2.Name : user1.Name,
-                Description = lastMessage?.Text ?? string.Empty,
-                Messages = messages ?? new List<MessageType>(),
-                Image = user1.Id == chat.UserId1 ? user2.Image : user1.Image,
-                UpdatedAt = lastMessage?.CreatedAt ?? chat.DateCreation
-            };
-        }
+        //    //return new Chat
+        //    //{
+        //    //    Id = chat.Id,
+        //    //    UserId1 = user1,
+        //    //    UserId2 = user2,
+        //    //    Name = user1.Id == chat.UserId1 ? user2.Name : user1.Name,
+        //    //    Description = lastMessage?.Text ?? string.Empty,
+        //    //    Messages = messages ?? new List<MessageType>(),
+        //    //    Image = user1.Id == chat.UserId1 ? user2.Image : user1.Image,
+        //    //    UpdatedAt = lastMessage?.CreatedAt ?? chat.DateCreation
+        //    //};
+        //}
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace InnerAPI.Models
+﻿using System.Reflection.Metadata;
+
+namespace InnerAPI.Models
 {
     public class Professor : Member
     {
@@ -13,16 +15,16 @@
             _areaLecionada = _formação = "";
         }
 
-        public Professor(uint id, string name, string email, string password, string registration, string cpf, DateOnly birthDate, string institution, string areaLecionada, string formacao) : base()
+        public Professor(uint id, string name, string email, string password)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Email = email;
-            this.Password = password;
-            this.Registration = registration;
-            this.CPF = cpf;
-            this.BirthDate = birthDate;
-            this.Institution = institution;
+            Id = id;
+            Name = name;
+            Email = email;
+            Password = password;
+        }
+
+        public Professor(uint id, string name, string password, string email, string image, string about, string registration, string cpf, DateOnly birthDate, string institution, string areaLecionada, string formacao) : base(id, name, password, email, image, about, registration, cpf, birthDate, institution)
+        {
             this._areaLecionada = areaLecionada;
             this._formação = formacao;
         }

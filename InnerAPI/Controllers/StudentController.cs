@@ -14,9 +14,9 @@ namespace InnerAPI.Controllers
             var group = app.MapGroup("student").WithParameterValidation();
 
             // GET /student/{id}
-            group.MapGet("/{id}", (int id) =>
+            group.MapGet("/{id}", (uint id) =>
             {
-                return Results.Ok(studentServices.GetStudents(id).FirstOrDefault(s => s.Id == id));
+                return Results.Ok(studentServices.GetStudents(id).FirstOrDefault(s => s == id));
             });
 
             // POST /student/register

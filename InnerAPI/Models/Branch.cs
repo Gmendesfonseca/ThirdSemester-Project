@@ -1,6 +1,9 @@
 ﻿using InnerAPI.Dtos.Courses;
 using InnerAPI.Dtos.Post;
 using InnerAPI.Services;
+using InnerAPI.Utils;
+using static System.Net.Mime.MediaTypeNames;
+using System.Net;
 
 namespace InnerAPI.Models
 {
@@ -23,7 +26,7 @@ namespace InnerAPI.Models
             feed = new Stack<Post>();
         }
 
-        public Branch(uint id, string name, string email, string password, string cnpj) : base()
+        public Branch(uint id, string name, string password, string email, string image, string about, string address, DateOnly creationDate, string cnpj, string domain) : base(id, name, password, email, image, about, address, creationDate, cnpj, domain)
         {
             Id = id;
             Name = name;
@@ -38,7 +41,7 @@ namespace InnerAPI.Models
             feed = new Stack<Post>();
         }
 
-        public Branch(uint id, string name, string email, string password, string address, DateOnly creationDate, string cnpj) : base()
+        public Branch(uint id, string name, string password, string email, string image, string about, string address, DateOnly creationDate, string cnpj) : base(id, name, password, email, image, about, address, creationDate, cnpj, domain)
         {
             Id = id;
             Name = name;
@@ -49,6 +52,7 @@ namespace InnerAPI.Models
             Address = address;
             CreationDate = creationDate;
             CNPJ = cnpj;
+            Domain = email.Split('@')[1];
             courses = new List<CourseDto>();
             students = new List<uint>();
             professors = new List<uint>();

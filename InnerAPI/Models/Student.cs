@@ -17,17 +17,18 @@ namespace InnerAPI.Models
             _pontuacao = 0;
         }
 
-        public Student(uint id, string name, string email, string password, string matricula, string cpf, DateOnly birthDate, string instituicao, string curso, string periodo, uint pontuacao) : base()
+        public Student(uint id, string name, string email, string password)
         {
             Id = id;
             Name = name;
             Email = email;
             Password = password;
-            Registration = matricula;
-            CPF = cpf;
-            BirthDate = birthDate;
-            Institution = instituicao;
-            _course = curso;
+        }
+
+        public Student(uint id, string name, string password, string email, string image, string about, string registration, string cpf, DateOnly birthDate, string institution, string course, string periodo, uint pontuacao) : base(id, name, password, email, image, about, registration, cpf, birthDate, institution)
+        {
+
+            _course = course;
             _periodo = periodo;
             _pontuacao = pontuacao;
         }

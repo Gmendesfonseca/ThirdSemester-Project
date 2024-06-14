@@ -9,18 +9,18 @@ namespace InnerAPI.Services
     {
         List<Professor> professors;
         List<Student> students;
-        List<Branch> institutions;
+        List<Branch> branches;
         public ProfessorServices(SharedService _sharedService)
         {
             professors = _sharedService.Professors;
-            institutions = _sharedService.Branches;
+            branches = _sharedService.Branches;
             students = _sharedService.Students;
         }
 
         public Professor Register(RegisterProfessorDto register)
         {
-            var institution = GetBranch(register.Email);
-            if (institution == null)
+            var branch = GetBranch(register.Email);
+            if (branch == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
             }
@@ -33,7 +33,7 @@ namespace InnerAPI.Services
 
             uint id = (uint)professors.Count + 1;
             Professor newProfessor = new Professor(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf, register.BirthDate, register.Instituicao, register.AreaLecionada, register.Formacao);
-            institution.Professors.Add(newProfessor.Id);
+            branch.Professors.Add(newProfessor.Id);
             professors.Add(newProfessor);
 
             return newProfessor;
@@ -48,8 +48,8 @@ namespace InnerAPI.Services
             if (!Email.IsValid(email))
                 throw new ArgumentException("Email inválido.");
 
-            var institution = GetBranch(email);
-            if (institution == null)
+            var branch = GetBranch(email);
+            if (branch == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
             }
@@ -84,7 +84,7 @@ namespace InnerAPI.Services
 
         public bool Delete(uint id)
         { 
-            institutions.SelectMany(i => i.Professors).ToList().RemoveAll(usuario => usuario == id); 
+            branches.SelectMany(i => i.Professors).ToList().RemoveAll(usuario => usuario == id); 
             professors.RemoveAll(p => p.Id == id);
             return true; 
         }
@@ -92,24 +92,39 @@ namespace InnerAPI.Services
         public Branch GetBranch(string email)
         {
             var domain = email.Split('@')[1];
-            return institutions.FirstOrDefault(i => i.Domain == domain);
+            var branch = branches.FirstOrDefault(i => i.Domain == domain);
+            if(branch == null)
+            {
+                throw new ArgumentException("Instituição não encontrada.");
+            }
+            return branch;
         }
 
         public Branch GetBranch(uint id)
         {
-            var institution = institutions.FirstOrDefault(i => i.Id == id);
-            if(institution == null)
+            var branch = branches.FirstOrDefault(i => i.Id == id);
+            if(branch == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
             }
-            return institution;
+            return branch;
+        }
+
+        public Professor GetProfessors(uint id)
+        {
+            var professor = professors.FirstOrDefault(p => p.Id == id);
+            if(professor == null)
+            {
+                throw new ArgumentException("Professor não encontrado.");
+            }
+            return professor;
         }
 
         public Stack<Post> Posts(uint id)
         {
             Stack<Post> newPostsList = new Stack<Post>();
-            var institution = institutions.FirstOrDefault(i => i.Id == id);
-            newPostsList = institution.Feed;
+            var branch = branches.FirstOrDefault(i => i.Id == id);
+            newPostsList = branch.Feed;
 
             return newPostsList;
         }

@@ -13,9 +13,9 @@ namespace InnerAPI.Controllers
 
 
             // GET /professor/{id}
-            group.MapGet("{id}", (int id) =>
+            group.MapGet("{id}", (uint id) =>
             {
-                var professor = professorServices.GetProfessors(id).FirstOrDefault(s => s.Id == id);
+                var professor = professorServices.GetProfessors(id);
                 if (professor == null)
                 {
                     return Results.NotFound($"Professor com ID {id} não encontrado.");
@@ -31,15 +31,15 @@ namespace InnerAPI.Controllers
             });
 
             // PUT /professor/id
-            group.MapPut("/{id}", (Professor professor) =>
+            group.MapPut("/{id}", (uint id, Professor professor) =>
             {
-                var professorToUpdate = professorServices.GetProfessors(professor.Email).FirstOrDefault(s => s.Id == professor.Id);
+                var professorToUpdate = professorServices.GetProfessors(id);
                 professorToUpdate = professor;
                 return Results.Ok(professorToUpdate);
             });
 
             //DELETE /professor/{id}
-            group.MapDelete("/{id}", (int id) =>
+            group.MapDelete("/{id}", (uint id) =>
             {
                 bool deleted = professorServices.Delete(id);
                 if (!deleted)

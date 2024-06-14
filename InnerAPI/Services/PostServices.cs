@@ -14,7 +14,12 @@ namespace InnerAPI.Services
 
         public Stack<Post> GetPosts(int id)
         {
-            Stack<Post> posts = institutions.Find(institution => institution.Id == id).Posts;
+            var institution = institutions.Find(inst => inst.Id == id);
+            if (institution == null)
+            {
+                throw new InvalidOperationException("Instituição não encontrada.");
+            }
+            Stack<Post> posts = institution.Feed;
             return posts;
         }
 
@@ -35,7 +40,7 @@ namespace InnerAPI.Services
             var institution = institutions.Find(inst => inst.Id == postDto.InstitutionId);
             if (institution != null)
             {
-                institution.Posts.Push(newPost);
+                institution.Feed.Push(newPost);
             }
             else
             {
@@ -45,7 +50,7 @@ namespace InnerAPI.Services
 
         public Post Update(int id, Post updatedPost)
         {
-            Stack<Post> posts = institutions.Find(institution => institution.Id == updatedPost.InstitutionId).Posts;
+            Stack<Post> posts = institutions.Find(institution => institution.Id == updatedPost.InstitutionId).Feed;
             Post postToUpdate = posts.FirstOrDefault(p => p.IdPost == id);
             if (postToUpdate == null)
             {
@@ -57,11 +62,17 @@ namespace InnerAPI.Services
 
         public bool Delete(int id) //Bucar e remover todos os posts com o ID
         {
-            //troquei o SelectMany por foreach 
-            foreach (var institution in institutions)
-            {
-                institution.Posts.RemoveAll(post => post.IdPost == id);
-            }
+            //PostServices postServices = new PostServices(new SharedService());
+            //foreach (var institution in institutions)
+            //{
+            //    Stack<Post> posts = institution.Feed;
+            //    Post post = posts.FirstOrDefault(p => p.IdPost == id);
+            //    if (post != null)
+            //    {
+            //        post.RemoveContent(post);
+            //        return true;
+            //    }
+            //}
             return true;
         }
     }
