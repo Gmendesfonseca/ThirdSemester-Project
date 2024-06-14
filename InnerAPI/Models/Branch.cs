@@ -21,6 +21,8 @@ namespace InnerAPI.Models
         #region "Construtores"
         public Branch() : base()
         {
+            Online = false;
+            Active = true;
             courses = new List<CourseDto>();
             students = new List<uint>();
             professors = new List<uint>();
@@ -49,12 +51,15 @@ namespace InnerAPI.Models
             Email = email;
             Password = password;
             CNPJ = cnpj;
+            Online = false;
+            Active = true;
         }
 
         public Branch(uint id, string name, string email, string password, string cnpj, DateOnly creationDate, string domain) : base(id, name, email, password, cnpj, domain)
         {
             CreationDate = creationDate;
-            this.cnpj1 = cnpj1;
+            Online = false;
+            Active = true;
         }
         #endregion
 

@@ -27,24 +27,29 @@ namespace InnerAPI.Services
             string email = register.Email;
             string password = register.Password;
             string cnpj = register.Cnpj;
+            string image = "caminho/para/imagem.jpg";
+            string about = register.About;
+            string address = register.Address;
+            DateOnly creationDate = DateOnly.FromDateTime(DateTime.Now); 
+            string domain = email.Split('@')[1];
 
             Email Email = new Email();
             if (!Email.IsValid(email))
                 throw new ArgumentException("Email inválido.");
 
-            var existingUser = branches.Exists(r => r.Name == register.Name || r.Email == register.Email || r._cnpj == register.Cnpj);
+            var existingUser = branches.Exists(r => r.Name == register.Name || r.Email == register.Email || r.CNPJ == register.Cnpj);
             if (existingUser)
             {
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            Branch newBranch = new Branch(id, name, email, password, cnpj);
-
+            Branch newBranch = new Branch(id, name, email, password, cnpj, image, about, address, creationDate, domain);
 
             branches.Add(newBranch);
 
             return newBranch;
         }
+
 
         public Branch Login(LoginDto user)
         {
