@@ -1,5 +1,5 @@
 import { Stack, ThemeProvider, createTheme, Box } from '@mui/material';
-import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
+import { NavBar } from '../../components/HomeComponents/NavBar/Navbar';
 import { HeadCell, InTable } from '../../components/Table/Table';
 import faker from 'faker';
 import { More } from '../../components/More/More';
@@ -40,7 +40,7 @@ export default function ListBranch() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={'background.default'} color={'text.primary'}>
-        <Navbar />
+        <NavBar />
         <Stack direction="row" spacing={2} justifyContent="center">
           {/* <SidebarMenu mode={mode} setMode={setMode} /> */}
           <InTable<BranchListType>

@@ -1,6 +1,6 @@
 import { Stack, ThemeProvider, createTheme, Box } from "@mui/material";
 
-import { Navbar } from "../../components/HomeComponents/NavBar/Navbar";
+import { NavBar } from "../../components/HomeComponents/NavBar/Navbar";
 import { SidebarMenu } from "../../components/HomeComponents/Sidebar/SidebarHome";
 import { HeadCell, InTable } from "../../components/Table/Table";
 import faker from "faker";
@@ -44,7 +44,7 @@ export default function ListCourse() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={"background.default"} color={"text.primary"}>
-        <Navbar />
+        <NavBar />
         <Stack direction="row" spacing={2} justifyContent="space-between">
           <SidebarMenu />
           <InTable<CourseListType>

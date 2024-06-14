@@ -1,23 +1,23 @@
-import { Stack, ThemeProvider, createTheme, Box } from '@mui/material';
-import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
-import { HeadCell, InTable } from '../../components/Table/Table';
-import faker from 'faker';
-import { More } from '../../components/More/More';
-import { FriendsListType } from '../../services/friends';
-import { useNavigate } from 'react-router-dom';
+import { Stack, ThemeProvider, createTheme, Box } from "@mui/material";
+import { NavBar } from "../../components/HomeComponents/NavBar/Navbar";
+import { HeadCell, InTable } from "../../components/Table/Table";
+import faker from "faker";
+import { More } from "../../components/More/More";
+import { FriendsListType } from "../../services/friends";
+import { useNavigate } from "react-router-dom";
 
 const headCells: readonly HeadCell<FriendsListType>[] = [
-  { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
-  { id: 'email', numeric: false, disablePadding: false, label: 'Email' },
-  { id: 'online', numeric: false, disablePadding: false, label: 'Status' },
-  { id: 'options', numeric: false, disablePadding: false, label: 'Opções' },
+  { id: "name", numeric: false, disablePadding: false, label: "Name" },
+  { id: "email", numeric: false, disablePadding: false, label: "Email" },
+  { id: "online", numeric: false, disablePadding: false, label: "Status" },
+  { id: "options", numeric: false, disablePadding: false, label: "Opções" },
 ];
 
 const rows: FriendsListType[] = Array.from({ length: 50 }, (_, index) => ({
   id: index + 1,
   name: faker.company.companyName(),
   email: faker.internet.email(),
-  online: faker.random.arrayElement(['Online', 'Offline']),
+  online: faker.random.arrayElement(["Online", "Offline"]),
   options: <More type="Amizade" id={index + 1} idMore={index + 1} />,
 }));
 
@@ -25,12 +25,12 @@ export default function ListFriends() {
   const navigate = useNavigate();
   const darkTheme = createTheme({
     palette: {
-      mode: 'dark',
+      mode: "dark",
     },
   });
 
   const btnBackHome = (
-    <button title="back" className="backHome" onClick={() => navigate('/home')}>
+    <button title="back" className="backHome" onClick={() => navigate("/home")}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -48,8 +48,8 @@ export default function ListFriends() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box bgcolor={'background.default'} color={'text.primary'}>
-        <Navbar navAct={btnBackHome} />
+      <Box bgcolor={"background.default"} color={"text.primary"}>
+        <NavBar />
         <Stack direction="row" spacing={2} justifyContent="center">
           {/* <SidebarMenu mode={mode} setMode={setMode} /> */}
           <InTable<FriendsListType>

@@ -1,6 +1,6 @@
 import { Stack, ThemeProvider, createTheme } from '@mui/material';
 import Box from '@mui/material/Box';
-import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
+import { NavBar } from '../../components/HomeComponents/NavBar/Navbar';
 import { SidebarMenu } from '../../components/HomeComponents/Sidebar/SidebarHome';
 import { HeadCell, InTable } from '../../components/Table/Table';
 import faker from 'faker';
@@ -45,7 +45,7 @@ export default function ListStudent() {
         color={'text.primary'}
         sx={{ padding: '0px', height: '100%' }}
       >
-        <Navbar />
+        <NavBar />
         <Stack direction="row" spacing={0} justifyContent="space-between">
           <SidebarMenu />
           <InTable<StudentListType>

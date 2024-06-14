@@ -11,10 +11,9 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { Sidebar } from '../../Sidebar/Sidebar';
-import { blue } from '@mui/material/colors';
 import { useSession } from '../../../context/SessionContext';
 import { AccountType } from '../../../services/login/enum';
-import { darkTheme } from '../../../Themes';
+
 
 export const SidebarMenu = () => {
   const navigate = useNavigate();
