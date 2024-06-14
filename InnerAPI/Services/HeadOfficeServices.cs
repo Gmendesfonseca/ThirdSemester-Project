@@ -28,7 +28,10 @@ namespace InnerAPI.Services
             string password = register.Password;
             string domain = register.Domain;
             string cnpj = register.CNPJ;
-            int type = 1;
+            string image = "caminho/para/imagem.jpg";
+            string about = register.About;
+            string address = register.Address;
+            DateOnly creationDate = DateOnly.FromDateTime(DateTime.Now); // Exemplo usando a data atual
 
             Email Email = new Email();
             if (!Email.IsValid(email))
@@ -40,7 +43,11 @@ namespace InnerAPI.Services
                 throw new ArgumentException("Este email já está sendo usado por outro usuário.");
             }
 
-            HeadOffice newHeadOffice = new HeadOffice(id, name, email, password, cnpj, domain);
+            HeadOffice newHeadOffice = new HeadOffice(id, name, email, password, cnpj, domain, image, about, address, creationDate);
+
+            headOffices.Add(newHeadOffice);
+
+            return newHeadOffice;
 
             headOffices.Add(newHeadOffice);
 
