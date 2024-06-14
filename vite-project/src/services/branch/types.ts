@@ -39,7 +39,6 @@ export type BranchListType = {
   id: number;
   name: string;
   email: string;
-  domain: string;
   cnpj: string;
   localidadeInstituicao?: string;
   dataCriacao?: Date;

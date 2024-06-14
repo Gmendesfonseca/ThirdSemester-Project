@@ -1,5 +1,6 @@
 import { BranchType } from '../branch/types';
 import { ChatType } from '../chats';
+import { CourseType } from '../courses';
 import { FriendsType } from '../friends';
 import { PostType } from '../posts';
 import { ProfessorType } from '../professor/types';
@@ -10,12 +11,31 @@ export type UserType = {
   name: string;
   email: string;
   avatar: string;
+  about: string;
   institution: string;
+  institutionId: number;
   posts: PostType[];
   chats: ChatType[];
-  branches: BranchType[];
-  student: StudentType[];
-  professor: ProfessorType[];
   friends: FriendsType[];
+};
+
+export type UserHeadOfficeType = {
+  id: number;
+  name: string;
+  email: string;
+  avatar: string;
+  institution: string;
   about: string;
+  branches: BranchType[];
+};
+
+export type UserBranchType = {
+  id: number;
+  name: string;
+  email: string;
+  avatar: string;
+  about: string;
+  professors: ProfessorType[];
+  students: StudentType[];
+  courses: CourseType[];
 };

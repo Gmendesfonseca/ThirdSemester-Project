@@ -12,8 +12,9 @@ import {
 import React, { useState } from 'react';
 import { InModalDelete } from '../../Modal/DeleteModal';
 import InMenu from '../../Menu/Menu';
+import { CommentType } from '../../../services/comment/types';
 
-export const Comment = ({ comment }) => {
+export const Comment = (comment: CommentType) => {
   const [liked, setLiked] = useState(false);
   const handleLike = () => setLiked(!liked);
   const [open, setOpen] = useState(false);
@@ -29,10 +30,10 @@ export const Comment = ({ comment }) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 2 }}>
       <Container sx={{ display: 'flex', alignItems: 'center' }}>
-        <Avatar />
+        <Avatar src={comment.authorImage} />
         <ListItemText
           sx={{ paddingX: '10px' }}
-          primary={comment.author}
+          primary={comment.authorName}
           secondary={
             <React.Fragment>
               <Typography component="p" variant="body2" color="text.primary">

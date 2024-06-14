@@ -20,13 +20,23 @@ import Anchor from '../../Anchor/Anchor';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useSession } from '../../../context/SessionContext';
 import { AccountType } from '../../../services/login/enum';
-import { UserType } from '../../../services/user/types';
+import {
+  UserBranchType,
+  UserHeadOfficeType,
+  UserType,
+} from '../../../services/user/types';
 
 export function Form() {
   const navigate = useNavigate();
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const { setUser, accountType, setAccountType } = useSession();
+  const {
+    setUser,
+    setUserBranch,
+    setUserHeadOffice,
+    accountType,
+    setAccountType,
+  } = useSession();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -84,10 +94,10 @@ export function Form() {
       let data: LoginResponse;
       if (accountType === AccountType.HEADOFFICE) {
         data = await loginHeadOffice({ email, password });
-        setUser(data.user as UserType | null);
+        setUserHeadOffice(data.user as UserHeadOfficeType | null);
       } else if (accountType === AccountType.BRANCH) {
         data = await loginBranch({ email, password });
-        setUser(data.user as UserType | null);
+        setUserBranch(data.user as UserBranchType | null);
       } else if (accountType === AccountType.PROFESSOR) {
         data = await loginProfessor({ email, password });
         setUser(data.user as UserType | null);
@@ -100,7 +110,16 @@ export function Form() {
       }
 
       if (data.success) {
-        navigate('/home');
+        if (
+          accountType === AccountType.STUDENT ||
+          accountType === AccountType.PROFESSOR
+        ) {
+          navigate('/home');
+        } else if (accountType === AccountType.BRANCH) {
+          navigate('/professor/list');
+        } else {
+          navigate('/branch/list');
+        }
       } else {
         addToast('Email ou senha incorretos', { appearance: 'error' });
       }
@@ -119,11 +138,15 @@ export function Form() {
       }}
     >
       <FormControl fullWidth>
-        <InputLabel id="type-login-label" sx={{ color: 'text.primary' }}>
+        <InputLabel
+          id="type-login-label"
+          sx={{ color: 'text.primary' }}
+          required
+        >
           Fazer login como
         </InputLabel>
         <Select
-          value={accountType || undefined}
+          value={accountType || ''}
           required
           labelId="type-login-label"
           id="type-login-selector"

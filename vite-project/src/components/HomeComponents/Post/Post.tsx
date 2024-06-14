@@ -192,7 +192,7 @@ export const Post = ({ data }: PostProps) => {
               </Box>
               {Array.isArray(comments) &&
                 comments.map((comment) => (
-                  <Comment key={comment.id} comment={comment} />
+                  <Comment key={comment.id} {...comment} />
                 ))}
             </>
           )}
