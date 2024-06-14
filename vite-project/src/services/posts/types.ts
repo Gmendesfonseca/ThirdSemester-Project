@@ -13,8 +13,9 @@ export type PostType = {
 };
 
 export type CreatePostType = {
-  creatorId: number;
-  creatorName: string;
+  institutionId?: number;
+  creatorId?: number;
+  creatorName?: string;
   title: string;
   image: string | ArrayBuffer | null | undefined;
   description: string;

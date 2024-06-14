@@ -1,4 +1,3 @@
-import { HeadOfficeType } from '../headoffice/types';
 import { BranchType } from '../branch/types';
 import { ProfessorType } from '../professor/types';
 import { StudentType } from '../student/types';
@@ -6,6 +5,7 @@ import { PostType } from '../posts';
 import { ChatType } from '../chats';
 import { FriendsType } from '../friends';
 import { CourseType } from '../courses';
+import { UserBranchType, UserHeadOfficeType, UserType } from '../user/types';
 
 export type LoginParams = {
   email: string;
@@ -40,7 +40,7 @@ export type LoginSuccess = {
   message: string;
   company_id: number;
   success: boolean;
-  user: StudentType | ProfessorType | HeadOfficeType | BranchType;
+  user: UserHeadOfficeType | UserType | UserBranchType | null;
 };
 
 export type LoginResponse = LoginSuccess | LoginError;

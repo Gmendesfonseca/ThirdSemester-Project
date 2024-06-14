@@ -13,33 +13,39 @@ import {
   styled,
   Tooltip,
   Typography,
-} from "@mui/material";
-import { ChangeEvent, useState } from "react";
-import { Add as AddIcon, Close, Image } from "@mui/icons-material";
-import { Box } from "@mui/system";
-import "./Add.css";
-import { createPost } from "../../../services/posts";
-import { useSession } from "../../../context/SessionContext";
+} from '@mui/material';
+import { ChangeEvent, useState } from 'react';
+import { Add as AddIcon, Close, Image } from '@mui/icons-material';
+import { Box } from '@mui/system';
+import './Add.css';
+import {
+  createPostProfessor,
+  createPostStudent,
+  PostType,
+} from '../../../services/posts';
+import { useSession } from '../../../context/SessionContext';
+import { AccountType } from '../../../services/login/enum';
 
 const StyledModal = styled(Modal)({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 });
 
 const UserBox = styled(Box)({
-  display: "flex",
-  alignItems: "center",
-  gap: "10px",
-  marginBottom: "20px",
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+  marginBottom: '20px',
 });
 
 export const Add2 = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const { user } = useSession();
-  const [title, setTitle] = useState<string>("");
+  const { user, accountType } = useSession();
+  const [title, setTitle] = useState<string>('');
   const [image, setImage] = useState<string | ArrayBuffer | null>();
-  const [description, setDescription] = useState<string>("");
+  const [description, setDescription] = useState<string>('');
+  const institutionId = user?.institutionId;
   const creatorId = user?.id;
   const creatorName = user?.name;
 
@@ -59,13 +65,29 @@ export const Add2 = () => {
     setDescription(e.target.value);
   };
 
-  const handleCreatePost = () => {
-    creatorId &&
-      creatorName &&
-      title &&
-      image &&
-      description &&
-      createPost({ creatorId, creatorName, title, image, description });
+  const handleCreatePost = async () => {
+    if (accountType === AccountType.PROFESSOR) {
+      const data: PostType = await createPostProfessor({
+        institutionId,
+        creatorId,
+        creatorName,
+        title,
+        image,
+        description,
+      });
+      user?.posts.push(data);
+    } else if (accountType === AccountType.STUDENT) {
+      const data = await createPostStudent({
+        institutionId,
+        creatorId,
+        creatorName,
+        title,
+        image,
+        description,
+      });
+      user?.posts.push(data);
+    }
+    handleModalClose();
   };
 
   function handleOpenButtonClicked(e: ChangeEvent<HTMLInputElement>) {
@@ -73,16 +95,31 @@ export const Add2 = () => {
       const reader = new FileReader();
 
       reader.addEventListener(
-        "load",
+        'load',
         function () {
-          setImage(reader.result); // reader.result contém a string base64
+          setImage(reader.result);
         },
-        false
+        false,
       );
 
       reader.readAsDataURL(e.target.files[0]);
     }
   }
+
+  // function handlePostClick() {
+  //   if (image) {
+  //     createPost({ image, description, title }).then(
+  //       (data) => {
+  //         if (user) {
+  //           user.posts.push(data);
+  //         }
+  //         handleModalClose();
+  //       },
+  //     );
+  //   } else {
+  //     console.error('Nenhuma imagem selecionada para a postagem');
+  //   }
+  // }
 
   return (
     <>
@@ -90,7 +127,7 @@ export const Add2 = () => {
         onClick={handleClickOpen}
         title="Add Post"
         sx={{
-          position: "fixed",
+          position: 'fixed',
           bottom: 20,
           right: 30,
         }}
@@ -114,13 +151,13 @@ export const Add2 = () => {
                     src={
                       user
                         ? user.avatar
-                        : "https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        : 'https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
                     }
                     sx={{ width: 30, height: 30 }}
                   />
                   <Stack direction="column" spacing={0.5}>
                     <Typography fontWeight={500}>
-                      {user ? user.name : "Nome do Usuário"}
+                      {user ? user.name : 'Nome do Usuário'}
                     </Typography>
                   </Stack>
                 </UserBox>
@@ -133,7 +170,7 @@ export const Add2 = () => {
             </Stack>
           </DialogTitle>
           <DialogContent
-            sx={{ display: "flex", flexDirection: "column", gap: "8px", py: 0 }}
+            sx={{ display: 'flex', flexDirection: 'column', gap: '8px', py: 0 }}
           >
             <Box>
               <InputBase
@@ -146,9 +183,9 @@ export const Add2 = () => {
             </Box>
             <Box
               sx={{
-                borderTop: "1px solid #ECECEC",
-                paddingTop: "8px",
-                width: "100%",
+                borderTop: '1px solid #ECECEC',
+                paddingTop: '8px',
+                width: '100%',
               }}
             >
               <InputBase
@@ -166,9 +203,9 @@ export const Add2 = () => {
               alignItems="center"
               justifyContent="space-between"
               sx={{
-                borderTop: "1px solid #ECECEC",
-                paddingTop: "8px",
-                width: "100%",
+                borderTop: '1px solid #ECECEC',
+                paddingTop: '8px',
+                width: '100%',
               }}
             >
               <Stack
@@ -188,9 +225,6 @@ export const Add2 = () => {
                     accept=".png, .jpg, .jpeg"
                     onChange={handleOpenButtonClicked}
                   />
-                  {image && (
-                    <img src={image} alt="Preview" className="imgPreview" />
-                  )}
                   <Button
                     variant="contained"
                     onClick={handleCreatePost}

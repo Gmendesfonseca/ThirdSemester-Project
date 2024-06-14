@@ -12,8 +12,19 @@ export function getAllPosts(id: number): Promise<PostType[]> {
 }
 
 // POST
-export function createPost(postData: CreatePostType): Promise<PostType> {
-  return api.post<PostType>('/post', postData).then((response) => {
+export function createPostStudent(postData: CreatePostType): Promise<PostType> {
+  return api.post<PostType>(`/post/student`, postData).then((response) => {
+    if (response.status !== 201) {
+      throw new Error('Error creating post');
+    }
+    return response.data;
+  });
+}
+
+export function createPostProfessor(
+  postData: CreatePostType,
+): Promise<PostType> {
+  return api.post<PostType>(`/post/professor`, postData).then((response) => {
     if (response.status !== 201) {
       throw new Error('Error creating post');
     }
