@@ -2,7 +2,6 @@ import { Navigate, RouteObject } from "react-router-dom";
 import { Home } from "../pages/Home/HomeView";
 import { ChatView } from "../pages/Chat/ChatView";
 import SignInSide from "../pages/Login/SignInView";
-import { Profile } from "../pages/Profile/ProfileView";
 import { Settings } from "../pages/Settings/SettingsView";
 import { RegisterInstitution } from "../pages/Register/RegisterInstitution";
 import { ChangePassword } from "../pages/Login/ChangePassword/ChangePassword";
@@ -74,23 +73,6 @@ export function createRoutes() {
     {
       path: "/home",
       element: <Home />,
-    },
-    {
-      path: "/profile",
-      element: <Profile data={{
-        id: 0,
-        name: "",
-        email: "",
-        avatar: "",
-        institution: undefined,
-        posts: undefined,
-        chats: undefined,
-        branches: undefined,
-        student: undefined,
-        professor: undefined,
-        friends: undefined,
-        about: ""
-      }} name={""} />,
     },
     {
       path: "/headoffice/register",

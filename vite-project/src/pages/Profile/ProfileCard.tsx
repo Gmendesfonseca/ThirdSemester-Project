@@ -1,18 +1,18 @@
 import { useState } from "react";
 import "./Profile.css";
 import { useSession } from "../../context/SessionContext";
-import { UserType } from "../../services/user/types";
+// import { UserType } from "../../services/user/types";
 import avatar from "./profileAvatar.png";
 // import { useSession } from "../../context/SessionContext";
 // import instagramIcon from "./instagramIcon.png";
 // import linkedinIcon from "./linkedin.png";
 // import githubIcon from "./github.png";
 
-interface UserProps {
-  data: UserType;
-}
+// interface UserProps {
+//   data: UserType;
+// }
 
-export const ProfileCard = ({ data }: UserProps) => {
+export const ProfileCard = () => {
   // const { accountType } = useSession();
   const [isSettingsVisible, setSettingsVisible] = useState(false);
 
@@ -49,12 +49,12 @@ export const ProfileCard = ({ data }: UserProps) => {
           </button>
         </div>
         <div className="profile_body">
-          <img src={user ? data.avatar : avatar} alt="Foto de Perfil" />
-          <h1>{user ? data.name : "Usuário"}</h1>
-          <span>{user ? data.email : "email@email.com"}</span>
+          <img src={user ? user.avatar : avatar} alt="Foto de Perfil" />
+          <h1>{user ? user.name : "Usuário"}</h1>
+          <span>{user ? user.email : "email@email.com"}</span>
           <p className="profileDescription">
             {user
-              ? data.about
+              ? user.about
               : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt, metus eu pulvinar mattis."}
           </p>
         </div>

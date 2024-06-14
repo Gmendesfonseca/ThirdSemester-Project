@@ -15,10 +15,6 @@ import {
   ChatType,
   // getChat
 } from "../../../services/chats/index";
-import {
-  ChatType,
-  // getFriends
-} from "../../../services/friends/index";
 import faker from "faker";
 import { useNavigate } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
@@ -26,16 +22,18 @@ import { darkTheme } from "../../../Themes";
 import { blue } from "@mui/material/colors";
 import { Chat, Groups } from "@mui/icons-material";
 import { useSession } from "../../../context/SessionContext";
+import { MessageType } from "../../../services/messages";
+import { FriendsType } from "../../../services/friends";
 
-interface ChatProps {
-  data: ChatType;
-}
+// interface ChatProps {
+//   data: ChatType;
+// }
 
-export const Rightbar = ({ data }: ChatProps) => {
-  const [chats, setChat] = useState<ChatType[]>([]);
-  const [friends, setFriends] = useState<ChatType[]>([]);
-  const navigate = useNavigate();
+export const Rightbar = () => {
   const { user } = useSession();
+  const [chats, setChat] = useState<ChatType[]>(user?.chats || []);
+  const [friends, setFriends] = useState<FriendsType[]>(user?.friends || []);
+  const navigate = useNavigate();
   // const {id} = useSession();
 
   // useEffect(() => {
@@ -52,29 +50,30 @@ export const Rightbar = ({ data }: ChatProps) => {
 
   useEffect(() => {
     const fakeChats = Array.from({ length: 20 }, () => ({
-      id: user ? data.id : faker.datatype.uuid(),
-      name: user ? data.name : faker.name.findName(),
-      description: user ? data.description : faker.lorem.sentence(),
-      icon: user ? data.image : faker.image.avatar(),
+      id: faker.datatype.uuid(),
+      name: faker.name.findName(),
+      description: faker.lorem.sentence(),
       messages: Array.from({ length: 1 }, () => ({
         id: faker.datatype.uuid(),
         text: faker.lorem.sentence(),
-        creatorId: faker.datatype.number(),
+        creatorName: faker.name.findName(),
+        creatorImage: faker.image.avatar(),
         created_at: faker.date.recent().toString(),
       })) as MessageType[],
+      image: faker.image.avatar(),
       updated_at: faker.date.recent().toString(),
       // created_at: faker.date.recent().toString(),
     }));
-    setChat(fakeChats);
+    user? null : setChat(fakeChats);
   }, []);
 
   useEffect(() => {
     const fakeOnlineFriends = Array.from({ length: 20 }, () => ({
       name: faker.name.findName(),
-      src: faker.image.avatar(),
+      image: faker.image.avatar(),
       online: faker.datatype.boolean(),
     }));
-    setFriends(fakeOnlineFriends);
+    user? null : setFriends(fakeOnlineFriends);
   }, []);
 
   return (

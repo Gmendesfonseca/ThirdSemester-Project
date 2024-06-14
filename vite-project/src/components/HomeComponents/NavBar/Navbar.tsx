@@ -29,7 +29,8 @@ import { darkTheme } from "../../../Themes";
 import { ThemeProvider } from "@emotion/react";
 // import img from "../../../pages/Profile/profileAvatar.png";
 import { ProfileCard } from "../../../pages/Profile/ProfileCard";
-import { UserType } from "../../../services/user/types";
+// import { UserType } from "../../../services/user/types";
+// import { PostType } from "../../../services/posts/types";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -63,11 +64,19 @@ const UserBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-interface UserProps {
-  data: UserType;
-}
+// interface PostProps {
+//   data: {
+//     // Add the properties that are present in the `data` object of type `PostType`
+//     // For example:
+//     name: string;
+//     email: string;
+//     avatar: string;
+//     institution: string;
+//     // Add any other required properties here
+//   };
+// }
 
-export const NavBar = ({ data }: UserProps) => {
+export const NavBar = () => {
   const { user } = useSession();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -127,7 +136,7 @@ export const NavBar = ({ data }: UserProps) => {
                   sx={{ width: 32, height: 32 }}
                   src={
                     user
-                      ? data.avatar
+                      ? user.avatar
                       : "https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   }
                 />
@@ -194,7 +203,7 @@ export const NavBar = ({ data }: UserProps) => {
           <Avatar /> Profile
         </MenuItem> */}
           <MenuItem sx={{ bgcolor: "transparent" }}>
-            <ProfileCard data={data} />
+            <ProfileCard />
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleLogout}>
