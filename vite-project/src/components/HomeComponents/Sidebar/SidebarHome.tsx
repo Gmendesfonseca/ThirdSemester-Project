@@ -3,17 +3,17 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-} from '@mui/material';
+} from "@mui/material";
 import {
   AddHomeOutlined,
   PersonOutlineOutlined,
   SchoolOutlined,
-} from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import { Sidebar } from '../../Sidebar/Sidebar';
-import { useSession } from '../../../context/SessionContext';
-import { AccountType } from '../../../services/login/enum';
-
+} from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { Sidebar } from "../../Sidebar/Sidebar";
+import { useSession } from "../../../context/SessionContext";
+import { AccountType } from "../../../services/login/enum";
+import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 
 export const SidebarMenu = () => {
   const navigate = useNavigate();
@@ -22,13 +22,13 @@ export const SidebarMenu = () => {
   return (
     <Sidebar>
       {accountType === AccountType.HEADOFFICE && (
-        <ListItem disablePadding={location.pathname.includes('/branch/list')}>
+        <ListItem disablePadding={location.pathname.includes("/branch/list")}>
           <ListItemButton
-            onClick={() => navigate('/branch/list')}
+            onClick={() => navigate("/branch/list")}
             style={{
-              backgroundColor: location.pathname.includes('/branch/list')
-                ? 'background.default'
-                : 'default',
+              backgroundColor: location.pathname.includes("/branch/list")
+                ? "background.default"
+                : "default",
             }}
           >
             <ListItemIcon>
@@ -40,14 +40,14 @@ export const SidebarMenu = () => {
       )}
       {accountType === AccountType.BRANCH && (
         <>
-          <ListItem disablePadding={location.pathname !== '/professor/list'}>
+          <ListItem disablePadding={location.pathname !== "/professor/list"}>
             <ListItemButton
-              onClick={() => navigate('/professor/list')}
+              onClick={() => navigate("/professor/list")}
               style={{
                 backgroundColor:
-                  location.pathname === '/professor/list'
-                    ? 'background.default'
-                    : 'background.paper',
+                  location.pathname === "/professor/list"
+                    ? "background.default"
+                    : "background.paper",
               }}
             >
               <ListItemIcon>
@@ -56,14 +56,14 @@ export const SidebarMenu = () => {
               <ListItemText primary="Professor" />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding={location.pathname !== '/student/list'}>
+          <ListItem disablePadding={location.pathname !== "/student/list"}>
             <ListItemButton
-              onClick={() => navigate('/student/list')}
+              onClick={() => navigate("/student/list")}
               style={{
                 backgroundColor:
-                  location.pathname === '/student/list'
-                    ? 'background.default'
-                    : 'background.paper',
+                  location.pathname === "/student/list"
+                    ? "background.default"
+                    : "background.paper",
               }}
             >
               <ListItemIcon>
@@ -72,18 +72,18 @@ export const SidebarMenu = () => {
               <ListItemText primary="Aluno" />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding={location.pathname !== '/course/list'}>
+          <ListItem disablePadding={location.pathname !== "/course/list"}>
             <ListItemButton
-              onClick={() => navigate('/course/list')}
+              onClick={() => navigate("/course/list")}
               style={{
                 backgroundColor:
-                  location.pathname === '/course/list'
-                    ? 'background.default'
-                    : 'background.paper',
+                  location.pathname === "/course/list"
+                    ? "background.default"
+                    : "background.paper",
               }}
             >
               <ListItemIcon>
-                <SchoolOutlined />
+                <ImportContactsIcon />
               </ListItemIcon>
               <ListItemText primary="Cursos" />
             </ListItemButton>

@@ -13,7 +13,7 @@ export function ChatView() {
         bgcolor={"background.default"}
         color={"text.primary"}
       >
-        <NavBar />
+        <NavBar navAct="InnerLink" />
         <Stack
           spacing={0}
           display={"flex"}
