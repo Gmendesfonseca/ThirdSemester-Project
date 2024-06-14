@@ -20,9 +20,9 @@ namespace InnerAPI.Services
 
         public Student Register(RegisterStudentDto register)
         {
-            var institution = GetBranch(register.Email);
+            var branch = GetBranch(register.Email);
             
-            if (institution == null)
+            if (branch == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
             }
@@ -36,8 +36,19 @@ namespace InnerAPI.Services
 
             // Cria e adiciona o novo estudante à instituição correta
             uint id = (uint)students.Count + 1; 
-            Student newStudent = new Student(id, register.Name, register.Email, register.Password, register.Matricula, register.Cpf,  register.Instituicao, register.InstitutionId, register.Curso, register.Periodo);
-            institution.Students.Add(newStudent.Id);
+            string name = register.Name;
+            string email = register.Email;
+            string password = register.Password;
+            string matricula = register.Matricula;
+            string cpf = register.Cpf;
+            string image = "caminho/para/imagem.jpg";
+            string instituicao = register.Instituicao;
+            uint institutionId = branch.Id;
+            string curso = register.Curso;
+            string periodo = register.Periodo;
+
+            Student newStudent = new Student(id, name, email, password, matricula, cpf, instituicao, institutionId, curso, periodo);
+            branch.Students.Add(newStudent.Id);
             students.Add(newStudent);
 
             return newStudent;
