@@ -55,7 +55,7 @@ export default function ListCourse() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={'background.default'} color={'text.primary'}>
-        <NavBar />
+        <NavBar navAct="InnerLink" />
         <Stack direction="row" spacing={2} justifyContent="space-between">
           <SidebarMenu />
           <InTable<CourseListType>
