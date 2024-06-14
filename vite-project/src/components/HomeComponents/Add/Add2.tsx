@@ -33,6 +33,7 @@ const UserBox = styled(Box)({
   gap: "10px",
   marginBottom: "20px",
 });
+
 export const Add2 = () => {
   const [open, setOpen] = useState<boolean>(false);
   const { user } = useSession();
@@ -110,17 +111,20 @@ export const Add2 = () => {
               <Stack direction="row" spacing={0.5} alignItems="center">
                 <UserBox>
                   <Avatar
-                    src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    src={
+                      user
+                        ? user.avatar
+                        : "https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    }
                     sx={{ width: 30, height: 30 }}
                   />
                   <Stack direction="column" spacing={0.5}>
-                    <Typography fontWeight={500}>John Doe</Typography>
+                    <Typography fontWeight={500}>
+                      {user ? user.name : "Nome do Usuário"}
+                    </Typography>
                   </Stack>
                 </UserBox>
               </Stack>
-              <Typography variant="h6" color="white" textAlign="center">
-                Criar Nova Publicação
-              </Typography>
               <div>
                 <IconButton onClick={handleModalClose}>
                   <Close />
@@ -167,11 +171,16 @@ export const Add2 = () => {
                 width: "100%",
               }}
             >
-              <Stack direction="row" alignItems="center" spacing={0.5}>
-                <label htmlFor="postType_img">
-                  <Image />
-                </label>
+              <Stack
+                direction="row"
+                alignItems="center"
+                spacing={0.5}
+                width="100%"
+              >
                 <div className="__itens__icons__photo">
+                  <label htmlFor="postType_img">
+                    <Image />
+                  </label>
                   <input
                     id="postType_img"
                     type="file"
@@ -182,9 +191,13 @@ export const Add2 = () => {
                   {image && (
                     <img src={image} alt="Preview" className="imgPreview" />
                   )}
-              <Button variant="contained" onClick={handleCreatePost}>
-                Publicar agora
-              </Button>
+                  <Button
+                    variant="contained"
+                    onClick={handleCreatePost}
+                    className="btnCreatePost"
+                  >
+                    Publicar agora
+                  </Button>
                 </div>
               </Stack>
             </Stack>

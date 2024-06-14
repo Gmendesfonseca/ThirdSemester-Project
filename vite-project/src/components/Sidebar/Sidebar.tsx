@@ -16,7 +16,7 @@ export const Sidebar = ({ children }) => {
         }}
       >
         <Box
-          position="fixed"
+          // position="fixed"
           width="200px"
           flex={1}
           p={0}

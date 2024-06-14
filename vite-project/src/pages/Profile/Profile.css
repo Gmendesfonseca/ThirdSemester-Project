@@ -168,10 +168,14 @@
 
 .profileDescription {
   background-color: blanchedalmond;
-  margin-left: 50px;
-  margin-right: 50px;
   margin-top: 20px;
   border-radius: 10px;
+  text-align: justify; /* Alinha o texto justificado */
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  word-break: break-all;
+  white-space: pre-wrap; /* Adicione esta linha */
 }
 
 @media (max-width: 3000px) {
@@ -185,13 +189,13 @@
     width: 350px;
   }
   .profile_body {
-    height: 200px;
+    height: 350px;
     width: 350px;
   }
-  .profile_footer {
+  /* .profile_footer {
     height: 150px;
     width: 350px;
-  }
+  } */
 
   .profile_settings {
     height: 450px;
@@ -211,6 +215,10 @@
   }
 
   .profileDescription {
-    display: none;
+    /* display: none; */
+    width: 300px;
+    height: 150px;
+
+    /* text-overflow: ellipsis; */
   }
 }

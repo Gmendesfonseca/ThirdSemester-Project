@@ -1,20 +1,27 @@
 // import { useNavigate } from "react-router-dom";
-import { Navbar } from '../../components/HomeComponents/NavBar/Navbar';
-import ProfileCard from './ProfileCard';
-import img from './profileAvatar.png';
-import { useNavigate } from 'react-router-dom';
-import { darkTheme } from '../../Themes';
-import { Box, ThemeProvider } from '@mui/material';
+import { Navbar } from "../../components/HomeComponents/NavBar/Navbar";
+import ProfileCard from "./ProfileCard";
+import img from "./profileAvatar.png";
+import { useNavigate } from "react-router-dom";
+import { darkTheme } from "../../Themes";
+import { Box, ThemeProvider } from "@mui/material";
+import { useSession } from "../../context/SessionContext";
+import { UserType } from "../../services/user/types";
 
 // import { useState } from 'react';
 
-export default function Profile() {
+interface UserProps {
+  data: UserType;
+}
+
+export const Profile = ({ data }: UserProps) => {
   // const [image, setImage] = useState('');
   // const navigate = useNavigate();
   const navigate = useNavigate();
+  const { user } = useSession();
 
   const btnBackHome = (
-    <button title="back" className="backHome" onClick={() => navigate('/home')}>
+    <button title="back" className="backHome" onClick={() => navigate("/home")}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -33,25 +40,29 @@ export default function Profile() {
     <ThemeProvider theme={darkTheme}>
       <Box
         className="profilePage"
-        bgcolor={'background.default'}
+        bgcolor={"background.default"}
         sx={{
-          overflow: 'hidden',
-          '&::-webkit-scrollbar': {
-            display: 'none',
+          overflow: "hidden",
+          "&::-webkit-scrollbar": {
+            display: "none",
           },
-          msOverflowStyle: 'none' /* IE and Edge */,
-          scrollbarWidth: 'none' /* Firefox */,
+          msOverflowStyle: "none" /* IE and Edge */,
+          scrollbarWidth: "none" /* Firefox */,
         }}
       >
         <Navbar navAct={btnBackHome} />
 
         <ProfileCard
-          name="Elon Musk"
-          description="O empresário Elon Musk é fundador e CEO da empresa de foguetes SpaceX; CEO da marca de carros elétricos Tesla; fundador e CEO da Neuralink (que implantou um chip no cérebro de humanos)..."
-          avatar={img}
-          email={'jonas_jm@live.com'}
+          name={user ? data.name : "Nome do Usuário"}
+          description={
+            user
+              ? user.about
+              : "O empresário Elon Musk é fundador e CEO da empresa de foguetes SpaceX; CEO da marca de carros elétricos Tesla; fundador e CEO da Neuralink (que implantou um chip no cérebro de humanos)..."
+          }
+          avatar={user ? data.avatar : img}
+          email={"jonas_jm@live.com"}
         />
       </Box>
     </ThemeProvider>
   );
-}
+};
