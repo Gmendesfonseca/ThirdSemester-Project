@@ -9,7 +9,7 @@ namespace InnerAPI.Controllers
     {
         public static RouteGroupBuilder MapChatEndpoint(this WebApplication app, SharedService  sharedServices)
         {
-            ChatService chatServices = new ChatService(sharedServices);
+            ChatServices chatServices = new ChatServices(sharedServices);
             var group = app.MapGroup("chat").WithParameterValidation();
 
             //GET /{id}/chats

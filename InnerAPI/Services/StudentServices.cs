@@ -9,11 +9,13 @@ namespace InnerAPI.Services
     {
         List<Branch> institutions;
         List<Student> students;
+        List<Professor> professors;
 
         public StudentServices(SharedService _sharedService)
         {
             students = _sharedService.Students;
             institutions = _sharedService.Branches;
+            professors = _sharedService.Professors;
         }
 
         public Student Register(RegisterStudentDto register)
@@ -24,7 +26,6 @@ namespace InnerAPI.Services
             {
                 throw new ArgumentException("Instituição não encontrada.");
             }
-             students = institution.Students;    
 
             // Verifica se o estudante já existe
             var existingStudent = students.Exists(r => r.Registration == register.Matricula || r.Email == register.Email || r.CPF == register.Cpf);
@@ -47,17 +48,11 @@ namespace InnerAPI.Services
             string email = user.Email;
             string password = user.Password;
 
-            var institution = GetBranch(email);
-            if (institution == null)
-                throw new ArgumentException("Institution not found.");
-
-            students = institution.Students;
-
-            Student student = students.FirstOrDefault(s => s.Email == email && s.Password == password);
-
             Email Email = new Email();
             if (!Email.IsValid(email))
                 throw new ArgumentException("Invalid email.");
+
+            var student = students.FirstOrDefault(s => s.Email == email);
 
             if (student == null)
                 throw new ArgumentException("User not found.");
@@ -94,17 +89,12 @@ namespace InnerAPI.Services
         {
             foreach (var institution in institutions)
             {
-                var student = institution.Students.FirstOrDefault(s => s.Id == id);
-                if (student != null)
-                {
-                    institution.Students.Remove(student);
-                    return true;
-                }
+                var student = institution.Students.FirstOrDefault(s => s == id);
             }
             return false;
         }
 
-        public List<Student> GetStudents(uint id)
+        public List<uint> GetStudents(uint id)
         {
             Branch institution = institutions.FirstOrDefault(i => i.Id == id);
             if (institution == null)
@@ -120,6 +110,16 @@ namespace InnerAPI.Services
             return institutions.FirstOrDefault(i => i.Domain == domain);
         }
 
+        public Branch GetBranch(uint id)
+        {
+            var institution = institutions.FirstOrDefault(i => i.Id == id);
+            if (institution == null)
+            {
+                throw new ArgumentException("Instituição não encontrada.");
+            }
+            return institution;
+        }
+
         public Stack<Post> Posts(uint id)
         {
             Stack<Post> newPostsList = new Stack<Post>();
@@ -127,6 +127,33 @@ namespace InnerAPI.Services
             newPostsList = institution.Feed;
 
             return newPostsList;
+        }
+
+        public List<Friend> Friends(uint id)
+        {
+            List<Friend> newFriendsList = new List<Friend>();
+            List<Student> studentsList = students;
+            List<Professor> professorsList = professors;
+
+            for (int i = 0; i < studentsList.Count; i++)
+            {
+                if (studentsList[i].InstitutionId == id)
+                {
+                    Friend newFriend = new Friend(studentsList[i].Id, studentsList[i].Name, studentsList[i].Avatar, studentsList[i].Online);
+                    newFriendsList.Add(newFriend);
+                }
+            }
+
+            for (int i = 0; i < professorsList.Count; i++)
+            {
+                if (professorsList[i].InstitutionId == id)
+                {
+                    Friend newFriend = new Friend(professorsList[i].Id, professorsList[i].Name, professorsList[i].Avatar, professorsList[i].Online);
+                    newFriendsList.Add(newFriend);
+                }
+            }
+
+            return newFriendsList;
         }
     }
 }

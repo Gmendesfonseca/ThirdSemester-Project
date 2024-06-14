@@ -33,7 +33,7 @@ namespace InnerAPI.Controllers
                             email = headOffice.Email,
                             avatar = headOffice.Avatar,
                             about = headOffice.About,
-                            branches = headOffice.Branches(sharedService),
+                            branches = headOfficeServices.Branches(headOffice.Id),
                         }
                     });
                 }
@@ -98,7 +98,7 @@ namespace InnerAPI.Controllers
                         institutionId = professor.InstitutionId,
                         posts = professorServices.Posts(professor.InstitutionId),
                         chats = professor.Chats,
-                        friends = professor.Friends(professor.InstitutionId),
+                        friends = professorServices.Friends(professor.InstitutionId),
                     }
                 });
             });

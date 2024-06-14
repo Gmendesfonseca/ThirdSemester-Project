@@ -20,7 +20,6 @@ namespace InnerAPI.Services
         public Professor Register(RegisterProfessorDto register)
         {
             var institution = GetBranch(register.Email);
-            professors = institution.Professors;
             if (institution == null)
             {
                 throw new ArgumentException("Instituição não encontrada.");
@@ -62,14 +61,14 @@ namespace InnerAPI.Services
 
             if (professor.Password != password)
                 throw new ArgumentException("Senha incorreta.");
-        ´professor.Online = true;
+            professor.Online = true;
 
             return professor;
         }
 
         public Professor Update(int id, RegisterProfessorDto professor)
         {
-            var existingProfessor = institutions.SelectMany(i => i.Professors).FirstOrDefault(p => p.Id == id);
+            var existingProfessor = professors.FirstOrDefault(p => p.Id == id);
             if (existingProfessor == null)
             {
                 throw new ArgumentException("Professor não encontrado.");
@@ -83,13 +82,27 @@ namespace InnerAPI.Services
             return existingProfessor;
         }
 
-        public bool Delete(int id)
-        { institutions.SelectMany(i => i.Professors).ToList().RemoveAll(usuario => usuario.Id == id); return true; }
+        public bool Delete(uint id)
+        { 
+            institutions.SelectMany(i => i.Professors).ToList().RemoveAll(usuario => usuario == id); 
+            professors.RemoveAll(p => p.Id == id);
+            return true; 
+        }
 
         public Branch GetBranch(string email)
         {
             var domain = email.Split('@')[1];
             return institutions.FirstOrDefault(i => i.Domain == domain);
+        }
+
+        public Branch GetBranch(uint id)
+        {
+            var institution = institutions.FirstOrDefault(i => i.Id == id);
+            if(institution == null)
+            {
+                throw new ArgumentException("Instituição não encontrada.");
+            }
+            return institution;
         }
 
         public Stack<Post> Posts(uint id)
@@ -101,7 +114,7 @@ namespace InnerAPI.Services
             return newPostsList;
         }
 
-        public List<Friend> friends(uint id)
+        public List<Friend> Friends(uint id)
         {
             List<Friend> newFriendsList = new List<Friend>();
             List<Student> studentsList = students;

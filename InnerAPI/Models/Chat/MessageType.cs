@@ -2,7 +2,6 @@
 {
     public class MessageType
     {
-
         public int Id { get; set; }
         public int ChatId { get; set; }
         public int SenderId { get; set; }
@@ -14,6 +13,7 @@
         public DateTime Timestamp { get; set; }
 
     }
+}
 
 //public int Id { get; set; }
 //public int ChatId { get; set; }

@@ -18,8 +18,8 @@ namespace InnerAPI.Models
         public Branch() : base()
         {
             courses = new List<CourseDto>();
-            students = new List<Student>();
-            professors = new List<Professor>();
+            students = new List<uint>();
+            professors = new List<uint>();
             feed = new Stack<Post>();
         }
 
@@ -33,8 +33,8 @@ namespace InnerAPI.Models
             Active = true;
             CNPJ = cnpj;
             courses = new List<CourseDto>();
-            students = new List<Student>();
-            professors = new List<Professor>();
+            students = new List<uint>();
+            professors = new List<uint>();
             feed = new Stack<Post>();
         }
 
@@ -50,8 +50,8 @@ namespace InnerAPI.Models
             CreationDate = creationDate;
             CNPJ = cnpj;
             courses = new List<CourseDto>();
-            students = new List<Student>();
-            professors = new List<Professor>();
+            students = new List<uint>();
+            professors = new List<uint>();
             feed = new Stack<Post>();
         }
         #endregion

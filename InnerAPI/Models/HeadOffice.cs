@@ -5,13 +5,13 @@ namespace InnerAPI.Models
     public class HeadOffice : Institution
     {
         #region "Declaração de variáveis"
-        List<Branch> branches;
+        List<uint> branches;
         #endregion
 
         #region "Construtores"
         public HeadOffice() : base()
         {
-            branches = new List<Branch>();
+            branches = new List<uint>();
         }
 
         public HeadOffice(uint id, string name, string email, string password, string address, DateOnly creationDate, string cnpj, string domain) : base()
@@ -26,7 +26,7 @@ namespace InnerAPI.Models
             CreationDate = creationDate;
             CNPJ = cnpj;
             Domain = domain;
-            branches = new List<Branch>();
+            branches = new List<uint>();
         }
         public HeadOffice(uint id, string name, string email, string password, string cnpj, string domain) : base()
         {
@@ -38,7 +38,7 @@ namespace InnerAPI.Models
             Active = true;
             CNPJ = cnpj;
             Domain = domain;
-            branches = new List<Branch>();
+            branches = new List<uint>();
         }
         #endregion
 
@@ -50,12 +50,12 @@ namespace InnerAPI.Models
             return Email == login.Email && Password == login.Password;
         }
 
-        public List<Branch> Branches { get { return branches; } }
-        public void addBranch(Branch branch)
+        public List<uint> Branches { get { return branches; } }
+        public void addBranch(uint branch)
         {
             branches.Add(branch);
         }
-        public void removeBranch(Branch branch)
+        public void removeBranch(uint branch)
         {
             branches.Remove(branch);
         }

@@ -126,8 +126,6 @@ namespace InnerAPI.Services
             return Branch.Courses;
         }
 
-        public List<>
-
         public bool Delete(int id)
         { branches.RemoveAll(usuario => usuario.Id == id); return true; }
 

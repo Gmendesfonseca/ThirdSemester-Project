@@ -13,9 +13,9 @@ namespace InnerAPI.Controllers
 
 
             // GET /professor/{id}
-            group.MapGet("{id}", (int id, string email) =>
+            group.MapGet("{id}", (int id) =>
             {
-                var professor = professorServices.GetProfessors(email).FirstOrDefault(s => s.Id == id);
+                var professor = professorServices.GetProfessors(id).FirstOrDefault(s => s.Id == id);
                 if (professor == null)
                 {
                     return Results.NotFound($"Professor com ID {id} não encontrado.");
