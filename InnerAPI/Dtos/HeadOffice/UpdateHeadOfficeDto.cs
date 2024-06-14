@@ -12,7 +12,8 @@ namespace InnerAPI.Dtos
         [Required] string CNPJ,
         [Required] string Domain,
         [Required] string Password,
-        List<BranchDto>? Branches = null
+        List<BranchDto>? Branches = null,
+        [StringLength(500)] string? About = null
     )
     {
         public uint Id { get; init; } = Id;
