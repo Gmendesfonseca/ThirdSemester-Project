@@ -1,5 +1,5 @@
 import { Box, Stack, ThemeProvider } from "@mui/material";
-import { Navbar } from "../../components/HomeComponents/NavBar/Navbar";
+import { NavBar } from "../../components/HomeComponents/NavBar/Navbar";
 import { Chat2 } from "../../components/Chats/Chat2";
 import ChatsSide from "../../components/ChatSide/ChatsSide";
 import { darkTheme } from "../../Themes";
@@ -13,7 +13,7 @@ export function ChatView() {
         bgcolor={"background.default"}
         color={"text.primary"}
       >
-        <Navbar navAct="InnerLink" />
+        <NavBar />
         <Stack
           spacing={0}
           display={"flex"}
