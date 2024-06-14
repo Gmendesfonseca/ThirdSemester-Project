@@ -90,7 +90,7 @@ export function createRoutes() {
         professor: undefined,
         friends: undefined,
         about: ""
-      }} />,
+      }} name={""} />,
     },
     {
       path: "/headoffice/register",

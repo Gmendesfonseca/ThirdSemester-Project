@@ -13,56 +13,62 @@ import {
   Menu,
   IconButton,
   Tooltip,
-} from '@mui/material';
-import MailIcon from '@mui/icons-material/Mail';
-import React from 'react';
+} from "@mui/material";
+import MailIcon from "@mui/icons-material/Mail";
+import React from "react";
 import {
   Logout,
   Notifications,
   // PersonAdd,
   // Settings,
-} from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import { useSession } from '../../../context/SessionContext';
+} from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { useSession } from "../../../context/SessionContext";
 // import { useChat } from '../../../context/ChatsContext';
-import { darkTheme } from '../../../Themes';
-import { ThemeProvider } from '@emotion/react';
-import img from '../../../pages/Profile/profileAvatar.png';
-import ProfileCard from '../../../pages/Profile/ProfileCard';
+import { darkTheme } from "../../../Themes";
+import { ThemeProvider } from "@emotion/react";
+// import img from "../../../pages/Profile/profileAvatar.png";
+import { ProfileCard } from "../../../pages/Profile/ProfileCard";
+import { UserType } from "../../../services/user/types";
 
 const StyledToolbar = styled(Toolbar)({
-  display: 'flex',
-  justifyContent: 'space-between',
+  display: "flex",
+  justifyContent: "space-between",
 });
 
-const Search = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  backgroundColor: 'white',
+const Search = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  backgroundColor: "white",
   borderRadius: theme.shape.borderRadius,
-  width: '40%',
-  padding: '0 10px',
+  width: "40%",
+  padding: "0 10px",
 }));
 
 const Icons = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '20px',
-  [theme.breakpoints.down('sm')]: {
-    display: 'none',
+  display: "flex",
+  alignItems: "center",
+  gap: "20px",
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
   },
 }));
 
 const UserBox = styled(Box)(({ theme }) => ({
-  display: 'none',
-  alignItems: 'center',
-  gap: '10px',
-  [theme.breakpoints.down('sm')]: {
-    display: 'flex',
+  display: "none",
+  alignItems: "center",
+  gap: "10px",
+  [theme.breakpoints.down("sm")]: {
+    display: "flex",
   },
 }));
 
-export const Navbar = (props) => {
+interface UserProps {
+  data: UserType;
+}
+
+export const NavBar = ({ data }: UserProps) => {
+  const { user } = useSession();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const { setAccountType, setInstitution, setUser } = useSession();
@@ -81,7 +87,7 @@ export const Navbar = (props) => {
     setInstitution(null);
     setUser(null);
     // setChatList([]);
-    navigate('/login');
+    navigate("/login");
   };
 
   // const handleProfile = () => {
@@ -96,10 +102,9 @@ export const Navbar = (props) => {
     <ThemeProvider theme={darkTheme}>
       <AppBar
         position="sticky"
-        sx={{ width: '100%', bgcolor: 'background.paper' }}
+        sx={{ width: "100%", bgcolor: "background.paper" }}
       >
         <StyledToolbar>
-          {props.navAct}
           <Search>
             <InputBase placeholder="Search" />
           </Search>
@@ -115,13 +120,17 @@ export const Navbar = (props) => {
                 onClick={handleClick}
                 size="small"
                 sx={{ ml: 2 }}
-                aria-controls={open ? 'account-menu' : undefined}
+                aria-controls={open ? "account-menu" : undefined}
                 aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
+                aria-expanded={open ? "true" : undefined}
               >
                 <Avatar
                   sx={{ width: 32, height: 32 }}
-                  src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  src={
+                    user
+                      ? data.avatar
+                      : "https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  }
                 />
               </IconButton>
             </Tooltip>
@@ -132,9 +141,9 @@ export const Navbar = (props) => {
                 onClick={handleClick}
                 size="small"
                 sx={{ ml: 2, gap: 1 }}
-                aria-controls={open ? 'account-menu' : undefined}
+                aria-controls={open ? "account-menu" : undefined}
                 aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
+                aria-expanded={open ? "true" : undefined}
               >
                 <Avatar
                   sx={{ width: 32, height: 32 }}
@@ -156,42 +165,37 @@ export const Navbar = (props) => {
           PaperProps={{
             elevation: 0,
             sx: {
-              overflow: 'visible',
-              filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+              overflow: "visible",
+              filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
               mt: 1.5,
-              '& .MuiAvatar-root': {
+              "& .MuiAvatar-root": {
                 width: 32,
                 height: 32,
                 ml: -0.5,
                 mr: 1,
               },
-              '&::before': {
+              "&::before": {
                 content: '""',
-                display: 'block',
-                position: 'absolute',
+                display: "block",
+                position: "absolute",
                 top: 0,
                 right: 14,
                 width: 10,
                 height: 10,
-                bgcolor: 'background.paper',
-                transform: 'translateY(-50%) rotate(45deg)',
+                bgcolor: "background.paper",
+                transform: "translateY(-50%) rotate(45deg)",
                 zIndex: 0,
               },
             },
           }}
-          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          transformOrigin={{ horizontal: "right", vertical: "top" }}
+          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
           {/* <MenuItem onClick={handleClose}>
           <Avatar /> Profile
         </MenuItem> */}
-          <MenuItem sx={{ bgcolor: 'transparent' }}>
-            <ProfileCard
-              name="Elon Musk"
-              description="O empresário Elon Musk é fundador e CEO da empresa de foguetes SpaceX; CEO da marca de carros elétricos Tesla; fundador e CEO da Neuralink (que implantou um chip no cérebro de humanos)..."
-              avatar={img}
-              email={'jonas_jm@live.com'}
-            />
+          <MenuItem sx={{ bgcolor: "transparent" }}>
+            <ProfileCard data={data} />
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleLogout}>

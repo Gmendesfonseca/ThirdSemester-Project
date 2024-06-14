@@ -1,18 +1,25 @@
 import { useState } from "react";
 import "./Profile.css";
+import { useSession } from "../../context/SessionContext";
+import { UserType } from "../../services/user/types";
+import avatar from "./profileAvatar.png";
 // import { useSession } from "../../context/SessionContext";
 // import instagramIcon from "./instagramIcon.png";
 // import linkedinIcon from "./linkedin.png";
 // import githubIcon from "./github.png";
 
-export default function ProfileCard(props) {
+interface UserProps {
+  data: UserType;
+}
+
+export const ProfileCard = ({ data }: UserProps) => {
   // const { accountType } = useSession();
   const [isSettingsVisible, setSettingsVisible] = useState(false);
 
   const toggleSettings = () => {
     setSettingsVisible(!isSettingsVisible);
   };
-
+  const { user } = useSession();
   // const handleDataChange = (newData) => {
   //   setData(newData);
   // };
@@ -42,10 +49,14 @@ export default function ProfileCard(props) {
           </button>
         </div>
         <div className="profile_body">
-          <img src={props.avatar} alt="Foto de Perfil" />
-          <h1>{props.name}</h1>
-          <span>{props.email}</span>
-          <p className="profileDescription">{props.description}</p>
+          <img src={user ? data.avatar : avatar} alt="Foto de Perfil" />
+          <h1>{user ? data.name : "Usuário"}</h1>
+          <span>{user ? data.email : "email@email.com"}</span>
+          <p className="profileDescription">
+            {user
+              ? data.about
+              : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt, metus eu pulvinar mattis."}
+          </p>
         </div>
 
         {/* <div className="profile_footer">
@@ -97,4 +108,4 @@ export default function ProfileCard(props) {
       </div> */}
     </div>
   );
-}
+};
