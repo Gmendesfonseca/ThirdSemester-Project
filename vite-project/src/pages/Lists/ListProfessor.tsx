@@ -39,7 +39,7 @@ export default function ListProfessor() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={"background.default"} color={"text.primary"}>
-        <NavBar />
+        <NavBar navAct="InnerLink"/>
         <Stack direction="row" spacing={2} justifyContent="space-between">
           <SidebarMenu />
           <InTable<ProfessorListType>
